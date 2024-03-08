@@ -1,0 +1,22 @@
+.container{
+    width:100%;
+    height:450px;
+    display:flex;
+    flex-direction:column;
+    background-color:white;
+}
+
+.redline{
+    flex:2;
+    background-color:red;
+}
+
+.snsLogin{
+    flex:5;
+    background-color:white;
+}
+
+.fcategory{
+    flex:2;
+    background-color:lightgray;
+}
