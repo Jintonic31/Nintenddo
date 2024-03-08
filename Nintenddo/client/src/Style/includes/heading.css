@@ -1,19 +1,31 @@
 .category {
-    display: flex; 
+    display: flex;
     height: 73px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: white;
+  }
+
+  .category div:first-child {
+    overflow: hidden;
   }
   
   .category div {
-    flex: 1; 
+    flex: 1;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
-    padding: 10px; 
-    border: 1px solid gray; 
-    cursor: pointer; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid gray;
+    cursor: pointer;
     position: relative;
-    position: relative;
+    font-size: 15px;
+    font-weight: bold;
+    transition: transform 0.5s;
   }
 
   .category div::after {
@@ -28,6 +40,9 @@
     transition: opacity 1s; 
   }
   
+
+
   .category div:hover::after {
     opacity: 1;
   }
+
