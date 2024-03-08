@@ -1,11 +1,11 @@
 import React from 'react'
-import '../Style/includes/footing'
+import '../Style/includes/footing.css'
 
 function Footing() {
     return (
         <div className='container'>
             <div className='redline'>
-                <div className='flogo'>푸터<img src=''/></div>
+                <div className='flogo'><img src='http://localhost:8070/images/includes/flogo.png'/></div>
                 <div className='goTop'></div>
             </div>
 
