@@ -4,7 +4,7 @@ import '../Style/Index.css'
 function Index() {
     return (
         <div>
-            <h3>인덱스</h3>
+            <h3>인덱스    </h3>
         </div>
     )
 }
