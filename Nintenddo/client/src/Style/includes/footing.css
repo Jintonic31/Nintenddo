@@ -8,15 +8,118 @@
 
 .redline{
     flex:2;
-    background-color:red;
+    background-color:rgb(230, 0, 18);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.flogo{
+    width:110px;
+    height:30px;
+    margin-left:320px;
+}
+.flogo img{
+    width:100%;
+    height:100%;
+}
+.goTop{
+    color:white;
+    margin-right:320px;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+}
+.goTop img{
+    width:100%;
+    height:100%;
 }
 
-.snsLogin{
-    flex:5;
+
+
+.fnews{
+    flex:2;
     background-color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
+.fnews .snsNews{
+    flex:1; display:flex;
+    justify-content:flex-end;
+    margin-left:300px;
+}
+.fnews .snsNews img{
+    width:55px; height:55px;
+    border-radius:5px;
+    margin-right:20px;
+}
+
+.fnews .myNintendo{
+    flex:1;
+    border-radius:5px;
+    margin-left:45px;
+}
+.fnews .famiibo{
+    flex:1;
+    margin-right:300px;
+}
+.fnews .myNintendo img{
+    width:365px; height:54px;
+    border:none;
+    border-radius:5px;
+    padding-top:2px;
+}
+.fnews .famiibo img{
+    width:365px; height:50px;
+    border:2px solid lightgray;
+    border-radius:5px;
+    padding-top:2px;
+}
+
 
 .fcategory{
-    flex:2;
+    flex:3;
+    background-color:white;
+    border:1px solid black;
+    display:flex;
+    justify-content:center;
+}
+.intro{
+    width:300px;
+    display:flex;
+    flex-direction:column;
+}
+.hardware{
+    width:300px;
+    display:flex;
+    flex-direction:column;
+}
+.software{
+    width:300px;
+    display:flex;
+    flex-direction:column;
+}
+.cutomer{
+    width:300px;
+    display:flex;
+    flex-direction:column;
+}
+.fcategory .title{
+    font-weight:bold;
+    font-size:110%;
+    text-align:center;
+    flex:1;
+}
+.fcategory .sub{
+    text-align:center;
+    flex:1;
+    color:gray;
+}
+
+
+
+
+.copyRight{
+    flex:3;
     background-color:lightgray;
 }
