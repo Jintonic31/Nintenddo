@@ -1,11 +1,13 @@
 import React from 'react'
 import Footing from './Footing'
+import Heading from './Heading'
 import '../Style/Index.css'
 
 function Index() {
     return (
         <div>
-            <h3>인덱스</h3>
+            <Heading />
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <Footing />
         </div>
     )

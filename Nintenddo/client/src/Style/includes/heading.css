@@ -1,0 +1,33 @@
+.category {
+    display: flex; 
+    height: 73px;
+  }
+  
+  .category div {
+    flex: 1; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    padding: 10px; 
+    border: 1px solid gray; 
+    cursor: pointer; 
+    position: relative;
+    position: relative;
+  }
+
+  .category div::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: red;
+    opacity: 0;
+    transition: opacity 1s; 
+  }
+  
+  .category div:hover::after {
+    opacity: 1;
+  }

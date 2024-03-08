@@ -1,6 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
-import '../Style/includes/heading'
+import '../Style/includes/heading.css'
 
 
 
@@ -11,7 +11,7 @@ function Heading() {
     <div class="category">
       <div onClick={()=>{
         navigate('/')
-      }}><img src="" />닌텐도이미지 </div>
+      }}><img src="http://localhost:8070/images/includes/nintendo.png" /></div>
 
       <div onClick={()=>{
         navigate('/')
@@ -40,7 +40,7 @@ function Heading() {
       <div onClick={()=>{
         navigate('/')
       }}>검색</div>
-      
+
     </div>
   )
 }
