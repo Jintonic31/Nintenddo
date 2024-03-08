@@ -80,7 +80,7 @@
 .fcategory{
     flex:3;
     background-color:white;
-    border:1px solid black;
+    
     display:flex;
     justify-content:center;
 }
@@ -121,5 +121,5 @@
 
 .copyRight{
     flex:3;
-    background-color:lightgray;
+    background-color:#F5F5F5;
 }
