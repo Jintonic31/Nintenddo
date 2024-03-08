@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Style/'
+import '../Style/includes/footing'
 
 function Footing() {
     return (
