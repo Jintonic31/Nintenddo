@@ -46,7 +46,8 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    margin:30px 300px;
+    padding-top:30px;
+    margin:0 300px;
 }
 .fnews .snsNews{
     flex:1; display:flex;
@@ -84,7 +85,7 @@
 .fcategory{
     flex:3;
     background-color:white;
-    margin-top:10px;
+    padding-top:10px;
     margin-bottom:50px;
     display:flex;
     justify-content:center;
