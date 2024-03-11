@@ -147,10 +147,95 @@
     color:gray;
     font-size:0.9em;
     padding-top:20px;
+    padding-bottom:20px;
+}
+.copyRight .seller span:nth-child(1){
+    color:gray;
+    cursor:pointer;
+}
+.copyRight .seller span:nth-child(2){
+    font-weight:bold;
+    color:black;
+    cursor:pointer;
 }
 .copyRight .hours{
     flex:1;
     color:gray;
     font-size:0.9em;
-    padding-top:20px;
+    padding-top:30px;
+    padding-bottom:10px;
 }
+
+
+
+.TosCnt{
+    display:flex;
+    flex-direction:column; width:100%; height:100%;
+}
+
+.ToSLogo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:70px;
+    border-bottom:1px solid lightgray;
+    margin:0 20px;
+}
+.ToSLogo img{ width:150px; height:40px; }
+
+.ToSTitle{
+    display:flex;
+    flex-direction:flow;
+    justify-content:flex-start;
+    align-items:center;
+    width:100%;
+    height:70px;
+    border-bottom:1px solid lightgray;
+    margin:0 20px;
+}
+.ToSTitle div:nth-child(1){
+    background-color:rgb(158, 158, 158);
+    width:10px;
+    height:22px;
+    border-radius:3px;
+    padding-top:1px;
+}
+.ToSTitle div:nth-child(2){
+    margin-left:10px;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+.ToSText{
+    margin:0 20px;
+    color:rgb(158, 158, 158);
+    font-size:90%;
+}
+.ToSText span{
+    color:black;
+    font-weight:bold;
+    font-size:100%;
+}
+
+.ToSBtn{
+    width:100%;
+    height:70px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+.ToSBtn button{
+    width:50px;
+    height:20px;
+    border:1px solid gray;
+    border-radius:5px;
+    font-size:80%;
+    color:gray(158, 158, 158);
+}
+
+
+
+
+
+
