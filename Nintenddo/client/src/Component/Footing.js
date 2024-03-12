@@ -73,7 +73,12 @@ function Footing() {
                     <img src='http://localhost:8070/images/includes/kakaoch.png' />
                 </div>
                 <div className='myNintendo'>
-                    <img src='http://localhost:8070/images/includes/mynintendo.png' />
+                    <div>
+                        <Link to='/login'> 
+                        <img src='http://localhost:8070/images/includes/mynintendo.png' />
+                        </Link>
+                    </div>
+                   
                 </div>
                 <div className='famiibo'>
                     <img src='http://localhost:8070/images/includes/famiibo.png' />

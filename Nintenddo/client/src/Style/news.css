@@ -1,15 +1,16 @@
 .mainnewsCnt{
     display:flex;
     flex-direction:column;
-    width:70%;
+    width:80%;
     height:100%;
-    margin-top:90px;
+    margin-top: 90px;
 }
 
 .mainnewsTitle{
     display:flex;
     flex-direction:row;
     height:70px;
+    margin-top:60px;
 }
 .titleKr{
     margin-right:10px;

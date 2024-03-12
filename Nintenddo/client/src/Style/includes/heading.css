@@ -1,11 +1,10 @@
 .category {
     display: flex;
     height: 73px;
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    
     background-color: white;
   }
 
@@ -37,7 +36,7 @@
     height: 5px;
     background-color: red;
     opacity: 0;
-    transition: opacity 1s; 
+    transition: opacity 0.9s; 
   }
   
 
