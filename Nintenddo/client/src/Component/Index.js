@@ -3,6 +3,7 @@ import axios from 'axios'
 import Footing from './Footing'
 import Heading from './Heading'
 import Mainnews from '../Component/News/Mainnews'
+import Mainsoftware from '../Component/Product/Mainsoftware'
 import '../Style/Index.css'
 
 import Slider from 'react-slick'
@@ -96,6 +97,8 @@ function Index() {
                         <img src='http://localhost:8070/images/banner/main/rightarrowicon.png' />
                     </span>
                 </div>
+
+                <Mainsoftware />
 
             </article>
 
