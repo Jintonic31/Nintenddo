@@ -7,6 +7,7 @@ const Index = lazy( ()=>import('../Component/Index') )
 const Login = lazy( ()=>import('../Component/Members/Login') )
 
 
+
 const root = createBrowserRouter([
 
     {
@@ -18,6 +19,7 @@ const root = createBrowserRouter([
         path:'login',
         element:<Suspense fallback={Loading}><Login /></Suspense>
     },
+
 
 
 

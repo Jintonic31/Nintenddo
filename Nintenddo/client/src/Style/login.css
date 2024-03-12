@@ -1,4 +1,49 @@
 .colored-div {
-    height: 480px;
-    background-color: #E60012;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: #E60012; 
+    min-height: 480px; /* 최소 높이 설정 */
+    
+}
+.colored-div img {
+    max-width: 100%; 
+    height: auto; 
+    margin-bottom: 75px;
+    
+}
+
+.content-div {
+    display: flex; 
+    align-items: center; 
+    background-color: #E60012; 
+    color: #ffffff; 
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 200px;
+    align-items: center;
+}
+
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+  
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    
+    
+  }
+  
+  .modal-image {
+    max-width: 100%; 
+    height: auto; 
+    align-items: center;
+    flex-direction: column;
 }
