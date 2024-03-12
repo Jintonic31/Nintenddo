@@ -115,7 +115,11 @@ function Login() {
                 <div class="modal-content">
                 <div class="modal-body">
                 <img src={`http://localhost:8070/images/members/13down.png`} />&nbsp;&nbsp;&nbsp;
-                <img src={`http://localhost:8070/images/members/14up.png`} />
+                
+                <img src={`http://localhost:8070/images/members/14up.png`} onClick={()=>{
+                    navigate("/joinform");
+                }} />
+
             </div>
             </div>
             </div>
