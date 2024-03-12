@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import '../../Style/product.css'
+import '../../Style/software.css'
 
 function Mainsoftware() {
     const [softList, setSoftList] = useState();
 
     useEffect(()=>{
-        axios.get('/api/products/getsoftList')
+        axios.post('/api/products/getsoftlist', null, {params:{pcseq:2}})
         .then((result)=>{
             setSoftList(result.data)
         })
@@ -21,24 +21,24 @@ function Mainsoftware() {
                 <div className='titleEn'>PickUp</div>
             </div>
 
-            <div className='mainnewsContent'>
+            <div className='mainsoftContent'>
                 {
                     (softList)?(
                         softList.map((soft, idx)=>{
                             return(
-                                <div className='newsList'>
-                                    <div className='nlistImage'>
+                                <div className='softList'>
+                                    <div className='slistImage'>
                                         <img src={`http://localhost:8070/images/product/software/${soft.image}`} />
                                     </div>
                                     
                                     <div className='slisthardware'>
                                         Nintendo Switch
                                     </div>
-                                    <div className='nlisttitle'>{soft.title}</div>
+                                    <div className='slisttitle'>{soft.pname}</div>
 
-                                    <div className='nlistIndate'>
-                                        뉴스<br />
-                                        {soft.indate.substring(0,10)}
+                                    <div className='sindate'>
+                                        소프트웨어<br />
+                                        발매일 : {soft.indate.substring(0,10)}
                                     </div>
                                 </div>
                             )

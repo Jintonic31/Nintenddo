@@ -1,9 +1,5 @@
 package team.nt.Entity;
 
-import java.sql.Timestamp;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,16 +8,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class News {
+public class Pcategory {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer nseq;
-	private String title;
-	private String image;
-	private String content;
-	@CreationTimestamp
-	private Timestamp indate;
-	
+	private Integer pcseq;
+	private String pcname;
 
 }
