@@ -84,50 +84,59 @@ function Heading() {
 
 
     return (
-      <div class="category" >
-        <div onClick={()=>{
-          navigate('/')
-        }}>
-          <img src="http://localhost:8070/images/includes/nintendo.png" />
+      <>
+        <div class="category" >
+          <div onClick={()=>{
+            navigate('/')
+          }}>
+            <img src="http://localhost:8070/images/includes/nintendo.png" />
+          </div>
+
+          <div onMouseOver={(e)=>{handleMouseOver1(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut1(e); }} onClick={()=>{navigate('/')}}>
+            <img src={imgSrc1} />
+            본체 및 amiibo
+          </div>
+
+          <div onMouseOver={(e)=>{handleMouseOver3(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut3(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc3} />소프트웨어</div>
+
+          <div onMouseOver={(e)=>{handleMouseOver5(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut5(e); hideMegaDrop(); }} onClick={()=>{navigate('/')}}><img src={imgSrc5} />News</div>
+
+          <div onMouseOver={(e)=>{handleMouseOver7(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut7(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc7} />캐릭터</div>
+
+          <div onMouseOver={(e)=>{handleMouseOver9(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut9(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc9} />고객지원</div>
+
+          <div onMouseOver={(e)=>{handleMouseOver11(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut11(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc11} />온라인 스토어</div>
+
+          <div onMouseOver={(e)=>{handleMouseOver13(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut13(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc13} />검색</div>
+          
         </div>
 
-        <div onMouseOver={()=>{handleMouseOver1(); showMegaDrop(); }} onMouseOut={()=>{handleMouseOut1(); hideMegaDrop(); }} onClick={()=>{navigate('/')}}>
-          <img src={imgSrc1} />
-          본체 및 amiibo
-        </div>
 
-        <div className='Megadrop' style={dropStyle}>
+        <div className='Megadrop' onMouseOver={(e)=>{showMegaDrop(e); }}style={dropStyle} onMouseOut={(e)=>{hideMegaDrop(e);}}>
           <div className='dropHard'>
             <img src='http://localhost:8070/images/product/hardware/pcseq1.png' />
           </div>
-          <div className='dropetc'></div>
+          <div className='dropetc'>
+            <div>
+              <img src='http://localhost:8070/images/product/hardware/pcseq3.png' />
+              <div className='pcseq3title'>amiibo</div>
+            </div>
+            <div className='pcseq7'>
+              <img src='http://localhost:8070/images/product/hardware/pcseq7.png' />
+              <div>게임&워치<br />젤다의 전설</div>
+            </div>
+            <div className='pcseq6'>
+              <img src='http://localhost:8070/images/product/hardware/pcseq6.png' />
+              <div>Pokemon Go<br />Plus</div>
+            </div>
+            <div className='etc'>
+              <div>기능·특징을 비교</div>
+              <div>주변 기기</div>
+            </div>
+          </div>
         </div>
 
-        <div onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} onClick={()=>{
-          navigate('/')
-        }}><img src={imgSrc3} />소프트웨어</div>
-
-        <div onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} onClick={()=>{
-          navigate('/')
-        }}><img src={imgSrc5} />News</div>
-
-        <div onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} onClick={()=>{
-          navigate('/')
-        }}><img src={imgSrc7} />캐릭터</div>
-
-        <div onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} onClick={()=>{
-          navigate('/')
-        }}><img src={imgSrc9} />고객지원</div>
-
-        <div onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11} onClick={()=>{
-          navigate('/')
-        }}><img src={imgSrc11} />온라인 스토어</div>
-
-        <div onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} onClick={()=>{
-          navigate('/')
-        }}><img src={imgSrc13} />검색</div>
-        
-      </div>
+      </>
     )
 }
 
