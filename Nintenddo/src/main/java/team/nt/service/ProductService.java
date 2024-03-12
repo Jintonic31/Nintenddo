@@ -20,6 +20,21 @@ public class ProductService {
 		return list;
 	}
 
+	public List<Product> getHardwareList(Integer pcseq) {
+		List<Product> list = ipdao.getHardwareList(pcseq);
+		return list;
+	}
+
+	public List<Product> getAmiiboList(Integer pcseq) {
+		List<Product> list = ipdao.getAmiiboList(pcseq);
+		return list;
+	}
+
+	public List<Product> getAppList(Integer pcseq) {
+		List<Product> list = ipdao.getAppList(pcseq);
+		return list;
+	}
+
 	
 
 	

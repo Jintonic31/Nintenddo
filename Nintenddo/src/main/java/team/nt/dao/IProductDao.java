@@ -9,6 +9,12 @@ public interface IProductDao {
 
 	List<Product> getMainSoftList(Integer pcseq);
 
+	List<Product> getHardwareList(Integer pcseq);
+
+	List<Product> getAmiiboList(Integer pcseq);
+
+	List<Product> getAppList(Integer pcseq);
+
 	
 
 }

@@ -33,6 +33,33 @@ public class ProductDao implements IProductDao{
 		return result;
 	}
 
+	@Override
+	public List<Product> getHardwareList(Integer pcseq) {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";		
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);		
+		query.setParameter("pcseq", pcseq);		
+		List<Product> result = query.getResultList();		
+		return result;
+	}
+
+	@Override
+	public List<Product> getAmiiboList(Integer pcseq) {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";		
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);		
+		query.setParameter("pcseq", pcseq);		
+		List<Product> result = query.getResultList();		
+		return result;
+	}
+
+	@Override
+	public List<Product> getAppList(Integer pcseq) {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);		
+		query.setParameter("pcseq", pcseq);		
+		List<Product> result = query.getResultList();		
+		return result;
+	}
+
 
 	
 

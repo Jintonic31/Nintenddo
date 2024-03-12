@@ -34,6 +34,7 @@
     width:230px;
     height:300px;
     border-bottom:1px solid lightgray;
+    margin-bottom:20px;
 }
 .slistImage{
     flex:9;
@@ -60,6 +61,7 @@
     width:100%;
     font-size:75%;
     color:gray;
+    margin:10px 0;
 }
 
 .showmoreBtn{
