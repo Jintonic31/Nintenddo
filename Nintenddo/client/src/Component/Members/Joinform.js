@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
 import '../../Style/Joinform.css'
+import axios from 'axios'
 
 function Joinform() {
+    const navigate = useNavigate();
+
+    const [userid,setUserid] = useState();
+    const [pwd,setPwd] = useState();
+    const [repwd,setRepwd] = useState();
+    const [email,setEmail] = useState();
+    const [znum,setZnum] = useState();
+    const [add1,setAdd1] = useState();
+    const [add2,setAdd2] = useState();
+    const [add3,setAdd3] = useState();
+    const [gender,setGender] = useState();
+    const [country,setCountry] = useState();
+    const [provider,setProvider] = useState();
+    const [useyn,setUseyn] = useState();
     /*생년월일*/
     const [year, setYear] = useState('');
     const [month, setMonth] = useState('');
@@ -28,7 +44,7 @@ function Joinform() {
       }
     //성별
 
-    //국가
+    //국가nthd
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState('');
 
@@ -45,6 +61,26 @@ function Joinform() {
         setSelectedCountry(event.target.value);
       }
 
+      function onJoin(){
+        if(!userid){return alert("id를 입력하세요")}
+        if(!pwd){return alert("비번을 입력하세요")}
+        if(pwd!=repwd){return alert("비밀번호가 일치하지 않습니다")}
+        if(!email){return alert("이메일을 입력하세요")}
+        if(!userid){return alert("id를입력하세요")}
+
+        axios.post("/api/members/join", {userid,pwd,email,znum,add1,add2,add3,gender,country,byear:year,bmonth:month,bday:day,provider:'local',useyn:'Y'})
+        .then((result)=>{
+          alert("회원가입 성공~!~!~!~!")
+          console.log(gender);
+          navigate("/login")
+        })
+        .catch((err)=>{
+          alert("회원가입 에러")
+          console.log(gender);
+        })
+      }
+
+     
     //국가
   return (
     <div className="joinbody">
@@ -67,30 +103,39 @@ function Joinform() {
             
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className='infotitle'>닉네임</div>
-            <div className="info"><input type="text" placeholder ="10자 이내" /></div>
+            <div className='infotitle'>아이디</div>
+            <div className="info"><input type="text" placeholder ="10자 이내" value={userid} onChange={(e)=>{
+              setUserid(e.currentTarget.value);
+            }}/></div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className='infotitle'>메일 주소</div>
-            <div className="info"><input type="text" placeholder ="메일 주소" /></div>
+            <div className="info"><input type="text" placeholder ="메일 주소" value={email}  onChange={(e)=>{
+              setEmail(e.currentTarget.value);
+            }}/></div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className='infotitle'>암호</div>
-            <div className="info"><input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
+            <div className="info"><input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={pwd}  onChange={(e)=>{
+              setPwd(e.currentTarget.value);
+            }}/></div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className='infotitle'>암호 재입력</div>
-            <div className="info"> <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
+            <div className="info"> <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={repwd}  onChange={(e)=>{
+              setRepwd(e.currentTarget.value);
+            }}/></div>
             </div><br/><br/>
 
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className="select-box">생년월일
             </div>
-            <select className="select-year" value={year} style={{marginLeft:"380px", width:"150px", height:"60px"}} onChange={(e) => setYear(e.target.value)}>
+            <select className="select-year" value={year} style={{marginLeft:"380px", width:"150px", height:"60px"}} 
+            onChange={(e) => setYear(e.target.value)}>
           <option>년</option>
           {years.map((year) => (
             <option key={year} value={year}>
@@ -119,17 +164,17 @@ function Joinform() {
             <div>&nbsp;&nbsp;</div>
             <div className="select-box">성별
             </div>
-            <select style={{marginLeft:"415px", width:"500px", height:"60px"}} value={selectedGender} onChange={handleGenderChange}>
+            <select style={{marginLeft:"415px", width:"500px", height:"60px"}} onChange={(e)=>setGender(e.target.value)} value={gender}>
                 <option value="">(미선택)</option>
-                <option value="male">남성</option>
-                <option value="female">여성</option>
-                <option value="none">선택하지 않음</option>
+                <option value="M">남성</option>
+                <option value="F">여성</option>
+                <option value="N">선택하지 않음</option>
             </select>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className="Title">국가/지역
-            <select style={{marginLeft:"375px", width:"500px", height:"60px"}} value={selectedCountry} onChange={handleCountryChange }>
+            <select style={{marginLeft:"375px", width:"500px", height:"60px"}} onChange={(e)=>setCountry(e.target.value)} value={country}>
         <option value="">국가/지역 선택</option>
         {countries.map((country) => (
           <option key={country.alpha3Code} value={country.alpha3Code}>
@@ -147,6 +192,9 @@ function Joinform() {
             <option value="UTC+9" selected>대한민국 (UTC+9:00)</option>
             </select>
             </div>
+        <button className="continue" onClick={()=>{
+            onJoin()
+        }}>계속</button>
         </article>
     </div>
     <Footing/>

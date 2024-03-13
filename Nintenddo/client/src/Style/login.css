@@ -5,11 +5,13 @@
     background-color: #E60012; 
     min-height: 480px; /* 최소 높이 설정 */
     
+    
 }
 .colored-div img {
     max-width: 100%; 
     height: auto; 
-    margin-bottom: 75px;
+    margin-left: 300px;
+    
     
 }
 
@@ -20,9 +22,10 @@
     color: #ffffff; 
     padding: 10px 20px;
     font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 200px;
+    font-size: 32px;
+    margin-bottom: 300px;
     align-items: center;
+    
 }
 
 .modal{
@@ -47,3 +50,29 @@
     align-items: center;
     flex-direction: column;
 }
+
+.loginbtns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-right: 300px;
+}
+
+.loginbtn {
+    width: 250px;
+    height: 50px;
+    border: none;
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 0;
+    border-radius: 15px; 
+    margin-top: 10px;
+}
+  
+  .loginbtn img {
+    height: 100%;
+    width: 100%; 
+    border-radius: 15px; 
+  }

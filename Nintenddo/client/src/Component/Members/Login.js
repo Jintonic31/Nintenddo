@@ -50,37 +50,23 @@ function Login() {
   },[])
 
 
-  async function onLocalLogin(){
-      if( !userid ){ return alert('아이디를 입력하세요') }
-      if( !pwd ){ return alert('패스워드를 입력하세요') }
-      try{
-          let result = await axios.post( '/api/members/locallogin', {userid, pwd } );
-          if(result.data.msg == 'ok'){
-              alert('정상 로그인 되었습니다');
-              // 로그인 유저를 조회해서 리덕스에 넣고 index.js 로 이동
-              result = await axios.get( '/api/members/getLoginUser' );
-              dispatch( loginAction( result.data.loginUser ) );
-              navigate('/');
-          }else{
-              setMessage(result.data.msg);
-          }
-      }catch(err){
-          console.error(err);
-      }
-      
-  }
+
   return (
     <div className='container'>
             <Heading />
             <div class="colored-div">
                 <img src={`http://localhost:8070/images/members/mynintendo.png`} />
-                <div class="content-div"><h1>마이 닌테도를<br/>&nbsp;&nbsp;&nbsp;&nbsp;시작하자!</h1></div>
-                <button onClick={()=>{ToS()}}>시작하기</button><br/>
-                <button onClick={()=>{}}>로그인</button>
-            </div>
+                <div class="content-div">마이 닌테도를<br/>&nbsp;&nbsp;&nbsp;&nbsp;시작하자!</div>
+                <div className='loginbtns'>
+                </div>
+                <button className="loginbtn" onClick={()=>{ToS()}}>시작하기</button>
+                <button className="loginbtn" onClick={()=>{navigate("/loginpage")}}>로그인</button>
+                </div>
+            
+            
 
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            
+
             <Footing />
             <Modal isOpen={isOpen} onRequestClose={()=> setIsOpen(false)} ariaHideApp={false} style={ToSStyle}>
             <div id="myModal" class="modal">
