@@ -6,7 +6,9 @@ import '../Style/includes/heading.css'
 
 
 function Heading() {
+
     const navigate = useNavigate();
+
     const [imgSrc1,setImgSrc1] = useState("http://localhost:8070/images/includes/image1.png")
     const [imgSrc3,setImgSrc3] = useState("http://localhost:8070/images/includes/image3.png")
     const [imgSrc5,setImgSrc5] = useState("http://localhost:8070/images/includes/image5.png")
@@ -74,14 +76,6 @@ function Heading() {
 
     const [dropStyle, setDropStyle] = useState({display:"none"});
 
-    function showMegaDrop(e){
-      setDropStyle({display:"flex"});
-    }
-
-    function hideMegaDrop(e){
-      setDropStyle({display:"none"});
-    }
-
 
     return (
       <>
@@ -92,31 +86,31 @@ function Heading() {
             <img src="http://localhost:8070/images/includes/nintendo.png" />
           </div>
 
-          <div onMouseOver={(e)=>{handleMouseOver1(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut1(e); }} onClick={()=>{navigate('/')}}>
+          <div onMouseOver={(e)=>{handleMouseOver1(e); setDropStyle({display:"flex"});}} onMouseOut={(e)=>{handleMouseOut1(e); }} onClick={()=>{navigate('/')}}>
             <img src={imgSrc1} />
             본체 및 amiibo
           </div>
 
-          <div onMouseOver={(e)=>{handleMouseOver3(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut3(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc3} />소프트웨어</div>
+          <div onMouseOver={(e)=>{handleMouseOver3(e); setDropStyle({display:"flex"});}} onMouseOut={(e)=>{handleMouseOut3(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc3} />소프트웨어</div>
 
-          <div onMouseOver={(e)=>{handleMouseOver5(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut5(e); hideMegaDrop(); }} onClick={()=>{navigate('/')}}><img src={imgSrc5} />News</div>
+          <div onMouseOver={(e)=>{handleMouseOver5(e); setDropStyle({display:"flex"});}} onMouseOut={(e)=>{handleMouseOut5(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc5} />News</div>
 
-          <div onMouseOver={(e)=>{handleMouseOver7(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut7(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc7} />캐릭터</div>
+          <div onMouseOver={(e)=>{handleMouseOver7(e); setDropStyle({display:"flex"}); }} onMouseOut={(e)=>{handleMouseOut7(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc7} />캐릭터</div>
 
-          <div onMouseOver={(e)=>{handleMouseOver9(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut9(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc9} />고객지원</div>
+          <div onMouseOver={(e)=>{handleMouseOver9(e); setDropStyle({display:"flex"}); }} onMouseOut={(e)=>{handleMouseOut9(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc9} />고객지원</div>
 
-          <div onMouseOver={(e)=>{handleMouseOver11(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut11(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc11} />온라인 스토어</div>
+          <div onMouseOver={(e)=>{handleMouseOver11(e); setDropStyle({display:"flex"}); }} onMouseOut={(e)=>{handleMouseOut11(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc11} />온라인 스토어</div>
 
-          <div onMouseOver={(e)=>{handleMouseOver13(e); showMegaDrop(e); }} onMouseOut={(e)=>{handleMouseOut13(e); hideMegaDrop(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc13} />검색</div>
+          <div onMouseOver={(e)=>{handleMouseOver13(e); setDropStyle({display:"flex"}); }} onMouseOut={(e)=>{handleMouseOut13(e); }} onClick={()=>{navigate('/')}}><img src={imgSrc13} />검색</div>
           
         </div>
+        
 
-
-        <div className='Megadrop' onMouseOver={(e)=>{showMegaDrop(e); }}style={dropStyle} onMouseOut={(e)=>{hideMegaDrop(e);}}>
-          <div className='dropHard'>
+        <div className='Megadrop' onMouseOver={(e)=>{setDropStyle({display:"flex"}); }}style={dropStyle} onMouseOut={(e)=>{setDropStyle({display:"none"})}}>
+          <div className='drophard' onClick={()=>{navigate('/hardware')}}>
             <img src='http://localhost:8070/images/product/hardware/pcseq1.png' />
           </div>
-          <div className='dropetc'>
+          <div className='drophardetc'>
             <div>
               <img src='http://localhost:8070/images/product/hardware/pcseq3.png' />
               <div className='pcseq3title'>amiibo</div>
