@@ -47,7 +47,7 @@ function Joinform() {
 
     //국가
   return (
-    <div class="joinbody">
+    <div className="joinbody">
     <Heading/>
     <h2 className="centerText">닌텐도 어카운트 작성</h2>    
     <div className="account">다음 어카운트를 가지고 있는 경우, 간단하게 닌텐도 어카운트를 작성할 수 있습니다.</div>
@@ -65,26 +65,26 @@ function Joinform() {
 
             <div className="account"><h2>위의 어카운트를 가지고 있지 않은 경우에는 아래 정보를 입력해 주십시오.</h2></div><br/>
             
-            <div className='ToSTitle'>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">닉네임<input type="text" value="10자 이내" /></div>
-            </div>
-            <div className='ToSTitle'>
+            <div className="info">닉네임<input type="text" placeholder ="10자 이내" /></div>
+            </div><br/><br/>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">메일 주소<input type="text" value="메일 주소" /></div>
-            </div>
-            <div className='ToSTitle'>
+            <div className="info">메일 주소<input type="text" placeholder ="메일 주소" /></div>
+            </div><br/><br/>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">암호<input type="text" value="영문과 숫자를 혼합한 8자 이상" /></div>
-            </div>
-            <div className='ToSTitle'>
+            <div className="info">암호<input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
+            </div><br/><br/>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">암호 재입력 <input type="text" value="영문과 숫자를 혼합한 8자 이상" /></div>
-            </div>
+            <div className="info">암호 재입력 <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
+            </div><br/><br/>
 
-            <div className='ToSTitle'>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">생년월일
+            <div className="select-box">생년월일
             </div>
             <select value={year} onChange={(e) => setYear(e.target.value)}>
           <option>년</option>
@@ -110,10 +110,10 @@ function Joinform() {
             </option>
           ))}
         </select>
-        </div>
-            <div className='ToSTitle'>
+        </div><br/><br/>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">성별
+            <div className="select-box">성별
             </div>
             <select value={selectedGender} onChange={handleGenderChange }>
                 <option value="">(미선택)</option>
@@ -121,10 +121,10 @@ function Joinform() {
                 <option value="female">여성</option>
                 <option value="none">선택하지 않음</option>
             </select>
-            </div>
-            <div className='ToSTitle'>
+            </div><br/><br/>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">국가/지역
+            <div className="Title">국가/지역
             </div>
             <select value={selectedCountry} onChange={handleCountryChange }>
         <option value="">국가/지역 선택</option>
@@ -134,10 +134,13 @@ function Joinform() {
           </option>
         ))}
       </select>
-    </div>
-            <div className='ToSTitle'>
+    </div><br/><br/>
+            <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">시간대</div>
+            <div className="select-box">시간대</div>
+            <select id="timezoneSelect">
+            <option value="UTC+9" selected>대한민국 (UTC+9:00)</option>
+            </select>
             </div>
         </article>
     </div>

@@ -79,36 +79,8 @@ function Login() {
                 <button onClick={()=>{}}>로그인</button>
             </div>
 
-            <div className='subPage'>
-                <article>
-                    <div className='memberform'>
-                        <h2>LogIn</h2>
-                        <div className="field">
-                            <label>User ID</label>
-                            <input type="text" value={userid} onChange={(e)=>{
-                                setUserid( e.currentTarget.value );
-                            }}/>
-                        </div>
-                        <div className="field">
-                            <label>Password</label>
-                            <input type="password" value={pwd} onChange={(e)=>{
-                                setPwd( e.currentTarget.value );
-                            }}/>
-                        </div>
-                        
-                        <div className="sns-btns">
-                            <button onClick={
-                                ()=>{
-                                    window.location.href='http://localhost:8070/api/members/kakaostart';
-                                }
-                            }>Kakao Login</button>
-                            <button>Naver Login</button>
-                            <button>Google Login</button><button>FaceBook Login</button>
-                        </div>
-                        <div>{message}</div>
-                    </div>
-                </article>
-            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            
             <Footing />
             <Modal isOpen={isOpen} onRequestClose={()=> setIsOpen(false)} ariaHideApp={false} style={ToSStyle}>
             <div id="myModal" class="modal">
