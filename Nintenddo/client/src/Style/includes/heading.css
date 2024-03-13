@@ -46,19 +46,33 @@
   opacity: 1;
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 .Megadrop{
-  width:100%;
-  height:350px;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  position:relative;
-  z-index:999;
-  top:100%;
-  left:0;
-  background-color:white;
+  width: 100%;
+  height: 350px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  position: absolute; 
+  top: 71px;
+  left: 0;
+  background-color: white;
+  animation: slideDown 0.8s ease-out forwards;
 }
+
+
+
 .drophard{
   cursor:pointer;
 }
