@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS qna;
 DROP TABLE IF EXISTS member;
 DROP TABLE IF EXISTS news;
+DROP TABLE IF EXISTS playmode;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS pcategory;
 
@@ -106,6 +107,17 @@ CREATE TABLE pcategory
 );
 
 
+CREATE TABLE playmode
+(
+	mseq int NOT NULL AUTO_INCREMENT,
+	pseq int NOT NULL,
+	tvmode varchar(50) NOT NULL,
+	tabletmode varchar(50) NOT NULL,
+	handmode varchar(50) NOT NULL,
+	PRIMARY KEY (mseq)
+);
+
+
 CREATE TABLE product
 (
 	pseq int NOT NULL AUTO_INCREMENT,
@@ -190,6 +202,14 @@ ALTER TABLE cart
 
 
 ALTER TABLE odetail
+	ADD FOREIGN KEY (pseq)
+	REFERENCES product (pseq)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE playmode
 	ADD FOREIGN KEY (pseq)
 	REFERENCES product (pseq)
 	ON UPDATE RESTRICT
