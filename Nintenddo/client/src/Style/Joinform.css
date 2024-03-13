@@ -57,7 +57,7 @@
     width:100%;
     height:70px;
     margin:0 20px;
-    margin-left: 455px;
+    margin-left: 300px;
 }
 
 .Title div:nth-child(1){
@@ -71,6 +71,11 @@
   margin-left:10px;
   font-weight:bold;
   font-size:1.1em;
+}
+.infotitle{
+  width:150px;
+  height:60px;
+  line-height:60px;
 }
 
 #timezoneSelect {

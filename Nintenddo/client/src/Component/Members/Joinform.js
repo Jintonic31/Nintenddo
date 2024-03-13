@@ -67,26 +67,30 @@ function Joinform() {
             
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">닉네임<input type="text" placeholder ="10자 이내" /></div>
+            <div className='infotitle'>닉네임</div>
+            <div className="info"><input type="text" placeholder ="10자 이내" /></div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">메일 주소<input type="text" placeholder ="메일 주소" /></div>
+            <div className='infotitle'>메일 주소</div>
+            <div className="info"><input type="text" placeholder ="메일 주소" /></div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">암호<input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
+            <div className='infotitle'>암호</div>
+            <div className="info"><input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
-            <div className="info">암호 재입력 <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
+            <div className='infotitle'>암호 재입력</div>
+            <div className="info"> <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" /></div>
             </div><br/><br/>
 
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className="select-box">생년월일
             </div>
-            <select value={year} onChange={(e) => setYear(e.target.value)}>
+            <select className="select-year" value={year} style={{marginLeft:"380px", width:"150px", height:"60px"}} onChange={(e) => setYear(e.target.value)}>
           <option>년</option>
           {years.map((year) => (
             <option key={year} value={year}>
@@ -94,7 +98,7 @@ function Joinform() {
             </option>
           ))}
         </select>
-        <select value={month} onChange={(e) => setMonth(e.target.value)}>
+        <select value={month} style={{marginLeft:"25px", width:"150px", height:"60px"}} onChange={(e) => setMonth(e.target.value)}>
           <option>월</option>
           {months.map((month) => (
             <option key={month} value={month}>
@@ -102,7 +106,7 @@ function Joinform() {
             </option>
           ))}
         </select>
-        <select value={day} onChange={(e) => setDay(e.target.value)}>
+        <select value={day} style={{marginLeft:"25px", width:"150px", height:"60px"}} onChange={(e) => setDay(e.target.value)}>
           <option>일</option>
           {days.map((day) => (
             <option key={day} value={day}>
@@ -115,7 +119,7 @@ function Joinform() {
             <div>&nbsp;&nbsp;</div>
             <div className="select-box">성별
             </div>
-            <select value={selectedGender} onChange={handleGenderChange }>
+            <select style={{marginLeft:"415px", width:"500px", height:"60px"}} value={selectedGender} onChange={handleGenderChange}>
                 <option value="">(미선택)</option>
                 <option value="male">남성</option>
                 <option value="female">여성</option>
@@ -125,8 +129,7 @@ function Joinform() {
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className="Title">국가/지역
-            </div>
-            <select value={selectedCountry} onChange={handleCountryChange }>
+            <select style={{marginLeft:"375px", width:"500px", height:"60px"}} value={selectedCountry} onChange={handleCountryChange }>
         <option value="">국가/지역 선택</option>
         {countries.map((country) => (
           <option key={country.alpha3Code} value={country.alpha3Code}>
@@ -134,11 +137,13 @@ function Joinform() {
           </option>
         ))}
       </select>
+            </div>
+            
     </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
             <div className="select-box">시간대</div>
-            <select id="timezoneSelect">
+            <select  style={{marginLeft:"400px", width:"500px", height:"60px"}} id="timezoneSelect">
             <option value="UTC+9" selected>대한민국 (UTC+9:00)</option>
             </select>
             </div>
