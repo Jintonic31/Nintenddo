@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.nt.Entity.Pcategory;
+import team.nt.Entity.Playmode;
 import team.nt.Entity.Product;
 import team.nt.dao.IProductDao;
 
@@ -20,22 +21,18 @@ public class ProductService {
 		return list;
 	}
 
-	public List<Product> getHardwareList(Integer pcseq) {
-		List<Product> list = ipdao.getHardwareList(pcseq);
+	public List<Product> getHardList() {
+		List<Product> list = ipdao.getHardList();
 		return list;
 	}
 
-	public List<Product> getAmiiboList(Integer pcseq) {
-		List<Product> list = ipdao.getAmiiboList(pcseq);
+	public List<Playmode> getModeList() {
+		List<Playmode> list = ipdao.getModeList();
 		return list;
 	}
 
-	public List<Product> getAppList(Integer pcseq) {
-		List<Product> list = ipdao.getAppList(pcseq);
-		return list;
-	}
 
-	
+
 
 	
 	

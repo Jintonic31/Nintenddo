@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import '../Style/includes/heading.css';
 
 function Heading() {
+
   const navigate = useNavigate();
+  
   const [imgSrc, setImgSrc] = useState({
     1: "http://localhost:8070/images/includes/image1.png",
     3: "http://localhost:8070/images/includes/image3.png",
