@@ -1,5 +1,7 @@
 package team.nt.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +22,14 @@ public class MemberService {
 		mr.save(member);
 		
 	}
+
+	public Member getMember(String email) {
+		Optional<Member> mem = mr.findById(email);
+		if(!mem.isPresent()) {
+			return null;
+		}else {
+		return mem.get();
+		}
+	}
+
 }

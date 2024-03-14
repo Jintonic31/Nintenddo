@@ -5,4 +5,6 @@ import team.nt.Entity.Member;
 public interface IMemberDao {
 
 
+
+
 }

@@ -13,9 +13,8 @@ import lombok.Data;
 public class Member {
 
 	@Id
-	private String userid;
-	private String  pwd;
 	private String  email;
+	private String  pwd;
 	private Timestamp indate;
 	private String  znum;
 	private String  add1;
