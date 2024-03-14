@@ -16,7 +16,8 @@
 }
 
 .content-div {
-    display: flex; 
+    display: flex;
+    justify-content: center;
     align-items: center; 
     background-color: #E60012; 
     color: #ffffff; 
@@ -25,6 +26,7 @@
     font-size: 32px;
     margin-bottom: 300px;
     align-items: center;
+    
     
 }
 

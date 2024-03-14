@@ -9,15 +9,25 @@ function Loginpage() {
   const navigate = useNavigate();
   const [email,setEmail] = useState();
   const [pwd,setPwd] = useState();
+  const [message, setMessage] = useState();
 
-  function onLogin(){
+  async function onLogin(){
     if(!email){return alert("이메일을 입력하세요")}
     if(!pwd){return alert("비번을 입력하세요")}
 
-    axios.post("/api/members/loginpage", {email,pwd})
-    .then((result)=>{
-      alert("로그인 성공~!~!~!~!")
-      navigate("/")
+    await axios.post("/api/members/loginpage", { email, pwd })
+    .then((result)=>{ 
+      if(result.data.msg == 'ok'){
+        alert("로그인 성공~!~!~!~!")
+        navigate('/');
+      }else if(result.data.msg=='해당 메일이 없습니다'){
+        alert('해당 메일이 없습니다. 회원가입 바람')
+      }else if(result.data.msg=='패스워드가 틀립니다.'){
+        alert('비밀번호가 틀렸습니다.')
+      }else{
+        setMessage(result.data.msg);
+      }      
+  
     })
     .catch((err)=>{
       alert("로그인 에러")
