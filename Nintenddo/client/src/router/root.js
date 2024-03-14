@@ -8,7 +8,13 @@ const Login = lazy( ()=>import('../Component/Members/Login') )
 const Joinform = lazy( ()=>import('../Component/Members/Joinform') )
 const Loginpage = lazy( ()=>import('../Component/Members/Loginpage') )
 //자리침범금지
+
+
+// 사회적 거리두기
 const Hardware = lazy( ()=>import('../Component/Product/Hardware') )
+const Controller = lazy( ()=>import('../Component/Product/Controller') )
+const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
+
 
 
 
@@ -35,12 +41,19 @@ const root = createBrowserRouter([
 
 
 
-
+    // 사회적 거리두기
     {
         path:'hardware',
         element:<Suspense fallback={Loading}><Hardware /></Suspense>
     },
-
+    {
+        path:'controller',
+        element:<Suspense fallback={Loading}><Controller /></Suspense>
+    },
+    {
+        path:'aboutus',
+        element:<Suspense fallback={Loading}><Aboutus /></Suspense>
+    },
 
 
 

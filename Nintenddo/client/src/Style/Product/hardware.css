@@ -10,7 +10,6 @@
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 .hardwareWrap{
-    border:1px solid blue;
     width:80%;
     height:100%;
     display:flex;
@@ -105,20 +104,21 @@
     display:flex;
     justify-content:center;
     margin:0 20px;
+    width:100%;
 }
 .hardwareImgone{
     flex:1;
     display:flex;
     flex-direction:column;
-    margin-right:10px;
+    margin:0 20px;
     border-top:3px solid rgb(230, 0, 18);
 }
 .hardwareImgone:last-child{
-    margin-right:0;
+    margin-right:20px;
 }
 .hardwareImgone img{
     width:100%;
-    height:200px;
+    height:250px;
 }
 .hardwareImgone span{
     flex:2;
@@ -195,37 +195,58 @@
 
 .tvmode{
     flex:1;
-    max-width:300px;
     display:flex;
+    margin:0 10px;
 }
-.tvmode img{
+.tvmode img:first-child{
     width:100%;
     height:105px;
-    max-width:250px;
+    max-width:270px;
+    margin-right:10px;
+    margin-bottom:5px;
+}
+.tvmode img:last-child{
+    width:100%;
+    height:105px;
+    max-width:200px;
     margin-bottom:5px;
 }
 
 .tabletmode{
     flex:1;
-    max-width:300px;
     display:flex;
+    margin:0 10px;
 }
-.tabletmode img{
+.tabletmode img:first-child{
     width:100%;
     height:105px;
-    max-width:250px;
+    max-width:270px;
+    margin-right:10px;
+    margin-bottom:5px;
+}
+.tabletmode img:last-child{
+    width:100%;
+    height:105px;
+    max-width:200px;
     margin-bottom:5px;
 }
 
 .handmode{
     flex:1;
-    max-width:300px;
     display:flex;
+    margin:0 10px;
 }
-.handmode img{
+.handmode img:first-child{
     width:100%;
     height:105px;
-    max-width:250px;
+    max-width:270px;
+    margin-right:10px;
+    margin-bottom:5px;
+}
+.handmode img:last-child{
+    width:100%;
+    height:105px;
+    max-width:200px;
     margin-bottom:5px;
 }
 
@@ -239,38 +260,158 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    margin:70px 0;
+    margin-top:70px;
 }
 
 .ableSoftImg{
     display:flex;
+    justify-content:center;
+    align-items:center;
     width:100%;
-    height:100%;
-    margin-top:70px;
+    height:300px;
 }
 .ableSoftImg img{
     flex:1;
+    margin:30px 20px;
 }
 
-.ableSoftImg{
-    display:flex;
-    width:100%;
-    height:100%;
-    margin-top:70px;
-}
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.ableJoycon{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
 
 .ableModeLabel img{
     width:20px;
     height:20px;
 }
+.ableModeLabel a{
+    text-decoration:none;
+    color:black;
+    display:flex;
+    align-items:center;
+}
+.ableJoyconImg{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+}
 .ableJoyconImg img{
     flex:1;
-    max-width:380px;
     margin-top:50px;
     margin-right:10px;
 }
-.ableJoyconImg img:first-child{
-    margin-left:20px;
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.aboutlite{
+    border:2px solid lightgray;
+    width:80%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    margin:100px 0;
+    padding:0 30px;
 }
+.aboutlite .title{
+    width:100%;
+    font-size:1.8rem;
+    font-weight:bold;
+    color:rgb(53, 52, 52);
+    margin:20px 0;
+}
+.aboutlite .intro{
+    width:100%;
+    font-size:95%;
+    font-weight:bold;
+    color:rgb(53, 52, 52);
+}
+.aboutlite .info{
+    display:flex;
+    align-items:center;
+    margin: 20px 0;
+}
+.aboutlite .info .redbar{
+    width:5px;
+    height:35px;
+    background-color:rgb(230, 0, 18);
+    margin-right:10px;
+    font-size:85%;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.softwareBanner{
+    width:100%;
+    height:100%;;
+    background-color:black;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.softwareBanner .title{
+    width:70%;
+    margin-bottom:30px;
+    flex:1;
+    display:flex;
+    align-items:center;
+    color:white;
+    font-weight:bold;
+}
+.softwareBanner .title div:first-child{
+    flex:1;
+    font-size:3rem;
+    letter-spacing:5px;
+}
+.softwareBanner .title div:last-child{
+    flex:1;
+    text-align:right;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.imgcnt {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .imgone-container {
+    display: flex;
+  }
+  .imgone-container img{
+    flex:1;
+    height: 185px;
+    border-radius: 10px;
+    margin:0 20px;
+  }
+  
+  .imgone {
+    flex-shrink: 0;
+    transition: transform 1s ease; /* 애니메이션 효과 */
+  }
+  
+  /* 이미지가 왼쪽으로 이동하는 애니메이션 */
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .imgone-container {
+    animation: slideLeft 25s linear infinite; /* 애니메이션 적용 */
+  }
+  
+  

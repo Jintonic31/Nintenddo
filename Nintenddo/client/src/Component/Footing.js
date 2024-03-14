@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import Modal from 'react-modal'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 // ㄴ 특정 컴포넌트로 이동하는 함수
 import '../Style/includes/footing.css'
 
 function Footing() {
+
+    const navigate = useNavigate();
 
     const [imgSrc, setImgSrc] = useState('http://localhost:8070/images/includes/gotop.png');
 
@@ -58,7 +60,7 @@ function Footing() {
     return (
         <div className='container'>
             <div className='redline'>
-                <div className='flogo'><img src='http://localhost:8070/images/includes/flogo.png'/></div>
+                <div className='flogo'><img src='http://localhost:8070/images/includes/flogo.png' alt=''/></div>
                 <div className='goTop' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
                     <img src={imgSrc}/>
                 </div>
@@ -66,22 +68,22 @@ function Footing() {
 
             <div className='fnews'>
                 <div className='snsNews'>
-                    <img src='http://localhost:8070/images/includes/youtube.png' />
-                    <img src='http://localhost:8070/images/includes/kakao.png' />
-                    <img src='http://localhost:8070/images/includes/facebook.png' />
-                    <img src='http://localhost:8070/images/includes/twitter.png' />
-                    <img src='http://localhost:8070/images/includes/kakaoch.png' />
+                    <img src='http://localhost:8070/images/includes/youtube.png' alt=''/>
+                    <img src='http://localhost:8070/images/includes/kakao.png' alt=''/>
+                    <img src='http://localhost:8070/images/includes/facebook.png' alt='' />
+                    <img src='http://localhost:8070/images/includes/twitter.png' alt=''/>
+                    <img src='http://localhost:8070/images/includes/kakaoch.png' alt=''/>
                 </div>
                 <div className='myNintendo'>
                     <div>
                         <Link to='/login'> 
-                        <img src='http://localhost:8070/images/includes/mynintendo.png' />
+                        <img src='http://localhost:8070/images/includes/mynintendo.png' alt=''/>
                         </Link>
                     </div>
                    
                 </div>
                 <div className='famiibo'>
-                    <img src='http://localhost:8070/images/includes/famiibo.png' />
+                    <img src='http://localhost:8070/images/includes/famiibo.png' alt=''/>
                 </div>
 
                 
@@ -90,13 +92,13 @@ function Footing() {
                 <div className='intro'>
                     <hr />
                     <div className='title'>한국닌텐도</div>
-                    <div className='sub'>- 회사개요</div>
-                    <div className='sub'>- 찾아오시는 길</div>
+                    <div className='sub' onClick={()=>{navigate('/aboutus')}}>- 회사개요</div>
+                    <div className='sub' onClick={()=>{navigate('/aboutus')}}>- 찾아오시는 길</div>
                 </div>
                 <div className='hardware'>
                     <hr />
                     <div className='title'>본체/amiibo</div>
-                    <div className='sub'>- Nintendo Switch</div>
+                    <div className='sub' onClick={()=>{navigate('/hardware')}}>- Nintendo Switch</div>
                     <div className='sub'>- amiibo</div>
                 </div>
                 <div className='software'>
@@ -123,7 +125,7 @@ function Footing() {
                         <Modal isOpen={isOpen} ariaHideApp={false} style={ToSStyle}>
                             <div className='ToSCnt'>
                                 <div className='ToSLogo'>
-                                    <img src='http://localhost:8070/images/includes/toslogo.png' />
+                                    <img src='http://localhost:8070/images/includes/toslogo.png' alt=''/>
                                 </div>
                                 <div className='ToSTitle'>
                                     <div>&nbsp;&nbsp;</div>
@@ -173,7 +175,7 @@ function Footing() {
                         <Modal isOpen={isOpen2} ariaHideApp={false} style={userInfoStyle}>
                             <div className='ToSCnt'>
                                 <div className='ToSLogo'>
-                                    <img src='http://localhost:8070/images/includes/toslogo.png' />
+                                    <img src='http://localhost:8070/images/includes/toslogo.png' alt=''/>
                                 </div>
                                 <div className='ToSTitle'>
                                     <div>&nbsp;&nbsp;</div>
