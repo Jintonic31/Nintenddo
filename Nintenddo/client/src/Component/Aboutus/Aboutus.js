@@ -20,8 +20,14 @@ function Aboutus() {
 
         // 표시 지역 마킹
         const markerPosition = new kakao.maps.LatLng(37.560769, 126.971219);
+        const markerImageSrc = 'http://localhost:8070/images/aboutus/mapmarker.png';    // 마커 이미지 경로
+        const markerImageSize = new kakao.maps.Size(50,50); // 마커 사이즈
+        const markerImageOptions = {offset: new kakao.maps.Point(25, 50)};  // 마커 오프셋
+        const markerImage = new kakao.maps.MarkerImage(markerImageSrc, markerImageSize, markerImageOptions);
+
         var marker = new kakao.maps.Marker({
-            position: markerPosition
+            position: markerPosition,
+            image:markerImage
         });
         marker.setMap(kakaoMap);
         // setMap(kakaoMap);
