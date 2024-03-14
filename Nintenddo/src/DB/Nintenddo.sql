@@ -1,6 +1,6 @@
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
-/* Drop Tables 
+/* Drop Tables */
 
 DROP TABLE IF EXISTS admins;
 DROP TABLE IF EXISTS banner;
@@ -9,10 +9,9 @@ DROP TABLE IF EXISTS odetail;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS qna;
 DROP TABLE IF EXISTS member;
+DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS pcategory;
-
-*/
 
 
 
@@ -65,6 +64,17 @@ CREATE TABLE member
 	provider varchar(50),
 	useyn varchar(1) DEFAULT 'Y',
 	PRIMARY KEY (userid)
+);
+
+
+CREATE TABLE news
+(
+	nseq int NOT NULL AUTO_INCREMENT,
+	title varchar(100) NOT NULL,
+	image varchar(100) NOT NULL,
+	content varchar(5000) NOT NULL,
+	indate datetime DEFAULT now(),
+	PRIMARY KEY (nseq)
 );
 
 
