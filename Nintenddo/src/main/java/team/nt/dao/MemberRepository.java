@@ -7,5 +7,4 @@ import team.nt.Entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, String>{
 
-	
 }
