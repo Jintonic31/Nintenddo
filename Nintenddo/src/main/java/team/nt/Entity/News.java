@@ -2,6 +2,8 @@ package team.nt.Entity;
 
 import java.sql.Timestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,7 @@ public class News {
 	private String title;
 	private String image;
 	private String content;
+	@CreationTimestamp
 	private Timestamp indate;
 	
 

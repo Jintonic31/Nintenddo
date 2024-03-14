@@ -6,7 +6,7 @@
 .mainBanner{
     display:flex;
     flex-direction:column;
-    margin-top:72px;
+    position:relative;
 }
 .mainBannerList{
     width:100%;
@@ -42,7 +42,6 @@
 
 
 .mainArticle{
-    border:3px solid greenyellow;
     margin-top:335px;
     margin-bottom:200px;
     display:flex;
