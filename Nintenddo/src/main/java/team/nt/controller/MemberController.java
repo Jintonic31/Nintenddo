@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,4 +47,15 @@ public class MemberController {
 		}
 		return result;
 	}
+	
+	@GetMapping("/getLoginUser")
+	public HashMap<String, Object> getLoginUser( HttpServletRequest request  ){
+		HttpSession session = request.getSession(); 
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		result.put("loginUser", session.getAttribute("loginUser") );
+		System.out.println("데이터1 : " + result);
+		return result;
+	}
+	
+	
 }

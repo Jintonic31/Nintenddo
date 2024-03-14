@@ -4,21 +4,30 @@ import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
 import '../../Style/loginpage.css'
 import axios from 'axios'
+import { loginAction } from '../../store/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Loginpage() {
   const navigate = useNavigate();
   const [email,setEmail] = useState();
   const [pwd,setPwd] = useState();
   const [message, setMessage] = useState();
+  const dispatch = useDispatch();
+  const loginUser = useSelector(state=>state.user);
 
   async function onLogin(){
     if(!email){return alert("이메일을 입력하세요")}
     if(!pwd){return alert("비번을 입력하세요")}
 
-    await axios.post("/api/members/loginpage", { email, pwd })
-    .then((result)=>{ 
+    try{
+    let result = await axios.post("/api/members/loginpage", { email, pwd });
       if(result.data.msg == 'ok'){
         alert("로그인 성공~!~!~!~!")
+
+        result = await axios.get( '/api/members/getLoginUser' );
+        dispatch( loginAction( result.data.loginUser ) );
+        console.log(result.data.loginUser);
+
         navigate('/');
       }else if(result.data.msg=='해당 메일이 없습니다'){
         alert('해당 메일이 없습니다. 회원가입 바람')
@@ -27,11 +36,9 @@ function Loginpage() {
       }else{
         setMessage(result.data.msg);
       }      
-  
-    })
-    .catch((err)=>{
-      alert("로그인 에러")
-    })
+   }catch(err){
+      alert("로그인 에러");
+    }
   }
 
   return (
