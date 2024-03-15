@@ -1,7 +1,6 @@
 package team.nt.controller;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,9 +52,25 @@ public class MemberController {
 		HttpSession session = request.getSession(); 
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		result.put("loginUser", session.getAttribute("loginUser") );
-		System.out.println("데이터1 : " + result);
+		
 		return result;
 	}
 	
+	@GetMapping("/logout")
+	public HashMap<String,Object> logout(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.removeAttribute("loginUser");
+		return null;
+	}
 	
+	@PostMapping("/update")
+	public HashMap<String,Object> update(@RequestBody Member member,
+			HttpServletRequest request){
+		Member mem = ms.updateMember(member);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginUser", mem);
+		// System.out.println(mem);
+		
+		return null;
+	}
 }

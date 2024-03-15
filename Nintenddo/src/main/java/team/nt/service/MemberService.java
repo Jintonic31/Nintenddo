@@ -32,4 +32,8 @@ public class MemberService {
 		}
 	}
 
+	public Member updateMember(Member member) {
+		return mr.save(member);
+	}
+
 }

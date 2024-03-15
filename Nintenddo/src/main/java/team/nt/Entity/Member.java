@@ -27,4 +27,6 @@ public class Member {
 	private String byear;
 	private String bday;
 	private String country;
+	
+	
 }
