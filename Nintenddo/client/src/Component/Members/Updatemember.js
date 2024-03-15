@@ -157,7 +157,12 @@ function Updatemember() {
                             <button onClick={()=>{
                                 onUpdate();
                             }}>정보 수정</button>
-                            <button>돌아가기</button>
+                            <button onClick={()=>{
+                                navigate('/');
+                            }}>돌아가기</button>
+                            <button onClick={()=>{
+                                navigate('/deletemember')
+                            }}>회원탈퇴</button>
                         </div>
                     </div>
                 </article>
