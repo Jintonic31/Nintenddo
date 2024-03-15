@@ -1,9 +1,11 @@
 package team.nt.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,12 +51,28 @@ public class ProductController {
 		return list;
 	}
 	
+	
 	@GetMapping("/getcontrollist")
 	public List<Product> getControlList(){
 		List<Product> list = ps.getControlList();
 		// System.out.println(list);
 		return list;
 	}
+	
+	
+	@GetMapping("/getoneproduct/{pseq}")
+	public HashMap<String, Object> getOneProduct(@PathVariable("pseq") String pseq){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		Product product = ps.getOneProduct(pseq);
+		result.put("product", product);
+		// System.out.println(product);
+		
+		return result;
+	}
+	
+	
 	
 	
 

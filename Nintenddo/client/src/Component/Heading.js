@@ -77,7 +77,9 @@ function Heading() {
             </div>
             <div className='etc'>
               <div>기능·특징을 비교</div>
-              <div>주변 기기</div>
+              <div onClick={()=>{
+                navigate('/controller')
+              }}>주변 기기</div>
             </div>
           </div>
       </div>

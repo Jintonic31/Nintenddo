@@ -36,6 +36,10 @@ public class ProductService {
 		return list;
 	}
 
+	public Product getOneProduct(String pseq) {
+		return ipdao.getOneProduct(pseq);
+	}
+
 
 
 

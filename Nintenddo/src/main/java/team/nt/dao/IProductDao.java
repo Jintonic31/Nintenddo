@@ -16,6 +16,8 @@ public interface IProductDao {
 
 	List<Product> getControlList();
 
+	Product getOneProduct(String pseq);
+
 
 	
 

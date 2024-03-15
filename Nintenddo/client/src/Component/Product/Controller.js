@@ -4,7 +4,6 @@ import Footing from '../Footing'
 import Heading from '../Heading'
 import ProductDetail from './Productdetail'
 import '../../Style/Product/controller.css'
-import { Link } from 'react-router-dom'
 import Modal from 'react-modal'
 
 function Controller() {
@@ -44,6 +43,18 @@ function Controller() {
     const openModal = (pseq) => {
         setSelectProduct(pseq);
         setIsOpen(!isOpen);
+    }
+    const modalStyle = {
+        overlay: {
+            backgroundColor:"rgba(0,0,0,0.5)",
+        },
+        content: {
+            left:"0",
+            margin:"auto",
+            width:"900px",
+            height:"700px",
+            padding:"0",
+        },
     }
 
     const closeModal = () => {
@@ -146,8 +157,8 @@ function Controller() {
             <Footing />
 
 
-            <Modal isOpen={isOpen} onRequestClose={closeModal} pseq={selectProduct}>
-                <ProductDetail />
+            <Modal isOpen={isOpen} onRequestClose={closeModal}  style={modalStyle}>
+                <ProductDetail pseq={selectProduct} />
             </Modal>
 
         </div>

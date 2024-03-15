@@ -60,6 +60,13 @@ public class ProductDao implements IProductDao{
 		return result;
 	}
 
+	@Override
+	public Product getOneProduct(String pseq) {
+		Product product = em.find(Product.class, pseq);
+		// ㄴ 기본키만 가지고 product 검색시 (추가적인 파라미터가 필요없고)
+		return product;
+	}
+
 
 
 
