@@ -51,6 +51,15 @@ public class ProductDao implements IProductDao{
 		return result;
 	}
 
+	@Override
+	public List<Product> getControlList() {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);
+		query.setParameter("pcseq", "5");
+		List<Product> result = query.getResultList();
+		return result;
+	}
+
 
 
 

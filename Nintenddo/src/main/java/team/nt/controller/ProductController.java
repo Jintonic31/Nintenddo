@@ -49,6 +49,13 @@ public class ProductController {
 		return list;
 	}
 	
+	@GetMapping("/getcontrollist")
+	public List<Product> getControlList(){
+		List<Product> list = ps.getControlList();
+		// System.out.println(list);
+		return list;
+	}
+	
 	
 
 

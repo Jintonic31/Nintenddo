@@ -14,6 +14,8 @@ public interface IProductDao {
 
 	List<Playmode> getModeList();
 
+	List<Product> getControlList();
+
 
 	
 

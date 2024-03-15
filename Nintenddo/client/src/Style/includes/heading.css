@@ -9,26 +9,37 @@
   background-color: white;
 }
 
-.category div:first-child {
+.gomainlogo {
+  padding-right:80px;
   overflow: hidden;
 }
 
-.category div {
+.gocategory {
   width:300px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 10px;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   cursor: pointer;
   position: relative;
   font-size: 15px;
   font-weight: bold;
   transition: transform 0.5s;
 }
+.incategory{
+  max-width:150px;
+  max-height:28px;
+  display:flex;
+  justify-content:center;
+}
+.incategory img{
+  padding-bottom:5px;
+  padding-right:5px;
+}
 
-.category div::after {
+.gocategory div::after {
   content: "";
   position: absolute;
   left: 0;
@@ -42,7 +53,7 @@
 
 
 
-.category div:hover::after {
+.gocategory div:hover::after {
   opacity: 1;
 }
 
