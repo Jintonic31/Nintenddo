@@ -60,7 +60,7 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/getoneproduct/{pseq}")
+	@PostMapping("/getoneproduct/{pseq}")
 	public HashMap<String, Object> getOneProduct(@PathVariable("pseq") String pseq){
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();

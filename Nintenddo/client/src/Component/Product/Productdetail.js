@@ -9,12 +9,21 @@ function Productdetail(props) {
     const [oneproduct, setOneProduct] = useState([]);
 
     useEffect(()=>{
-        axios.get(`/api/products/getoneproduct/${pseq}`)
+        axios.post(`/api/products/getoneproduct/${pseq}`)
         .then((result)=>{
             setOneProduct(result.data.product);
         })
         .catch((err)=>{console.error(err)})
     },[])
+
+    function formatDate(utc){
+        const date = new Date(utc);
+        const year = date.getFullYear();
+        const month = String(date.getMonth()+1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2,'0');
+        return `${year}-${month}-${day}`;
+    }
+
 
     return (
 
@@ -39,16 +48,21 @@ function Productdetail(props) {
 
                         <div className='onetextinfo'>
                             <div className='price'>&nbsp;:&nbsp;&nbsp;{new Intl.NumberFormat('ko-KR').format(oneproduct.price1)}</div>
-                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{controlList[0].indate.substring(0,10)}</div>
-                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{controlList[0].includes}</div>
+                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{formatDate(oneproduct.indate)}</div>
+                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{oneproduct.includes}</div>
                         </div>
+
+                        <div className='content'>{oneproduct.content}</div>
+
+                        <button className='goOrderBtn'>바로 구매</button>
+                        <button className='goCartBtn'>장바구니</button>
 
                     </div>     
 
 
 
                 </div>
-                {oneproduct.pseq};
+                
             </div>
             
         </div>
