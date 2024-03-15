@@ -8,5 +8,7 @@ public interface IMemberDao {
 
 	Member updateMember(Member member);
 
+	void deletemember(String email);
+
 
 }

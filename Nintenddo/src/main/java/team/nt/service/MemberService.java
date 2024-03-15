@@ -5,11 +5,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import team.nt.Entity.Member;
 import team.nt.dao.IMemberDao;
 import team.nt.dao.MemberRepository;
 
-@Service	
+@Service
+@Transactional
 public class MemberService {
 
 	@Autowired
@@ -17,6 +19,8 @@ public class MemberService {
 	
 	@Autowired
 	MemberRepository mr;
+	
+	
 	
 	public void insertMember(Member member) {
 		mr.save(member);
@@ -34,6 +38,11 @@ public class MemberService {
 
 	public Member updateMember(Member member) {
 		return mr.save(member);
+	}
+
+	public void deleteMember(String email) {
+		imdao.deletemember(email);
+		
 	}
 
 }

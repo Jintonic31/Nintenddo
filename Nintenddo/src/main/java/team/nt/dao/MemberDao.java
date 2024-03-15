@@ -34,6 +34,17 @@ public class MemberDao implements IMemberDao{ //implements를 사용하면 class
 		return mem;
 	}
 
+
+	@Override
+	public void deletemember(String email) {
+		Member member = em.find(Member.class, email);
+		em.remove(member);
+		
+	}
+
+
+
+
 	
 	
 }
