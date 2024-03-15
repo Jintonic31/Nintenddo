@@ -7,6 +7,7 @@ const Index = lazy( ()=>import('../Component/Index') )
 const Login = lazy( ()=>import('../Component/Members/Login') )
 const Joinform = lazy( ()=>import('../Component/Members/Joinform') )
 const Loginpage = lazy( ()=>import('../Component/Members/Loginpage') )
+const Updatemember = lazy( ()=>import('../Component/Members/Updatemember') )
 //자리침범금지
 
 
@@ -36,6 +37,10 @@ const root = createBrowserRouter([
     {
         path:'loginpage',
         element:<Suspense fallback={Loading}><Loginpage /></Suspense>
+    },
+    {
+        path:'updatemember',
+        element:<Suspense fallback={Loading}><Updatemember /></Suspense>
     },
 
 

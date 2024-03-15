@@ -1,0 +1,84 @@
+.centerText {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+input[type="text"] {
+    
+    height: 60px; /* 수정: 입력 필드의 높이를 명시적으로 설정 */
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    /* 추가: 입력 필드와 선택 박스 간의 간격 조정 */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input[type="password"] {
+    
+    height: 60px; /* 수정: 입력 필드의 높이를 명시적으로 설정 */
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    /* 추가: 입력 필드와 선택 박스 간의 간격 조정 */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .field{
+    display:flex;
+    flex-direction:flow;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    height:70px;
+    
+  }
+
+
+  .blackbar{
+    background-color:black;
+    width:10px;
+    height:22px;
+    border-radius:3px;
+    padding-top:1px;
+  }
+  .field div:nth-child(2){
+    font-weight:bold;
+    font-size:1.1em;
+    margin-left:10px;
+  }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height: 100%;
+}
+  .memberform{
+    width: 100%;
+    height: 100%;  
+    display: flex;
+    flex-direction: column;
+    border:1px solid blue;
+    
+  }
+
+  .article{
+    width: 80%;
+    height: 100%;
+  }
+
+  .updatemember{
+    display: flex;
+    justify-content: flex-start;
+    
+  }
