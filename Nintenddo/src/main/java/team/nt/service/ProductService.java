@@ -31,6 +31,15 @@ public class ProductService {
 		return list;
 	}
 
+	public List<Product> getControlList() {
+		List<Product> list = ipdao.getControlList();
+		return list;
+	}
+
+	public Product getOneProduct(String pseq) {
+		return ipdao.getOneProduct(pseq);
+	}
+
 
 
 

@@ -26,9 +26,9 @@ function Loginpage() {
 
         result = await axios.get( '/api/members/getLoginUser' );
         dispatch( loginAction( result.data.loginUser ) );
-        console.log(result.data.loginUser);
-
+        // console.log(result.data.loginUser);
         navigate('/');
+        
       }else if(result.data.msg=='해당 메일이 없습니다'){
         alert('해당 메일이 없습니다. 회원가입 바람')
       }else if(result.data.msg=='패스워드가 틀립니다.'){
@@ -39,6 +39,7 @@ function Loginpage() {
    }catch(err){
       alert("로그인 에러");
     }
+    
   }
 
   return (

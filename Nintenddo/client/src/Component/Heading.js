@@ -44,13 +44,15 @@ function Heading() {
   return (
     <>
       <div className="category">
-        <div onClick={() => navigate('/')}>
+        <div className='gomainlogo' onClick={() => navigate('/')}>
           <img src="http://localhost:8070/images/includes/nintendo.png" alt="Nintendo" />
         </div>
         {menuItems.map(({ id, text }) => (
-          <div key={id} onMouseOver={() => handleMouseOver(id)} onMouseOut={() => handleMouseOut(id)} onClick={() => navigate('/')}>
-            <img src={imgSrc[id]} alt={`Menu item ${id}`} />
-            {text}
+          <div className='gocategory' onClick={() => navigate('/')}>
+            <div className='incategory' key={id} onMouseOver={() => handleMouseOver(id)} onMouseOut={() => handleMouseOut(id)}>
+              <img src={imgSrc[id]} alt={`Menu item ${id}`} />
+              {text}
+            </div>
           </div>
         ))}
       </div>
@@ -75,7 +77,9 @@ function Heading() {
             </div>
             <div className='etc'>
               <div>기능·특징을 비교</div>
-              <div>주변 기기</div>
+              <div onClick={()=>{
+                navigate('/controller')
+              }}>주변 기기</div>
             </div>
           </div>
       </div>

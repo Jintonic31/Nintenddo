@@ -34,6 +34,7 @@ public class Product {
 	private String useyn;
 	@CreationTimestamp
 	private Timestamp indate;
+	private String includes;
 	
 
 }

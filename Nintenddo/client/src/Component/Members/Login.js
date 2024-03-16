@@ -4,9 +4,11 @@ import Footing from '../../Component/Footing'
 import axios from 'axios'
 import '../../Style/login.css'
 import Modal from 'react-modal'
+import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../../store/userSlice';
+import { logoutAction } from '../../store/userSlice';
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -41,7 +43,6 @@ function Login() {
           try{
               const result = await axios.get( '/api/members/getLoginUser' );
               dispatch( loginAction( result.data.loginUser ) );
-              navigate('/');
           }catch(err){
               console.error(err);
           }
@@ -49,6 +50,12 @@ function Login() {
       fetch();
   },[])
 
+
+  async function onLogout(){
+    await axios.get('/api/members/logout')
+    dispatch( logoutAction() );
+    
+}
 
 
   return (
@@ -60,7 +67,30 @@ function Login() {
                 <div className='loginbtns'>
                 </div>
                 <button className="loginbtn" onClick={()=>{ToS()}}>시작하기</button>
-                <button className="loginbtn" onClick={()=>{navigate("/loginpage")}}>로그인</button>
+                
+
+                {/* 로그아웃 */}
+
+                <div className='gnb'>
+                    {
+                        ( loginUser.email )?(
+                            <div className='logininfo'>
+                               <Link to='/updatemember'>{loginUser.email}</Link>
+                                <button className='loginbtn' onClick={
+                                    ()=>{
+                                        onLogout();
+                                    }
+                                }>LOGOUT</button>
+                            </div>
+                        ):(
+                            <div>
+                                <button className="loginbtn" onClick={()=>{navigate("/loginpage")}}>로그인</button>
+                            </div>
+                        )
+                    }
+                </div>
+
+                {/* 로그아웃 */}
                 </div>
             
             
