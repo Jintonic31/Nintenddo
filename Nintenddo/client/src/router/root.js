@@ -52,6 +52,7 @@ const root = createBrowserRouter([
 
 
 
+
     // 사회적 거리두기
     {
         path:'hardware',

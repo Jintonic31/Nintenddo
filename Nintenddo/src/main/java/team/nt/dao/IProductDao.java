@@ -18,6 +18,10 @@ public interface IProductDao {
 
 	Product getOneProduct(String pseq);
 
+	List<Product> getJoyList();
+
+	List<Product> getChargeList();
+
 
 	
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef  } from 'react'
 import axios from 'axios'
 import Footing from '../Footing'
 import Heading from '../Heading'
@@ -29,15 +29,33 @@ function Controller() {
     }
 
     const [controlList, setControlList] = useState([]);
+    const [joyList, setJoyList] = useState([]);
+    const [chargeLIst, setChargeList] = useState([]);
     const [selectProduct, setSelectProduct] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
+
     useEffect(()=>{
+
+
         axios.get('/api/products/getcontrollist')
         .then((result)=>{
             setControlList(result.data);
         })
         .catch((err)=>{console.error(err)})
+
+        axios.get('/api/products/getjoylist')
+        .then((result)=>{
+            setJoyList(result.data);
+        })
+        .catch((err)=>{console.error(err)})
+
+        axios.get('/api/products/getchargelist')
+        .then((result)=>{
+            setChargeList(result.data);
+        })
+        .catch((err)=>{console.error(err)})
+
     },[])
 
     const openModal = (pseq) => {
@@ -62,6 +80,23 @@ function Controller() {
         setIsOpen(!isOpen);
     }
 
+    // 스크롤 이동
+    const viewPoint1 = useRef();
+    const viewPoint2 = useRef();
+    const viewPoint3 = useRef();
+
+    const onMoveView = (id) => {
+        if(id === 1){ 
+            viewPoint1.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }else if(id === 3){
+            viewPoint2.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }else if(id === 5){
+            viewPoint3.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // navItems때문에 id1, id2, id3이 아닌 id1, id3, id5가 되는 것
+    }
+
     return (
         <div className='cnt'>
 
@@ -74,7 +109,7 @@ function Controller() {
 
                     {
                         navItems.map(({id, text})=>(
-                            <div className={'nav'}>
+                            <div className={'nav'} key={id} onClick= {()=>{onMoveView(id)} }>
                                 <div
                                 key={id}
                                 onMouseOver={()=>{handleMouseOver(id);}}
@@ -89,7 +124,7 @@ function Controller() {
                 </div>
 
                 <div className='controller'>
-                    <div className='imgwrap'>
+                    <div className='imgwrap' ref={viewPoint1}>
                         <img src='http://localhost:8070/images/product/hardware/controllericon.png' alt='' />
                     </div>
                     <div className='aboutcontroller'>컨트롤러 관련</div>
@@ -150,7 +185,141 @@ function Controller() {
 
                     </div>
 
+                    <br /><br /><br />
+
+                    <div className='imgwrap' ref={viewPoint2}>
+                        <img src='http://localhost:8070/images/product/hardware/joyconicon.png' alt='' />
+                    </div>
+                    <div className='aboutcontroller'>Joy-Con 관련</div>
+
+                    <hr />
+
+                    <div className='controlList'>
+                       {
+                        joyList && joyList.length >= 1 && (
+                            <div className='controlListOne'>
+                                <div className='oneimg'>
+                                    <img src={`http://localhost:8070/images/product/hardware/${joyList[0].image}`} alt='' />
+                                </div>
+                                <div className='onetext'>
+
+                                    <div className='name'>{joyList[0].pname}</div>
+
+
+                                    <div className='subandinfo'>
+
+                                        <div className='onetextsub'>
+                                            <div>희망소비자가격</div>
+                                            <div>발매일</div>
+                                            <div>동봉품</div>
+                                        </div>
+
+                                        <div className='onetextinfo'>
+                                            <div className='price'>&nbsp;:&nbsp;&nbsp;{new Intl.NumberFormat('ko-KR').format(joyList[0].price1)}</div>
+                                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{joyList[0].indate.substring(0,10)}</div>
+                                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{joyList[0].includes}</div>
+                                        </div>
+
+                                    </div>                                    
+                                    
+                                    <div className='content'>{joyList[0].content}</div>
+
+                                    <button className='goOrderBtn'>바로 구매</button>
+                                    <button className='goCartBtn'>장바구니</button>
+                                    
+                                </div>
+                            </div>
+                        )
+                       }
+
+                        <div className='controllerVer'>
+                            {
+                                (joyList)?(
+                                    joyList.map((list, idx)=>{
+                                        return(
+                                            <div onClick={()=>{openModal(list.pseq)}} key={idx}>
+                                                <img src={`http://localhost:8070/images/product/hardware/${list.image}`} alt='' />
+                                            </div>
+                                        )
+                                    })
+                                ):(null)
+                            }
+                        </div>
+
+                    </div>
+
+                    <br /><br /><br />
+
+                    <div className='imgwrap' ref={viewPoint3}>
+                        <img src='http://localhost:8070/images/product/hardware/chargericon.png' alt='' />
+                    </div>
+                    <div className='aboutcontroller' id='section3'>기타 관련</div>
+
+                    <hr />
+
+                    <div className='controlList'>
+                       {
+                        chargeLIst && chargeLIst.length >= 1 && (
+                            <div className='controlListOne'>
+                                <div className='oneimg'>
+                                    <img src={`http://localhost:8070/images/product/hardware/${chargeLIst[0].image}`} alt='' />
+                                </div>
+                                <div className='onetext'>
+
+                                    <div className='name'>{chargeLIst[0].pname}</div>
+
+
+                                    <div className='subandinfo'>
+
+                                        <div className='onetextsub'>
+                                            <div>희망소비자가격</div>
+                                            <div>발매일</div>
+                                            <div>동봉품</div>
+                                        </div>
+
+                                        <div className='onetextinfo'>
+                                            <div className='price'>&nbsp;:&nbsp;&nbsp;{new Intl.NumberFormat('ko-KR').format(chargeLIst[0].price1)}</div>
+                                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{chargeLIst[0].indate.substring(0,10)}</div>
+                                            <div className='indate'>&nbsp;:&nbsp;&nbsp;{chargeLIst[0].includes}</div>
+                                        </div>
+
+                                    </div>                                    
+                                    
+                                    <div className='controllercontent'>{chargeLIst[0].content}</div>
+
+                                    <button className='goOrderBtn'>바로 구매</button>
+                                    <button className='goCartBtn'>장바구니</button>
+                                    
+                                </div>
+                            </div>
+                        )
+                       }
+
+                        <div className='controllerVer'>
+                            {
+                                (chargeLIst)?(
+                                    chargeLIst.map((list, idx)=>{
+                                        return(
+                                            <div onClick={()=>{openModal(list.pseq)}} key={idx}>
+                                                <img src={`http://localhost:8070/images/product/hardware/${list.image}`} alt='' />
+                                            </div>
+                                        )
+                                    })
+                                ):(null)
+                            }
+                        </div>
+
+                    </div>
+
+                    
+
+
+
+
                 </div>
+
+
+                
 
             </div>
         
@@ -158,7 +327,7 @@ function Controller() {
 
 
             <Modal isOpen={isOpen} onRequestClose={closeModal}  style={modalStyle}>
-                <ProductDetail pseq={selectProduct} />
+                <ProductDetail pseq={selectProduct} closeModal={closeModal} />
             </Modal>
 
         </div>

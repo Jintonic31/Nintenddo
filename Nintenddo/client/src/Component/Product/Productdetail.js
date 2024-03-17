@@ -7,6 +7,7 @@ function Productdetail(props) {
 
     const pseq = props.pseq;
     const [oneproduct, setOneProduct] = useState([]);
+    const closeModal = props.closeModal; // closeModal props로 받기
 
     useEffect(()=>{
         axios.post(`/api/products/getoneproduct/${pseq}`)
@@ -27,15 +28,17 @@ function Productdetail(props) {
 
     return (
 
-        <div className='cnt'>
-            <div className='closeBtn'></div>
+        <div className='pdetailcnt'>
+            <div className='pdetailcloseBtn'>
+                <img src='http://localhost:8070/images/product/hardware/closebtn.png' onClick={closeModal}/>
+            </div>
 
-            <div className='oneWrap'>
-                <div className='oneimg'>
+            <div className='detailWrap'>
+                <div className='detailimg'>
                     <img src={`http://localhost:8070/images/product/hardware/${oneproduct.image}`} alt='' />
                 </div>
 
-                <div className='onetext'>
+                <div className='detailtext'>
                     <div className='name'>{oneproduct.pname}</div>
 
                     <div className='subandinfo'>
@@ -51,13 +54,14 @@ function Productdetail(props) {
                             <div className='indate'>&nbsp;:&nbsp;&nbsp;{formatDate(oneproduct.indate)}</div>
                             <div className='indate'>&nbsp;:&nbsp;&nbsp;{oneproduct.includes}</div>
                         </div>
+                        
+                    </div> 
 
-                        <div className='content'>{oneproduct.content}</div>
+                    <div className='content'>{oneproduct.content}</div>
 
-                        <button className='goOrderBtn'>바로 구매</button>
-                        <button className='goCartBtn'>장바구니</button>
-
-                    </div>     
+                    <button className='goOrderBtn'>바로 구매</button>
+                    <button className='goCartBtn'>장바구니</button>
+    
 
 
 

@@ -1,5 +1,6 @@
 package team.nt.dao;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,22 @@ public class ProductDao implements IProductDao{
 		Product product = em.find(Product.class, pseq);
 		// ㄴ 기본키만 가지고 product 검색시 (추가적인 파라미터가 필요없고)
 		return product;
+	}
+
+	@Override
+	public List<Product> getJoyList() {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);
+		query.setParameter("pcseq", "6");
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Product> getChargeList() {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);
+		query.setParameter("pcseq", "7");
+		return query.getResultList();
 	}
 
 

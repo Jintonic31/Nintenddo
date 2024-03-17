@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import Footing from '../Footing'
 import Heading from '../Heading'
-import {Link, useNavigate} from 'react-router-dom'
-// ㄴ 특정 컴포넌트로 이동하는 함수
 import '../../Style/aboutus/aboutus.css'
 const {kakao} = window;
 
@@ -10,7 +8,6 @@ const {kakao} = window;
 
 function Aboutus() {
 
-    const [map, setMap] = useState(null);
 
     useEffect(()=>{
         // 지도의 중심 위치 설정이동

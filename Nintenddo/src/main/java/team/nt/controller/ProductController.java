@@ -54,9 +54,17 @@ public class ProductController {
 	
 	@GetMapping("/getcontrollist")
 	public List<Product> getControlList(){
-		List<Product> list = ps.getControlList();
-		// System.out.println(list);
-		return list;
+		return ps.getControlList();
+	}
+	
+	@GetMapping("/getjoylist")
+	public List<Product> getJoyList(){
+		return ps.getJoyList();
+	}
+	
+	@GetMapping("/getchargelist")
+	public List<Product> getChargeList(){
+		return ps.getChargeList();
 	}
 	
 	

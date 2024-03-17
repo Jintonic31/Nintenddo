@@ -40,6 +40,14 @@ public class ProductService {
 		return ipdao.getOneProduct(pseq);
 	}
 
+	public List<Product> getJoyList() {
+		return ipdao.getJoyList();
+	}
+
+	public List<Product> getChargeList() {
+		return ipdao.getChargeList();
+	}
+
 
 
 
