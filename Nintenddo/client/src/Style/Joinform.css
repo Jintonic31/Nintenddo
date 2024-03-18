@@ -1,5 +1,5 @@
 .joinbody{
-  background-color: rgb(242,242,242);
+  background-color: lightgray
 }
 
 .centerText {
@@ -57,7 +57,8 @@
   width:100%;
   height:70px;
   margin:0 20px;
-  margin-left: 590px;
+  margin-left: 300px;
+
   
 }
 
@@ -130,3 +131,6 @@ margin-bottom: 100px;
 width:300px;
 height: 50px;
 }
+
+
+

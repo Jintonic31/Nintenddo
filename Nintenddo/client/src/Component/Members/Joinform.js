@@ -11,6 +11,7 @@ function Joinform() {
     const [userid,setUserid] = useState();
     const [pwd,setPwd] = useState();
     const [repwd,setRepwd] = useState();
+    const [phone,setPhone] = useState();
     const [email,setEmail] = useState();
     const [znum,setZnum] = useState();
     const [add1,setAdd1] = useState();
@@ -66,10 +67,11 @@ function Joinform() {
         if(!userid){return alert("id를 입력하세요")}
         if(!pwd){return alert("비번을 입력하세요")}
         if(pwd!=repwd){return alert("비밀번호가 일치하지 않습니다")}
+        if(!phone){return alert("전화번호를 입력하세요")}
         if(!email){return alert("이메일을 입력하세요")}
         if(!userid){return alert("id를입력하세요")}
 
-        axios.post("/api/members/join", {userid,pwd,email,znum,add1,add2,add3,gender,country,byear:year,bmonth:month,bday:day,provider:'local',useyn:'Y'})
+        axios.post("/api/members/join", {userid,pwd,phone,email,znum,add1,add2,add3,gender,country,byear:year,bmonth:month,bday:day,provider:'local',useyn:'Y'})
         .then((result)=>{
           alert("회원가입 성공~!~!~!~!")
           console.log(gender);
@@ -147,6 +149,14 @@ function Joinform() {
             <div className='infotitle'>암호 재입력</div>
             <div className="info"> <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={repwd}  onChange={(e)=>{
               setRepwd(e.currentTarget.value);
+            }}/></div>
+            </div><br/><br/>
+
+            <div className='Title'>
+            <div>&nbsp;&nbsp;</div>
+            <div className='infotitle'>전화 번호</div>
+            <div className="info"> <input type="text" placeholder ="전화번호입력" value={phone}  onChange={(e)=>{
+              setPhone(e.currentTarget.value);
             }}/></div>
             </div><br/><br/>
 

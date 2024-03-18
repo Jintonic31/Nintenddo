@@ -10,6 +10,11 @@ import Mainnews from '../Component/News/Mainnews';
 import Mainsoftware from '../Component/Product/Mainsoftware';
 import '../Style/Index.css';
 
+import ReactDOM from 'react-dom';
+import './Customer/Index.css'; // 챗봇을 스타일링하는 CSS를 불러옵니다.
+import Customer from './Customer/Customer'; // Customer.js 파일을 불러옵니다.
+
+
 const settings = {
   dots: false,
   arrows: true,
@@ -34,6 +39,16 @@ function Index() {
       });
   }, []);
 
+
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <Customer /> {/* Customer.js 파일에서 구현한 챗봇을 호출합니다. */}
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+
+  
   return (
     <div className='indexCnt'>
       <Heading />

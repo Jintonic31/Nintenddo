@@ -5,6 +5,7 @@ const initialState = {
 
     email:'',
     pwd:'',
+    phone:'',
     indate:'',
     znum:'',
     add1:'',
@@ -29,6 +30,7 @@ const userSlice = createSlice({
         loginAction:(state, action) => {
             state.email=action.payload.email;
             state.pwd=action.payload.pwd;
+            state.phone=action.payload.phone;
             state.indate=action.payload.indate;
             state.znum=action.payload.znum;
             state.add1=action.payload.add1;
@@ -46,6 +48,7 @@ const userSlice = createSlice({
         logoutAction:(state) => {
             state.email='';
             state.pwd='';
+            state.phone='';
             state.indate='';
             state.znum='';
             state.add1='';
