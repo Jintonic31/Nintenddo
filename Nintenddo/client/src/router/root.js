@@ -15,6 +15,7 @@ const Deletemember = lazy( ()=>import('../Component/Members/Deletemember') )
 
 // 사회적 거리두기
 const Hardware = lazy( ()=>import('../Component/Product/Hardware') )
+const Software = lazy( ()=>import('../Component/Product/Software') )
 const Controller = lazy( ()=>import('../Component/Product/Controller') )
 const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
 
@@ -57,6 +58,10 @@ const root = createBrowserRouter([
     {
         path:'hardware',
         element:<Suspense fallback={Loading}><Hardware /></Suspense>
+    },
+    {
+        path:'software',
+        element:<Suspense fallback={Loading}><Software /></Suspense>
     },
     {
         path:'controller',

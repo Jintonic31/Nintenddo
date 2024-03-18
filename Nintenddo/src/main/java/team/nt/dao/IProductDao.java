@@ -22,6 +22,10 @@ public interface IProductDao {
 
 	List<Product> getChargeList();
 
+	List<Product> getUnreleaseList(Integer pcseq);
+
+	
+
 
 	
 

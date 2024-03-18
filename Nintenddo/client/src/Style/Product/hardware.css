@@ -143,6 +143,17 @@
     letter-spacing:2px;
 }
 
+.hardwareImgone .goOrderBtn, .hardwareImgone .goCartBtn{
+    height:35px;
+    background-color:rgb(230, 0, 18);
+    border:none;
+    font-weight:bold;
+    font-size:110%;
+    color:white;
+    margin-top:15px;
+}
+
+
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 .ableMode{

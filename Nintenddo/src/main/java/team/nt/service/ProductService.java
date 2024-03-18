@@ -48,6 +48,11 @@ public class ProductService {
 		return ipdao.getChargeList();
 	}
 
+	public List<Product> getUnreleaseList(Integer pcseq) {
+		return ipdao.getUnreleaseList(pcseq);
+	}
+
+	
 
 
 

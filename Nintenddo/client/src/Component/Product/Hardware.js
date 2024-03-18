@@ -3,11 +3,13 @@ import axios from 'axios'
 import Footing from '../Footing'
 import Heading from '../Heading'
 import '../../Style/Product/hardware.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 
 function Hardware() {
+
+    const navigate = useNavigate();
 
     const [hardList, setHardList] = useState();
     const [modeList, setModeList] = useState();
@@ -89,6 +91,10 @@ function Hardware() {
                                         <span className='hardOnename'>{hard.pname}</span>
                                         <span className='hardOneprice'><span>희망소비자가격 :</span>
                                         {new Intl.NumberFormat('ko-KR').format(hard.price1)}</span>
+
+                                        <button className='goOrderBtn'>바로 구매</button>
+                                        <button className='goCartBtn'>장바구니</button>
+
                                     </div>
                                 )
                             })
@@ -186,7 +192,7 @@ function Hardware() {
 
             </div>
 
-            <div className='softwareBanner'>
+            <div className='softwareBanner' onClick={()=>{navigate('/software')}}>
                 <div className='title'>
                     <div>Software</div>
                     <div>Nintendo Switch 소프트웨어</div>

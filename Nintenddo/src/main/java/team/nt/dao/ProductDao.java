@@ -21,7 +21,7 @@ public class ProductDao implements IProductDao{
 	@Override
 	public List<Product> getMainSoftList(Integer pcseq) {
 		
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq";
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
 		// p. : Product 엔티티의
 		// pcseq. : pcseq이고 이 pcseq는
 		// pcseq : Pcategory 엔티티의 식별자(pk)이다
@@ -29,6 +29,7 @@ public class ProductDao implements IProductDao{
 		TypedQuery<Product> query = em.createQuery(sql, Product.class);
 		
 		query.setParameter("pcseq", pcseq);
+		query.setParameter("useyn", "Y");
 		
 		List<Product> result = query.getResultList();
 		
@@ -83,6 +84,24 @@ public class ProductDao implements IProductDao{
 		query.setParameter("pcseq", "7");
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Product> getUnreleaseList(Integer pcseq) {
+		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		
+		TypedQuery<Product> query = em.createQuery(sql, Product.class);
+		
+		query.setParameter("pcseq", pcseq);
+		query.setParameter("useyn", "N");
+		
+		List<Product> result = query.getResultList();
+		
+		return result;
+	}
+
+	
+
+
 
 
 

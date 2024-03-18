@@ -68,6 +68,8 @@
   }
 }
 
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
 .Megadrop{
   width: 100%;
   height: 350px;
@@ -90,10 +92,37 @@
 .drophardetc{
   display:flex;
   flex-direction:row;
+  align-items:center;
   cursor:pointer;
 }
 .drophardetc div{
+  flex:1;
   display:flex;
+  width:220px;
   flex-direction:row;
-  border:1px solid magenta;
+  justify-content:center;
+  align-items:center;
+  font-size:90%;
+  font-weight:bold;
+}
+.drophardetc div img{flex:1;}
+.drophardetc div div{
+  flex:3;
+  display:flex;
+  flex-direction:column;
+}
+
+.etc{
+  display:flex;
+  align-items:center;
+}
+.etc span{
+  display:flex;
+  align-items:center;
+  font-size:95%;
+}
+.etc img{
+  width:13px;
+  height:13px;
+  margin-right:3px;
 }

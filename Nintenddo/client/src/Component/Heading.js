@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Style/includes/heading.css';
+import Megadrop from './Megadrop';
 
 function Heading() {
 
@@ -21,16 +22,22 @@ function Heading() {
   //카테고리부분임~
   const handleMouseOver = (id) => {
     setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/includes/image${id + 1}.png` });
-    setDropStyle({ display: "flex" });
   };
+
+  const dropMouseOver = (id) =>{
+    setDropStyle({ display: "flex" });
+  }
 
   const handleMouseOut = (id) => {
     setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/includes/image${id}.png` });
-    setDropStyle({ display: "none" });
   };
-  //카테고리부분임~
 
-  //카테고리 
+  const dropMouseOut = (id) => {
+    setDropStyle({ display: "none" });
+  }
+  // 카테고리부분임~
+
+  // 카테고리 
   const menuItems = [
     { id: 1, text: "본체 및 amiibo" },
     { id: 3, text: "소프트웨어" },
@@ -41,14 +48,16 @@ function Heading() {
     { id: 13, text: "검색" }
   ];
 
+
+
   return (
     <>
       <div className="category">
         <div className='gomainlogo' onClick={() => navigate('/')}>
-          <img src="http://localhost:8070/images/includes/nintendo.png" alt="Nintendo" />
+          <img src="http://localhost:8070/images/includes/nintendo.png" alt="" />
         </div>
         {menuItems.map(({ id, text }) => (
-          <div className='gocategory' onClick={() => navigate('/')}>
+          <div className='gocategory' key={id} onMouseOver={() => dropMouseOver(id) } onMouseOut={()=>{dropMouseOut(id)}} onClick={() => navigate('/')}>
             <div className='incategory' key={id} onMouseOver={() => handleMouseOver(id)} onMouseOut={() => handleMouseOut(id)}>
               <img src={imgSrc[id]} alt={`Menu item ${id}`} />
               {text}
@@ -56,9 +65,16 @@ function Heading() {
           </div>
         ))}
       </div>
+      
+      
+      <Megadrop navigate={navigate} dropStyle={dropStyle} dropMouseOver={dropMouseOver} dropMouseOut={dropMouseOut} />
 
-      <div className='Megadrop' onMouseOver={
+
+      {/* <div className='Megadrop' onMouseOver={
         () => setDropStyle({ display: "flex" })} style={dropStyle} onMouseOut={() => setDropStyle({ display: "none" })}>
+
+
+
         <div className='drophard' onClick={()=>{navigate('/hardware')}}>
             <img src='http://localhost:8070/images/product/hardware/pcseq1.png' />
           </div>
@@ -67,22 +83,33 @@ function Heading() {
               <img src='http://localhost:8070/images/product/hardware/pcseq3.png' />
               <div className='pcseq3title'>amiibo</div>
             </div>
-            <div className='pcseq7'>
+            <div>
               <img src='http://localhost:8070/images/product/hardware/pcseq7.png' />
-              <div>게임&워치<br />젤다의 전설</div>
+              <div><span>게임&워치</span><span>젤다의 전설</span></div>
             </div>
-            <div className='pcseq6'>
+            <div>
               <img src='http://localhost:8070/images/product/hardware/pcseq6.png' />
-              <div>Pokemon Go<br />Plus</div>
+              <div><span>Pokemon Go</span><span>Plus</span></div>
             </div>
             <div className='etc'>
-              <div>기능·특징을 비교</div>
+              <div>
+                <span>
+                  <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt='' />기능·특징을 비교
+                </span>
+              </div>
               <div onClick={()=>{
                 navigate('/controller')
-              }}>주변 기기</div>
+              }}>
+                <span>
+                  <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt='' />주변 기기
+                </span>
+              </div>
             </div>
-          </div>
-      </div>
+        </div>
+
+
+
+      </div> */}
     </>
   );
 }
