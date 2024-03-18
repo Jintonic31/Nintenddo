@@ -83,4 +83,16 @@ public class MemberController {
 		
 		return result;
 	}
+	
+	@PostMapping("/idcheck")
+	public HashMap<String,Object> idcheck(@RequestParam("email") String email){
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		Member mem = ms.getMember(email);
+		if(mem == null) {
+			result.put("res", "1");
+		}else {
+			result.put("res", "0");
+		}
+		return result;
+	}
 }

@@ -20,6 +20,7 @@ function Joinform() {
     const [country,setCountry] = useState();
     const [provider,setProvider] = useState();
     const [useyn,setUseyn] = useState();
+    const [message, setMessage] = useState('');
     /*생년월일*/
     const [year, setYear] = useState('');
     const [month, setMonth] = useState('');
@@ -80,7 +81,19 @@ function Joinform() {
         })
       }
 
-     
+      function idcheck(){ 
+        axios.post('/api/members/idcheck', null, {params:{email}} )
+        .then((result)=>{
+            if( result.data.res == '1' ){
+                setMessage('사용가능합니다');
+            }else{
+                setMessage('아이디가 중복됩니다.');
+            }
+        })
+        .catch((err)=>{
+            console.error(err)
+        })
+    }
     //국가
   return (
     <div className="joinbody">
@@ -113,7 +126,14 @@ function Joinform() {
             <div className='infotitle'>메일 주소</div>
             <div className="info"><input type="text" placeholder ="메일 주소" value={email}  onChange={(e)=>{
               setEmail(e.currentTarget.value);
+              setMessage('')
             }}/></div>
+            <button style={{flex:"1"}} onClick={
+                ()=>{
+                    idcheck()
+                }
+            }>아이디 중복확인</button>
+            <div style={{flex:"2", color:"blue"}}>&nbsp;&nbsp;{message}</div>
             </div><br/><br/>
             <div className='Title'>
             <div>&nbsp;&nbsp;</div>
