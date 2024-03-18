@@ -18,6 +18,12 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginUser = useSelector(state=>state.user);
+  const [phone, setPhone] = useState('');
+  const [email,setEmail] = useState();
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -57,6 +63,22 @@ function Login() {
     
 }
 
+const findUserEmailByPhone = () => {
+    if (!phone) {
+        setMessage('휴대폰 번호를 입력하세요.');
+        return;
+    }
+    axios.post(`/api/members/findUserEmailByPhone`, { phone })
+    .then((response) => {
+        // 서버에서 응답한 사용자 이메일을 상태에 저장
+        setEmail(response.data.email);
+        setMessage(`휴대폰 번호로 찾은 사용자의 이메일은 ${response.data.email}입니다.`);
+    })
+    .catch((error) => {
+        console.error('이메일 찾기 실패:', error);
+        setMessage('이메일 찾기에 실패했습니다.');
+    });
+};
 
   return (
     <div className='container'>
@@ -89,6 +111,14 @@ function Login() {
                         )
                     }
                 </div>
+                <div>
+      <input type="tel" placeholder="휴대폰 번호를 입력하세요." value={phone} onChange={handlePhoneChange} />
+      <button onClick={findUserEmailByPhone}>이메일 찾기</button>
+      
+      {email && <p>사용자 이메일: {email}</p>}
+      {message && <p>{message}</p>}
+    </div>
+  );
 
                 {/* 로그아웃 */}
                 </div>

@@ -4,6 +4,8 @@ import {Link, useNavigate} from 'react-router-dom'
 // ㄴ 특정 컴포넌트로 이동하는 함수
 import '../Style/includes/footing.css'
 
+
+
 function Footing() {
 
     const navigate = useNavigate();

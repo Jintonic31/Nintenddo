@@ -44,5 +44,14 @@ public class MemberService {
 		imdao.deletemember(email);
 		
 	}
+	
+	public String findUserEmailByPhone(String phone) {
+		Optional<Member> mem = mr.findUserEmailByPhone(phone);
+		if(!mem.isPresent()) {
+			return null;
+		}else {
+		return mem.get().getEmail();
+		}
+	}
 
 }
