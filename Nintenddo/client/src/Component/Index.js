@@ -10,6 +10,7 @@ import Mainnews from '../Component/News/Mainnews';
 import Mainsoftware from '../Component/Product/Mainsoftware';
 import '../Style/Index.css';
 
+import Chatbot from '../Component/Customer/Chatbot';
 
 const settings = {
   dots: false,
@@ -24,6 +25,7 @@ const settings = {
 
 function Index() {
   const [bannerList, setBannerList] = useState();
+  const [customerInfo, setCustomerInfo] = useState(null);
 
   useEffect(() => {
     axios.get('/api/banners/mainbanner')
@@ -77,6 +79,7 @@ function Index() {
           </span>
         </div>
         <Mainsoftware />
+        <Chatbot customerInfo={customerInfo} />
       </article>
       <Footing />
     </div>
