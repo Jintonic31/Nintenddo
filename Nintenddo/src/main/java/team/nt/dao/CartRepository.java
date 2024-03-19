@@ -13,6 +13,8 @@ public interface CartRepository extends JpaRepository<Cart, Integer>{
 
 	Optional<Cart> findByEmail(String email);
 
+	void deleteByCseq(int cseq);
+
 	
 
 

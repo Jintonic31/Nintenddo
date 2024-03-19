@@ -15,6 +15,8 @@ function Cartlist() {
 
     const [cartlist, setCartlist] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [changeqty, setChangeqty] = useState(1);
+
 
     useEffect(()=>{
         if(loginUser.email == ''){
@@ -50,6 +52,47 @@ function Cartlist() {
         console.log(checklist);
     }
 
+    async function onDeleteCart(){
+        if(checklist.length == 0){
+            return alert('선택된 항목이 없습니다.')
+        }
+
+        // #1 선택된 리스트(checklist)를 하나씩 반복문을 돌면서 지우고
+        for(let i=0; i<checklist.length; i++){
+            await axios.delete(`/api/carts/deletecart/${checklist[i]}`);
+        }
+
+        // #2-1 서버에서 cartlist와 totalprice 다시 가져온다
+        const result = await axios.get('/api/carts/getcartlist')
+        setCartlist(result.data.cartList);
+        setTotalPrice(result.data.totalPrice);
+
+        checklist = [];
+        if(result.data.cartList){
+            // #2-2 다시 가져온 list의 checked 속성을 하나씩 해제한다
+            for(let i=0; i<result.data.cartList.length; i++){
+                document.getElementById('ch'+i).checked = false;
+            }
+        }
+            
+    }
+
+    async function updateQty(cseq, qty, pseq, indate) {
+        try {
+            const updatedQty = cartlist.find(item => item.cseq === cseq).quantity + qty;
+            if (updatedQty < 1) {
+                return; // 최소 수량이 1입니다. 음수인 경우 업데이트하지 않습니다.
+            }
+    
+            const result = await axios.post('/api/carts/updateqty', { cseq, pseq, quantity:updatedQty, indate, email:loginUser.email })
+            setChangeqty(result.data.qty)
+    
+            
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
 
 
     return (
@@ -76,7 +119,8 @@ function Cartlist() {
                     </div>
                     
                     {
-                        (cartlist)?(
+                        (!cartlist || cartlist.length === 0)?(<h3>장바구니가 비어있습니다.</h3>):(
+                            
                             cartlist.map((cart, idx)=>{
                                 return(
                                     <div className='oneclist'>
@@ -96,26 +140,40 @@ function Cartlist() {
                                         </div>
 
                                         <div className='onequantity'>
-                                            <button>-</button>
-                                            {cart.quantity}
-                                            <button>+</button>
+                                            <button onClick={()=>{updateQty(cart.cseq, -1, cart.pseq, cart.indate)}}>-</button>
+
+                                            {changeqty}
+                                            {/* #1 여기 idx를 넣어서 개별적으로 관리할 수는 없나..?
+                                            #2 2 이상 안올라가...... #3 마이너스버튼 안됨 */}
+
+                                            <button onClick={()=>{updateQty(cart.cseq, 1, cart.pseq, cart.indate)}}>+</button>
                                         </div>
 
                                         <div className='oneprice'>
                                         ￦&nbsp;{new Intl.NumberFormat('ko-KR').format(cart.price1)}
                                         </div>
 
-
                                     </div>
                                 )
                             })
-                        ):(<h3>장바구니가 비어있습니다.</h3>)
+                        )
                     }
                     <div className='clistEndrow'>
                         <div>총 &nbsp;{new Intl.NumberFormat('ko-KR').format(totalPrice)}&nbsp;원</div>
-                        <div>삭제</div>
+                        <div onClick={()=>{onDeleteCart()}}>
+                            <img src='http://localhost:8070/images/cart/trash.png' alt='' />
+                            삭제
+                        </div>
                     </div>
+
+                    <div className='moveonBtn'>
+                        <button>목록으로</button>
+                        <button>계속</button>
+                    </div>
+
                 </div>
+
+                
 
             </div>
 

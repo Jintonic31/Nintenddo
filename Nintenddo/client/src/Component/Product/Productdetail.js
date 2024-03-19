@@ -39,7 +39,7 @@ function Productdetail(props) {
             // alert 가 실행된 이후 else문이 실행되는것을 방지하기 위한 return
         }else{
             try{
-                await axios.post('/api/carts/insertcart', {pseq:pseq, quantity:1, email:loginUser})
+                await axios.post('/api/carts/insertcart', {pseq:pseq, quantity:1, email:loginUser.email})
                 let ans = window.confirm('장바구니 추가 완료! 장바구니로 이동할까요?');
                 if(ans){
                 // ans가 true일 경우

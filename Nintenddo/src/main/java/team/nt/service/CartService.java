@@ -31,6 +31,14 @@ public class CartService {
 		return icdao.getcartlist(email);
 	}
 
+	public void deletecart(int cseq) {
+		cr.deleteByCseq(cseq);
+	}
+
+	public void updateqtyCart(Cart cart) {
+		cr.save(cart);		
+	}
+
 
 
 
