@@ -67,6 +67,14 @@ function Cartlist() {
                 </div>
 
                 <div className='clist'>
+                    <div className='oneclistsub'>
+                        <div className='subchk'>선택</div>
+                        <div className='subimg'>&nbsp;</div>
+                        <div className='subpname'>상품명</div>
+                        <div className='subquantity'>수량</div>
+                        <div className='subprice'>가격</div>
+                    </div>
+                    
                     {
                         (cartlist)?(
                             cartlist.map((cart, idx)=>{
@@ -80,7 +88,7 @@ function Cartlist() {
                                         </div>
 
                                         <div className='oneimg'>
-                                            <img src={`http://localhost:8070/images/product/productdetail/${cart.image}.png`} alt='' />
+                                            <img src={`http://localhost:8070/images/product/productdetail/${cart.image}`} alt='' />
                                         </div>
 
                                         <div className='onepname'>
@@ -94,7 +102,7 @@ function Cartlist() {
                                         </div>
 
                                         <div className='oneprice'>
-                                            {cart.price1}
+                                        ￦&nbsp;{new Intl.NumberFormat('ko-KR').format(cart.price1)}
                                         </div>
 
 
@@ -104,7 +112,8 @@ function Cartlist() {
                         ):(<h3>장바구니가 비어있습니다.</h3>)
                     }
                     <div className='clistEndrow'>
-                        {totalPrice}
+                        <div>총 &nbsp;{new Intl.NumberFormat('ko-KR').format(totalPrice)}&nbsp;원</div>
+                        <div>삭제</div>
                     </div>
                 </div>
 
