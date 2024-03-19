@@ -10,7 +10,6 @@ import Mainnews from '../Component/News/Mainnews';
 import Mainsoftware from '../Component/Product/Mainsoftware';
 import '../Style/Index.css';
 
-import Customer from './Customer/Customer'; // Customer 컴포넌트를 불러옵니다.
 
 const settings = {
   dots: false,
@@ -79,7 +78,6 @@ function Index() {
         </div>
         <Mainsoftware />
       </article>
-      <Customer /> {/* Customer 컴포넌트를 렌더링합니다. */}
       <Footing />
     </div>
   );

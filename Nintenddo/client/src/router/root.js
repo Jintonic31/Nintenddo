@@ -21,7 +21,7 @@ const Cartlist = lazy( ()=>import('../Component/Cart/Cartlist') )
 const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
 
 //Customer
-const Customer = lazy( ()=>import('../Component/Customer/Customer') )
+
 
 
 
@@ -52,10 +52,7 @@ const root = createBrowserRouter([
         path:'deletemember',
         element:<Suspense fallback={Loading}><Deletemember /></Suspense>
     },
-    {
-        path:'customer',
-        element:<Suspense fallback={Loading}><Customer /></Suspense>
-    },
+
 
     
 
