@@ -36,19 +36,22 @@
 
 .searchSoft{
     display:flex;
-    width:30%;
+    justify-content:center;
+    width:100%;
     height:50px;
-    margin-top:70px;
+    padding:70px 0;
+    background-color:rgb(230, 0, 18);
 }
 
 .searchSoft input{
     border:1px solid lightgrey;
-    flex:9;
+    width:500px;
     height:100%;
-    margin-right:5px;
+    margin-right:10px;
 }
 .searchSfot img{
     flex:1;
+    width:50px;
     height:100%;
 }
 
@@ -86,8 +89,8 @@
 .softwareList{
     display:flex;
     flex-direction:column;
-    width:250px;
-    height:320px;
+    width:230px;
+    height:300px;
     border-bottom:1px solid lightgray;
     margin-bottom:20px;
 }

@@ -17,6 +17,7 @@ const Deletemember = lazy( ()=>import('../Component/Members/Deletemember') )
 const Hardware = lazy( ()=>import('../Component/Product/Hardware') )
 const Software = lazy( ()=>import('../Component/Product/Software') )
 const Controller = lazy( ()=>import('../Component/Product/Controller') )
+const Cartlist = lazy( ()=>import('../Component/Cart/Cartlist') )
 const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
 
 //Customer
@@ -73,9 +74,14 @@ const root = createBrowserRouter([
         element:<Suspense fallback={Loading}><Controller /></Suspense>
     },
     {
+        path:'cartlist',
+        element:<Suspense fallback={Loading}><Cartlist /></Suspense>
+    },
+    {
         path:'aboutus',
         element:<Suspense fallback={Loading}><Aboutus /></Suspense>
     },
+    
 
 
 

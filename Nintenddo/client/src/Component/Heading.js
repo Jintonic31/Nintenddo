@@ -39,13 +39,13 @@ function Heading() {
 
   // 카테고리 
   const menuItems = [
-    { id: 1, text: "본체 및 amiibo" },
-    { id: 3, text: "소프트웨어" },
-    { id: 5, text: "News" },
-    { id: 7, text: "캐릭터" },
-    { id: 9, text: "고객지원" },
-    { id: 11, text: "온라인 스토어" },
-    { id: 13, text: "검색" }
+    { id: 1, text: "본체 및 amiibo", linkto:"/hardware" },
+    { id: 3, text: "소프트웨어", linkto:"/software" },
+    { id: 5, text: "News", linkto:"/news" },
+    { id: 7, text: "캐릭터", linkto:"/character" },
+    { id: 9, text: "고객지원", linkto:"/customer" },
+    { id: 11, text: "장바구니", linkto:"/cartlist" },
+    { id: 13, text: "검색", linkto:"/search" }
   ];
 
 
@@ -56,10 +56,10 @@ function Heading() {
         <div className='gomainlogo' onClick={() => navigate('/')}>
           <img src="http://localhost:8070/images/includes/nintendo.png" alt="" />
         </div>
-        {menuItems.map(({ id, text }) => (
-          <div className='gocategory' key={id} onMouseOver={() => dropMouseOver(id) } onMouseOut={()=>{dropMouseOut(id)}} onClick={() => navigate('/')}>
+        {menuItems.map(({ id, text, linkto }) => (
+          <div className='gocategory' key={id} onMouseOver={() => dropMouseOver(id) } onMouseOut={()=>{dropMouseOut(id)}} onClick={() => navigate(linkto)}>
             <div className='incategory' key={id} onMouseOver={() => handleMouseOver(id)} onMouseOut={() => handleMouseOut(id)}>
-              <img src={imgSrc[id]} alt={`Menu item ${id}`} />
+              <img src={imgSrc[id]} alt='' />
               {text}
             </div>
           </div>
@@ -70,46 +70,6 @@ function Heading() {
       <Megadrop navigate={navigate} dropStyle={dropStyle} dropMouseOver={dropMouseOver} dropMouseOut={dropMouseOut} />
 
 
-      {/* <div className='Megadrop' onMouseOver={
-        () => setDropStyle({ display: "flex" })} style={dropStyle} onMouseOut={() => setDropStyle({ display: "none" })}>
-
-
-
-        <div className='drophard' onClick={()=>{navigate('/hardware')}}>
-            <img src='http://localhost:8070/images/product/hardware/pcseq1.png' />
-          </div>
-          <div className='drophardetc'>
-            <div>
-              <img src='http://localhost:8070/images/product/hardware/pcseq3.png' />
-              <div className='pcseq3title'>amiibo</div>
-            </div>
-            <div>
-              <img src='http://localhost:8070/images/product/hardware/pcseq7.png' />
-              <div><span>게임&워치</span><span>젤다의 전설</span></div>
-            </div>
-            <div>
-              <img src='http://localhost:8070/images/product/hardware/pcseq6.png' />
-              <div><span>Pokemon Go</span><span>Plus</span></div>
-            </div>
-            <div className='etc'>
-              <div>
-                <span>
-                  <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt='' />기능·특징을 비교
-                </span>
-              </div>
-              <div onClick={()=>{
-                navigate('/controller')
-              }}>
-                <span>
-                  <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt='' />주변 기기
-                </span>
-              </div>
-            </div>
-        </div>
-
-
-
-      </div> */}
     </>
   );
 }

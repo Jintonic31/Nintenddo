@@ -16,6 +16,7 @@ const persistConfig = {
     whitelist:['user']
 }
 
+
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 export default configureStore({

@@ -85,9 +85,7 @@ public class ProductController {
 	public List<Product> getUnreleaseList(@RequestParam("pcseq") Integer pcseq){
 		
 		List<Product> list = ps.getUnreleaseList(pcseq);
-		
-		System.out.println(list);
-		
+		// System.out.println(list);		
 		return list;
 	}
 	
