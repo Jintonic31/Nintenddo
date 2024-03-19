@@ -11,8 +11,9 @@ import team.nt.Entity.Member;
 
 public interface CartRepository extends JpaRepository<Cart, Integer>{
 
+	Optional<Cart> findByEmail(String email);
+
 	
-	List<Cview> findCartlistByEmail(String email);
 
 
 	

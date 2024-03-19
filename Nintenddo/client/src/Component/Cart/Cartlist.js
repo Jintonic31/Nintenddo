@@ -22,7 +22,7 @@ function Cartlist() {
             navigate('/loginpage')
             return;
         }else{
-            axios.get('/api/carts/getcartlist', {email:loginUser})
+            axios.get('/api/carts/getcartlist')
             .then((result)=>{
                 setCartlist(result.data.cartList);
                 setTotalPrice(result.data.totalPrice);

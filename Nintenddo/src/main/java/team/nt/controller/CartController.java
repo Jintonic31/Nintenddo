@@ -33,29 +33,30 @@ public class CartController {
 	}
 	
 	
-//	@GetMapping("/getcartlist")
-//	public HashMap<String, Object> getcartlist(HttpServletRequest request, @RequestBody Cart cart){
-//		
-//		HashMap<String, Object> result = new HashMap<String, Object>();
-//		
-//		HttpSession session = request.getSession();
-//		Member loginUser = (Member)session.getAttribute("loginUser");
-//		
-//		List<Cview> list = cs.getcartlist(loginUser.getEmail());
-//		result.put("cartList", list);
-//		
-//		
-//		int totalPrice = 0;
-//		for(Cview c : list) {
-//			totalPrice += ( c.getPrice1() * c.getQuantity() );
-//		}
-//		result.put("totalPrice", totalPrice);
-//		
-//		System.out.println(list);
-//		System.out.println(totalPrice);
-//		
-//		
-//		return result;
-//	}
+	@GetMapping("/getcartlist")
+	public HashMap<String, Object> getcartlist(HttpServletRequest request){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		// System.out.println("/getcartlist의 loginUser" + loginUser);
+		
+		List<Cview> list = cs.getcartlist(loginUser.getEmail());
+		result.put("cartList", list);
+		
+		
+		int totalPrice = 0;
+		for(Cview c : list) {
+			totalPrice += ( c.getPrice1() * c.getQuantity() );
+		}
+		result.put("totalPrice", totalPrice);
+		
+		System.out.println(list);
+		System.out.println(totalPrice);
+		
+		
+		return result;
+	}
 
 }

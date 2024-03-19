@@ -28,7 +28,7 @@ public class CartService {
 	}
 
 	public List<Cview> getcartlist(String email) {
-		 return cr.findCartlistByEmail(email);		
+		return icdao.getcartlist(email);
 	}
 
 

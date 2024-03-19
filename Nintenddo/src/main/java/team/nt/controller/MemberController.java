@@ -42,17 +42,18 @@ public class MemberController {
 		}else {
 			HttpSession session = request.getSession(); 
 			session.setAttribute("loginUser", mem);
-			System.out.println("데이터 : " + mem);
+			// System.out.println("/loginpage의 loginUser : " + mem);
 			result.put("msg", "ok");
 		}
 		return result;
 	}
 	
-	@GetMapping("/getLoginUser")
+	@PostMapping("/getLoginUser")
 	public HashMap<String, Object> getLoginUser( HttpServletRequest request  ){
 		HttpSession session = request.getSession(); 
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		result.put("loginUser", session.getAttribute("loginUser") );
+		// System.out.println("/getLoginUser 의 result : " + result);
 		
 		return result;
 	}

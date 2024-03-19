@@ -15,6 +15,8 @@ function Loginpage() {
   const dispatch = useDispatch();
   const loginUser = useSelector(state=>state.user);
 
+  
+
   async function onLogin(){
     if(!email){return alert("이메일을 입력하세요")}
     if(!pwd){return alert("비번을 입력하세요")}
@@ -24,7 +26,7 @@ function Loginpage() {
       if(result.data.msg == 'ok'){
         alert("로그인 성공~!~!~!~!")
 
-        result = await axios.get( '/api/members/getLoginUser' );
+        result = await axios.post( '/api/members/getLoginUser' );
         dispatch( loginAction( result.data.loginUser ) );
         // console.log(result.data.loginUser);
         navigate('/');

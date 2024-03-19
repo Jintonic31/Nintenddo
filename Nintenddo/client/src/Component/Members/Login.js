@@ -47,7 +47,7 @@ function Login() {
   useEffect(()=>{
       async function fetch(){
           try{
-              const result = await axios.get( '/api/members/getLoginUser' );
+              const result = await axios.post( '/api/members/getLoginUser' );
               dispatch( loginAction( result.data.loginUser ) );
           }catch(err){
               console.error(err);
