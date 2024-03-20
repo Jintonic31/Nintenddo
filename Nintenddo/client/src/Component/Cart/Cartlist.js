@@ -15,7 +15,6 @@ function Cartlist() {
 
     const [cartlist, setCartlist] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [changeqty, setChangeqty] = useState(1);
 
 
     useEffect(()=>{
@@ -77,18 +76,49 @@ function Cartlist() {
             
     }
 
-    async function updateQty(cseq, qty, pseq, indate) {
+    async function updateQty(cseq, qty, pseq, indate, idx) {
         try {
-            const updatedQty = cartlist.find(item => item.cseq === cseq).quantity + qty;
+            
+            const updatedQty = cartlist[idx].quantity + qty;
+            // cartlist의 idx번째 상품의 기존 수량에서 추가할 수량을 더한 값을 변수 updatedQty에 저장
             if (updatedQty < 1) {
-                return; // 최소 수량이 1입니다. 음수인 경우 업데이트하지 않습니다.
+                return; 
+                // 최소 수량이 1로 그 이하일 경우 수량 업데이트를 취소
             }
     
             const result = await axios.post('/api/carts/updateqty', { cseq, pseq, quantity:updatedQty, indate, email:loginUser.email })
-            setChangeqty(result.data.qty)
+            // 서버에 수량 업데이트를 위한 값을 보냄
+
+            const updatedCartlist = [...cartlist];
+            // 기존에 있던 cartlist라는 배열을 복사(...)해서 updatedCartlist라는 새로운 배열을 만듦
+
+            updatedCartlist[idx].quantity = result.data.qty;
+            // 서버에서 qty라는 이름으로 보낸 수량을 새로운 배열의 idx번째 quantity 값으로 설정
+
+            setCartlist(updatedCartlist);
+            // 기존의 cartlist 배열을 수량이 업데이트된 버전의 데이터를 가지고 있는 배열인 updatedCartlist로 바꿈
     
             
         } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function onsubmit(){
+        try{
+            const result = await axios.post('/api/orders/insertorder');
+            const oseq = result.data.oseq;
+
+            // 세션과 result에 추가된 oseq를 저장하기 위한 axios
+            await axios.get(`/api/orders/saveoseq/${oseq}`);
+
+            let ans = window.confirm('주문 성공. 주문을 확인하시겠습니까?');
+            if(ans){
+                navigate('/writedelivery')
+            }else{
+                navigate('/cartlist')
+            }
+        }catch(err){
             console.error(err);
         }
     }
@@ -104,7 +134,7 @@ function Cartlist() {
                 
                 <div className='buyProcess'>
                     <div className='process'>장바구니</div>
-                    <div className='process'>배송정보</div>
+                    <div className='process' onClick={()=>{navigate('/writedelivery')}}>배송정보</div>
                     <div className='process'>결제</div>
                     <div className='process'>주문완료</div>
                 </div>
@@ -140,13 +170,12 @@ function Cartlist() {
                                         </div>
 
                                         <div className='onequantity'>
-                                            <button onClick={()=>{updateQty(cart.cseq, -1, cart.pseq, cart.indate)}}>-</button>
+                                            <button onClick={()=>{updateQty(cart.cseq, -1, cart.pseq, cart.indate, idx)}}>-</button>
 
-                                            {changeqty}
-                                            {/* #1 여기 idx를 넣어서 개별적으로 관리할 수는 없나..?
-                                            #2 2 이상 안올라가...... #3 마이너스버튼 안됨 */}
+                                            {cart.quantity}
+                                            
 
-                                            <button onClick={()=>{updateQty(cart.cseq, 1, cart.pseq, cart.indate)}}>+</button>
+                                            <button onClick={()=>{updateQty(cart.cseq, 1, cart.pseq, cart.indate, idx)}}>+</button>
                                         </div>
 
                                         <div className='oneprice'>
@@ -166,9 +195,14 @@ function Cartlist() {
                         </div>
                     </div>
 
+                    <div className='downlonotion'>
+                        <span>· 구매하신 닌텐도 어카운트로 [지금 다운로드]를 클릭하면 해당 콘텐츠가 다운로드됩니다.</span>
+                        <span>· 다운로드 번호로는 전송되지 않으며, [지금 다운로드] 후에는 환불이 불가능합니다.</span>
+                    </div>
+
                     <div className='moveonBtn'>
-                        <button>목록으로</button>
-                        <button>계속</button>
+                        <button onClick={()=>{navigate('/')}}>메인으로</button>
+                        <button onClick={()=>{onsubmit()}}>계속</button>
                     </div>
 
                 </div>

@@ -8,7 +8,7 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-.cartlistWrap{
+.wirtedeliveryWrap{
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -18,7 +18,7 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-.buyProcess{
+.buyProcess2{
     width:70%;
     height:100%;
     display:flex;
@@ -27,7 +27,7 @@
     margin:50px 0;
 }
 
-.process{
+.process2{
     flex:1;
     display:flex;
     justify-content:center;
@@ -41,7 +41,12 @@
     color:rgb(53, 52, 52);
     letter-spacing:2px;
 }
-.process:first-child{
+.process2:nth-child(1){
+    background-color:white;
+    border:2px solid lightgray;
+    color:rgb(53, 52, 52);
+}
+.process2:nth-child(2){
     background-color:rgb(230, 0, 18);
     border:none;
     color:white;
@@ -49,7 +54,7 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-.clist{
+.noworderlist{
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -60,7 +65,7 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-.oneclistsub{
+.onenolistsub{
     display:flex;
     text-align:center;
     align-items:center;
@@ -70,19 +75,19 @@
     color:rgb(53, 52, 52);
     border-bottom:1px solid lightgrey;
 }
-.subchk{
+.onenolistsub .subchk{
     flex:1;
 }
-.subimg{
+.onenolistsub .subimg{
     flex:4;
 }
-.subpname{
+.onenolistsub .subpname{
     flex:5;
 }
-.subquantity{
+.onenolistsub .subquantity{
     flex:2;
 }
-.subprice{
+.onenolistsub .subprice{
     flex:2;
     font-weight:bold;
     color:rgb(53, 52, 52);
@@ -90,7 +95,7 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-.oneclist{
+.onenolist{
     display:flex;
     justify-content:flex-start;
     align-items:center;
@@ -106,13 +111,13 @@
     justify-content:center;
 }
 
-.oneclist .oneimg{
+.onenolist .oneimg{
     flex:4;
     width:100%;
     height:150px;
     margin-right:20px;
 }
-.oneclist .oneimg img{
+.onenolist .oneimg img{
     width:100%; height:100%;
 }
 
@@ -140,29 +145,19 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-.clistEndrow{
+.nolistEndrow{
     display:flex;
-    justify-content:center;
+    justify-content:right;
     align-items:center;
     width:100%;
     height:70px;
     margin-top:30px;
-}
-.clistEndrow div:first-child{
-    flex:8;
-    text-align:left;
+    padding-right:50px;
+    font-size:120%;
     font-weight:bold;
-    font-size:110%;
     color:rgb(53, 52, 52);
 }
-.clistEndrow div:last-child{
-    flex:2;
-    display:flex;
-    justify-content:center;
-    font-size: 95%;
-    color:gray;
-    cursor:pointer;
-}
+
 .clistEndrow div:last-child img{
     width:20px;
     height:20px;
