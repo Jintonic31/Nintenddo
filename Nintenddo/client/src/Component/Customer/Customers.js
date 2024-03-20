@@ -1,105 +1,62 @@
-import React , {useState, useEffect} from 'react'
-import axios from 'axios'
-//import '../../Style/customer.css'
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
+import '../../Style/Customers/customers.css'
 function Customers() {
-    const [qnaList, setQnaList] = useState([]);
-    const [paging, setPaging]  =useState({});
-    const navigate = useNavigate();
+  const [qnaList, setQnaList] = useState([]);
+  const loginUser = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        axios.get('/api/customer/qnalist/1')
-        .then((result)=>{
-            setQnaList( result.data.qnalist );
-            setPaging( result.data.paging);
-        })
-        .catch((err)=>{
-            console.error(err);
-        })
-    },[])
-
-    useEffect(
-        ()=>{
-            window.addEventListener("scroll", handleScroll);
-            return ()=>{
-                window.removeEventListener("scroll", handleScroll);
-            }
-        }
-    );
-
-    const handleScroll=()=>{
-        const scrollHeight = document.documentElement.scrollHeight;
-        const scrollTop = document.documentElement.scrollTop;
-        const clientHeight = document.documentElement.clientHeight; 
-        if(scrollTop + clientHeight >= scrollHeight ) {
-            //alert(paging.page);
-            onPageMove( Number( paging.page ) + 1 );
-        }
-    }
-    function onPageMove(p){
-        axios.get(`/api/customer/qnalist/${p}`)
-        .then((result)=>{
-            let qnas = [];
-            qnas = [...qnaList];
-            qnas = [...qnas, ...result.data.qnalist];
-            setQnaList([...qnas]);
-            setPaging( result.data.paging );
-        }) 
-        .catch((err)=>{console.error(err)})
-    }
+  useEffect(() => {
+    axios.post('/api/customer/qnalist', { email: loginUser.email })
+      .then((result) => {
+        setQnaList(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
 
-    function qnaView(qseq){
-        axios.post('/api/customer/qseqsv', null, {params:{ qseq } } )
-        .then(()=>{
-            navigate('/qnaview')
-        })
-        .catch((err)=>{
-            console.error(err)
-        })
-    }
+  const handleTitleClick = (qna) => {
+    // 클릭한 타이틀에 해당하는 풀 데이터 표시
+    const updatedQnaList = qnaList.map((item) => {
+      if (item.qseq === qna.qseq) {
+        return { ...item, showContent: !item.showContent };
+      } else {
+        return item;
+      }
+    });
+    setQnaList(updatedQnaList);
+  };
 
-    return (
-        <div className='container'>
-            <div className='subPage'>
-                <div className='smenu'></div>
-                <article>
-                    <h2>Qna List</h2>
-                    <div className="qnatable">
-                        <div className="row">
-                            <div className="col">번호</div>	<div className="col">제목</div>
-                            <div className="col">등록일</div><div className="col">답변여부</div>
-                        </div>
-                        {
-                            (qnaList)?(
-                                qnaList.map((qna, idx)=>{
-                                    return (
-                                        <div className="row" key='idx'>
-                                            <div className="col">{qna.qseq}</div>
-                                            <div className="col" onClick={
-                                                ()=>{
-                                                    qnaView(qna.qseq);
-                                                }
-                                            }>{qna.subject}</div>
-                                            <div className="col">{qna.indate.substring(0,10)}</div>
-                                            <div className="col">{qna.rep}</div>
-                                        </div>
-                                    )
-                                })
-                            ):(
-                                <div className="row">
-                                    <div className="col">Qna가 하나도 없습니다</div>
-                                </div>
-                            )
-                        }
-                    </div>
-                </article>
-            </div>     
-        </div>
-    )
+  return (
+    <div className="container">
+      <div className="subPage">
+        <article>
+          <h2>Qna List</h2>
+          <div className="qnatable">
+            {qnaList && qnaList.map((qna, idx) => (
+            <div className="row" key={idx}>
+                <div className="left">
+                <div className="title" onClick={() => handleTitleClick(qna)}>
+                    NO. : {qna.qseq} | DATE : {qna.indate.substring(0, 10)} | TITLE : {qna.title}
+                </div>
+                </div>
+                {qna.showContent && <div className="content">{qna.content}</div>}
+            </div>
+            ))}
+            {qnaList.length === 0 && (
+              <div className="row">
+                <div className="col">Qna가 하나도 없습니다</div>
+              </div>
+            )}
+          </div>
+        </article>
+      </div>
+    </div>
+  );
 }
 
-export default Customers
+export default Customers;

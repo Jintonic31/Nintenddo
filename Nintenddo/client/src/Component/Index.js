@@ -25,8 +25,8 @@ const settings = {
 };
 
 function Index() {
-  const [bannerList, setBannerList] = useState();
-  const [customerInfo, setCustomerInfo] = useState(null);
+  const [bannerList, setBannerList] = useState([]);
+  const [customerInfo, setCustomerInfo] = useState({}); // 초기화된 사용자 정보
 
   useEffect(() => {
     axios.get('/api/banners/mainbanner')
@@ -34,8 +34,11 @@ function Index() {
         setBannerList(result.data);
       })
       .catch((err) => {
-        console.error(err);
+        console.error('Error loading banners:', err);
+        // 오류 발생 시 적절한 처리
       });
+
+    
   }, []);
 
   return (
@@ -44,29 +47,12 @@ function Index() {
       <div className='mainBanner'>
         <div className='mainBannerList'>
           <Slider {...settings}>
-            {bannerList ? (
-              bannerList.map((banner, idx) => (
-                <img src={`http://localhost:8070/images/banner/main/${banner.image}`} alt={`banner-${idx}`} />
-              ))
-            ) : (null)}
+            {bannerList.map((banner, idx) => (
+              <img key={idx} src={`http://localhost:8070/images/banner/main/${banner.image}`} alt={`banner-${idx}`} />
+            ))}
           </Slider>
           <div className='mainBannerremote'>
-            <div className='remote'>
-              <img src='http://localhost:8070/images/banner/remoteicon/icon1.png' alt='icon1' />
-              <div className='remotetitle1'>마리오 VS. 동킹콩</div>
-            </div>
-            <div className='remote'>
-              <img src='http://localhost:8070/images/banner/remoteicon/icon2.png' alt='icon2' />
-              <div className='remotetitle2'>스플래툰 3</div>
-            </div>
-            <div className='remote'>
-              <img src='http://localhost:8070/images/banner/remoteicon/icon3.png' alt='icon3' />
-              <div className='remotetitle3'>슈퍼 마리오 RPG</div>
-            </div>
-            <div className='remote'>
-              <img src='http://localhost:8070/images/banner/remoteicon/icon4.png' alt='icon4' />
-              <div className='remotetitle4'>동물의 숲</div>
-            </div>
+            {/* 배너 내용 */}
           </div>
         </div>
       </div>
@@ -80,7 +66,7 @@ function Index() {
           </span>
         </div>
         <Mainsoftware />
-        <Chatbot customerInfo={customerInfo} />
+        <Chatbot />
       </article>
       <Footing />
     </div>

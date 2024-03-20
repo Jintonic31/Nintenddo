@@ -12,28 +12,28 @@ function Chatbot() {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleSubmitQuestion = async () => {
-    try {
-      await axios.post('/api/customer/ask', {
-        email: 'fixed_email@example.com',
-        title: question,
-        content: question,
-      });
-      setQuestion('');
-      loadQnaList();
-    } catch (error) {
-      console.error('Error submitting question:', error);
-    }
-  };
+  // const handleSubmitQuestion = async () => {
+  //   try {
+  //     await axios.post('/api/customer/ask', {
+  //       email: 'fixed_email@example.com',
+  //       title: question,
+  //       content: question,
+  //     });
+  //     setQuestion('');
+  //     loadQnaList();
+  //   } catch (error) {
+  //     console.error('Error submitting question:', error);
+  //   }
+  // };
 
-  const loadQnaList = async () => {
-    try {
-      const response = await axios.get('/api/customer/qnalist');
-      setQnaList(response.data.qnaList);
-    } catch (error) {
-      console.error('Error loading qna list:', error);
-    }
-  };
+  // const loadQnaList = async () => {
+  //   try {
+  //     const response = await axios.post('/api/customer/qnalist');
+  //     setQnaList(response.data.qnaList);
+  //   } catch (error) {
+  //     console.error('Error loading qna list:', error);
+  //   }
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);

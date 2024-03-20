@@ -1,0 +1,96 @@
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.subPage {
+  background-color: #fafafa;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  text-align: left;
+  width: 90%;
+  max-width: 800px; /* 최대 너비 설정 */
+  margin: 20px auto; 
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.subPage:hover {
+  background-color: #f0f0f0; 
+}
+
+.qnatable {
+  width: 100%;
+}
+
+.row {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+  cursor: pointer; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.title {
+  font-weight: bold;
+  margin-right: 15px; 
+}
+
+.content {
+  overflow: hidden; 
+  white-space: nowrap; 
+  flex: 1;
+  display: none; /* 기본적으로 풀 데이터는 숨김 처리 */
+}
+
+.row.active .content {
+  display: block; /* 활성화된 행의 content만 표시 */
+}
+
+/* 마우스를 올렸을 때 서브페이지 배경색 변경 */
+.subPage:hover:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  border: 2px solid #f00;
+  border-radius: 10px;
+}
+
+/* 마우스를 올렸을 때 서브페이지 테두리 빨간색으로 변경 */
+.subPage:hover {
+  border: 2px solid #f00;
+}
+
+/* 타이틀 클릭 시 활성화 스타일 적용 */
+.row.active .title {
+  color: #f00; /* 활성화된 타이틀 색상 변경 */
+}
+
+/* 타이틀 및 컨텐츠의 스타일 수정 */
+.title {
+  font-weight: bold;
+  margin-right: 15px;
+  cursor: pointer; /* 타이틀에 마우스 포인터로 인식되게 함 */
+}
+
+.content {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+  display: none;
+}
+
+.row:hover .content {
+  display: block;
+}
