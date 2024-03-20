@@ -9,6 +9,7 @@ import Heading from './Heading';
 import Mainnews from '../Component/News/Mainnews';
 import Mainsoftware from '../Component/Product/Mainsoftware';
 import '../Style/Index.css';
+import '../Style/chatbot.css';
 
 import Chatbot from '../Component/Customer/Chatbot';
 

@@ -5,7 +5,6 @@ import { persistReducer } from "redux-persist";
 import userSlice from './userSlice';
 import { configure } from "@testing-library/react";
 
-
 const reducers = combineReducers({
     user : userSlice.reducer,
 })

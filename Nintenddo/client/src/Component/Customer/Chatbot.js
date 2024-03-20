@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../../Style/chatbot.css';
+// import '../../Style/chatbot.css';
 import Customers from './Customers';
 
 function Chatbot() {
@@ -60,7 +60,7 @@ function Chatbot() {
               <Customers />
             </div>
             <img src="http://localhost:8070/images/includes/mario.gif" alt="Mario GIF" />
-            <div className='qnaList' style={{width:"100%"}}>ffff</div>
+            <div className='qnaList' style={{width:"100%"}}></div>
           </div>
           
         </div>
