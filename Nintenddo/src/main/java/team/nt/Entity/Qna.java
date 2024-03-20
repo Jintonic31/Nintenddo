@@ -15,8 +15,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor //생성자만들때 빈거()
+@AllArgsConstructor //생성자에만들때
 public class Qna{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

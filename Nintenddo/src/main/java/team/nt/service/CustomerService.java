@@ -5,16 +5,18 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import team.nt.Entity.Qna;
-import team.nt.dao.IQnadao;
+import team.nt.dao.IQnaDao;
 
 
 @Service
 @Transactional
 public class CustomerService {
 
+	@Autowired
+	IQnaDao iqdao;
 
 
 	public Qna getQna(int qseq) {
-		return null;
+		return iqdao.getQna(qseq);
 	}
 }
