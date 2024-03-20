@@ -25,5 +25,6 @@ public class CustomerController {
 		String qseq = (String)session.getAttribute("qseq");
 		result.put("qna",qs.getQna(Integer.parseInt(qseq)));
 		return result;
-	}
+}
+	
 }
