@@ -54,6 +54,37 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
+.deliveryinfoWrap{
+    border:1px solid magenta;
+    background-color:white;
+    width:80%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:column;
+    margin:30px;
+}
+
+.dtitle{
+    flex:1;
+    display:flex;
+    align-items:center;
+    width:100%;
+    font-size:1.5rem;
+    font-weight:bold;
+    color:rgb(53, 52, 52);
+    padding-bottom:20px;
+    border-bottom:1px solid lightgray;
+}
+.dcontent{
+    flex:9;
+}
+
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
 .noworderlist{
     display:flex;
     flex-direction:column;

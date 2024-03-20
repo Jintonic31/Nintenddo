@@ -105,7 +105,15 @@ function Cartlist() {
     }
 
     async function onsubmit(){
+
         try{
+
+            if( !cartlist || cartlist.length === 0 ){
+                alert('장바구니 내역이 없습니다.')
+                navigate('/cartlist');
+                return;
+            }
+
             const result = await axios.post('/api/orders/insertorder');
             const oseq = result.data.oseq;
 

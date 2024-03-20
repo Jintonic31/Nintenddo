@@ -45,6 +45,15 @@ function Writedelivery() {
                     <div className='process2'>주문완료</div>
                 </div>
 
+                <div className='deliveryinfoWrap'>
+                    <div className='dtitle'>배송 정보 입력</div>
+                    <div className='dcontent'>
+                        
+                    </div>
+                </div>
+
+
+
                 <div className='noworderlist'>
                     <div className='onenolistsub'>
                         <div className='subchk'>&nbsp;</div>
