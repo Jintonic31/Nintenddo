@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import team.nt.Entity.Member;
+import team.nt.Entity.Odetail;
 import team.nt.Entity.Oview;
 import team.nt.service.OrderService;
 
@@ -31,6 +33,7 @@ public class OrderController {
 		Member member = (Member)session.getAttribute("loginUser");
 		String oseq = os.insertOrder(member.getEmail());
 		
+		
 		result.put("oseq", oseq);
 		
 		return result;
@@ -43,7 +46,7 @@ public class OrderController {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("oseq", oseq);
-		System.out.println("saveoseq의 oseq : " + oseq);
+		// System.out.println("saveoseq의 oseq : " + oseq);
 		
 		result.put("oseq", oseq);
 		
@@ -58,7 +61,7 @@ public class OrderController {
 		
 		HttpSession session = request.getSession();
 		Integer oseq = (Integer)session.getAttribute("oseq");
-		System.out.println("세션의 oseq : " + oseq);
+		// System.out.println("세션의 oseq : " + oseq);
 		
 		List<Oview> list = os.getordernowByOseq(oseq);
 		

@@ -85,7 +85,7 @@ function Updatemember() {
         await axios.post('/api/members/update', {email,pwd,znum, add1, add2, add3 })
         .then((result)=>{
             alert('정보수정이 완료되었습니다.')
-            console.log("엑시오스 콘솔 : " + result.data.loginUser)
+            // console.log("엑시오스 콘솔 : " + result.data.loginUser)
             navigate('/login')
         })
         .catch((err)=>{
@@ -107,7 +107,7 @@ function Updatemember() {
 
                         <div className="field">
                         <div className="updatemember"><div className="blackbar">&nbsp;&nbsp;</div>&nbsp;&nbsp;Email</div>
-                            <input type="text" value={email} readOnly/>
+                            <input type="text" className='mupdateinput' value={email} readOnly/>
                         </div>
                         <div className="field">
                         <div className="updatemember"><div className="blackbar">&nbsp;&nbsp;</div>&nbsp;&nbsp;Password</div>
@@ -123,7 +123,7 @@ function Updatemember() {
                         </div>
                         <div className="field">
                         <div className="updatemember"><div className="blackbar">&nbsp;&nbsp;</div>&nbsp;&nbsp;Znum</div>
-                            <input type="text" value={znum} style={{width:"320px"}} onChange={(e)=>{
+                            <input type="text"  className='mupdateinput' value={znum} style={{width:"320px"}} onChange={(e)=>{
                                 setZnum( e.currentTarget.value );
                             }} readOnly/>
                               <button style={{width:"100px"}} onClick={()=>{ toggle() }}>우편번호 찾기</button> 
@@ -137,19 +137,19 @@ function Updatemember() {
 
                         <div className="field" >
                         <div className="updatemember"><div className="blackbar">&nbsp;&nbsp;</div>&nbsp;&nbsp;Address</div>
-                            <input type="text" value={add1} onChange={(e)=>{
+                            <input type="text"  className='mupdateinput' value={add1} onChange={(e)=>{
                                 setAdd1( e.currentTarget.value );
                             }} readOnly/>
                         </div>
                         <div className="field">
                         <div className="updatemember"><div className="blackbar"></div>&nbsp;&nbsp;detail Address</div>
-                            <input type="text" value={add2} onChange={(e)=>{
+                            <input type="text"  className='mupdateinput' value={add2} onChange={(e)=>{
                                 setAdd2( e.currentTarget.value );
                             }} placeholder='상세주소 입력'/>
                         </div>
                         <div className="field">
                             <div className="updatemember"><div className="blackbar">&nbsp;&nbsp;</div>&nbsp;&nbsp;extra Address</div>
-                            <input type="text" value={add3} onChange={(e)=>{
+                            <input type="text"  className='mupdateinput' value={add3} onChange={(e)=>{
                                 setAdd3( e.currentTarget.value );
                             }}/>
                         </div>

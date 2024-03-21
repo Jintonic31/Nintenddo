@@ -21,22 +21,22 @@ public class Oview {
 	
 	@Id
 	private int odseq;
-	private String mname;
+	// private String mname;
+	private String oname;
 	private int oseq;
 	@CreationTimestamp
 	private Timestamp indate;
 	private String email;
-	private String phone;
+	private String ophone;
 	private String image;
 	private int pseq;
 	private String pname;
 	private int quantity;
 	private int price1;
-	private String znum;
-	private String add1;
-	private String add2;
+	private String oznum;
+	private String oadd1;
+	private String oadd2;
 	private String result;
-	
 	
 
 }

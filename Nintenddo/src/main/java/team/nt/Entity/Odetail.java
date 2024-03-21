@@ -15,8 +15,12 @@ public class Odetail {
 	private Integer odseq;
 	private Integer oseq;
 	private Integer pseq;
-	private String mname;
 	private Integer quantity;
 	private String result;
+	private String oname;
+	private String ophone;
+	private String oznum;
+	private String oadd1;
+	private String oadd2;
 
 }

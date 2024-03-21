@@ -3,7 +3,7 @@
     margin-top: 50px;
   }
 
-input[type="text"] {
+.mupdateinput {
     
     height: 60px; /* 수정: 입력 필드의 높이를 명시적으로 설정 */
     width: 500px;

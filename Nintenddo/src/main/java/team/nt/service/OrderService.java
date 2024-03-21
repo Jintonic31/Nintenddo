@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import team.nt.Entity.Cart;
 import team.nt.Entity.Cview;
+import team.nt.Entity.Member;
 import team.nt.Entity.Odetail;
 import team.nt.Entity.Orders;
 import team.nt.Entity.Oview;
 import team.nt.dao.ICartDao;
+import team.nt.dao.IMemberDao;
 import team.nt.dao.IOrderDao;
 
 @Service
@@ -24,12 +26,16 @@ public class OrderService {
 	@Autowired
 	ICartDao icdao;
 	
+	@Autowired
+	IMemberDao imdao;
+	
 
 	public String insertOrder(String email) {
 		
 		// #1 orders 테이블에 새로운 레코드 추가 (email만 추가 = oseq,indate는 default값이 자동입력)
 		Orders orders = new Orders();
 		orders.setEmail(email);
+		
 		iodao.insertorder(orders);
 		
 		// #2 방금 #1에서 추가한 oseq 조회
@@ -47,6 +53,7 @@ public class OrderService {
 			// ㄴ clist에는 pseq, quantity 등이 다 있고, 그걸 cv에 하나씩 꺼내 저장하기 때문에 cv.getPseq()가 가능
 			odetail.setQuantity(cv.getQuantity());
 			odetail.setResult("1");
+			// odetail.setOname(cv.getOname()); ??????????????????????????
 			
 			iodao.insertodetail(odetail);
 			
@@ -66,5 +73,9 @@ public class OrderService {
 	public List<Oview> getordernowByOseq(int oseq) {
 		return iodao.getordernowByOseq(oseq);
 	}
+
+
+
+
 
 }

@@ -11,4 +11,5 @@ public interface IMemberDao {
 	void deletemember(String email);
 
 
+
 }

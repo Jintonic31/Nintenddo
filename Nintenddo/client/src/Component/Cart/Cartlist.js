@@ -18,7 +18,7 @@ function Cartlist() {
 
 
     useEffect(()=>{
-        if(loginUser.email == ''){
+        if(loginUser.email === ''){
             alert('로그인 후 이용가능합니다.')
             navigate('/loginpage')
             return;
@@ -52,7 +52,7 @@ function Cartlist() {
     }
 
     async function onDeleteCart(){
-        if(checklist.length == 0){
+        if(checklist.length === 0){
             return alert('선택된 항목이 없습니다.')
         }
 
@@ -112,20 +112,11 @@ function Cartlist() {
                 alert('장바구니 내역이 없습니다.')
                 navigate('/cartlist');
                 return;
-            }
-
-            const result = await axios.post('/api/orders/insertorder');
-            const oseq = result.data.oseq;
-
-            // 세션과 result에 추가된 oseq를 저장하기 위한 axios
-            await axios.get(`/api/orders/saveoseq/${oseq}`);
-
-            let ans = window.confirm('주문 성공. 주문을 확인하시겠습니까?');
-            if(ans){
-                navigate('/writedelivery')
             }else{
-                navigate('/cartlist')
+                return navigate('/writedelivery')
             }
+
+            
         }catch(err){
             console.error(err);
         }
@@ -143,7 +134,6 @@ function Cartlist() {
                 <div className='buyProcess'>
                     <div className='process'>장바구니</div>
                     <div className='process' onClick={()=>{navigate('/writedelivery')}}>배송정보</div>
-                    <div className='process'>결제</div>
                     <div className='process'>주문완료</div>
                 </div>
 
