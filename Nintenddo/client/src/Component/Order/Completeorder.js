@@ -13,7 +13,7 @@ function Completeorder() {
     const navigate = useNavigate();
 
     const [orderNow, setOrderNow] = useState([]);
-    const [totalPrice, setTotalPrice] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(()=>{
 
@@ -25,6 +25,7 @@ function Completeorder() {
             axios.get('/api/orders/getordernow')
             .then((result)=>{
                 setOrderNow(result.data.list);
+                console.log(orderNow);
                 setTotalPrice(result.data.totalPrice);
             })
             .catch((err)=>{console.error(err)})
@@ -45,53 +46,109 @@ function Completeorder() {
                     <div className='process3'>주문완료</div>
                 </div>
 
-                <div className='deliveryinfoWrap'>
-                    <div className='dtitle'>주문 정보</div>
-                    <div className='dcontent'>
-                        <div className='dcontentsub'>
-                            <div className='dsubname'>
+                <div className='cdeliveryinfoWrap'>
+                    <div className='cdtitle'>
+                        <div>&nbsp;</div>
+                        주문자 정보
+                    </div>
+                    <div className='cdcontent'>
+                        <div className='cdcontentsub'>
+                            <div className='cdsubname'>
                                 <div>&nbsp;</div>
                                 성함
                             </div>
-                            <div className='dsubphone'>
+                            <div className='cdsubphone'>
                                 <div>&nbsp;</div>
                                 전화번호
                             </div>
-                            <div className='dsubznum'>
+                            <div className='cdsubznum'>
                                 <div>&nbsp;</div>
                                 우편번호
                             </div>
-                            <div className='dsubadd1'>
+                            <div className='cdsubadd1'>
                                 <div>&nbsp;</div>
                                 주소
                             </div>
-                            <div className='dsubadd2'>
+                            <div className='cdsubadd2'>
                                 <div>&nbsp;</div>
                                 상세주소
                             </div>
                         </div>
 
-                        <div className='dinfo'>
+                        <div className='cdinfo'>
                             {
                                 (!orderNow || orderNow.length === 0)?(<h4>주문자 정보가 존재하지 않습니다.</h4>):(
                                     orderNow.map((order, idx)=>{
                                         return(
-                                            <div className='indinfo'>
-                                                <div>{order[0].mname}</div>
-                                                <div>{order[0].phone}</div>
-                                                <div>{order[0].znum}</div>
-                                                <div>{order[0].add1}</div>
-                                                <div>{order[0].add2}</div>
+                                            <div className='incdinfo' key={idx}>
+                                                <div>{order.oname}</div>
+                                                <div>{order.ophone}</div>
+                                                <div>{order.oznum}</div>
+                                                <div>{order.oadd1}</div>
+                                                <div>{order.oadd2}</div>
                                             </div>
                                         )
                                     }) 
                                 )
                             }                            
-                        </div>
-
-
-                        
+                        </div> 
                     </div>
+                </div>
+
+
+                <div className='cdtitle2'>
+                    <div>&nbsp;</div>
+                    상품 정보
+                </div>
+                <div className='cdorderlist'>
+                    <div className='onecdlistsub'>
+                        <div className='subchk'>&nbsp;</div>
+                        <div className='subimg'>&nbsp;</div>
+                        <div className='subpname'>상품명</div>
+                        <div className='subquantity'>수량</div>
+                        <div className='subprice'>가격</div>
+                    </div>
+                    
+                    {
+                        (!orderNow || orderNow.length === 0)?(<h3>주문 내역이 없습니다.</h3>):(
+                            
+                            orderNow.map((order, idx)=>{
+                                return(
+                                    <div className='onecdlist'>
+
+                                        <div className='onechk'>
+                                           &nbsp;
+                                        </div>
+
+                                        <div className='oneimg'>
+                                            <img src={`http://localhost:8070/images/product/productdetail/${order.image}`} alt='' />
+                                        </div>
+
+                                        <div className='onepname'>
+                                            {order.pname}
+                                        </div>
+
+                                        <div className='onequantity'>                       {order.quantity}
+                                        </div>
+
+                                        <div className='oneprice'>
+                                        ￦&nbsp;{new Intl.NumberFormat('ko-KR').format(order.price1)}
+                                        </div>
+
+                                    </div>
+                                )
+                            })
+                        )
+                    }
+                    <div className='cdlistEndrow'>
+                        <div>총 &nbsp;{new Intl.NumberFormat('ko-KR').format(totalPrice)}&nbsp;원</div>
+                    </div>
+
+                    <div className='moveonBtn'>
+                        <button onClick={()=>{navigate('/')}}>메인으로</button>
+                        <button onClick={()=>{navigate('/orderall')}}>마이 오더</button>
+                    </div>
+
                 </div>
 
             </div>

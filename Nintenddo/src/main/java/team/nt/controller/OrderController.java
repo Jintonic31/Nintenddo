@@ -26,12 +26,12 @@ public class OrderController {
 	OrderService os;
 	
 	@PostMapping("/insertorder")
-	public HashMap<String, Object> insertorder(HttpServletRequest request){
+	public HashMap<String, Object> insertorder(HttpServletRequest request, @RequestBody Odetail deliveryinfo){
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("loginUser");
-		String oseq = os.insertOrder(member.getEmail());
+		String oseq = os.insertOrder(member.getEmail(), deliveryinfo );
 		
 		
 		result.put("oseq", oseq);
@@ -71,10 +71,22 @@ public class OrderController {
 		}
 		
 		result.put("list", list);
+		// System.out.println("getordernow의 list : " + list);
 		result.put("totalPrice", totalPrice);
 		
 		return result;		
 	}
+	
+	
+//	@GetMapping("/getOrdering")
+//	public List<Oview> getOrdering(HttpServletRequest request){
+//		HashMap<String, Object> result = new HashMap<String, Object>();
+//		
+//		HttpSession session = request.getSession();
+//		Member loginUser = (Member)session.getAttribute("loginUser");
+//		
+//		
+//	}
 	
 
 }

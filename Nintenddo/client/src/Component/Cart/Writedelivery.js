@@ -18,11 +18,11 @@ function Cartlist() {
     const [cartlist, setCartlist] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
 
-    const [mname, setMname] = useState('');
-    const [phone, setPhone] = useState('');
-    const [znum, setZnum] = useState('');
-    const [add1, setAdd1] = useState('');
-    const [add2, setAdd2] = useState('');
+    const [oname, setOname] = useState('');
+    const [ophone, setOphone] = useState('');
+    const [oznum, setOznum] = useState('');
+    const [oadd1, setOadd1] = useState('');
+    const [oadd2, setOadd2] = useState('');
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -67,8 +67,8 @@ function Cartlist() {
     const completeHandler = (data)=>{
     // data에는 주소 검색 후 클릭했을 때 데이터들이 전달됨
         console.log(data);
-        setZnum(data.zonecode);
-        setAdd1(data.address);
+        setOznum(data.zonecode);
+        setOadd1(data.address);
         setIsOpen(false);
         // ㄴ 주소 입력 > 주소 클릭한 뒤에 isOpen을 false로 세팅해 모달창을 닫음
     }
@@ -85,12 +85,12 @@ function Cartlist() {
                 return;
             }
 
-            if(!mname) {return alert('이름을 입력하세요.')}
-            if(!phone) {return alert('전화번호를 입력하세요.')}
-            if(!znum) {return alert('주소를 입력하세요.')}
-            if(!add2) {return alert('상세주소를 입력하세요.')}
+            if(!oname) {return alert('이름을 입력하세요.')}
+            if(!ophone) {return alert('전화번호를 입력하세요.')}
+            if(!oznum) {return alert('주소를 입력하세요.')}
+            if(!oadd2) {return alert('상세주소를 입력하세요.')}
 
-            const result = await axios.post('/api/orders/insertorder');
+            const result = await axios.post('/api/orders/insertorder', {oname, ophone, oznum, oadd1, oadd2});
             const oseq = result.data.oseq;
 
             // await axios.post('/api/members/updatedeliveryinfo', {email:loginUser.email, mname, phone, znum, add1, add2} )
@@ -120,7 +120,7 @@ function Cartlist() {
                 
                 <div className='buyProcess2'>
                     <div className='process2'>장바구니</div>
-                    <div className='process2' onClick={()=>{navigate('/writedelivery')}}>배송정보</div>
+                    <div className='process2'>배송정보</div>
                     <div className='process2'>주문완료</div>
                 </div>
 
@@ -151,10 +151,10 @@ function Cartlist() {
                         </div>
 
                         <div className='dinfo'>
-                            <input type='text' value={mname} onChange={(e)=>{setMname(e.currentTarget.value)}} />
-                            <input type='text' value={phone} onChange={(e)=>{setPhone(e.currentTarget.value)}} />
+                            <input type='text' value={oname} onChange={(e)=>{setOname(e.currentTarget.value)}} />
+                            <input type='text' value={ophone} onChange={(e)=>{setOphone(e.currentTarget.value)}} />
                             <div className='dinfoznum'>
-                                <input type='text' value={znum} />
+                                <input type='text' value={oznum} />
                                 <button onClick={()=>{ toggle() }}>찾기</button>
                             </div>
                             <div>
@@ -162,8 +162,8 @@ function Cartlist() {
                                     <DaumPostcode onComplete={completeHandler} />
                                 </Modal>
                             </div>
-                            <input type='text' value={add1} />
-                            <input type='text' value={add2} onChange={(e)=>{setAdd2(e.currentTarget.value)}}/>
+                            <input type='text' value={oadd1} />
+                            <input type='text' value={oadd2} onChange={(e)=>{setOadd2(e.currentTarget.value)}}/>
                             
                         </div>
 
@@ -214,7 +214,7 @@ function Cartlist() {
                             })
                         )
                     }
-                    <div className='clistEndrow'>
+                    <div className='cdlistEndrow'>
                         <div>총 &nbsp;{new Intl.NumberFormat('ko-KR').format(totalPrice)}&nbsp;원</div>
                     </div>
 

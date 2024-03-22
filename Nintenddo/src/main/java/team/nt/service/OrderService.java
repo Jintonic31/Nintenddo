@@ -30,7 +30,7 @@ public class OrderService {
 	IMemberDao imdao;
 	
 
-	public String insertOrder(String email) {
+	public String insertOrder(String email, Odetail deliveryinfo) {
 		
 		// #1 orders 테이블에 새로운 레코드 추가 (email만 추가 = oseq,indate는 default값이 자동입력)
 		Orders orders = new Orders();
@@ -53,7 +53,11 @@ public class OrderService {
 			// ㄴ clist에는 pseq, quantity 등이 다 있고, 그걸 cv에 하나씩 꺼내 저장하기 때문에 cv.getPseq()가 가능
 			odetail.setQuantity(cv.getQuantity());
 			odetail.setResult("1");
-			// odetail.setOname(cv.getOname()); ??????????????????????????
+			odetail.setOname(deliveryinfo.getOname());
+			odetail.setOphone(deliveryinfo.getOphone());
+			odetail.setOznum(deliveryinfo.getOznum());
+			odetail.setOadd1(deliveryinfo.getOadd1());
+			odetail.setOadd2(deliveryinfo.getOadd2());
 			
 			iodao.insertodetail(odetail);
 			
@@ -73,6 +77,9 @@ public class OrderService {
 	public List<Oview> getordernowByOseq(int oseq) {
 		return iodao.getordernowByOseq(oseq);
 	}
+
+
+
 
 
 

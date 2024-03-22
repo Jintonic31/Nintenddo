@@ -20,6 +20,13 @@ const Controller = lazy( ()=>import('../Component/Product/Controller') )
 const Cartlist = lazy( ()=>import('../Component/Cart/Cartlist') )
 const Writedelivery = lazy( ()=>import('../Component/Cart/Writedelivery') )
 const Completeorder = lazy( ()=>import('../Component/Order/Completeorder') )
+const Orderall = lazy( ()=>import('../Component/Order/Orderall') )
+
+
+
+
+
+
 const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
 
 //Customer
@@ -83,6 +90,10 @@ const root = createBrowserRouter([
     {
         path:'completeorder',
         element:<Suspense fallback={Loading}><Completeorder /></Suspense>
+    },
+    {
+        path:'orderall',
+        element:<Suspense fallback={Loading}><Orderall /></Suspense>
     },
     {
         path:'aboutus',

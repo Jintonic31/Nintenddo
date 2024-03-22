@@ -21,7 +21,6 @@ public class Oview {
 	
 	@Id
 	private int odseq;
-	// private String mname;
 	private String oname;
 	private int oseq;
 	@CreationTimestamp

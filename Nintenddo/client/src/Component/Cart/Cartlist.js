@@ -97,6 +97,20 @@ function Cartlist() {
 
             setCartlist(updatedCartlist);
             // 기존의 cartlist 배열을 수량이 업데이트된 버전의 데이터를 가지고 있는 배열인 updatedCartlist로 바꿈
+
+            const updatedTotalPrice = updatedCartlist.reduce((acc, curr) => {
+            // reduce : 배열의 각 요소에 대해 콜백함수를 실행해 하나의 결과값을 반환하는 메서드 
+            // acc : 콜백 함수에서 반환되기 이전 값 = 누적중인값
+            // curr : 순회중인 배열의 현재 값
+                return acc + (curr.price1 * curr.quantity);
+                // 배열 요소를 모두 한번씩 찍고 그 요소를 누적하여 더한 값을 return함
+                // ex : [1, 2, 3, 4] / return acc+curr일 때
+                // => curr이 1이면 acc가 1 -> curr이 2면 acc가 3 -> curr이 3이면 acc가 6 -> curr이 4면 acc가 10
+
+            }, 0);
+
+            setTotalPrice(updatedTotalPrice);
+            
     
             
         } catch (err) {
@@ -133,8 +147,8 @@ function Cartlist() {
                 
                 <div className='buyProcess'>
                     <div className='process'>장바구니</div>
-                    <div className='process' onClick={()=>{navigate('/writedelivery')}}>배송정보</div>
-                    <div className='process'>주문완료</div>
+                    <div className='process'>배송정보</div>
+                    <div className='process' onClick={()=>{navigate('/orderall')}}>주문완료</div>
                 </div>
 
                 <div className='clist'>

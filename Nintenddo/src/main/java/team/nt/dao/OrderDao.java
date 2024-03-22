@@ -42,8 +42,11 @@ public class OrderDao implements IOrderDao{
 	public List<Oview> getordernowByOseq(int oseq) {
 		String sql = "select ov from Oview ov where ov.oseq= :oseq";
 		List<Oview> list = em.createQuery(sql, Oview.class).setParameter("oseq", oseq).getResultList();
+		// System.out.println("OrderDao의 Oview값 : " + list);
 		return list;
 	}
+
+
 
 	
 	
