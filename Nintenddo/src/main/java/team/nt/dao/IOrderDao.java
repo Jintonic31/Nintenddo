@@ -16,6 +16,10 @@ public interface IOrderDao {
 
 	List<Oview> getordernowByOseq(int oseq);
 
+	List<Integer> getOseqList(String email);
+
+	List<Integer> getOseqDoneList(String email);
+
 
 
 }

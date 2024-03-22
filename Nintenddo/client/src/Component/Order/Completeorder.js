@@ -42,7 +42,7 @@ function Completeorder() {
 
                 <div className='buyProcess3'>
                     <div className='process3'>장바구니</div>
-                    <div className='process3' onClick={()=>{navigate('/writedelivery')}}>배송정보</div>
+                    <div className='process3'>배송정보</div>
                     <div className='process3'>주문완료</div>
                 </div>
 
@@ -78,19 +78,16 @@ function Completeorder() {
                         <div className='cdinfo'>
                             {
                                 (!orderNow || orderNow.length === 0)?(<h4>주문자 정보가 존재하지 않습니다.</h4>):(
-                                    orderNow.map((order, idx)=>{
-                                        return(
-                                            <div className='incdinfo' key={idx}>
-                                                <div>{order.oname}</div>
-                                                <div>{order.ophone}</div>
-                                                <div>{order.oznum}</div>
-                                                <div>{order.oadd1}</div>
-                                                <div>{order.oadd2}</div>
-                                            </div>
-                                        )
-                                    }) 
+                                    
+                                    <div className='incdinfo'>
+                                        <div>{orderNow[0].oname}</div>
+                                        <div>{orderNow[0].ophone}</div>
+                                        <div>{orderNow[0].oznum}</div>
+                                        <div>{orderNow[0].oadd1}</div>
+                                        <div>{orderNow[0].oadd2}</div>
+                                    </div>
                                 )
-                            }                            
+                            }                           
                         </div> 
                     </div>
                 </div>

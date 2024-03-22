@@ -79,6 +79,16 @@ public class OrderService {
 	}
 
 
+	public List<Integer> getOseqList(String email) {
+		return iodao.getOseqList(email);
+	}
+
+
+	public List<Integer> getOseqDoneList(String email) {
+		return iodao.getOseqDoneList(email);
+	}
+
+
 
 
 

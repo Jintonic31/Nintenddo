@@ -13,6 +13,8 @@ const Deletemember = lazy( ()=>import('../Component/Members/Deletemember') )
 //자리침범금지
 
 
+
+
 // 사회적 거리두기
 const Hardware = lazy( ()=>import('../Component/Product/Hardware') )
 const Software = lazy( ()=>import('../Component/Product/Software') )
@@ -24,10 +26,10 @@ const Orderall = lazy( ()=>import('../Component/Order/Orderall') )
 
 
 
-
-
-
+// Aboutus
 const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
+
+
 
 //Customer
 

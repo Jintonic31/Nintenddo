@@ -148,7 +148,7 @@ function Cartlist() {
                 <div className='buyProcess'>
                     <div className='process'>장바구니</div>
                     <div className='process'>배송정보</div>
-                    <div className='process' onClick={()=>{navigate('/orderall')}}>주문완료</div>
+                    <div className='process'>주문완료</div>
                 </div>
 
                 <div className='clist'>

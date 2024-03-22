@@ -13,6 +13,7 @@ function Orderall() {
     const navigate = useNavigate();
 
     const [ordering, setOrdering] = useState([]);
+    const [orderdone, setOrderdone] = useState([]);
     // const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(()=>{
@@ -24,14 +25,40 @@ function Orderall() {
         }else{
             axios.get('/api/orders/getOrdering')
             .then((result)=>{
-                setOrdering(result.data.list);
+                setOrdering(result.data);
                 // console.log(ordering);
                 // setTotalPrice(result.data.totalPrice);
+            })
+            .catch((err)=>{console.error(err)})
+
+
+            axios.get('/api/orders/getOrderdone')
+            .then((result)=>{
+                setOrderdone(result.data);
             })
             .catch((err)=>{console.error(err)})
         }
         
     },[])
+
+
+    function formatDate(utc){
+        const date = new Date(utc);
+        const year = date.getFullYear();
+        const month = String(date.getMonth()+1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2,'0');
+        return `${year}-${month}-${day}`;
+    }
+
+
+    function onResult(result){
+        if(result === '1'){return '결제완료'}
+        if(result === '2'){return '배송중'}
+        if(result === '3'){return '배송완료'}
+        if(result === '4'){return '구매확정'}
+    }
+
+
 
     return (
         <div className='Cnt'>
@@ -52,6 +79,7 @@ function Orderall() {
                             <div className='subpname'>상품명</div>
                             <div className='subindate'>주문일자</div>
                             <div className='subprice'>결제금액</div>
+                            <div className='subresult'>처리상태</div>
                         </div>
                         
                         {
@@ -62,7 +90,7 @@ function Orderall() {
                                         <div className='oneinglist'>
 
                                             <div className='oneno'>
-                                                &nbsp;
+                                                {order.oseq}
                                             </div>
 
                                             <div className='oneimg'>
@@ -73,12 +101,68 @@ function Orderall() {
                                                 {order.pname}
                                             </div>
 
-                                            <div className='oneindate'>
-                                                {order.indate}
-                                            </div>
+                                            <div className='oneindate'>{formatDate(order.indate)}</div>
 
                                             <div className='oneprice'>
                                                 ￦&nbsp;{new Intl.NumberFormat('ko-KR').format(order.price1)}
+                                            </div>
+
+                                            <div className='oneresult'>
+                                                {onResult(order.result)}
+                                            </div>
+
+                                        </div>
+                                    )
+                                })
+                            )
+                        }
+
+
+                    </div>
+
+
+
+                    <div className='ingtitle2'>
+                        <div>&nbsp;</div>
+                        완료된 주문
+                    </div>
+                    <div className='inglist'>
+                        <div className='inglistsub'>
+                            <div className='subno'>NO.</div>
+                            <div className='subimg'>&nbsp;</div>
+                            <div className='subpname'>상품명</div>
+                            <div className='subindate'>주문일자</div>
+                            <div className='subprice'>결제금액</div>
+                            <div className='subresult'>처리상태</div>
+                        </div>
+                        
+                        {
+                            (!orderdone || orderdone.length === 0)?(<h3>완료된 주문이 없습니다.</h3>):(
+                                
+                                orderdone.map((odone, idx)=>{
+                                    return(
+                                        <div className='oneinglist'>
+
+                                            <div className='oneno'>
+                                                {odone.oseq}
+                                            </div>
+
+                                            <div className='oneimg'>
+                                                <img src={`http://localhost:8070/images/product/productdetail/${odone.image}`} alt='' />
+                                            </div>
+
+                                            <div className='onepname'>
+                                                {odone.pname}
+                                            </div>
+
+                                            <div className='oneindate'>{formatDate(odone.indate)}</div>
+
+                                            <div className='oneprice'>
+                                                ￦&nbsp;{new Intl.NumberFormat('ko-KR').format(odone.price1)}
+                                            </div>
+
+                                            <div className='oneresult'>
+                                                {onResult(odone.result)}
                                             </div>
 
                                         </div>
