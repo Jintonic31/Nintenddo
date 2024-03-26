@@ -2,7 +2,7 @@ import React , {useState, useEffect} from 'react'
 import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
 import axios from 'axios'
-import '../../Style/login.css'
+import '../../Style/Member/login.css'
 import Modal from 'react-modal'
 import { Link } from 'react-router-dom'
 
@@ -68,11 +68,11 @@ const findUserEmailByPhone = () => {
         setMessage('휴대폰 번호를 입력하세요.');
         return;
     }
-    axios.post(`/api/members/findUserEmailByPhone`, { phone })
+    axios.post(`/api/members/findUserEmailByPhone`, null, {params:{phone}})
     .then((response) => {
         // 서버에서 응답한 사용자 이메일을 상태에 저장
         setEmail(response.data.email);
-        setMessage(`휴대폰 번호로 찾은 사용자의 이메일은 ${response.data.email}입니다.`);
+        setMessage(`휴대폰 번호로 찾은 사용자의 이메일은 [ ${response.data.email} ] 입니다.`);
     })
     .catch((error) => {
         console.error('이메일 찾기 실패:', error);
@@ -81,68 +81,98 @@ const findUserEmailByPhone = () => {
 };
 
   return (
-    <div className='container'>
-            <Heading />
-            <div class="colored-div">
+    <div className='Cnt'>
+        <Heading />
+
+        <div class="colored-div">
+            <div className='incoloredWrap'>
                 <img src={`http://localhost:8070/images/members/mynintendo.png`} />
-                <div class="content-div">마이 닌테도를<br/>&nbsp;&nbsp;&nbsp;&nbsp;시작하자!</div>
-                <div className='loginbtns'>
-                </div>
-                <button className="loginbtn" onClick={()=>{ToS()}}>시작하기</button>
                 
+                <div className='incoloredTitle'>
+                    <div class="content-div">
+                        마이 닌테도를<br/>
+                        시작하자!
+                    </div>
 
-                {/* 로그아웃 */}
+                    <div className='gologinbtns'>
+                        {
+                            ( loginUser.email )?(
+                                <div className='gologininfo'>
+                                    <Link to='/updatemember'>
+                                        {loginUser.email}님
+                                    </Link>
+                                    <button className='gologoutbtn' onClick={
+                                        ()=>{
+                                            onLogout();
+                                        }
+                                    }>로그아웃</button>
+                                </div>
+                            ):(
+                                <div className='yesloginUser'>
+                                    <button className="gologinbtn" onClick={()=>{ToS()}}>
+                                        시작하기
+                                    </button>
+                                    <button className="gologinbtn" onClick={()=>{navigate("/loginpage")}}>
+                                        로그인
+                                    </button>
+                                </div>
+                            )
+                        }
 
-                <div className='gnb'>
-                    {
-                        ( loginUser.email )?(
-                            <div className='logininfo'>
-                               <Link to='/updatemember'>{loginUser.email}</Link>
-                                <button className='loginbtn' onClick={
-                                    ()=>{
-                                        onLogout();
-                                    }
-                                }>LOGOUT</button>
-                            </div>
-                        ):(
-                            <div>
-                                <button className="loginbtn" onClick={()=>{navigate("/loginpage")}}>로그인</button>
-                            </div>
-                        )
-                    }
+                    </div>
                 </div>
-                <div>
-      <input type="tel" placeholder="휴대폰 번호를 입력하세요." value={phone} onChange={handlePhoneChange} />
-      <button onClick={findUserEmailByPhone}>이메일 찾기</button>
-      
-      {email && <p>사용자 이메일: {email}</p>}
-      {message && <p>{message}</p>}
-    </div>
-  );
-
-                {/* 로그아웃 */}
-                </div>
-            
-            
-
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
-            <Footing />
-            <Modal isOpen={isOpen} onRequestClose={()=> setIsOpen(false)} ariaHideApp={false} style={ToSStyle}>
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                <div class="modal-body">
-                <img src={`http://localhost:8070/images/members/13down.png`} />&nbsp;&nbsp;&nbsp;
                 
-                <img src={`http://localhost:8070/images/members/14up.png`} onClick={()=>{
-                    navigate("/joinform");
-                }} />
-
+                   
             </div>
-            </div>
-            </div>
-            </Modal>
         </div>
+
+        <div className='findAccountWrap'>
+            <div className='findAccount'>
+                <div className='faTitle'>
+                    ID/PW를 잊으셨나요?
+                    <div className='faTitle2'>
+                        휴대폰 번호 입력을 통해 계정을 찾을 수 있습니다.
+                    </div>
+                </div>
+
+                <div className='fainfoTitle'>
+                    <div>&nbsp;&nbsp;</div>
+                    <div className='infoTitle'>휴대폰 번호</div>
+                </div>
+                <input type="tel" placeholder="휴대폰 번호를 입력하세요." value={phone} onChange={handlePhoneChange} />
+
+                <button onClick={findUserEmailByPhone}>찾기</button>
+                <div className='faMessage'>
+                    {email && <p>사용자 이메일: [ {email} ]</p>}
+                    {message && <p>{message}</p>}
+                </div>
+                
+            </div>
+        </div>
+        
+
+
+
+
+        <Modal isOpen={isOpen} onRequestClose={()=> setIsOpen(false)} ariaHideApp={false} style={ToSStyle}>
+            <div id="myModal" class="joinmodal">
+                <div class="jmodal-content">
+                    <div class="jmodal-body">
+                        <img src={`http://localhost:8070/images/members/13down.png`} />&nbsp;&nbsp;&nbsp;
+                
+                        <img src={`http://localhost:8070/images/members/14up.png`} onClick={()=>{
+                            navigate("/joinform");
+                        }} />
+                    </div>
+                </div>
+            </div>
+        </Modal>
+
+        
+
+        <Footing />
+
+    </div>
   )
 }
 

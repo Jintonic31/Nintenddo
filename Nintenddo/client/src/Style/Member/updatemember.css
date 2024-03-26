@@ -54,7 +54,7 @@
   bottom: 0;
   width: 100%;
   height: 5px;
-  background-color: rgb(230, 0, 18);
+  background-color: rgb(53, 52, 52);
   opacity: 0;
   transition: opacity 0.9s; 
 }
@@ -139,28 +139,36 @@
   display:flex;
 }
 .onemuinfo input{
+  width:250px;
   border:none;
   border-bottom:1px solid lightgray;
 }
 .znuminput{
-  width:170px;
+  max-width:100px;
   border:none;
   border-bottom:1px solid lightgray;
   cursor:pointer;
+  margin:0;
 }
 .znumbtn{
-  margin-left:20px;
+  margin-left:80px;
   width:70px;
   height:25px;
   border:1px solid lightgray;
   background-color:white;
 }
 
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.muBtns{
+  display:flex;
+  margin:70px 0;
+}
+
 .musavebtn{
   display:flex;
   justify-content:center;
   align-items:center;
-  margin:50px 20px 50px 0;
   width:200px;
   height:40px;
   border:none;
@@ -170,4 +178,22 @@
   color:white;
   background-color:rgb(53, 52, 52);
   cursor:pointer;
+}
+.musavebtn:nth-child(2){
+  margin-left:70px;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+.onemudelete{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.deleteinfo{
+  width:100%;
+  height:100%;
+  font-size:0.9rem;
 }

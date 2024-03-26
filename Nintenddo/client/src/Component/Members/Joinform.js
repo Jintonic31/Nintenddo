@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
-import '../../Style/Joinform.css'
+import '../../Style/Member/Joinform.css'
 import axios from 'axios'
 
 function Joinform() {
@@ -98,137 +98,148 @@ function Joinform() {
     }
     //국가
   return (
-    <div className="joinbody">
-    <Heading/>
-    <h2 className="centerText">닌텐도 어카운트 작성</h2>    
-    <div className="account">다음 어카운트를 가지고 있는 경우, 간단하게 닌텐도 어카운트를 작성할 수 있습니다.</div>
-    <div className='subPage'>
-        <article>
-            <div className="sns-btns">
-            <button className="ovalButton googleButton"><img src={`http://localhost:8070/images/members/google.png`} />Google</button>
-                <button className="ovalButton kakaoButton" onClick={
-                    ()=>{
-                     window.location.href='http://localhost:8070/api/members/kakaostart';
-                        }
-                }><img src={`http://localhost:8070/images/members/kakao.png`} />Kakao</button>
-            </div>
-            
 
-            <div className="account"><h2>위의 어카운트를 가지고 있지 않은 경우에는 아래 정보를 입력해 주십시오.</h2></div><br/>
-            
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className='infotitle'>아이디</div>
-            <div className="info"><input type="text" placeholder ="10자 이내" value={userid} onChange={(e)=>{
-              setUserid(e.currentTarget.value);
-            }}/></div>
-            </div><br/><br/>
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className='infotitle'>메일 주소</div>
-            <div className="info"><input type="text" placeholder ="메일 주소" value={email}  onChange={(e)=>{
-              setEmail(e.currentTarget.value);
-              setMessage('')
-            }}/></div>
-            <button style={{flex:"1"}} onClick={
-                ()=>{
-                    idcheck()
-                }
-            }>아이디 중복확인</button>
-            <div style={{flex:"2", color:"blue"}}>&nbsp;&nbsp;{message}</div>
-            </div><br/><br/>
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className='infotitle'>암호</div>
-            <div className="info"><input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={pwd}  onChange={(e)=>{
-              setPwd(e.currentTarget.value);
-            }}/></div>
-            </div><br/><br/>
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className='infotitle'>암호 재입력</div>
-            <div className="info"> <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={repwd}  onChange={(e)=>{
-              setRepwd(e.currentTarget.value);
-            }}/></div>
-            </div><br/><br/>
+    <div className='Cnt'>
 
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className='infotitle'>전화 번호</div>
-            <div className="info"> <input type="text" placeholder ="전화번호입력" value={phone}  onChange={(e)=>{
-              setPhone(e.currentTarget.value);
-            }}/></div>
-            </div><br/><br/>
+    
 
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className="select-box">생년월일
-            </div>
-            <select className="select-year" value={year} style={{marginLeft:"380px", width:"150px", height:"60px"}} 
-            onChange={(e) => setYear(e.target.value)}>
-          <option>년</option>
-          {years.map((year) => (
-            <option key={year} value={year}>
-              {year}년
+      <Heading/>
+
+      <div className="joinbody">
+      
+      <h2 className="centerText">닌텐도 어카운트 작성</h2>    
+      <div className="account">다음 어카운트를 가지고 있는 경우, 간단하게 닌텐도 어카운트를 작성할 수 있습니다.</div>
+      <div className='jsubPage'>
+          <article>
+              <div className="sns-btns">
+              <button className="ovalButton googleButton"><img src={`http://localhost:8070/images/members/google.png`} />Google</button>
+                  <button className="ovalButton kakaoButton" onClick={
+                      ()=>{
+                      window.location.href='http://localhost:8070/api/members/kakaostart';
+                          }
+                  }><img src={`http://localhost:8070/images/members/kakao.png`} />Kakao</button>
+              </div>
+              
+
+              <div className="account"><h2>위의 어카운트를 가지고 있지 않은 경우에는 아래 정보를 입력해 주십시오.</h2></div><br/>
+              
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className='infotitle'>아이디</div>
+              <div className="info"><input type="text" placeholder ="10자 이내" value={userid} onChange={(e)=>{
+                setUserid(e.currentTarget.value);
+              }}/></div>
+              </div><br/><br/>
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className='infotitle'>메일 주소</div>
+              <div className="info"><input type="text" placeholder ="메일 주소" value={email}  onChange={(e)=>{
+                setEmail(e.currentTarget.value);
+                setMessage('')
+              }}/></div>
+              <button onClick={
+                  ()=>{
+                      idcheck()
+                  }
+              }>중복확인</button>
+              <div style={{flex:"2", color:"blue"}}>&nbsp;&nbsp;{message}</div>
+              </div><br/><br/>
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className='infotitle'>암호</div>
+              <div className="info"><input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={pwd}  onChange={(e)=>{
+                setPwd(e.currentTarget.value);
+              }}/></div>
+              </div><br/><br/>
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className='infotitle'>암호 재입력</div>
+              <div className="info"> <input type="text" placeholder ="영문과 숫자를 혼합한 8자 이상" value={repwd}  onChange={(e)=>{
+                setRepwd(e.currentTarget.value);
+              }}/></div>
+              </div><br/><br/>
+
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className='infotitle'>전화 번호</div>
+              <div className="info"> <input type="text" placeholder ="전화번호입력" value={phone}  onChange={(e)=>{
+                setPhone(e.currentTarget.value);
+              }}/></div>
+              </div><br/><br/>
+
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className="select-box">생년월일
+              </div>
+              <select className="select-year" value={year} style={{width:"150px", height:"60px", border:"1px solid #ccc"}} 
+              onChange={(e) => setYear(e.target.value)}>
+            <option>년</option>
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}년
+              </option>
+            ))}
+          </select>
+          <select value={month} style={{marginLeft:"25px", width:"150px", height:"60px", border:"1px solid #ccc"}} onChange={(e) => setMonth(e.target.value)}>
+            <option>월</option>
+            {months.map((month) => (
+              <option key={month} value={month}>
+                {month}월
+              </option>
+            ))}
+          </select>
+          <select value={day} style={{marginLeft:"25px", width:"150px", height:"60px", border:"1px solid #ccc"}} onChange={(e) => setDay(e.target.value)}>
+            <option>일</option>
+            {days.map((day) => (
+              <option key={day} value={day}>
+                {day}일
+              </option>
+            ))}
+          </select>
+          </div><br/><br/>
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className="select-box">성별
+              </div>
+              <select style={{width:"500px", height:"60px", border:"1px solid #ccc"}} onChange={(e)=>setGender(e.target.value)} value={gender}>
+                  <option value="">(미선택)</option>
+                  <option value="M">남성</option>
+                  <option value="F">여성</option>
+                  <option value="N">선택하지 않음</option>
+              </select>
+              </div><br/>
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className="select-box">국가/지역</div>
+              <select style={{width:"500px", height:"60px", border:"1px solid #ccc"}} onChange={(e)=>setCountry(e.target.value)} value={country}>
+          <option value="">국가/지역 선택</option>
+          {countries.map((country) => (
+            <option key={country.alpha3Code} value={country.alpha3Code}>
+              {country.name}
             </option>
           ))}
         </select>
-        <select value={month} style={{marginLeft:"25px", width:"150px", height:"60px"}} onChange={(e) => setMonth(e.target.value)}>
-          <option>월</option>
-          {months.map((month) => (
-            <option key={month} value={month}>
-              {month}월
-            </option>
-          ))}
-        </select>
-        <select value={day} style={{marginLeft:"25px", width:"150px", height:"60px"}} onChange={(e) => setDay(e.target.value)}>
-          <option>일</option>
-          {days.map((day) => (
-            <option key={day} value={day}>
-              {day}일
-            </option>
-          ))}
-        </select>
-        </div><br/><br/>
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className="select-box">성별
-            </div>
-            <select style={{marginLeft:"415px", width:"500px", height:"60px"}} onChange={(e)=>setGender(e.target.value)} value={gender}>
-                <option value="">(미선택)</option>
-                <option value="M">남성</option>
-                <option value="F">여성</option>
-                <option value="N">선택하지 않음</option>
-            </select>
-            </div><br/><br/>
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className="Title">국가/지역
-            <select style={{marginLeft:"375px", width:"500px", height:"60px"}} onChange={(e)=>setCountry(e.target.value)} value={country}>
-        <option value="">국가/지역 선택</option>
-        {countries.map((country) => (
-          <option key={country.alpha3Code} value={country.alpha3Code}>
-            {country.name}
-          </option>
-        ))}
-      </select>
-            </div>
-            
-    </div><br/><br/>
-            <div className='Title'>
-            <div>&nbsp;&nbsp;</div>
-            <div className="select-box">시간대</div>
-            <select  style={{marginLeft:"400px", width:"500px", height:"60px"}} id="timezoneSelect">
-            <option value="UTC+9" selected>대한민국 (UTC+9:00)</option>
-            </select>
-            </div>
-        <button className="continue" onClick={()=>{
-            onJoin()
-        }}>계속</button>
-        </article>
-    </div>
+              
+              
+      </div><br/><br/>
+              <div className='jTitle'>
+              <div>&nbsp;&nbsp;</div>
+              <div className="select-box">시간대</div>
+              <select  style={{width:"500px", height:"60px", border:"1px solid #ccc"}} id="timezoneSelect">
+              <option value="UTC+9" selected>대한민국 (UTC+9:00)</option>
+              </select>
+              </div>
+          <button className="continue" onClick={()=>{
+              onJoin()
+          }}>계속</button>
+          </article>
+      </div>
+      
+      </div>
+
     <Footing/>
-    </div>
+
+  </div>
   )
 }
 

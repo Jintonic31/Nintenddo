@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
-import '../../Style/updatemember.css'
+import '../../Style/Member/updatemember.css'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { useDispatch,useSelector } from 'react-redux';
 import DaumPostcode from "react-daum-postcode";
 import Modal from 'react-modal'
-import Orderall from '../Order/Orderall'
 
 import { loginAction } from '../../store/userSlice';
 
@@ -18,6 +17,7 @@ function Updatemember() {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [repwd, setRepwd] = useState('');
+    const [phone, setPhone] = useState('');
     const [znum, setZnum] = useState('');
     const [add1, setAdd1] = useState('');
     const [add2, setAdd2] = useState('');
@@ -73,6 +73,7 @@ function Updatemember() {
     useEffect(()=>{
         setEmail( loginUser.email );
         setPwd( loginUser.pwd );
+        setPhone( loginUser.phone );
         setZnum( loginUser.znum );
         setAdd1( loginUser.add1 );
         setAdd2( loginUser.add2 );
@@ -106,11 +107,14 @@ function Updatemember() {
     }
 
     async function onUpdate(){ 
-        if( loginUser.provider != 'kakao' && pwd != repwd ){
+        if( loginUser.provider !== 'kakao' && pwd !== repwd ){
             return alert('패스워드 확인이 일치하지 않습니다')
         }
+        if( phone === ''){
+            return alert('휴대폰 번호를 입력하세요.')
+        }
 
-        await axios.post('/api/members/update', {email,pwd,znum, add1, add2, add3 })
+        await axios.post('/api/members/update', {email,pwd, phone, znum, add1, add2, add3 })
         .then((result)=>{
             alert('정보수정이 완료되었습니다.')
             navigate('/login')
@@ -158,6 +162,7 @@ function Updatemember() {
                             </div>
                         </div>
 
+
                         <div className='onemufield'>
                             <div className="blackbar">&nbsp;</div>
                             <div className='onemutitle'>비밀번호</div>
@@ -174,6 +179,16 @@ function Updatemember() {
                             <div className='onemuinfo'>
                                 <input type='password' value={repwd} onChange={(e)=>{
                                 setRepwd( e.currentTarget.value );
+                                }}/>
+                            </div>
+                        </div>
+
+                        <div className='onemufield'>
+                            <div className="blackbar">&nbsp;</div>
+                            <div className='onemutitle'>휴대전화</div>
+                            <div className='onemuinfo'>
+                                <input type='text' value={phone} onChange={(e)=>{
+                                setPhone( e.currentTarget.value );
                                 }}/>
                             </div>
                         </div>
@@ -205,16 +220,6 @@ function Updatemember() {
 
                         <div className='onemufield'>
                             <div className="blackbar">&nbsp;</div>
-                            <div className='onemutitle'>주소</div>
-                            <div className='onemuinfo'>
-                                <input type="text"  className='mupdateinput' value={add1} onChange={(e)=>{
-                                setAdd1( e.currentTarget.value );
-                                }} readOnly/>
-                            </div>
-                        </div>
-
-                        <div className='onemufield'>
-                            <div className="blackbar">&nbsp;</div>
                             <div className='onemutitle'>상세주소 1</div>
                             <div className='onemuinfo'>
                                 <input type="text" value={add2} onChange={(e)=>{
@@ -233,14 +238,16 @@ function Updatemember() {
                             </div>
                         </div>
 
-                        <button className="musavebtn" onClick={()=>{
-                            onUpdate();
-                        }}>저장하기</button>
+                        <div className='muBtns'>
+                            <button className="musavebtn" onClick={()=>{
+                                navigate('/');
+                            }}>돌아가기</button>
+                            <button className="musavebtn" onClick={()=>{
+                                onUpdate();
+                            }}>저장하기</button>
+                        </div>
                         
                     </div>
-
-
-
 
 
                     <div className='mutitle' ref={viewPoint2}>
@@ -248,19 +255,39 @@ function Updatemember() {
                         회원탈퇴
                     </div>
 
+                    <div className='mufield'>
+                        <div className='onemudelete'>
+                            <div className='deleteinfo'>
+                            * 회원 탈퇴 시 주의사항＊<br /><br /><br />
+
+                                1. 회원 탈퇴는 현재 구매 및 반품 처리 또는 고객서비스가 완료되지 않은 경우 탈퇴 처리가 되지 않습니다.<br /><br />
+
+                                2. 위의 사항이 진행 중이시면, 해당 내용을 확인 및 처리하신 후 회원 탈퇴를 신청해 주시기 바랍니다.<br /><br />
+
+                                3. 회원 탈퇴를 하시면 미사용 쿠폰 및 적립금은 자동 소멸됩니다. 차후 재가입 시 복원되지 않습니다.<br /><br />
+
+                                4. 이전 주문 건도 함께 삭제되며, 결제 누적금액에 대한 회원 등급도 복구되지 않습니다.<br /><br />
+
+                                5. 구매하신 소프트웨어도 함께 소멸됩니다. 차후 재가입 시 복원되지 않으며, 재구매 후 이용 가능합니다.<br /><br /><br />
+                            </div>
+
+                            <div className='muBtns'>
+                                <button  className="musavebtn" onClick={()=>{
+                                navigate('/deletemember')
+                                }}>회원탈퇴</button>
+                            </div>
+
+                            
+                        </div>
+
+
+                    </div>
+
                 </div>
 
                 
                 
             </div>
-
-            
-                        <button onClick={()=>{
-                            navigate('/');
-                        }}>돌아가기</button>
-                        <button onClick={()=>{
-                            navigate('/deletemember')
-                        }}>회원탈퇴</button>
 
             <Footing />
 

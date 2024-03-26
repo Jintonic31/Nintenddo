@@ -100,7 +100,7 @@ public class MemberController {
 	@PostMapping("/findUserEmailByPhone")
 	public HashMap<String,Object> findUserEmailByPhone(@RequestParam("phone") String phone){
 		HashMap<String,Object> result = new HashMap<String,Object>();
-		Member mem = ms.getMember(phone);
+		Member mem = ms.findUserEmailByPhone(phone);
 		if(mem != null) {
 			result.put("email", mem.getEmail());
 			result.put("res", "0");

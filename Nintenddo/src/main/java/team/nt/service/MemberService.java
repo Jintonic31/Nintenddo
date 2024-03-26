@@ -32,7 +32,7 @@ public class MemberService {
 		if(!mem.isPresent()) {
 			return null;
 		}else {
-		return mem.get();
+			return mem.get();
 		}
 	}
 
@@ -45,12 +45,12 @@ public class MemberService {
 		
 	}
 	
-	public String findUserEmailByPhone(String phone) {
+	public Member findUserEmailByPhone(String phone) {
 		Optional<Member> mem = mr.findUserEmailByPhone(phone);
 		if(!mem.isPresent()) {
 			return null;
 		}else {
-		return mem.get().getEmail();
+			return mem.get();
 		}
 	}
 
