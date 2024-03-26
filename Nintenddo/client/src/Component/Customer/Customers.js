@@ -2,61 +2,65 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import '../../Style/Customers/customers.css'
+import '../../Style/Customers/customers.css';
 
 function Customers() {
   const [qnaList, setQnaList] = useState([]);
   const loginUser = useSelector((state) => state.user);
-  const [paging, setPaging]  =useState({});
+  const [paging, setPaging] = useState({});
   const navigate = useNavigate();
-  const [showContent, setShowContent] = useState(false); // display 속성을 조절할 상태
+  const [contentStates, setContentStates] = useState([]); // 각 행의 content 상태를 배열로 관리
 
   useEffect(() => {
     axios.post('/api/customer/qnalist/1', { email: loginUser.email })
       .then((result) => {
         setQnaList(result.data.qnalist);
-        setPaging( result.data.paging);
-        
+        setPaging(result.data.paging);
+        // 각 행의 content 상태를 초기화
+        setContentStates(new Array(result.data.qnalist.length).fill(false));
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
 
-  useEffect(
-    ()=>{
-        window.addEventListener("scroll", handleScroll);
-        return ()=>{
-            window.removeEventListener("scroll", handleScroll);
-        }
-    }
-);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  function onPageMove(p){
+  function onPageMove(p) {
     axios.get(`/api/customer/qnalist/${p}`)
-    .then((result)=>{
-        let qnas = [];
-        qnas = [...qnaList];
-        qnas = [...qnas, ...result.data.qnalist];
-        setQnaList([...qnas]);
-        setPaging( result.data.paging );
-    }) 
-    .catch((err)=>{console.error(err)})
-}
+      .then((result) => {
+        setQnaList([...qnaList, ...result.data.qnalist]);
+        setPaging(result.data.paging);
+        // 추가된 각 행의 content 상태를 false로 설정
+        setContentStates(prevStates => [
+          ...prevStates,
+          ...new Array(result.data.qnalist.length).fill(false)
+        ]);
+      })
+      .catch((err) => { console.error(err) })
+  }
 
-  const handleScroll=()=>{
+  const handleScroll = () => {
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight; 
-    if(scrollTop + clientHeight >= scrollHeight ) {
-        //alert(paging.page);
-        onPageMove( Number( paging.page ) + 1 );
+    const clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      onPageMove(Number(paging.page) + 1);
     }
-}
+  }
 
-  function handleTitleClick() {
-    // setShowContent를 통해 showContent 상태를 토글
-    setShowContent(prevState => !prevState);
+  function handleTitleClick(index) {
+    // 클릭한 행의 content 상태를 토글
+    setContentStates(prevStates => {
+      const newStates = [...prevStates];
+      newStates[index] = !newStates[index];
+      return newStates;
+    });
   };
 
   return (
@@ -68,13 +72,12 @@ function Customers() {
             {qnaList && qnaList.map((qna, idx) => (
               <div className="row" key={idx}>
                 <div className="left">
-                  <div className="qnatitle"  onClick={()=>{handleTitleClick()}}>
+                  <div className="qnatitle" onClick={() => handleTitleClick(idx)}>
                     NO. : {qna.qseq} | DATE : {qna.indate.substring(0, 10)} | TITLE : {qna.title}
                   </div>
                 </div>
-                <div className="content" style={{ display: showContent ? 'flex' : 'none' }}>{qna.content}</div>
+                <div className="content" style={{ display: contentStates[idx] ? 'flex' : 'none' }}>{qna.content}</div>
               </div>
-              
             ))}
             {qnaList.length === 0 && (
               <div className="row">

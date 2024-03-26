@@ -129,28 +129,30 @@ public class MemberController {
 	}
 	
 	
-//	@PostMapping("/updatedeliveryinfo")
-//	public HashMap<String, Object> updatedeliveryinfo(@RequestBody Member member, HttpServletRequest request){
-//		
-//		HashMap<String, Object> result = new HashMap<String, Object>();
-//		HttpSession session = request.getSession();
-//		
-//		member.setPwd(((Member)session.getAttribute("loginUser")).getPwd());
-//		member.setIndate(((Member)session.getAttribute("loginUser")).getIndate());
-//		// Indate가 날라가는데.. 왜일까?
-//		member.setProvider(((Member)session.getAttribute("loginUser")).getProvider());
-//		member.setUseyn(((Member)session.getAttribute("loginUser")).getUseyn());
-//		member.setByear(((Member)session.getAttribute("loginUser")).getByear());
-//		member.setBmonth(((Member)session.getAttribute("loginUser")).getBmonth());
-//		member.setBday(((Member)session.getAttribute("loginUser")).getBday());
-//		member.setGender(((Member)session.getAttribute("loginUser")).getGender());
-//		member.setCountry(((Member)session.getAttribute("loginUser")).getCountry());
-//		Member mem = ms.updateMember(member);
-//		session.setAttribute("loginUser", mem);
-//		// System.out.println(mem);
-//		
-//		return null;
-//	}
+	@PostMapping("/updatedeliveryinfo")
+	public HashMap<String, Object> updatedeliveryinfo(@RequestBody Member member, HttpServletRequest request){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+		
+		member.setPwd(((Member)session.getAttribute("loginUser")).getPwd());
+		member.setIndate(((Member)session.getAttribute("loginUser")).getIndate());
+		// Indate가 날라가는데.. 왜일까?
+		member.setProvider(((Member)session.getAttribute("loginUser")).getProvider());
+		member.setUseyn(((Member)session.getAttribute("loginUser")).getUseyn());
+		member.setByear(((Member)session.getAttribute("loginUser")).getByear());
+		member.setBmonth(((Member)session.getAttribute("loginUser")).getBmonth());
+		member.setBday(((Member)session.getAttribute("loginUser")).getBday());
+		member.setGender(((Member)session.getAttribute("loginUser")).getGender());
+		member.setCountry(((Member)session.getAttribute("loginUser")).getCountry());
+		Member mem = ms.updateMember(member);
+		session.setAttribute("loginUser", mem);
+		// System.out.println(mem);
+		
+		return null;
+	}
+	
+	
 	@RequestMapping("/kakaostart")
 	public @ResponseBody String kakaostart() {
 		String a = "<script type='text/javascript'>" 
