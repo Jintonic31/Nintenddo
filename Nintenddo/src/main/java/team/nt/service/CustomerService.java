@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import team.nt.Entity.Qna;
 import team.nt.dao.CustomerRepository;
 import team.nt.dao.IQnaDao;
+import team.nt.dto.Paging;
 
 
 @Service
@@ -22,10 +23,15 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository cr;
 
-	public List<Qna> getqnalist(String email) {
-		List<Qna> list = iqdao.getqnalist(email);
+	public List<Qna> getqnalist(String email, Paging paging) {
+		List<Qna> list = iqdao.getqnalist(email, paging);
 		return list;
 	}
+
+
+//	public List<Qna> getQnalist(Paging paging) {
+//		return iqdao.getqnalist(paging);
+//	}
 
 //	public Qna getQna(int qseq) {
 //		return iqdao.getQna(qseq);

@@ -7,18 +7,52 @@ import '../../Style/Customers/customers.css'
 function Customers() {
   const [qnaList, setQnaList] = useState([]);
   const loginUser = useSelector((state) => state.user);
+  const [paging, setPaging]  =useState({});
   const navigate = useNavigate();
   const [showContent, setShowContent] = useState(false); // display 속성을 조절할 상태
 
   useEffect(() => {
-    axios.post('/api/customer/qnalist', { email: loginUser.email })
+    axios.post('/api/customer/qnalist/1', { email: loginUser.email })
       .then((result) => {
-        setQnaList(result.data);
+        setQnaList(result.data.qnalist);
+        setPaging( result.data.paging);
+        
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
+
+  useEffect(
+    ()=>{
+        window.addEventListener("scroll", handleScroll);
+        return ()=>{
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }
+);
+
+  function onPageMove(p){
+    axios.get(`/api/customer/qnalist/${p}`)
+    .then((result)=>{
+        let qnas = [];
+        qnas = [...qnaList];
+        qnas = [...qnas, ...result.data.qnalist];
+        setQnaList([...qnas]);
+        setPaging( result.data.paging );
+    }) 
+    .catch((err)=>{console.error(err)})
+}
+
+  const handleScroll=()=>{
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight; 
+    if(scrollTop + clientHeight >= scrollHeight ) {
+        //alert(paging.page);
+        onPageMove( Number( paging.page ) + 1 );
+    }
+}
 
   function handleTitleClick() {
     // setShowContent를 통해 showContent 상태를 토글

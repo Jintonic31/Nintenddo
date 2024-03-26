@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import team.nt.Entity.Qna;
+import team.nt.dto.Paging;
 
 @Repository
 public class CustomerDao implements IQnaDao{
@@ -15,15 +16,20 @@ public class CustomerDao implements IQnaDao{
 	@Autowired
 	private EntityManager em;
 
+
 	@Override
-	public List<Qna> getqnalist(String email) {
-		String sql = "select q from Qna q where q.email= :email";
-		TypedQuery<Qna> query = em.createQuery(sql, Qna.class);
-		query.setParameter("email", email);
-		
-		List<Qna> result = query.getResultList();
-		return result;
+	public List<Qna> getqnalist(String email, Paging paging) {
+		List<Qna> list
+			= em.createQuery("select q from Qna q where q.email= :email", Qna.class)
+			.setParameter("email", email)
+			.setFirstResult(paging.getStartNum()-1)
+			.setMaxResults(paging.getDisplayRow())
+			.getResultList();
+		return list;
+	
 	}
+
+
 	
 //	@Override
 //	public List<Qna> getQnalist(Paging paging) {
