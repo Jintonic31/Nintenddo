@@ -1,6 +1,16 @@
 package team.nt.controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,11 +18,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import team.nt.Entity.Member;
+import team.nt.dto.KakaoProfile;
+import team.nt.dto.KakaoProfile.KakaoAccount;
+import team.nt.dto.KakaoProfile.KakaoAccount.Profile;
+import team.nt.dto.OAuthToken;
 import team.nt.service.MemberService;
 
 @RestController
@@ -133,4 +151,78 @@ public class MemberController {
 //		
 //		return null;
 //	}
+	@RequestMapping("/kakaostart")
+	public @ResponseBody String kakaostart() {
+		String a = "<script type='text/javascript'>" 
+				+ "location.href='https://kauth.kakao.com/oauth/authorize?"
+				+ "client_id=f67ebc2de23039bbce25c7d2583abd81&" 
+				+ "redirect_uri=http://localhost:8070/api/members/kakaoLogin&"
+				+ "response_type=code';" + "</script>";
+		return a;
+	}
+	
+	@RequestMapping("/kakaoLogin")
+	public void loginKakao(
+			HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws UnsupportedEncodingException, IOException {
+		
+		String code = request.getParameter("code");
+		String endpoint = "https://kauth.kakao.com/oauth/token";
+		URL url = new URL(endpoint); // import java.net.URL;
+		String bodyData = "grant_type=authorization_code&";
+		bodyData += "client_id=f67ebc2de23039bbce25c7d2583abd81&";
+		bodyData += "redirect_uri=http://localhost:8070/api/members/kakaoLogin&";
+		bodyData += "code=" + code;
+		
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // import java.net.HttpURLConnection;
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+		conn.setDoOutput(true);
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
+		bw.write(bodyData);
+		bw.flush();
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+		String input = "";
+		StringBuilder sb = new StringBuilder(); // 조각난 String 을 조립하기위한 객체
+		while ((input = br.readLine()) != null) {
+			sb.append(input);
+			//System.out.println(input); // 수신된 토큰을 콘솔에 출력합니다
+		}
+		Gson gson = new Gson();
+		OAuthToken oAuthToken = gson.fromJson(sb.toString(), OAuthToken.class);
+		String endpoint2 = "https://kapi.kakao.com/v2/user/me";
+		URL url2 = new URL(endpoint2);
+		
+		HttpsURLConnection conn2 = (HttpsURLConnection) url2.openConnection();
+		conn2.setRequestProperty("Authorization", "Bearer " + oAuthToken.getAccess_token());
+		conn2.setDoOutput(true);
+		BufferedReader br2 = new BufferedReader(new InputStreamReader(conn2.getInputStream(), "UTF-8"));
+		String input2 = "";
+		StringBuilder sb2 = new StringBuilder();
+		while ((input2 = br2.readLine()) != null) {
+			sb2.append(input2);
+			//System.out.println(input2);
+		}
+		Gson gson2 = new Gson();
+		KakaoProfile kakaoProfile = gson2.fromJson(sb2.toString(), KakaoProfile.class);
+		KakaoAccount ac = kakaoProfile.getAccount();
+		Profile pf = ac.getProfile();
+		System.out.println("KakaoAccount-Email : " + ac.getEmail());
+		
+		
+		Member member = ms.getMember( ac.getEmail() );
+		if( member == null) {
+			member = new Member();
+			member.setEmail( ac.getEmail() );
+			member.setProvider( "kakao" );
+			
+			ms.insertMember(member);
+		}
+		HttpSession session = request.getSession();
+		session.setAttribute("loginUser", member);
+		response.sendRedirect("http://localhost:3000/kakaosaveinfo");
+	}
+	
+	
 }
