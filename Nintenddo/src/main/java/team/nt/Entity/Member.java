@@ -15,7 +15,6 @@ public class Member {
 	@Id
 	private String  email;
 	private String  pwd;
-	// private String mname;
 	private String phone;
 	private Timestamp indate;
 	private String  znum;

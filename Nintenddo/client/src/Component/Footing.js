@@ -224,7 +224,7 @@ function Footing() {
 
                         <br />
 
-                        상호명 : 한국닌텐도주식회사 &nbsp;&nbsp;대표자명 : 미우라 타카히로 &nbsp;&nbsp;사업자등록번호 : 120-87-03578
+                        상호명 : <Link to={'/adminlogin'} style={{textDecoration:"none", color:"gray"}}>한국닌텐도주식회사</Link> &nbsp;&nbsp;대표자명 : 미우라 타카히로 &nbsp;&nbsp;사업자등록번호 : 120-87-03578
                     </div>
                     <div className='hours' style={{textAlign:"right"}}>
                     고객지원 문의전화 : 1670-9900 (평일 오전 9시 30분~오후 5시 30분)
