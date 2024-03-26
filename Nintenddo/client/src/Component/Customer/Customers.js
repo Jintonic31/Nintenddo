@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../../Style/Customers/customers.css'
+
 function Customers() {
   const [qnaList, setQnaList] = useState([]);
   const loginUser = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const [showContent, setShowContent] = useState(false); // display 속성을 조절할 상태
 
   useEffect(() => {
     axios.post('/api/customer/qnalist', { email: loginUser.email })
@@ -18,17 +20,9 @@ function Customers() {
       });
   }, []);
 
-
-  const handleTitleClick = (qna) => {
-    // 클릭한 타이틀에 해당하는 풀 데이터 표시
-    const updatedQnaList = qnaList.map((item) => {
-      if (item.qseq === qna.qseq) {
-        return { ...item, showContent: !item.showContent };
-      } else {
-        return item;
-      }
-    });
-    setQnaList(updatedQnaList);
+  function handleTitleClick() {
+    // setShowContent를 통해 showContent 상태를 토글
+    setShowContent(prevState => !prevState);
   };
 
   return (
@@ -38,14 +32,15 @@ function Customers() {
           <h2>Qna List</h2>
           <div className="qnatable">
             {qnaList && qnaList.map((qna, idx) => (
-            <div className="row" key={idx}>
+              <div className="row" key={idx}>
                 <div className="left">
-                <div className="title" onClick={() => handleTitleClick(qna)}>
+                  <div className="qnatitle"  onClick={()=>{handleTitleClick()}}>
                     NO. : {qna.qseq} | DATE : {qna.indate.substring(0, 10)} | TITLE : {qna.title}
+                  </div>
                 </div>
-                </div>
-                {qna.showContent && <div className="content">{qna.content}</div>}
-            </div>
+                <div className="content" style={{ display: showContent ? 'flex' : 'none' }}>{qna.content}</div>
+              </div>
+              
             ))}
             {qnaList.length === 0 && (
               <div className="row">
