@@ -48,7 +48,7 @@ function Chatbot() {
   return (
     <div className="chatbot-container">
       <button className="chatbot-button" onClick={toggleModal}>
-        Chatbot
+        Q&A
       </button>
       {isModalOpen && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
