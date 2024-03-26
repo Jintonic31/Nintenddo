@@ -3,6 +3,8 @@ package team.nt.controller;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import team.nt.Entity.Admins;
+import team.nt.dto.Paging;
 import team.nt.service.AdminService;
 
 @RestController
@@ -38,6 +41,20 @@ public class AdminController {
 			// System.out.println("/loginpage의 loginUser : " + mem);
 			result.put("msg", "ok");
 		}
+		return result;
+	}
+	
+	
+	@GetMapping("/productList/{page}")
+	public HashMap<String, Object> productlist(@PathVariable("page") int page){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		Paging paging = new Paging();
+		paging.setPage(page);
+		paging.setDisplayRow(5);
+		paging.cal();
+		
+		result.put("productlist", as.getProductList(paging));
+		result.put("paging", paging);
 		return result;
 	}
 	
