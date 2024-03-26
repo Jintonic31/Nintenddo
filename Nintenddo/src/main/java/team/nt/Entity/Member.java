@@ -13,6 +13,7 @@ import lombok.Data;
 public class Member {
 
 	@Id
+	
 	private String  email;
 	private String  pwd;
 	private String phone;
