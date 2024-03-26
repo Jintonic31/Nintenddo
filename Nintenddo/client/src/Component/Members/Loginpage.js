@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
 import '../../Style/Member/loginpage.css'
 import axios from 'axios'
 import { loginAction } from '../../store/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Loginpage() {
   const navigate = useNavigate();
@@ -13,7 +13,6 @@ function Loginpage() {
   const [pwd,setPwd] = useState();
   const [message, setMessage] = useState();
   const dispatch = useDispatch();
-  const loginUser = useSelector(state=>state.user);
 
   
 
@@ -23,7 +22,7 @@ function Loginpage() {
 
     try{
     let result = await axios.post("/api/members/loginpage", { email, pwd });
-      if(result.data.msg == 'ok'){
+      if(result.data.msg === 'ok'){
         alert("환영합니다!")
 
         result = await axios.post( '/api/members/getLoginUser' );
@@ -31,7 +30,7 @@ function Loginpage() {
         // console.log(result.data.loginUser);
         navigate('/');
         
-      }else if(result.data.msg=='해당 메일이 없습니다'){
+      }else if(result.data.msg==='해당 메일이 없습니다'){
         alert('해당 메일이 없습니다. 회원가입 후 이용 가능합니다.')
       }else if(result.data.msg=='패스워드가 틀립니다.'){
         alert('비밀번호가 틀렸습니다.')

@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
-import '../../Style/Member/loginpage.css'
 import axios from 'axios'
-import { loginAction } from '../../store/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
 import '../../Style/admin/Adminlogin.css'
 
 function Adminlogin() {
@@ -13,9 +10,6 @@ function Adminlogin() {
     const navigate = useNavigate();
     const [adminid,setAdminid] = useState();
     const [pwd,setPwd] = useState();
-    const [message, setMessage] = useState();
-    const dispatch = useDispatch();
-    const loginUser = useSelector(state=>state.user);
 
 
     async function onLogin(){
@@ -26,19 +20,13 @@ function Adminlogin() {
         let result = await axios.post("/api/admins/loginpage", { adminid, pwd });
           if(result.data.msg == 'ok'){
             alert("관리자님 환영합니다!")
-    
-            result = await axios.post( '/api/admins/getLoginUser' );
-            dispatch( loginAction( result.data.loginUser ) );
-            // console.log(result.data.loginUser);
-            navigate('/');
-            
+            navigate('/modifyproduct')
           }else if(result.data.msg=='해당 메일이 없습니다'){
             alert('해당 관리자 계정이 없습니다.')
           }else if(result.data.msg=='패스워드가 틀립니다.'){
             alert('비밀번호가 틀렸습니다.')
-          }else{
-            setMessage(result.data.msg);
-          }      
+          }
+
        }catch(err){
           alert("로그인 에러");
         }

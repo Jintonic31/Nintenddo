@@ -20,6 +20,7 @@ public class AdminController {
 	@Autowired
 	AdminService as;
 	
+	
 	@PostMapping("/loginpage")
 	public HashMap<String, Object> loginpage( @RequestBody Admins admins,  
 			HttpServletRequest request ){
@@ -39,4 +40,8 @@ public class AdminController {
 		}
 		return result;
 	}
+	
+
+	
+	
 }

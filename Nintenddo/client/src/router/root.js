@@ -29,6 +29,7 @@ const Orderall = lazy( ()=>import('../Component/Order/Orderall') )
 // Aboutus
 const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
 const Adminlogin = lazy( ()=>import('../Component/Admin/Adminlogin') )
+const Modifyproduct = lazy( ()=>import('../Component/Admin/Modifyproduct') )
 
 
 
@@ -105,6 +106,10 @@ const root = createBrowserRouter([
     {
         path:'adminlogin',
         element:<Suspense fallback={Loading}><Adminlogin /></Suspense>
+    },
+    {
+        path:'modifyproduct',
+        element:<Suspense fallback={Loading}><Modifyproduct /></Suspense>
     },
     
 
