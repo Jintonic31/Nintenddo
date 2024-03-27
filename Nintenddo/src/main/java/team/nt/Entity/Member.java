@@ -3,8 +3,6 @@ package team.nt.Entity;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -13,7 +11,7 @@ import lombok.Data;
 public class Member {
 
 	@Id
-	
+	private String userid;
 	private String  email;
 	private String  pwd;
 	private String phone;

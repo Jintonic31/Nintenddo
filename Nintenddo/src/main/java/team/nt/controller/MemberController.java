@@ -129,29 +129,31 @@ public class MemberController {
 	}
 	
 	
-	@PostMapping("/updatedeliveryinfo")
-	public HashMap<String, Object> updatedeliveryinfo(@RequestBody Member member, HttpServletRequest request){
-		
-		HashMap<String, Object> result = new HashMap<String, Object>();
-		HttpSession session = request.getSession();
-		
-		member.setPwd(((Member)session.getAttribute("loginUser")).getPwd());
-		member.setIndate(((Member)session.getAttribute("loginUser")).getIndate());
-		// Indate가 날라가는데.. 왜일까?
-		member.setProvider(((Member)session.getAttribute("loginUser")).getProvider());
-		member.setUseyn(((Member)session.getAttribute("loginUser")).getUseyn());
-		member.setByear(((Member)session.getAttribute("loginUser")).getByear());
-		member.setBmonth(((Member)session.getAttribute("loginUser")).getBmonth());
-		member.setBday(((Member)session.getAttribute("loginUser")).getBday());
-		member.setGender(((Member)session.getAttribute("loginUser")).getGender());
-		member.setCountry(((Member)session.getAttribute("loginUser")).getCountry());
-		Member mem = ms.updateMember(member);
-		session.setAttribute("loginUser", mem);
-		// System.out.println(mem);
-		
-		return null;
-	}
-	
+//	@PostMapping("/updatedeliveryinfo")
+//	public HashMap<String, Object> updatedeliveryinfo(@RequestBody Member member, HttpServletRequest request){
+//		
+//		HashMap<String, Object> result = new HashMap<String, Object>();
+//		HttpSession session = request.getSession();
+//		
+//		member.setUserid(((Member)session.getAttribute("loginUser")).getUserid());
+//		member.setEmail(((Member)session.getAttribute("loginUser")).getEmail());
+//		member.setPwd(((Member)session.getAttribute("loginUser")).getPwd());
+//		member.setIndate(((Member)session.getAttribute("loginUser")).getIndate());
+//		// Indate가 날라가는데.. 왜일까?
+//		member.setProvider(((Member)session.getAttribute("loginUser")).getProvider());
+//		member.setUseyn(((Member)session.getAttribute("loginUser")).getUseyn());
+//		member.setByear(((Member)session.getAttribute("loginUser")).getByear());
+//		member.setBmonth(((Member)session.getAttribute("loginUser")).getBmonth());
+//		member.setBday(((Member)session.getAttribute("loginUser")).getBday());
+//		member.setGender(((Member)session.getAttribute("loginUser")).getGender());
+//		member.setCountry(((Member)session.getAttribute("loginUser")).getCountry());
+//		Member mem = ms.updateMember(member);
+//		session.setAttribute("loginUser", mem);
+//		// System.out.println(mem);
+//		
+//		return null;
+//	}
+//	
 	
 	@RequestMapping("/kakaostart")
 	public @ResponseBody String kakaostart() {
@@ -210,12 +212,14 @@ public class MemberController {
 		KakaoProfile kakaoProfile = gson2.fromJson(sb2.toString(), KakaoProfile.class);
 		KakaoAccount ac = kakaoProfile.getAccount();
 		Profile pf = ac.getProfile();
+		System.out.println("id : " + kakaoProfile.getId());
 		System.out.println("KakaoAccount-Email : " + ac.getEmail());
 		
-		
-		Member member = ms.getMember( ac.getEmail() );
+		String kakaoUserId = "3402100894";
+		Member member = ms.getMember( kakaoUserId );
 		if( member == null) {
 			member = new Member();
+			member.setUserid( kakaoProfile.getId() );
 			member.setEmail( ac.getEmail() );
 			member.setProvider( "kakao" );
 			

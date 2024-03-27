@@ -6,6 +6,7 @@ public class KakaoProfile {
 	public String getId() {
 		return id;
 	}
+	
 	private KakaoAccount kakao_account;
 	public KakaoAccount getAccount() { return kakao_account; }
 	
@@ -36,6 +37,7 @@ public class KakaoProfile {
 		public class Profile{
 			private String nickname;
 			private String profile_image_url;
+			private String email;
 			public String getNickname() {
 				return nickname;
 			}
@@ -48,7 +50,9 @@ public class KakaoProfile {
 			public void setProfile_image_url(String profile_image_url) {
 				this.profile_image_url = profile_image_url;
 			}
-			
 		}
 	}
+
+
+
 }
