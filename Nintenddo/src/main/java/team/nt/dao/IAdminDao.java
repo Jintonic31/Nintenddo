@@ -9,4 +9,6 @@ public interface IAdminDao {
 
 	List<Product> getProductList(Paging paging);
 
+	Product getOneProduct(String pseq);
+
 }

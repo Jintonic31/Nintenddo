@@ -24,6 +24,16 @@ public class AdminDao implements IAdminDao{
 				.getResultList();
 		return list;
 	}
+
+	
+	@Override
+	public Product getOneProduct(String pseq) {
+		Product product = em.find(Product.class, pseq);
+		return product;
+	}
+	
+	
+	
 	
 	
 	

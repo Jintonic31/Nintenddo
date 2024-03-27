@@ -14,5 +14,7 @@ public class Pcategory {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer pcseq;
 	private String pcname;
+	
+	
 
 }

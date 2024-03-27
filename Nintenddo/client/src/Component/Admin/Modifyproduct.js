@@ -1,27 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Heading from '../../Component/Heading'
-import Footing from '../../Component/Footing'
+import Heading from '../Heading'
+import Footing from '../Footing'
 import axios from 'axios'
-import '../../Style/admin/Modifyproduct.css'
-
+import '../../Style/admin/ModifyProduct.css'
 
 function Modifyproduct() {
 
-    const [productList, setProductList] = useState();
-    const [paging, setPaging] = useState({});
     const navigate = useNavigate();
+    const [oneproduct, setOneProduct] = useState([]);
+
+    const [pcseq, setPcseq] = useState({});
+    const [pname, setPname] = useState();
+    const [content, setContent] = useState();
+    const [imgsrc, setImgsrc] = useState();
+    const [filename, setFilename] = useState();
+    const [price1, setPrice1] = useState();
+    const [price2, setPrice2] = useState();
+    const [price3, setPrice3] = useState();
+    const [bestyn, setBestyn] = useState();
+    const [useyn, setUseyn] = useState();
+    const [includes, setIncludes] = useState();
+
 
 
     useEffect(()=>{
-        axios.get('/api/admins/productList/1')
-        // ㄴ 1 : 최초 호출시 현재페이지(page)는 1부터 시작
+        axios.post('/api/admins/getoneproduct')
         .then((result)=>{
-            setProductList(result.data.productlist);
-            setPaging(result.data.paging);
+            setOneProduct(result.data.product);
+            setPcseq(result.data.pcseq.pcseq);
         })
         .catch((err)=>{console.error(err)})
-    }, [])
+    },[])
+
+
+
+    function imgup(e){
+        const formData = new FormData();
+        // ㄴ FormData : JavaScript를 통해 파일 업로드 및 기타 (HTML)폼 데이터를 서버로 전송하는 것이 가능 
+        // ㄴ (HTML)폼 데이터 : 사용자가 form태그 안에서 입력 필드(text, checkbox, radio 등)를 통해 정보를 제출할 수 있는 모든 데이터
+
+        formData.append('image', e.target.files[0]);
+        // ㄴ 파일 입력 필드에서 선택한 첫번째 파일을 image라는 이름으로 추가(append)
+
+        axios.post('/api/admins/imgup', formData)
+        .then((result)=>{
+            setFilename(result.data.filename);
+            setImgsrc(`http://localhost:8070/modify_product/${result.data.filename}`)
+        })
+        .catch((err)=>{console.error(err)})
+    }
+
+
+    function onPcseq(pcseq) {
+        if (pcseq === 1) {return "하드웨어";}
+        else if (pcseq === 2) {return "소프트웨어";}
+        else if (pcseq === 3) {return "아미보";}
+        else if (pcseq === 4) {return "앱";}
+        else if (pcseq === 5) {return "컨트롤러";}
+        else if (pcseq === 6) {return "조이콘";}
+        else if (pcseq === 7) {return "기타";}
+    }
+
 
     return (
         <div className='Cnt'>
@@ -29,41 +69,84 @@ function Modifyproduct() {
             <Heading />
 
             <div className='modifypdtWrap'>
-                <div className='modifyTable'>
-                    <div className='modifyTitle'>
-                        <div className='modifycol'>번호</div>
-                        <div className='modifycol'>상품명</div>
-                        <div className='modifycol'>원가</div>
-                        <div className='modifycol'>판매가</div>
-                        <div className='modifycol'>등록일</div>
-                        <div className='modifycol'>사용유무</div>
+
+                <div className='modifypdtimg'>
+                    <div>Before</div>
+                    <img src={`http://localhost:8070/images/product/productdetail/${oneproduct.image}`} alt='' />
+                    <div>After</div>
+                    <img src={imgsrc} alt='' />
+                </div>
+
+                <div className='modifypdttext'>
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>분류</div>
+                        <input className='inputbox' type='text' value={onPcseq(pcseq)} readOnly />
                     </div>
-                    {
-                        (productList)?(
-                            productList.map((item, idx) => {
-                                return(
-                                    <div className='modifyTitle'>
-                                        <div className='modifycol'>{item.pseq}</div>
-                                        <div className='modifycol'>{item.pname}</div>
-                                        <div className='modifycol'>{new Intl.NumberFormat('ko-KR').format(item.price2)}</div>
-                                        <div className='modifycol'>{new Intl.NumberFormat('ko-KR').format(item.price1)}</div>
-                                        <div className='modifycol'>{item.indate.substring(0,10)}</div>
-                                        <div className='modifycol'>{item.useyn}</div>
-                                    </div>
-                                )
-                            })
-                        ):(null)
-                    }
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>상품명</div>
+                        <input className='inputbox' type='text' placeholder={oneproduct.pname} value={pname} onChange={(e)=>{setPname(e.currentTarget.value)}} />
+                    </div>
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>상품정보</div>
+                        <textarea className='inputbox'  placeholder={oneproduct.content} value={content} style={{height:"150px", width:"98%"}} type='text' onChange={(e)=>{setContent(e.currentTarget.value)}} />
+                    </div>
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>동봉품</div>
+                        <input className='inputbox' type='text' placeholder={oneproduct.includes} value={includes} onChange={(e)=>{setIncludes(e.currentTarget.value)}} />
+                    </div>
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>
+                            <div className='price'>판매가</div>
+                            <div className='price'>원가</div>
+                            <div className='price'>마진</div>
+                        </div>
+                        <div className='inputboxdiv'>
+                            <input type='text' placeholder={oneproduct.price1} value={price1} onChange={(e)=>{setPrice1(e.currentTarget.value)}} />
+                            <input type='text' placeholder={oneproduct.price2} value={price2}  onChange={(e)=>{setPrice2(e.currentTarget.value)}} />
+                            <input type='text' placeholder={oneproduct.price3} value={price3}  onChange={(e)=>{setPrice3(e.currentTarget.value)}} />
+                        </div>
+                    </div>
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>
+                            <div className='yesorno'>사용 여부</div>
+                            <div className='yesorno'>인기 여부</div>
+                        </div>
+                        <div className='inputboxdiv'>
+                            <select onChange={(e) => { setUseyn(e.target.value); }}>
+                                <option value='' selected>필수선택</option>
+                                <option value={'Y'}>Y</option>
+                                <option value={'N'}>N</option>
+                            </select>
+                            <select onChange={(e) => { setBestyn(e.target.value); }}>
+                                <option value='' selected>필수선택</option>
+                                <option value={'Y'}>Y</option>
+                                <option value={'N'}>N</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className='onemodifyfield'>
+                        <div className='subject'>이미지</div>
+                        <input className='inputbox' type='file' onChange={ (e)=>{imgup(e)} } />
+                    </div>
+
                 </div>
                 
-            1. subMenu
-            2. useyn을 N으로 바꾼다
-            2. 새프로덕트를 insert한다
-            4. 상품의 playmode를 지정한다.
             </div>
 
+            <div className='modifyBtns'>
+                <button className='goOrderBtn' onClick={()=>{navigate('/adminproductlist')}}>목록으로</button>
+                <button className='goCartBtn' onClick={()=>{onsubmit()}}>저장하기</button>
+            </div>
+                
+
             <Footing />
-        
         </div>
     )
 }

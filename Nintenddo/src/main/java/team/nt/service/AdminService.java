@@ -36,6 +36,10 @@ public class AdminService {
 	public List<Product> getProductList(Paging paging) {
 		return iadao.getProductList(paging);
 	}
+
+	public Product getOneProduct(String pseq) {
+		return iadao.getOneProduct(pseq);
+	}
 	
 
 }

@@ -20,7 +20,7 @@ function Adminlogin() {
         let result = await axios.post("/api/admins/loginpage", { adminid, pwd });
           if(result.data.msg == 'ok'){
             alert("관리자님 환영합니다!")
-            navigate('/modifyproduct')
+            navigate('/adminproductlist')
           }else if(result.data.msg=='해당 메일이 없습니다'){
             alert('해당 관리자 계정이 없습니다.')
           }else if(result.data.msg=='패스워드가 틀립니다.'){
