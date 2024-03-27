@@ -20,10 +20,8 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer pseq;
 	
-	@ManyToOne
-	@JoinColumn(name = "pcseq", referencedColumnName = "pcseq")
-	private Pcategory pcseq;
-	
+
+	private Integer pcseq;	
 	private String pname;
 	private String content;
 	private String image;

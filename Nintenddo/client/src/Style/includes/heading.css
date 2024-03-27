@@ -91,6 +91,7 @@
 }
 .drophardetc{
   display:flex;
+  width:100%;
   flex-direction:row;
   align-items:center;
   cursor:pointer;
@@ -98,16 +99,27 @@
 .drophardetc div{
   flex:1;
   display:flex;
-  width:220px;
-  flex-direction:row;
+  flex-direction:column;
+  width:100%;
   justify-content:center;
   align-items:center;
-  font-size:90%;
+  font-size:95%;
   font-weight:bold;
 }
-.drophardetc div img{flex:1;}
 .drophardetc div div{
-  flex:3;
+  display:flex;
+  flex-direction:row;
+  width:70%;
+  height:80px;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.dropunder div{
+
+}
+.dropunder .undertitle{
   display:flex;
   flex-direction:column;
 }

@@ -116,26 +116,37 @@ public class AdminController {
 //		System.out.println("dt : " + dt);
 		
 		String filename = file.getOriginalFilename();
-		System.out.println("filename : " + filename);
+		// System.out.println("filename : " + filename);
 		
 		String fn1 = filename.substring(0, filename.indexOf("."));	// . 기준 왼쪽 파일 이름 추출
-		System.out.println("fn1 : " + fn1);
+		// System.out.println("fn1 : " + fn1);
 		
 		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
-		System.out.println("fn2 : " + fn2);
+		// System.out.println("fn2 : " + fn2);
 		
 		String uploadPath = path + "/" + fn1 + fn2;
-		System.out.println(uploadPath);
+		// System.out.println(uploadPath);
 		
 		try {
 			file.transferTo(new File(uploadPath));
 			result.put("filename", fn1 + fn2);
-			// ㄴ filename을 파일이름 + 현재시간밀리초 + 확장자 와 함께 보냄
+			// ㄴ filename을 파일이름 + 확장자 와 함께 보냄
 		}catch(IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
 		
 		return result;
+	}
+	
+	
+	@PostMapping("/updateproduct")
+	public HashMap<String, Object> updateproduct(@RequestBody Product product){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		Product pdt = as.updateProduct(product);
+		
+		return null;
 	}
 	
 

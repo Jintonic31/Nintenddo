@@ -67,7 +67,7 @@ function Adminproductlist() {
             <div className='adminpdtlistWrap'>
                 <div className='apdtlabel'>
                     <div className='redbar'>&nbsp;</div>
-                    Modify Product
+                    All Product
                 </div>
                 <div className='apdtTable'>
                     <div className='apdtTitle'>

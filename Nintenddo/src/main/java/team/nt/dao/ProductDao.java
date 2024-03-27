@@ -21,7 +21,7 @@ public class ProductDao implements IProductDao{
 	@Override
 	public List<Product> getMainSoftList(Integer pcseq) {
 		
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
 		// p. : Product 엔티티의
 		// pcseq. : pcseq이고 이 pcseq는
 		// pcseq : Pcategory 엔티티의 식별자(pk)이다
@@ -38,7 +38,7 @@ public class ProductDao implements IProductDao{
 
 	@Override
 	public List<Product> getHardList() {
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
 		TypedQuery<Product> query = em.createQuery(sql, Product.class);
 		query.setParameter("pcseq", "1");
 		query.setParameter("useyn", "Y");
@@ -56,7 +56,7 @@ public class ProductDao implements IProductDao{
 
 	@Override
 	public List<Product> getControlList() {
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
 		TypedQuery<Product> query = em.createQuery(sql, Product.class);
 		query.setParameter("pcseq", "5");
 		query.setParameter("useyn", "Y");
@@ -73,7 +73,7 @@ public class ProductDao implements IProductDao{
 
 	@Override
 	public List<Product> getJoyList() {
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
 		TypedQuery<Product> query = em.createQuery(sql, Product.class);
 		query.setParameter("pcseq", "6");
 		query.setParameter("useyn", "Y");
@@ -82,7 +82,7 @@ public class ProductDao implements IProductDao{
 
 	@Override
 	public List<Product> getChargeList() {
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
 		TypedQuery<Product> query = em.createQuery(sql, Product.class);
 		query.setParameter("pcseq", "7");
 		query.setParameter("useyn", "Y");
@@ -91,7 +91,7 @@ public class ProductDao implements IProductDao{
 
 	@Override
 	public List<Product> getUnreleaseList(Integer pcseq) {
-		String sql = "select p from Product p where p.pcseq.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
 		
 		TypedQuery<Product> query = em.createQuery(sql, Product.class);
 		

@@ -15,8 +15,26 @@
     align-items:center;
     width:70%;
     height:100%;
-    border:1px solid blue;
 }
+
+.modifylabel{
+    flex:1;
+    display:flex;
+    align-items:center;
+    width:70%;
+    font-size:1.5rem;
+    font-weight:bold;
+    color:rgb(53, 52, 52);
+    padding:20px 0;
+    background-color:lightgray;
+    margin:50px 0 50px 0;
+  }
+  .modifylabel .redbar{
+    width:8px;
+    height:25px;
+    background-color:rgb(230, 0, 18);
+    margin:0 20px;
+  }
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
@@ -108,4 +126,14 @@
     width:70%;
     height:100%;
     margin:70px 0;
-  }
+}
+.modifyBtns button{
+    width:300px;
+    height:40px;
+    background-color:rgb(230, 0, 18);
+    color:white;
+    font-size:1rem;
+    font-weight:bold;
+    border:none;
+    margin-right:50px;
+}

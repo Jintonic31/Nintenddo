@@ -11,4 +11,6 @@ public interface IAdminDao {
 
 	Product getOneProduct(String pseq);
 
+	Product updateProduct(Product product);
+
 }

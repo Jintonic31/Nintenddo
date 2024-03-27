@@ -10,7 +10,7 @@ function Modifyproduct() {
     const navigate = useNavigate();
     const [oneproduct, setOneProduct] = useState([]);
 
-    const [pcseq, setPcseq] = useState({});
+    const [pcseq, setPcseq] = useState();
     const [pname, setPname] = useState();
     const [content, setContent] = useState();
     const [imgsrc, setImgsrc] = useState();
@@ -28,7 +28,6 @@ function Modifyproduct() {
         axios.post('/api/admins/getoneproduct')
         .then((result)=>{
             setOneProduct(result.data.product);
-            setPcseq(result.data.pcseq.pcseq);
         })
         .catch((err)=>{console.error(err)})
     },[])
@@ -62,11 +61,22 @@ function Modifyproduct() {
         else if (pcseq === 7) {return "기타";}
     }
 
+    function onsubmit(){
+        axios.post('/api/admins/updateproduct', {pseq:oneproduct.pseq, pcseq, pname, content, includes, price1, price2, price3, useyn, bestyn, image:filename})
+        .then((result)=>{})
+        .catch((err)=>{console.error(err)})
+    }
+
 
     return (
         <div className='Cnt'>
 
             <Heading />
+
+            <div className='modifylabel'>
+                <div className='redbar'>&nbsp;</div>
+                Modify Product
+            </div>
 
             <div className='modifypdtWrap'>
 
@@ -80,8 +90,13 @@ function Modifyproduct() {
                 <div className='modifypdttext'>
 
                     <div className='onemodifyfield'>
+                        <div className='subject'>NO.</div>
+                        <input className='inputbox' type='text' value={oneproduct.pseq} readOnly />
+                    </div>
+
+                    <div className='onemodifyfield'>
                         <div className='subject'>분류</div>
-                        <input className='inputbox' type='text' value={onPcseq(pcseq)} readOnly />
+                        <input className='inputbox' type='text' value={onPcseq(oneproduct.pcseq)} readOnly />
                     </div>
 
                     <div className='onemodifyfield'>
@@ -108,7 +123,7 @@ function Modifyproduct() {
                         <div className='inputboxdiv'>
                             <input type='text' placeholder={oneproduct.price1} value={price1} onChange={(e)=>{setPrice1(e.currentTarget.value)}} />
                             <input type='text' placeholder={oneproduct.price2} value={price2}  onChange={(e)=>{setPrice2(e.currentTarget.value)}} />
-                            <input type='text' placeholder={oneproduct.price3} value={price3}  onChange={(e)=>{setPrice3(e.currentTarget.value)}} />
+                            <input type='text' placeholder={oneproduct.price3} value={price1-price2}  onChange={(e)=>{setPrice3(e.currentTarget.value)}} />
                         </div>
                     </div>
 

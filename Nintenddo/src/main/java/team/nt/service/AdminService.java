@@ -23,6 +23,7 @@ public class AdminService {
 	@Autowired
 	AdminRepository ar;
 
+
 	public Admins getAdmin(String adminid) {
 		Optional<Admins> mem = ar.findById(adminid);
 		if(!mem.isPresent()) {
@@ -39,6 +40,10 @@ public class AdminService {
 
 	public Product getOneProduct(String pseq) {
 		return iadao.getOneProduct(pseq);
+	}
+
+	public Product updateProduct(Product product) {
+		return iadao.updateProduct(product);
 	}
 	
 
