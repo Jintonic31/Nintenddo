@@ -112,7 +112,7 @@ function Hardware() {
                             hardList.map((hard, idx)=>{
                                 return(
                                     <div className='hardwareImgone'>
-                                        <img src={`http://localhost:8070/images/product/hardware/${hard.image}`} alt=""/>
+                                        <img src={`http://localhost:8070/images/product/productdetail/${hard.image}`} alt=""/>
                                         <span className='hardOnename'>{hard.pname}</span>
                                         <span className='hardOneprice'><span>희망소비자가격 :</span>
                                         {new Intl.NumberFormat('ko-KR').format(hard.price1)}</span>
@@ -139,17 +139,17 @@ function Hardware() {
                                     return(
                                         <div className='ableModeKind'>
                                             <div className='tvmode'>
-                                                <img src={`http://localhost:8070/images/product/hardware/${mode.tvmode}`} alt=""/>
-                                                <img src='http://localhost:8070/images/product/hardware/tvmodetext.png' alt=""/>
+                                                <img src={`http://localhost:8070/images/product/productdetail/${mode.tvmode}`} alt=""/>
+                                                <img src='http://localhost:8070/images/product/productdetail/tvmodetext.png' alt=""/>
 
                                             </div>
                                             <div className='tabletmode'>
-                                                <img src={`http://localhost:8070/images/product/hardware/${mode.tabletmode}`} alt=""/>
-                                                <img src='http://localhost:8070/images/product/hardware/tabletmodetext.png' alt=""/>
+                                                <img src={`http://localhost:8070/images/product/productdetail/${mode.tabletmode}`} alt=""/>
+                                                <img src='http://localhost:8070/images/product/productdetail/tabletmodetext.png' alt=""/>
                                             </div>
                                             <div className='handmode'>
-                                                <img src={`http://localhost:8070/images/product/hardware/${mode.handmode}`} alt=""/>
-                                                <img src='http://localhost:8070/images/product/hardware/handmodetext.png' alt=""/>
+                                                <img src={`http://localhost:8070/images/product/productdetail/${mode.handmode}`} alt=""/>
+                                                <img src='http://localhost:8070/images/product/productdetail/handmodetext.png' alt=""/>
                                             </div>
                                         </div>
                                         
@@ -168,9 +168,9 @@ function Hardware() {
                     </div>
 
                     <div className='ableSoftImg'>
-                        <img src='http://localhost:8070/images/product/hardware/yessoft.png' alt=""/>
-                        <img src='http://localhost:8070/images/product/hardware/yessoft.png' alt=""/>
-                        <img src='http://localhost:8070/images/product/hardware/nosoft.png' alt=""/>
+                        <img src='http://localhost:8070/images/product/productdetail/yessoft.png' alt=""/>
+                        <img src='http://localhost:8070/images/product/productdetail/yessoft.png' alt=""/>
+                        <img src='http://localhost:8070/images/product/productdetail/nosoft.png' alt=""/>
                     </div>
 
                 </div>
@@ -181,14 +181,14 @@ function Hardware() {
                         <div>&nbsp;</div>
                         <Link to={'/controller'}>
                             Joy-Con (컨트롤러)&nbsp;&nbsp;
-                            <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt=""/>
+                            <img src='http://localhost:8070/images/product/productdetail/golinkicon.png' alt=""/>
                         </Link>
                     </div>
 
                     <div className='ableJoyconImg'>
-                        <img src='http://localhost:8070/images/product/hardware/yesjoycon.png' alt=""/>
-                        <img src='http://localhost:8070/images/product/hardware/yesjoycon.png' alt=""/>
-                        <img src='http://localhost:8070/images/product/hardware/nojoycon.png' alt=""/>
+                        <img src='http://localhost:8070/images/product/productdetail/yesjoycon.png' alt=""/>
+                        <img src='http://localhost:8070/images/product/productdetail/yesjoycon.png' alt=""/>
+                        <img src='http://localhost:8070/images/product/productdetail/nojoycon.png' alt=""/>
                     </div>
 
                 </div>

@@ -15,9 +15,9 @@ function Controller() {
     const navigate = useNavigate();
 
     const [imgSrc, setImgSrc] = useState({
-        1: "http://localhost:8070/images/product/hardware/controllernav1.png",
-        3: "http://localhost:8070/images/product/hardware/controllernav3.png",
-        5: "http://localhost:8070/images/product/hardware/controllernav5.png"
+        1: "http://localhost:8070/images/product/productdetail/controllernav1.png",
+        3: "http://localhost:8070/images/product/productdetail/controllernav3.png",
+        5: "http://localhost:8070/images/product/productdetail/controllernav5.png"
     })
 
     const navItems = [
@@ -27,11 +27,11 @@ function Controller() {
     ];
 
     const handleMouseOver = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/product/hardware/controllernav${id + 1}.png` });
+        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/product/productdetail/controllernav${id + 1}.png` });
     }
 
     const handleMouseOut = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/product/hardware/controllernav${id}.png` });
+        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/product/productdetail/controllernav${id}.png` });
     }
 
     const [controlList, setControlList] = useState([]);
@@ -152,7 +152,7 @@ function Controller() {
 
                 <div className='controller'>
                     <div className='imgwrap'>
-                        <img src='http://localhost:8070/images/product/hardware/controllericon.png' alt='' />
+                        <img src='http://localhost:8070/images/product/productdetail/controllericon.png' alt='' />
                     </div>
                     <div className='aboutcontroller' ref={viewPoint1}>컨트롤러 관련</div>
 
@@ -163,7 +163,7 @@ function Controller() {
                         controlList && controlList.length >= 1 && (
                             <div className='controlListOne'>
                                 <div className='oneimg'>
-                                    <img src={`http://localhost:8070/images/product/hardware/${controlList[0].image}`} alt='' />
+                                    <img src={`http://localhost:8070/imagesproduct/productdetail/${controlList[0].image}`} alt='' />
                                 </div>
                                 <div className='onetext'>
 
@@ -202,7 +202,7 @@ function Controller() {
                                     controlList.map((list, idx)=>{
                                         return(
                                             <div onClick={()=>{openModal(list.pseq)}} key={idx}>
-                                                <img src={`http://localhost:8070/images/product/hardware/${list.image}`} alt='' />
+                                                <img src={`http://localhost:8070/images/product/productdetail/${list.image}`} alt='' />
                                             </div>
                                         )
                                     })
@@ -215,7 +215,7 @@ function Controller() {
                     <br /><br /><br />
 
                     <div className='imgwrap'>
-                        <img src='http://localhost:8070/images/product/hardware/joyconicon.png' alt='' />
+                        <img src='http://localhost:8070/images/product/productdetail/joyconicon.png' alt='' />
                     </div>
                     <div className='aboutcontroller' ref={viewPoint2}>Joy-Con 관련</div>
 
@@ -226,7 +226,7 @@ function Controller() {
                         joyList && joyList.length >= 1 && (
                             <div className='controlListOne'>
                                 <div className='oneimg'>
-                                    <img src={`http://localhost:8070/images/product/hardware/${joyList[0].image}`} alt='' />
+                                    <img src={`http://localhost:8070/images/product/productdetail/${joyList[0].image}`} alt='' />
                                 </div>
                                 <div className='onetext'>
 
@@ -265,7 +265,7 @@ function Controller() {
                                     joyList.map((list, idx)=>{
                                         return(
                                             <div onClick={()=>{openModal(list.pseq)}} key={idx}>
-                                                <img src={`http://localhost:8070/images/product/hardware/${list.image}`} alt='' />
+                                                <img src={`http://localhost:8070/images/product/productdetail/${list.image}`} alt='' />
                                             </div>
                                         )
                                     })
@@ -278,7 +278,7 @@ function Controller() {
                     <br /><br /><br />
 
                     <div className='imgwrap'>
-                        <img src='http://localhost:8070/images/product/hardware/chargericon.png' alt='' />
+                        <img src='http://localhost:8070/images/product/productdetail/chargericon.png' alt='' />
                     </div>
                     <div className='aboutcontroller' id='section3' ref={viewPoint3}>기타 관련</div>
 
@@ -289,7 +289,7 @@ function Controller() {
                         chargeLIst && chargeLIst.length >= 1 && (
                             <div className='controlListOne'>
                                 <div className='oneimg'>
-                                    <img src={`http://localhost:8070/images/product/hardware/${chargeLIst[0].image}`} alt='' />
+                                    <img src={`http://localhost:8070/images/product/productdetail/${chargeLIst[0].image}`} alt='' />
                                 </div>
                                 <div className='onetext'>
 
@@ -328,7 +328,7 @@ function Controller() {
                                     chargeLIst.map((list, idx)=>{
                                         return(
                                             <div onClick={()=>{openModal(list.pseq)}} key={idx}>
-                                                <img src={`http://localhost:8070/images/product/hardware/${list.image}`} alt='' />
+                                                <img src={`http://localhost:8070/images/product/productdetail/${list.image}`} alt='' />
                                             </div>
                                         )
                                     })

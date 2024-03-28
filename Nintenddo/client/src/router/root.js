@@ -31,6 +31,8 @@ const Aboutus = lazy( ()=>import('../Component/Aboutus/Aboutus') )
 const Adminlogin = lazy( ()=>import('../Component/Admin/Adminlogin') )
 const Adminproductlist = lazy( ()=>import('../Component/Admin/Adminproductlist') )
 const Modifyproduct = lazy( ()=>import('../Component/Admin/Modifyproduct') )
+const Insertproduct = lazy( ()=>import('../Component/Admin/Insertproduct') )
+
 
 
 
@@ -115,6 +117,10 @@ const root = createBrowserRouter([
     {
         path:'modifyproduct',
         element:<Suspense fallback={Loading}><Modifyproduct /></Suspense>
+    },
+    {
+        path:'insertproduct',
+        element:<Suspense fallback={Loading}><Insertproduct /></Suspense>
     },
     
 

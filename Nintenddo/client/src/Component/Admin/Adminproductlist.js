@@ -95,6 +95,10 @@ function Adminproductlist() {
                         ):(null)
                     }
                 </div>
+
+                <div className='apdtBtns'>
+                    <button onClick={()=>{navigate('/insertproduct')}}>상품등록</button>
+                </div>
                 
             </div>
 

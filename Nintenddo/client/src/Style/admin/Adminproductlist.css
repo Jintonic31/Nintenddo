@@ -46,7 +46,7 @@
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  margin-bottom:70px;
+  margin-bottom:50px;
 }
 
 .apdtTitle{
@@ -80,6 +80,25 @@
 .inapdtcol{flex:1;}
 .inapdtcol:nth-child(2){
   flex:2
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.apdtBtns{
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:right;
+}
+.apdtBtns button{
+  width:200px;
+  height:40px;
+  font-size:1rem;
+  font-weight:bold;
+  color:white;
+  background-color:rgb(230, 0, 18);
+  border:none;
+  text-align:center;
 }
 
 

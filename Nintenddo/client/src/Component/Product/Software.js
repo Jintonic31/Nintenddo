@@ -75,7 +75,7 @@ function Software() {
                             softList.slice(0,8).map((soft, idx)=>{
                                 return(
                                     <div className='softBannerImg'>
-                                        <img src={`http://localhost:8070/images/product/software/${soft.image}`} alt='' />
+                                        <img src={`http://localhost:8070/images/product/productdetail/${soft.image}`} alt='' />
                                     </div>
                                 )
                             })
@@ -85,7 +85,7 @@ function Software() {
 
                 <div className='searchSoft'>
                     <input type='text' placeholder='키워드를 입력해주세요' value={keyword} onChange={handleKeywordChange} />
-                    <img src='http://localhost:8070/images/product/software/gosearch.png' alt='' />
+                    <img src='http://localhost:8070/images/product/productdetail/gosearch.png' alt='' />
                 </div>
 
 
@@ -105,7 +105,7 @@ function Software() {
                                 return(
                                     <div className='softwareList' onClick={()=>{openModal(soft.pseq)}}>
                                         <div className='softlistImage'>
-                                            <img src={`http://localhost:8070/images/product/software/${soft.image}`} alt='' />
+                                            <img src={`http://localhost:8070/images/product/productdetail/${soft.image}`} alt='' />
                                         </div>
                                         
                                         <div className='softlisthardware'>

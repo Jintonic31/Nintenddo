@@ -28,7 +28,7 @@ function Mainsoftware() {
                             return(
                                 <div className='softList'>
                                     <div className='slistImage'>
-                                        <img src={`http://localhost:8070/images/product/software/${soft.image}`} />
+                                        <img src={`http://localhost:8070/images/product/productdetail/${soft.image}`} />
                                     </div>
                                     
                                     <div className='slisthardware'>

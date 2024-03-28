@@ -2,8 +2,8 @@ package team.nt.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +19,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import team.nt.Entity.Admins;
+import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
 import team.nt.dto.Paging;
 import team.nt.service.AdminService;
@@ -105,11 +106,12 @@ public class AdminController {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
-		String path = context.getRealPath("/modify_product");
+		String path = context.getRealPath("/images");
+		String path2 = "product/productdetail/";
 		// ㄴ getRealPath() :  웹 애플리케이션 컨텍스트 내에서 특정 경로에 해당하는 실제 파일 시스템 경로를 반환하는 데 사용
 		// ㄴ webbapp 바로 아래 급의 폴더에 한정해 괄호 안의 폴더 경로를 자동으로 찾아주는 듯?
 		
-		System.out.println(path);
+		// System.out.println(path);
 		
 //		Calendar today = Calendar.getInstance();
 //		long dt = today.getTimeInMillis();
@@ -124,8 +126,9 @@ public class AdminController {
 		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
 		// System.out.println("fn2 : " + fn2);
 		
-		String uploadPath = path + "/" + fn1 + fn2;
+		String uploadPath = path + "/" + path2 + fn1 + fn2;
 		// System.out.println(uploadPath);
+		// System.out.println(uploadPath2);
 		
 		try {
 			file.transferTo(new File(uploadPath));
@@ -149,6 +152,19 @@ public class AdminController {
 		return null;
 	}
 	
+	
+	@GetMapping("/getPcategory")
+	public List<Pcategory> getPcategory(){
+		List<Pcategory> list = as.getPcategory();
+		return list;
+	}
+	
+	
+	@PostMapping("/insertproduct")
+	public HashMap<String, Object> insertproduct(@RequestBody Product product){
+		as.insertproduct(product);
+		return null;
+	}
 
 	
 	

@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import Heading from '../Heading'
 import Footing from '../Footing'
 import axios from 'axios'
-import '../../Style/admin/ModifyProduct.css'
+import '../../Style/admin/InsertProduct.css'
 
-function Modifyproduct() {
+function Insertproduct() {
 
     const navigate = useNavigate();
-    const [oneproduct, setOneProduct] = useState([]);
 
+    const [pcategory, setPcategory] = useState([]);
     const [pcseq, setPcseq] = useState();
     const [pname, setPname] = useState();
     const [content, setContent] = useState();
@@ -23,15 +23,11 @@ function Modifyproduct() {
     const [includes, setIncludes] = useState();
 
 
-
     useEffect(()=>{
-        axios.post('/api/admins/getoneproduct')
-        .then((result)=>{
-            setOneProduct(result.data.product);
-        })
+        axios.get('/api/admins/getPcategory')
+        .then((result)=>{setPcategory(result.data);})
         .catch((err)=>{console.error(err)})
     },[])
-
 
 
     function imgup(e){
@@ -50,22 +46,11 @@ function Modifyproduct() {
         .catch((err)=>{console.error(err)})
     }
 
-
-    function onPcseq(pcseq) {
-        if (pcseq === 1) {return "하드웨어";}
-        else if (pcseq === 2) {return "소프트웨어";}
-        else if (pcseq === 3) {return "아미보";}
-        else if (pcseq === 4) {return "앱";}
-        else if (pcseq === 5) {return "컨트롤러";}
-        else if (pcseq === 6) {return "조이콘";}
-        else if (pcseq === 7) {return "기타";}
-    }
-
     function onsubmit(){
-        axios.post('/api/admins/updateproduct', {pseq:oneproduct.pseq, pcseq, pname, content, includes, price1, price2, price3, useyn, bestyn, image:filename})
+        axios.post('/api/admins/insertproduct', {pcseq, pname, content, includes, price1, price2, price3, useyn, bestyn, image:filename})
         .then((result)=>{
-            alert('수정 완료. 목록으로 돌아갑니다.')
-            navigate('/adminproductlist')
+            alert('등록 완료. 목록으로 이동합니다.')
+            navigate('/adminproductlist');
         })
         .catch((err)=>{console.error(err)})
     }
@@ -78,43 +63,48 @@ function Modifyproduct() {
 
             <div className='modifylabel'>
                 <div className='redbar'>&nbsp;</div>
-                Modify Product
+                Insert Product
             </div>
 
             <div className='modifypdtWrap'>
 
                 <div className='modifypdtimg'>
-                    <div>Before</div>
-                    <img src={`http://localhost:8070/images/product/productdetail/${oneproduct.image}`} alt='' />
-                    <div>After</div>
-                    <img src={imgsrc} alt='수정 후 이미지' />
+                    <img src={imgsrc} alt='상품 이미지' />
                 </div>
 
                 <div className='modifypdttext'>
 
                     <div className='onemodifyfield'>
-                        <div className='subject'>NO.</div>
-                        <input className='inputbox' type='text' value={oneproduct.pseq} readOnly />
-                    </div>
-
-                    <div className='onemodifyfield'>
                         <div className='subject'>분류</div>
-                        <input className='inputbox' type='text' value={onPcseq(oneproduct.pcseq)} readOnly />
+                        <select onChange={(e) => { setPcseq(e.target.value); }}>
+                            {
+                                (pcategory)?(
+                                    pcategory.map((category, idx)=>{
+                                        return(
+                                            <option value={category.pcseq}>
+                                                {category.pcname}
+                                            </option>
+                                        )
+                                    })
+                                ):(null)
+                            }
+                        </select>
+
                     </div>
 
                     <div className='onemodifyfield'>
                         <div className='subject'>상품명</div>
-                        <input className='inputbox' type='text' placeholder={oneproduct.pname} value={pname} onChange={(e)=>{setPname(e.currentTarget.value)}} />
+                        <input className='inputbox' type='text' placeholder='입력란' value={pname} onChange={(e)=>{setPname(e.currentTarget.value)}} />
                     </div>
 
                     <div className='onemodifyfield'>
                         <div className='subject'>상품정보</div>
-                        <textarea className='inputbox'  placeholder={oneproduct.content} value={content} style={{height:"150px", width:"98%"}} type='text' onChange={(e)=>{setContent(e.currentTarget.value)}} />
+                        <textarea className='inputbox'  placeholder='입력란' value={content} style={{height:"150px", width:"98%"}} type='text' onChange={(e)=>{setContent(e.currentTarget.value)}} />
                     </div>
 
                     <div className='onemodifyfield'>
                         <div className='subject'>동봉품</div>
-                        <input className='inputbox' type='text' placeholder={oneproduct.includes} value={includes} onChange={(e)=>{setIncludes(e.currentTarget.value)}} />
+                        <input className='inputbox' type='text' placeholder='입력란' value={includes} onChange={(e)=>{setIncludes(e.currentTarget.value)}} />
                     </div>
 
                     <div className='onemodifyfield'>
@@ -124,9 +114,9 @@ function Modifyproduct() {
                             <div className='price'>마진</div>
                         </div>
                         <div className='inputboxdiv'>
-                            <input type='text' placeholder={oneproduct.price1} value={price1} onChange={(e)=>{setPrice1(e.currentTarget.value)}} />
-                            <input type='text' placeholder={oneproduct.price2} value={price2}  onChange={(e)=>{setPrice2(e.currentTarget.value)}} />
-                            <input type='text' placeholder={oneproduct.price3} value={price3}  onChange={(e)=>{setPrice3(e.currentTarget.value)}} />
+                            <input type='text' placeholder='입력란' value={price1} onChange={(e)=>{setPrice1(e.currentTarget.value)}} />
+                            <input type='text' placeholder='입력란' value={price2}  onChange={(e)=>{setPrice2(e.currentTarget.value)}} />
+                            <input type='text' placeholder='입력란' value={price3}  onChange={(e)=>{setPrice3(e.currentTarget.value)}} />
                         </div>
                     </div>
 
@@ -162,11 +152,11 @@ function Modifyproduct() {
                 <button onClick={()=>{navigate('/adminproductlist')}}>목록으로</button>
                 <button onClick={()=>{onsubmit()}}>저장하기</button>
             </div>
-                
 
             <Footing />
+
         </div>
     )
 }
 
-export default Modifyproduct
+export default Insertproduct

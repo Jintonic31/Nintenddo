@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
+import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
 import team.nt.dto.Paging;
 
@@ -40,7 +41,8 @@ public class AdminDao implements IAdminDao{
 				+ "p.includes= :includes, p.price1= :price1, p.price2= :price2, p.price3= :price3, "
 				+ "p.useyn= :useyn, p.bestyn= :bestyn, p.image= :image where p.pseq= :pseq";
 		
-		TypedQuery<Product> query = em.createQuery(sql, Product.class);
+		Query query = em.createQuery(sql); // Query 객체 사용
+		
 		query.setParameter("pname", product.getPname());
 		query.setParameter("content", product.getContent());
 		query.setParameter("includes", product.getIncludes());
@@ -52,7 +54,18 @@ public class AdminDao implements IAdminDao{
 		query.setParameter("image", product.getImage());
 		query.setParameter("pseq", product.getPseq());
 		
-		return null;
+		// 업데이트 쿼리 실행
+		query.executeUpdate();
+		
+		// 업데이트된 product 객체 return
+		return product;
+	}
+
+
+	@Override
+	public List<Pcategory> getPcategory() {
+		String sql = "select pc from Pcategory pc";
+		return em.createQuery(sql, Pcategory.class).getResultList();
 	}
 	
 	
