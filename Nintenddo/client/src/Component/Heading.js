@@ -19,7 +19,7 @@ function Heading() {
   const menuItems = [
     { id: 1, text: "본체 및 amiibo", linkto:"/hardware" },
     { id: 3, text: "소프트웨어", linkto:"/software" },
-    { id: 5, text: "News", linkto:"/news" },
+    { id: 5, text: "News", linkto:"/newslist" },
     { id: 7, text: "캐릭터", linkto:"/character" },
     { id: 9, text: "고객지원", linkto:"/customer" },
     { id: 11, text: "장바구니", linkto:"/cartlist" },

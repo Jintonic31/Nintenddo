@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Modal from 'react-modal'
 import {Link, useNavigate} from 'react-router-dom'
 // ㄴ 특정 컴포넌트로 이동하는 함수
@@ -60,11 +60,13 @@ function Footing() {
 
 
     return (
-        <div className='container'>
-            <div className='redline'>
-                <div className='flogo'><img src='http://localhost:8070/images/includes/flogo.png' alt=''/></div>
-                <div className='goTop' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-                    <img src={imgSrc}/>
+        <div className='footingCnt'>
+            <div className='footingredline'>
+                <div className='infootingredline'>
+                    <div className='flogo'><img src='http://localhost:8070/images/includes/flogo.png' alt=''/></div>
+                    <div className='fgoTop' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+                        <img src={imgSrc}/>
+                    </div>
                 </div>
             </div>
 
@@ -106,16 +108,14 @@ function Footing() {
                 <div className='software'>
                     <hr />
                     <div className='title'>소프트웨어</div>
-                    <div className='sub'>- Nintendo Switch 소프트웨어</div>
-                    <div className='sub'>- 소프트웨어 발매 스케줄</div>
+                    <div className='sub' onClick={()=>{navigate('/software')}}>- Nintendo Switch 소프트웨어</div>
+                    <div className='sub' onClick={()=>{navigate('/software')}}>- 소프트웨어 발매 스케줄</div>
                     <div className='sub'>- 스마트폰용 앱</div>
                 </div>
                 <div className='cutomer'>
                     <hr />
                     <div className='title'>고객지원</div>
-                    <div className='sub'>- Nintendo Switch</div>
-                    <div className='sub'>- Nintendo 3DS</div>
-                    <div className='sub'>- 고객지원 홈페이지</div>
+                    <div className='sub' onClick={()=>{navigate('/newslist')}}>- 공지사항</div>
                 </div>
             </div>
 

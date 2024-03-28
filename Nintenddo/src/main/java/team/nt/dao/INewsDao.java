@@ -8,4 +8,7 @@ public interface INewsDao {
 
 	List<News> getNewsList();
 
+	News getonenews(String nseq);
+
+
 }

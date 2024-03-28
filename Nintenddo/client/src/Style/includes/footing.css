@@ -1,4 +1,4 @@
-.container{
+.footingCnt{
     width:100%;
     height:450px;
     display:flex;
@@ -6,33 +6,36 @@
     background-color:white;
 }
 
-.redline{
+.footingredline{
+    width:100%;
     height: 70px;
     flex:3;
-    background-color:rgb(230, 0, 18);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.flogo{
-    flex:2;
     display:flex;
     justify-content:center;
-    margin-left:-150px;
+    background-color:rgb(230, 0, 18);
+    align-items:center;
+}
+
+.infootingredline{
+    width:60%;
+    display:flex;
+    justify-content:space-between;
+}
+.flogo{
+    display:flex;
+    justify-content:left;
 }
 .flogo img{
     width:110px;
     height:30px;
 }
-.goTop{
-    flex:3;
+.fgoTop{
     color:white;
-    margin-right:320px;
     display:flex;
     justify-content:center;
     
 }
-.goTop img{
+.fgoTop img{
     width:30px;
     height:30px;
     cursor:pointer;

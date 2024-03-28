@@ -163,7 +163,7 @@ function Controller() {
                         controlList && controlList.length >= 1 && (
                             <div className='controlListOne'>
                                 <div className='oneimg'>
-                                    <img src={`http://localhost:8070/imagesproduct/productdetail/${controlList[0].image}`} alt='' />
+                                    <img src={`http://localhost:8070/images/product/productdetail/${controlList[0].image}`} alt='' />
                                 </div>
                                 <div className='onetext'>
 
