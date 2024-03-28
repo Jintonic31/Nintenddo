@@ -14,6 +14,7 @@ function Heading() {
     11: 'image11',
     13: 'image13'
   });
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
 
   const menuItems = [
     { id: 1, text: "본체 및 amiibo", linkto:"/hardware" },
@@ -24,18 +25,22 @@ function Heading() {
     { id: 11, text: "장바구니", linkto:"/cartlist" },
     { id: 13, text: "로그인", linkto:"/login" }
   ];
-
-  const [activeCategoryId, setActiveCategoryId] = useState(null);
-
+  const [dropStyle, setDropStyle] = useState({ display: "none" });
   const handleMouseOver = (id) => {
-    setActiveCategoryId(id);
-    setImage(`image${id+1}`);
+    setImage({ ...image, [id]: `http://localhost:8070/images/includes/image${id + 1}.png` });
   };
+
+  const dropMouseOver = (id) =>{
+    setDropStyle({ display: "flex" });
+  }
 
   const handleMouseOut = (id) => {
-    setActiveCategoryId(null);
-    setImage(`image${id}`);
+    setImage({ ...image, [id]: `http://localhost:8070/images/includes/image${id}.png` });
   };
+
+  const dropMouseOut = (id) => {
+    setDropStyle({ display: "none" });
+  }
 
   return (
     <div className="category">
@@ -47,7 +52,7 @@ function Heading() {
           className='gocategory'
           key={id}
           onMouseOver={() => handleMouseOver(id)}
-          onMouseOut={handleMouseOut}
+          onMouseOut={() => handleMouseOut(id)}
           onClick={() => navigate(linkto)}
         >
           <div className='incategory'>
