@@ -13,30 +13,30 @@ function Megadrop({ navigate, categoryId }) {
 
   const dropMenuItems = {
     1: [
-      { text: "본체", linkto: "/hardware", image: "http://localhost:8070/images/product/hardware/pcseq1.png" ,
+      { text: "본체", linkto: "/hardware", image: "http://localhost:8070/images/product/productdetail/pcseq1.png" ,
       under:
       <div className='dropunder'>
         <div>
-          <img src='http://localhost:8070/images/product/hardware/pcseq3.png' />
+          <img src='http://localhost:8070/images/product/productdetail/pcseq3.png' />
           <div className='undertitle'>amiibo</div>
         </div>
         <div>
-          <img src='http://localhost:8070/images/product/hardware/pcseq7.png' />
+          <img src='http://localhost:8070/images/product/productdetail/pcseq7.png' />
           <div className='undertitle'><span>게임&워치</span><span>젤다의 전설</span></div>
         </div>
         <div>
-          <img src='http://localhost:8070/images/product/hardware/pcseq6.png' />
+          <img src='http://localhost:8070/images/product/productdetail/pcseq6.png' />
           <div className='undertitle'><span>Pokemon Go</span><span>Plus</span></div>
         </div>
         <div className='etc'>
           <div onClick={()=> {navigate('/hardware')}}>
               <span>
-              <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt='' />기능·특징을 비교
+              <img src='http://localhost:8070/images/product/productdetail/golinkicon.png' alt='' />기능·특징을 비교
               </span>
           </div>
           <div onClick={() => { navigate('/controller') }}>
               <span>
-              <img src='http://localhost:8070/images/product/hardware/golinkicon.png' alt='' />주변 기기
+              <img src='http://localhost:8070/images/product/productdetail/golinkicon.png' alt='' />주변 기기
               </span>
           </div>
         </div>
