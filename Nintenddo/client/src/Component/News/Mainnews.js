@@ -6,7 +6,8 @@ import '../../Style/News/mainnews.css'
 function Mainnews() {
 
     const navigate = useNavigate();
-    const [newsList, setNewsList] = useState();
+    const [newsList, setNewsList] = useState([]);
+    const [displayNum, setDisplayNum] = useState(8);
 
     useEffect(()=>{
         axios.get('/api/news/getnewslist')
@@ -21,6 +22,10 @@ function Mainnews() {
         navigate('/newsdetail')
     }
 
+    const handleShowMore = () => {
+        setDisplayNum(displayNum + 4);
+    }
+
     return (
         <div className='mainnewsCnt'>
            <div className='mainnewsTitle'>
@@ -31,7 +36,9 @@ function Mainnews() {
             <div className='mainnewsContent'>
                 {
                     (newsList)?(
-                        newsList.map((news, idx)=>{
+                        newsList
+                        .slice(0, displayNum)
+                        .map((news, idx)=>{
                             return(
                                 <div className='newsList'>
                                     <div className='nlistImage' onClick={()=>{goNewsDetail(news.nseq)}}>
@@ -50,13 +57,16 @@ function Mainnews() {
                     ):(null)
                 }
             </div>
-
-            <div className='showmoreBtn'>
-                <button>
-                    <img src='http://localhost:8070/images/news/showmorebtn.png' />
-                    더보기
-                </button>
-            </div>
+            
+            {newsList.length > displayNum && (
+                <div className='showmoreBtn'>
+                    <button onClick={handleShowMore}>
+                        <img src='http://localhost:8070/images/news/showmorebtn.png' />
+                        더보기
+                    </button>
+                </div>
+            )}
+            
            
         </div>
     )

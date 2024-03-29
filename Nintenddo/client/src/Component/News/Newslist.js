@@ -63,7 +63,7 @@ function Newslist() {
                         (newsList)?(
                             newsList
                             .filter((news)=> !keyword || news.title.toLowerCase().includes(keyword) )
-                            .slice(0,displayNum)
+                            .slice(0, displayNum)
                             .map((news, idx)=>{
                                 return(
                                     <div className='nList'>
@@ -85,7 +85,7 @@ function Newslist() {
                 </div>
 
                 {newsList.length > displayNum && (
-                // newsList의 수가 표시할 수보다 적을 때만(= 더 보여줄 뉴스가 남아있다면) 더보기 버튼 생성
+                // newsList의 수가 표시할 수보다 많을 때만(= 더 보여줄 뉴스가 남아있다면) 더보기 버튼 생성
                     <div className='showMoreBtn'>
                         <button onClick={handleShowMore}>
                             <img src='http://localhost:8070/images/news/showmorebtn.png' />

@@ -4,7 +4,13 @@ import axios from 'axios'
 import '../../Style/mainsoftware.css'
 
 function Mainsoftware() {
-    const [softList, setSoftList] = useState();
+
+    const [softList, setSoftList] = useState([]);
+    // ㄴ displayNum을 쓰기 위해서 초기값을 반드시 빈 배열로 줄 것
+    // ㄴ state가 변경되면 해당 컴포넌트가 다시 랜더링이 되는데 이때 useState 훅을 사용하여 상태를 초기화할 때 초기값을 제공
+    // ㄴ 초기 렌더링 시에는 softList가 비어있기 때문에 softList.length가 undefined가 된다
+    //      ㄴ 즉, 초기 렌더링 시에는 softList가 비어있는 배열로 초기화 후 undefined가 아니라 0으로 평가되도록 함
+    const [displayNum, setDisplayNum] = useState(8);
 
     useEffect(()=>{
         axios.post('/api/products/getsoftlist', null, {params:{pcseq:2}})
@@ -13,6 +19,11 @@ function Mainsoftware() {
         })
         .catch((err)=>{console.error(err)})
     },[])
+
+    const handleShowMore = () => {
+        setDisplayNum(displayNum + 4);
+        // 더보기 버튼 클릭시 4개씩 추가로 show
+    }
 
     return (
         <div className='mainnewsCnt'>
@@ -24,7 +35,9 @@ function Mainsoftware() {
             <div className='mainsoftContent'>
                 {
                     (softList)?(
-                        softList.map((soft, idx)=>{
+                        softList
+                        .slice(0, displayNum)
+                        .map((soft, idx)=>{
                             return(
                                 <div className='softList'>
                                     <div className='slistImage'>
@@ -47,12 +60,17 @@ function Mainsoftware() {
                 }
             </div>
 
-            <div className='showmoreBtn'>
-                <button>
-                    <img src='http://localhost:8070/images/news/showmorebtn.png' />
-                    더보기
-                </button>
-            </div>
+            {softList.length > displayNum && (
+            // softList 수가 표시할 수보다 많을 때만(= 더 보여줄 뉴스가 남아있다면) 더보기 버튼 생성
+                <div className='showmoreBtn'>
+                    <button onClick={handleShowMore}>
+                    {/* handleShowMore() (함수)로 호출시 랜더링되면 바로 실행되기 때문에 변수로 만든다 */}
+                        <img src='http://localhost:8070/images/news/showmorebtn.png' />
+                        더보기
+                    </button>
+                </div>
+            )}
+            
            
         </div>
     )

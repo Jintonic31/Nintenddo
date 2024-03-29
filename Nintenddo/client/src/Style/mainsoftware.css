@@ -1,6 +1,7 @@
 .mainnewsCnt{
     display:flex;
     flex-direction:column;
+    align-items:center;
     width:80%;
     height:100%;
 }
@@ -8,8 +9,10 @@
 .mainnewsTitle{
     display:flex;
     flex-direction:row;
+    justify-content:left;
+    width:75%;
     height:70px;
-    margin-top:60px;
+    margin-top:50px;
 }
 .titleKr{
     margin-right:10px;
@@ -27,6 +30,8 @@
     margin-top:20px;
     display:grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-column-gap:70px;
+    grid-row-gap:20px;
 }
 .softList{
     display:flex;

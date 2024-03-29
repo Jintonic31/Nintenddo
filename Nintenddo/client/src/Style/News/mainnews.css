@@ -28,6 +28,8 @@
     margin-top:20px;
     display:grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-column-gap:70px;
+    grid-row-gap:20px;
 }
 .newsList{
     display:flex;
