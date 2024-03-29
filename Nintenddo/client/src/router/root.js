@@ -15,7 +15,7 @@ const Deletemember = lazy( ()=>import('../Component/Members/Deletemember') )
 
 
 
-// 사회적 거리두기
+// Product
 const Hardware = lazy( ()=>import('../Component/Product/Hardware') )
 const Software = lazy( ()=>import('../Component/Product/Software') )
 const Controller = lazy( ()=>import('../Component/Product/Controller') )
@@ -23,6 +23,11 @@ const Cartlist = lazy( ()=>import('../Component/Cart/Cartlist') )
 const Writedelivery = lazy( ()=>import('../Component/Cart/Writedelivery') )
 const Completeorder = lazy( ()=>import('../Component/Order/Completeorder') )
 const Orderall = lazy( ()=>import('../Component/Order/Orderall') )
+
+
+//News
+const Newsdetail = lazy( ()=>import('../Component/News/Newsdetail') )
+const Newslist = lazy( ()=>import('../Component/News/Newslist') )
 
 
 
@@ -73,7 +78,7 @@ const root = createBrowserRouter([
     
 
 
-    // 사회적 거리두기
+    // Product, Cart, Order
     {
         path:'hardware',
         element:<Suspense fallback={Loading}><Hardware /></Suspense>
@@ -102,6 +107,20 @@ const root = createBrowserRouter([
         path:'orderall',
         element:<Suspense fallback={Loading}><Orderall /></Suspense>
     },
+
+
+    // News
+    {
+        path:'newsdetail',
+        element:<Suspense fallback={Loading}><Newsdetail /></Suspense>
+    },
+    {
+        path:'newslist',
+        element:<Suspense fallback={Loading}><Newslist /></Suspense>
+    },
+
+
+    // Aboutus
     {
         path:'aboutus',
         element:<Suspense fallback={Loading}><Aboutus /></Suspense>

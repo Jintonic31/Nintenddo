@@ -28,4 +28,17 @@ public class NewsDao implements INewsDao{
 		return result;
 	}
 
+
+
+	@Override
+	public News getonenews(String nseq) {
+		String sql = "select n from News n where n.nseq= :nseq";
+		TypedQuery query = em.createQuery(sql, News.class);
+		query.setParameter("nseq", nseq);
+		
+		News news = (News) query.getSingleResult(); 
+		return news;
+	}
+
+
 }

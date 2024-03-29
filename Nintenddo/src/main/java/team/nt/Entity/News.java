@@ -18,8 +18,12 @@ public class News {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer nseq;
 	private String title;
-	private String image;
-	private String content;
+	private String image1;
+	private String image2;
+	private String image3;
+	private String content1;
+	private String content2;
+	private String content3;
 	@CreationTimestamp
 	private Timestamp indate;
 	
