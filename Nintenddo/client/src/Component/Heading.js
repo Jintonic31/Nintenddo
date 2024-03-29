@@ -16,20 +16,36 @@ function Heading() {
   });
   const [dropStyle, setDropStyle] = useState({ display: "none" });
   const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [isMouseOnMenu, setIsMouseOnMenu] = useState(false);
 
   const handleMouseOver = (id) => {
+    handleMenuMouseEnter();
     setActiveCategoryId(id);
     setImgSrc(prevImgSrc => ({
       ...prevImgSrc,
       [id]: `http://localhost:8070/images/includes/image${id + 1}.png`
     }));
-    setDropStyle({ display: "flex" });
+    if(isMouseOnMenu){
+      setDropStyle({ display: "flex" });
+    }
   };
 
   const handleMouseOut = (id) => {
-    setActiveCategoryId(null);
+    // handleMenuMouseLeave();
+    // setActiveCategoryId(null);
     setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/includes/image${id}.png` });
-    setDropStyle({ display: "none" });
+    console.log(1, isMouseOnMenu);
+    if (isMouseOnMenu === false) { 
+      setDropStyle({ display: "none" });
+    }
+  };
+
+  const handleMenuMouseEnter = (id) => {
+    setIsMouseOnMenu(true);
+  };
+
+  const handleMenuMouseLeave = (id) => {
+    setIsMouseOnMenu(false);
   };
 
   const menuItems = [
@@ -67,7 +83,10 @@ function Heading() {
       <Megadrop
         navigate={navigate}
         categoryId={activeCategoryId}
+        setActiveCategoryId={setActiveCategoryId}
         dropStyle={dropStyle}
+        // handleMenuMouseEnter={handleMenuMouseEnter} 
+        // handleMenuMouseLeave={handleMenuMouseLeave} 
       />
     </div>
   );

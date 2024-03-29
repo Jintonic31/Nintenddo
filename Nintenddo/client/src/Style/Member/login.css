@@ -159,6 +159,19 @@
   background-color:rgb(53, 52, 52);
 }
 
+.kurby { 
+  margin-left: 450px;
+  margin-bottom: 0;
+  margin-top: -340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kurby img {
+  max-width: 380px; 
+}
+
 .faMessage{
   font-weight:bold;
 }

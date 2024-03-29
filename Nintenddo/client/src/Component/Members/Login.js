@@ -142,6 +142,9 @@ const findUserEmailByPhone = () => {
                 <input type="tel" placeholder="휴대폰 번호를 입력하세요." value={phone} onChange={handlePhoneChange} />
 
                 <button onClick={findUserEmailByPhone}>찾기</button>
+                <div className='kurby'>
+                <img src={`http://localhost:8070/images/members/kurby.png`} />
+                </div>
                 <div className='faMessage'>
                     {email && <p>사용자 이메일: [ {email} ]</p>}
                     {message && <p>{message}</p>}

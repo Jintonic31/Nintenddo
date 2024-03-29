@@ -2,9 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-function Megadrop({ navigate, categoryId }) {
+function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
   const dropStyles = {
     display: categoryId ? 'flex' : 'none'
+  };
+
+  const handleMouseOut = () => {
+     setActiveCategoryId(null);
+
   };
 
   const handleDropItemClick = (linkto) => {
@@ -64,7 +69,7 @@ function Megadrop({ navigate, categoryId }) {
 
   return (
     <div className='Megadrop' style={dropStyles}>
-      <div className='drophard' onClick={() => navigate('/hardware')}>
+      <div className='drophard' onClick={() => navigate('/hardware')} onMouseOut={()=>{handleMouseOut();}}>
         <img src={dropMenuItems[categoryId]?.[0]?.image} alt={dropMenuItems[categoryId]?.[0]?.text} />
 
       </div>
