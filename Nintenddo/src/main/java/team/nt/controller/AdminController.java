@@ -19,6 +19,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import team.nt.Entity.Admins;
+import team.nt.Entity.News;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
 import team.nt.dto.Paging;
@@ -77,6 +78,18 @@ public class AdminController {
 		return result;
 	}
 	
+	@PostMapping("/savenseq")
+	public HashMap<String, Object> savenseq(@RequestParam("nseq") String nseq, HttpServletRequest request){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("nseq", nseq);
+		
+		// System.out.println("savepseq의 pseq : " + pseq);
+		
+		return result;
+	}
+	
 	
 	@PostMapping("/getoneproduct")
 	public HashMap<String, Object> getOneProduct(HttpServletRequest request){
@@ -113,10 +126,6 @@ public class AdminController {
 		
 		// System.out.println(path);
 		
-//		Calendar today = Calendar.getInstance();
-//		long dt = today.getTimeInMillis();
-//		System.out.println("dt : " + dt);
-		
 		String filename = file.getOriginalFilename();
 		// System.out.println("filename : " + filename);
 		
@@ -128,7 +137,43 @@ public class AdminController {
 		
 		String uploadPath = path + "/" + path2 + fn1 + fn2;
 		// System.out.println(uploadPath);
-		// System.out.println(uploadPath2);
+		
+		try {
+			file.transferTo(new File(uploadPath));
+			result.put("filename", fn1 + fn2);
+			// ㄴ filename을 파일이름 + 확장자 와 함께 보냄
+		}catch(IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
+	@PostMapping("/newsimgup")
+	public HashMap<String, Object> newsimgup(@RequestParam("image") MultipartFile file){
+	// client에서 formData.append('image', e.target.files[0]);라는 코드를 통해 "image"라는 이름으로 file을 보냈으므로
+	// RequestParam을 image로 받을수 있음..?
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		String path = context.getRealPath("/images");
+		// ㄴ getRealPath() :  웹 애플리케이션 컨텍스트 내에서 특정 경로에 해당하는 실제 파일 시스템 경로를 반환하는 데 사용
+		// ㄴ webbapp 바로 아래 급의 폴더에 한정해 괄호 안의 폴더 경로를 자동으로 찾아주는 듯?
+		
+		// System.out.println("path : " + path);
+		
+		String filename = file.getOriginalFilename();
+		// System.out.println("filename : " + filename);
+		
+		String fn1 = filename.substring(0, filename.indexOf("."));	// . 기준 왼쪽 파일 이름 추출
+		// System.out.println("fn1 : " + fn1);
+		
+		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
+		// System.out.println("fn2 : " + fn2);
+		
+		String uploadPath = path + "/news/" + fn1 + fn2;
+		// System.out.println(uploadPath);
 		
 		try {
 			file.transferTo(new File(uploadPath));
@@ -163,6 +208,47 @@ public class AdminController {
 	@PostMapping("/insertproduct")
 	public HashMap<String, Object> insertproduct(@RequestBody Product product){
 		as.insertproduct(product);
+		return null;
+	}
+	
+	
+	@GetMapping("/newsList/{page}")
+	public HashMap<String, Object> newsList(@PathVariable("page") int page){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		Paging paging = new Paging();
+		paging.setPage(page);
+		paging.cal();
+		
+		result.put("newslist", as.getnewsList(paging));
+		result.put("paging", paging);
+		return result;
+	}
+	
+	
+	@PostMapping("/updatenews")
+	public HashMap<String, Object> updatenews(@RequestBody News news, HttpServletRequest request){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		// System.out.println("RequestBody로 받은 nseq : " + news.getNseq());
+		HttpSession session = request.getSession();
+		String nseq = (String)session.getAttribute("nseq");
+		// System.out.println("Session에서 받은 nseq : " + nseq);
+		
+		News ns = as.updateNews(news, nseq);
+		
+		return null;
+	}
+	
+	
+	@PostMapping("/updatenewsimages")
+	public HashMap<String, Object> updateimages(@RequestBody News news, HttpServletRequest request){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		HttpSession session = request.getSession();
+		String nseq = (String)session.getAttribute("nseq");
+		
+		News ns = as.updateNewsImages(news, nseq);
+		
 		return null;
 	}
 

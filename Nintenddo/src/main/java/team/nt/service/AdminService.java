@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import team.nt.Entity.Admins;
+import team.nt.Entity.News;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
 import team.nt.dao.AdminRepository;
 import team.nt.dao.IAdminDao;
+import team.nt.dao.NewsRepository;
 import team.nt.dao.ProductRepository;
 import team.nt.dto.Paging;
 
@@ -27,6 +29,7 @@ public class AdminService {
 	
 	@Autowired
 	ProductRepository pr;
+	
 
 
 	public Admins getAdmin(String adminid) {
@@ -57,6 +60,18 @@ public class AdminService {
 
 	public void insertproduct(Product product) {
 		pr.save(product);		
+	}
+
+	public List<News> getnewsList(Paging paging) {
+		return iadao.getNewstList(paging);
+	}
+
+	public News updateNews(News news, String nseq) {
+		return iadao.updateNews(news, nseq);
+	}
+
+	public News updateNewsImages(News news, String nseq) {
+		return iadao.updateNewsImages(news, nseq);
 	}
 
 	

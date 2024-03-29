@@ -37,6 +37,8 @@ const Adminlogin = lazy( ()=>import('../Component/Admin/Adminlogin') )
 const Adminproductlist = lazy( ()=>import('../Component/Admin/Adminproductlist') )
 const Modifyproduct = lazy( ()=>import('../Component/Admin/Modifyproduct') )
 const Insertproduct = lazy( ()=>import('../Component/Admin/Insertproduct') )
+const Adminnewslist = lazy( ()=>import('../Component/Admin/Adminnewslist') )
+const Modifynews = lazy( ()=>import('../Component/Admin/Modifynews') )
 
 
 
@@ -118,6 +120,7 @@ const root = createBrowserRouter([
         path:'newslist',
         element:<Suspense fallback={Loading}><Newslist /></Suspense>
     },
+    
 
 
     // Aboutus
@@ -140,6 +143,14 @@ const root = createBrowserRouter([
     {
         path:'insertproduct',
         element:<Suspense fallback={Loading}><Insertproduct /></Suspense>
+    },
+    {
+        path:'adminnewslist',
+        element:<Suspense fallback={Loading}><Adminnewslist /></Suspense>
+    },
+    {
+        path:'modifynews',
+        element:<Suspense fallback={Loading}><Modifynews /></Suspense>
     },
     
 

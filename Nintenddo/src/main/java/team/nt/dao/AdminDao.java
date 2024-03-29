@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import team.nt.Entity.News;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
 import team.nt.dto.Paging;
@@ -21,6 +22,16 @@ public class AdminDao implements IAdminDao{
 	public List<Product> getProductList(Paging paging) {
 		String sql = "select p from Product p order by pseq desc";
 		List<Product> list = em.createQuery(sql, Product.class)
+				.setFirstResult(paging.getStartNum()-1)
+				.setMaxResults(paging.getDisplayRow())
+				.getResultList();
+		return list;
+	}
+	
+	@Override
+	public List<News> getNewstList(Paging paging) {
+		String sql = "select n from News n order by nseq desc";
+		List<News> list = em.createQuery(sql, News.class)
 				.setFirstResult(paging.getStartNum()-1)
 				.setMaxResults(paging.getDisplayRow())
 				.getResultList();
@@ -60,6 +71,43 @@ public class AdminDao implements IAdminDao{
 		// 업데이트된 product 객체 return
 		return product;
 	}
+	
+	
+	@Override
+	public News updateNews(News news, String nseq) {
+		String sql = "update News n set n.title= :title, n.content1= :content1,"
+				+ " n.content2= :content2, n.content3= :content3 where n.nseq= :nseq";
+		
+		Query query = em.createQuery(sql); // Query 객체 사용
+		
+		query.setParameter("title", news.getTitle());
+		query.setParameter("content1", news.getContent1());
+		query.setParameter("content2", news.getContent2());
+		query.setParameter("content3", news.getContent3());
+		query.setParameter("nseq", nseq);
+		
+		// 업데이트 쿼리 실행
+		query.executeUpdate();
+		
+		return news;
+	}
+	
+	
+	@Override
+	public News updateNewsImages(News news, String nseq) {
+		String sql = "update News n set n.image1= :image1, n.image2= :image2, n.image3= :image3 where n.nseq= :nseq";
+		
+		Query query = em.createQuery(sql); // Query 객체 사용
+		
+		query.setParameter("image1", news.getImage1());
+	    query.setParameter("image2", news.getImage2());
+	    query.setParameter("image3", news.getImage3());
+	    query.setParameter("nseq", nseq);
+	    
+	    query.executeUpdate(); // 업데이트 쿼리 실행
+	    
+	    return news;
+	}
 
 
 	@Override
@@ -67,10 +115,7 @@ public class AdminDao implements IAdminDao{
 		String sql = "select pc from Pcategory pc";
 		return em.createQuery(sql, Pcategory.class).getResultList();
 	}
-	
-	
-	
-	
+
 	
 	
 

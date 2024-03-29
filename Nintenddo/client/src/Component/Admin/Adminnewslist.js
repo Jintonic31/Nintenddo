@@ -3,20 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import Heading from '../Heading'
 import Footing from '../Footing'
 import axios from 'axios'
-import '../../Style/admin/Adminproductlist.css'
+import '../../Style/admin/Adminnewslist.css'
 
+function Adminnewslist() {
 
-function Adminproductlist() {
-
-    const [productList, setProductList] = useState();
+    const [newsList, setNewsList] = useState();
     const [paging, setPaging] = useState({});
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get('/api/admins/productList/1')
+        axios.get('/api/admins/newsList/1')
         // ㄴ 1 : 최초 호출시 현재페이지(page)는 1부터 시작
         .then((result)=>{
-            setProductList(result.data.productlist);
+            setNewsList(result.data.newslist);
             setPaging(result.data.paging);
         })
         .catch((err)=>{console.error(err)})
@@ -33,9 +32,9 @@ function Adminproductlist() {
     )
 
     function onPageMove(nextPage) {
-        axios.get(`/api/admins/productList/${nextPage}`)
+        axios.get(`/api/admins/newsList/${nextPage}`)
         .then((result) => {
-            setProductList([...productList, ...result.data.productlist]); // 기존 데이터와 새로운 데이터를 합쳐서 업데이트
+            setNewsList([...newsList, ...result.data.newslist]); // 기존 데이터와 새로운 데이터를 합쳐서 업데이트
             setPaging(result.data.paging);
         }) 
         .catch((err) => { console.error(err) })
@@ -51,9 +50,9 @@ function Adminproductlist() {
         }
     }
 
-    function onProductView(pseq){
-        axios.post('/api/admins/savepseq', null, {params:{pseq}})
-        .then(()=>{ navigate('/modifyproduct') })
+    function onNewsView(nseq){
+        axios.post('/api/admins/savenseq', null, {params:{nseq}})
+        .then(()=>{ navigate('/modifynews') })
         .catch((err)=>{console.error(err)})
     }
 
@@ -76,11 +75,8 @@ function Adminproductlist() {
     const handleMouseOut = (id) => {
         setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/admin/controllernav${id}.png` });
     }
-
-    
-
-    return (
-        <div className='Cnt'>
+  return (
+    <div className='Cnt'>
 
             <Heading />
 
@@ -104,31 +100,26 @@ function Adminproductlist() {
 
             
 
-            <div className='adminpdtlistWrap'>
-                <div className='apdtlabel'>
+            <div className='adminlistWrap'>
+                <div className='anlabel'>
                     <div className='redbar'>&nbsp;</div>
-                    All Product
+                    All News
                 </div>
-                <div className='apdtTable'>
-                    <div className='apdtTitle'>
-                        <div className='apdtcol'>번호</div>
-                        <div className='apdtcol'>상품명</div>
-                        <div className='apdtcol'>원가</div>
-                        <div className='apdtcol'>판매가</div>
-                        <div className='apdtcol'>등록일</div>
-                        <div className='apdtcol'>사용유무</div>
+                <div className='anTable'>
+                    <div className='anTitle'>
+                        <div className='ancol'>번호</div>
+                        <div className='ancol'>제목</div>
+                        <div className='ancol'>날짜</div>
                     </div>
                     {
-                        (productList)?(
-                            productList.map((item, idx) => {
+                        (newsList)?(
+                            newsList.map((item, idx) => {
                                 return(
-                                    <div className='inapdtTitle'>
-                                        <div className='inapdtcol'>{item.pseq}</div>
-                                        <div className='inapdtcol' onClick={()=>{onProductView(item.pseq)}}>{item.pname}</div>
-                                        <div className='inapdtcol'>{new Intl.NumberFormat('ko-KR').format(item.price2)}</div>
-                                        <div className='inapdtcol'>{new Intl.NumberFormat('ko-KR').format(item.price1)}</div>
-                                        <div className='inapdtcol'>{item.indate.substring(0,10)}</div>
-                                        <div className='inapdtcol'>{item.useyn}</div>
+                                    <div className='innTitle'>
+                                        <div className='inncol'>{item.nseq}</div>
+                                        <div className='inncol' onClick={()=>{onNewsView(item.nseq)}}>{item.title.substring(0,50) + ' ··· '}</div>
+                                        <div className='inncol'>{item.indate.substring(0,10)}</div>
+                                    
                                     </div>
                                 )
                             })
@@ -137,7 +128,7 @@ function Adminproductlist() {
                 </div>
 
                 <div className='apdtBtns'>
-                    <button onClick={()=>{navigate('/insertproduct')}}>상품등록</button>
+                    <button onClick={()=>{navigate('/insertnews')}}>글쓰기</button>
                 </div>
                 
             </div>
@@ -145,7 +136,7 @@ function Adminproductlist() {
             <Footing />
         
         </div>
-    )
+  )
 }
 
-export default Adminproductlist
+export default Adminnewslist

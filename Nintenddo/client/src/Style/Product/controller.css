@@ -44,6 +44,7 @@
     font-size:95%;
     margin-right:20px;
     position: relative;
+    cursor:pointer;
 }
 .nav div{
     display:flex;

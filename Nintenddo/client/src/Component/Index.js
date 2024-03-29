@@ -52,8 +52,33 @@ function Index() {
             ))}
           </Slider>
           <div className='mainBannerremote'>
-            {/* 배너 내용 */}
+
+            <div className='remote'>
+                <img src='http://localhost:8070/images/banner/remoteicon/icon1.png' />
+                <div className='remotetitle1'>
+                    마리오 VS. 동킹콩
+                </div>
+            </div>
+            <div className='remote'>
+                <img src='http://localhost:8070/images/banner/remoteicon/icon2.png' />
+                <div className='remotetitle2'>
+                    스플래툰 3
+                </div>
+            </div>
+            <div className='remote'>
+                <img src='http://localhost:8070/images/banner/remoteicon/icon3.png' />
+                <div className='remotetitle3'>
+                    슈퍼 마리오 RPG
+                </div>
+            </div>
+            <div className='remote'>
+                <img src='http://localhost:8070/images/banner/remoteicon/icon4.png' />
+                <div className='remotetitle4'>
+                    동물의 숲
+                </div>
+            </div>
           </div>
+          
         </div>
       </div>
       <article className='mainArticle'>
