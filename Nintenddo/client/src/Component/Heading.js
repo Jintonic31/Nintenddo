@@ -39,7 +39,7 @@ function Heading() {
     { id: 7, text: "캐릭터", linkto:"/character" },
     { id: 9, text: "고객지원", linkto:"/customer" },
     { id: 11, text: "장바구니", linkto:"/cartlist" },
-    { id: 13, text: "검색", linkto:"/search" }
+    { id: 13, text: "로그인", linkto:"/login" }
   ];
 
   return (
