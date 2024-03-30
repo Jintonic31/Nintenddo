@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 
 function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
+
+
+  const [newsList, setNewsList] = useState([])
+
+  useEffect(()=>{
+    axios.get('/api/news/getnewslist')
+      .then((result)=>{
+          setNewsList(result.data)
+      })
+      .catch((err)=>{console.error(err)})
+  }, [])
+
+
+
+
   const dropStyles = {
     display: categoryId ? 'flex' : 'none'
   };
@@ -51,7 +67,25 @@ function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
       { text: "소프트웨어", linkto: "/software", image: "http://localhost:8070/images/product/megadrop/software.png" }
     ],
     5: [
-      { text: "News", linkto: "/news", image: "http://localhost:8070/images/product/megadrop/news.png" }
+      { text: "", linkto: "/news", image:'',
+      under:
+      <div className='dropunder'>
+        {
+          (newsList)?(
+            newsList.slice(0,4).map((news, idx)=>{
+              return(
+                <div className='dropnews' onClick={()=>{navigate('/newslist')}}>
+                  <div>
+                    <img src={`http://localhost:8070/images/news/${news.image1}`} />
+                  </div>
+                  <span>{news.title}</span>
+                </div>
+              )
+            })
+          ):(null)
+        }
+      </div>
+      }
     ],
     7: [
       { text: "캐릭터", linkto: "/character", image: "http://localhost:8070/images/product/megadrop/character.png" }

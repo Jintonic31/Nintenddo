@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+
 import Heading from '../Heading'
 import Footing from '../Footing'
 import axios from 'axios'
@@ -8,6 +11,14 @@ import '../../Style/admin/InsertProduct.css'
 function Insertproduct() {
 
     const navigate = useNavigate();
+    const adminUser = useSelector(state => state.admins)
+
+    useEffect(()=>{
+        if(adminUser.adminid === ''){
+            alert('접근권한 없음. 메인페이지로 이동합니다.')
+            navigate('/')
+        }
+    },[]) 
 
     const [pcategory, setPcategory] = useState([]);
     const [pcseq, setPcseq] = useState();

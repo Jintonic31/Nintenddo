@@ -10,6 +10,8 @@ function Software() {
 
     const [softList, setSoftList] = useState([]);
     const [unreleaseList, setUnreleaseList] = useState([])
+    const [displayNum, setDisplayNum] = useState(8)
+    const [displayNum2, setDisplayNum2] = useState(8)
     const [keyword, setKeyword] = useState();
     const [selectProduct, setSelectProduct] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
@@ -61,6 +63,13 @@ function Software() {
         setIsOpen(!isOpen);
     }
 
+    const handleShowMore = () => {
+        setDisplayNum(displayNum + 4);
+    }
+    const handleShowMore2 = () => {
+        setDisplayNum2(displayNum2 + 4);
+    }
+
     return (
 
 
@@ -99,7 +108,9 @@ function Software() {
                 <div className='softwareContent'>
                     {
                         (softList)?(
-                            softList.map((soft, idx)=>{
+                            softList
+                            .slice(0,displayNum)
+                            .map((soft, idx)=>{
                                 if(!keyword || soft.pname.toLowerCase().includes(keyword))
                                 return(
                                     <div className='softwareList' onClick={()=>{openModal(soft.pseq)}}>
@@ -122,13 +133,16 @@ function Software() {
                         ):(null)
                     }
                 </div>
-
-                <div className='showmoreBtn'>
-                    <button>
-                        <img src='http://localhost:8070/images/news/showmorebtn.png' alt='' />
-                        더보기
-                    </button>
-                </div>
+                
+                {softList.length > displayNum && (
+                    <div className='showmoreBtn'>
+                        <button onClick={handleShowMore}>
+                            <img src='http://localhost:8070/images/news/showmorebtn.png' alt='' />
+                            더보기
+                        </button>
+                    </div>
+                )}
+                
                 
                 
 
@@ -140,11 +154,13 @@ function Software() {
                 <div className='softwareContent'>
                     {
                         (unreleaseList)?(
-                            unreleaseList.map((soft, idx)=>{
+                            unreleaseList
+                            .slice(0, displayNum2)
+                            .map((soft, idx)=>{
                                 return(
                                     <div className='softwareList'>
                                         <div className='softlistImage'>
-                                            <img src={`http://localhost:8070/images/product/software/${soft.image}`} alt='' />
+                                            <img src={`http://localhost:8070/images/product/productdetail/${soft.image}`} alt='' />
                                         </div>
                                         
                                         <div className='softlisthardware'>
@@ -162,13 +178,16 @@ function Software() {
                         ):(null)
                     }
                 </div>
-
-                <div className='showmoreBtn'>
-                    <button>
-                        <img src='http://localhost:8070/images/news/showmorebtn.png' alt='' />
-                        더보기
-                    </button>
-                </div>
+                
+                {unreleaseList.length > displayNum2 && (
+                    <div className='showmoreBtn'>
+                        <button onClick={handleShowMore2}>
+                            <img src='http://localhost:8070/images/news/showmorebtn.png' alt='' />
+                            더보기
+                        </button>
+                    </div>
+                )}
+                
 
             </div>
 

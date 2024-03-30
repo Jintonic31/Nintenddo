@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-
+import com.google.gson.Gson;
 import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -128,32 +127,7 @@ public class MemberController {
 		return result;
 	}
 	
-	
-//	@PostMapping("/updatedeliveryinfo")
-//	public HashMap<String, Object> updatedeliveryinfo(@RequestBody Member member, HttpServletRequest request){
-//		
-//		HashMap<String, Object> result = new HashMap<String, Object>();
-//		HttpSession session = request.getSession();
-//		
-//		member.setUserid(((Member)session.getAttribute("loginUser")).getUserid());
-//		member.setEmail(((Member)session.getAttribute("loginUser")).getEmail());
-//		member.setPwd(((Member)session.getAttribute("loginUser")).getPwd());
-//		member.setIndate(((Member)session.getAttribute("loginUser")).getIndate());
-//		// Indate가 날라가는데.. 왜일까?
-//		member.setProvider(((Member)session.getAttribute("loginUser")).getProvider());
-//		member.setUseyn(((Member)session.getAttribute("loginUser")).getUseyn());
-//		member.setByear(((Member)session.getAttribute("loginUser")).getByear());
-//		member.setBmonth(((Member)session.getAttribute("loginUser")).getBmonth());
-//		member.setBday(((Member)session.getAttribute("loginUser")).getBday());
-//		member.setGender(((Member)session.getAttribute("loginUser")).getGender());
-//		member.setCountry(((Member)session.getAttribute("loginUser")).getCountry());
-//		Member mem = ms.updateMember(member);
-//		session.setAttribute("loginUser", mem);
-//		// System.out.println(mem);
-//		
-//		return null;
-//	}
-//	
+
 	
 	@RequestMapping("/kakaostart")
 	public @ResponseBody String kakaostart() {

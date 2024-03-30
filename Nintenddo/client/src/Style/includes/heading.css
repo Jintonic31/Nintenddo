@@ -138,3 +138,35 @@
   height:13px;
   margin-right:3px;
 }
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.dropunder .dropnews{
+  width:200px;
+  height:220px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  margin:0 10px;
+}
+.dropunder .dropnews div{
+  width:100%;
+  height:150px;
+  margin-bottom:10px;
+}
+.dropunder .dropnews div img{
+  width:100%;
+  height:100%;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+/* 랩탑 */
+@media (min-width:1050px) and (max-width:1920px){
+
+  .gomainlogo {
+    padding-right:130px;
+  }
+   
+}

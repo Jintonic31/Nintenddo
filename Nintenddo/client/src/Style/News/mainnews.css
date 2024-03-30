@@ -3,12 +3,13 @@
     flex-direction:column;
     width:80%;
     height:100%;
-    margin-top: 90px;
+    margin-top:50px;
 }
 
 .mainnewsTitle{
     display:flex;
     flex-direction:row;
+    width:100%;
     height:70px;
     margin-top:60px;
 }
@@ -85,4 +86,12 @@
     width:13px;
     height:13px;
     margin-right:5px;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+/* 랩탑 */
+@media (min-width:1050px) and (max-width:1920px){
+    
+   
 }

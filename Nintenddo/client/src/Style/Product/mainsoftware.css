@@ -1,4 +1,4 @@
-.mainnewsCnt{
+.mainsoftCnt{
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -6,22 +6,21 @@
     height:100%;
 }
 
-.mainnewsTitle{
+.mainsoftTitle{
     display:flex;
     flex-direction:row;
-    justify-content:left;
-    width:75%;
+    width:94%;
     height:70px;
     margin-top:50px;
 }
-.titleKr{
+.mainsoftTitle .titleKr{
     margin-right:10px;
     font-size:130%;
     font-weight:bold;
     line-height:70px;
     color:rgb(41, 40, 40);
 }
-.titleEn{
+.mainsoftTitle .titleEn{
     line-height:75px;
 }
 
@@ -90,3 +89,6 @@
     height:13px;
     margin-right:5px;
 }
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+

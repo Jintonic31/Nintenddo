@@ -21,7 +21,7 @@ public class ProductDao implements IProductDao{
 	@Override
 	public List<Product> getMainSoftList(Integer pcseq) {
 		
-		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn";
+		String sql = "select p from Product p where p.pcseq= :pcseq AND p.useyn= :useyn order by indate desc";
 		// p. : Product 엔티티의
 		// pcseq. : pcseq이고 이 pcseq는
 		// pcseq : Pcategory 엔티티의 식별자(pk)이다

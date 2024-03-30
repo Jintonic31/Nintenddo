@@ -39,6 +39,8 @@ const Modifyproduct = lazy( ()=>import('../Component/Admin/Modifyproduct') )
 const Insertproduct = lazy( ()=>import('../Component/Admin/Insertproduct') )
 const Adminnewslist = lazy( ()=>import('../Component/Admin/Adminnewslist') )
 const Modifynews = lazy( ()=>import('../Component/Admin/Modifynews') )
+const Insertnews = lazy( ()=>import('../Component/Admin/Insertnews') )
+const Adminorderlist = lazy( ()=>import('../Component/Admin/Adminorderlist') )
 
 
 
@@ -152,6 +154,15 @@ const root = createBrowserRouter([
         path:'modifynews',
         element:<Suspense fallback={Loading}><Modifynews /></Suspense>
     },
+    {
+        path:'insertnews',
+        element:<Suspense fallback={Loading}><Insertnews /></Suspense>
+    },
+    {
+        path:'adminorderlist',
+        element:<Suspense fallback={Loading}><Adminorderlist /></Suspense>
+    },
+    
     
 
 

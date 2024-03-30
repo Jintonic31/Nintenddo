@@ -30,6 +30,9 @@ public class AdminService {
 	@Autowired
 	ProductRepository pr;
 	
+	@Autowired
+	NewsRepository nr;
+	
 
 
 	public Admins getAdmin(String adminid) {
@@ -61,6 +64,10 @@ public class AdminService {
 	public void insertproduct(Product product) {
 		pr.save(product);		
 	}
+	
+	public void insertnews(News news) {
+		nr.save(news);
+	}
 
 	public List<News> getnewsList(Paging paging) {
 		return iadao.getNewstList(paging);
@@ -73,6 +80,8 @@ public class AdminService {
 	public News updateNewsImages(News news, String nseq) {
 		return iadao.updateNewsImages(news, nseq);
 	}
+
+	
 
 	
 

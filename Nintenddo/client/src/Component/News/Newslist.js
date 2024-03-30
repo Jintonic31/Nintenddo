@@ -21,6 +21,11 @@ function Newslist() {
         .catch((err)=>{console.error(err)})
     },[])
 
+    function goNewsDetail(nseq){
+        axios.get(`/api/news/savenseq/${nseq}`)
+        navigate('/newsdetail')
+    }
+
 
     const handleKeywordChange = (e) => {
         setKeyword(e.target.value.toLowerCase());
@@ -38,10 +43,7 @@ function Newslist() {
         // 더보기 버튼 클릭시 4개씩 추가로 show
     }
 
-    function goNewsDetail(nseq){
-        axios.get(`/api/news/savenseq/${nseq}`);
-        navigate('/newsdetail')
-    }
+    
 
 
     return (

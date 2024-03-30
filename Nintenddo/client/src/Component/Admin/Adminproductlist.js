@@ -3,10 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import Heading from '../Heading'
 import Footing from '../Footing'
 import axios from 'axios'
+import { useSelector } from 'react-redux';
+
 import '../../Style/admin/Adminproductlist.css'
 
 
 function Adminproductlist() {
+
+    const adminUser = useSelector(state => state.admins)
+
+    useEffect(()=>{
+        if(adminUser.adminid === ''){
+            alert('접근권한 없음. 메인페이지로 이동합니다.')
+            navigate('/')
+        }
+    },[])
 
     const [productList, setProductList] = useState();
     const [paging, setPaging] = useState({});
@@ -60,13 +71,15 @@ function Adminproductlist() {
     const [imgSrc, setImgSrc] = useState({
         1: "http://localhost:8070/images/admin/controllernav1.png",
         3: "http://localhost:8070/images/admin/controllernav3.png",
-        5: "http://localhost:8070/images/admin/controllernav5.png"
+        5: "http://localhost:8070/images/admin/controllernav5.png",
+        7: "http://localhost:8070/images/admin/controllernav7.png"        
     })
 
     const navItems = [
         { id:1, text:"Members", linkto:'' },
         { id:3, text:"Products", linkto:'/adminproductlist' },
         { id:5, text:"News", linkto:'/adminnewslist' },
+        { id:7, text:"Orders", linkto:'/adminorderlist' },
     ];
 
     const handleMouseOver = (id) => {

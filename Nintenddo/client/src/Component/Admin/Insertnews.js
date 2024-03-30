@@ -5,21 +5,19 @@ import { useSelector } from 'react-redux';
 import Heading from '../Heading'
 import Footing from '../Footing'
 import axios from 'axios'
-import '../../Style/admin/Modifynews.css'
+import '../../Style/admin/InsertNews.css'
 
-function Modifynews() {
+function Insertnews() {
 
-    const navigate = useNavigate();
     const adminUser = useSelector(state => state.admins)
-    
+    const navigate = useNavigate();
+
     useEffect(()=>{
         if(adminUser.adminid === ''){
             alert('접근권한 없음. 메인페이지로 이동합니다.')
             navigate('/')
         }
-    },[]) 
-
-    const [onenews, setOnenews] = useState([]);
+    },[])    
 
     const [title, setTitle] = useState();
     const [content1, setContent1] = useState();
@@ -33,14 +31,6 @@ function Modifynews() {
     const [imgsrc1, setImgsrc1] = useState('');
     const [imgsrc2, setImgsrc2] = useState('');
     const [imgsrc3, setImgsrc3] = useState('');
-
-    useEffect(()=>{
-        axios.get('/api/news/getonenews')
-        .then((result)=>{
-            setOnenews(result.data.news);
-        })
-        .catch((err)=>{console.error(err)})
-    },[])
 
     async function imgup(e, idx){
         let formData = new FormData();
@@ -66,25 +56,16 @@ function Modifynews() {
         // console.log(imgList);
     }
 
-    async function onsubmit(){
-
-        await axios.post('/api/admins/updatenews', {title, content1, content2, content3})
-
-        try{
-            for(let i=0; i<imgList.length; i++){
-                await axios.post('/api/admins/updatenewsimages', {image1:imgList[0], image2:imgList[1], image3:imgList[2]})
-                console.log(imgList[i])
-            }
-            alert('수정 완료. 목록으로 돌아갑니다.')
+    function onsubmit(){
+        axios.post('/api/admins/insertnews', {title, content1, content2, content3, image1:imgList[0], image1:imgList[1], image1:imgList[2]} )
+        .then((result)=>{
+            alert('작성 완료! 목록으로 돌아갑니다.')
             navigate('/adminnewslist')
-        }catch(err){
-            console.error(err);
-        }
-            
-
-        
-        
+        })
+        .catch((err)=>{console.error(err)})
     }
+
+
 
     return (
         <div className='Cnt'>
@@ -93,25 +74,17 @@ function Modifynews() {
 
             <div className='modifylabel'>
                 <div className='redbar'>&nbsp;</div>
-                Modify News
+                Insert News
             </div>
 
-            <div className='modifynWrap'>
-                
-                <div className='rowfield'>
-                    <div className='subject'>
-                        <div className='blackbar'>&nbsp;</div>
-                        NO.
-                    </div>
-                    <input type='text' value={onenews.nseq} readOnly />
-                </div>
+            <div className='modifyinWrap'>
 
                 <div className='rowfield'>
                     <div className='subject'>
                         <div className='blackbar'>&nbsp;</div>
                         제목
                     </div>
-                    <input type='text' placeholder={onenews.title} value={title} onChange={(e)=>{setTitle(e.currentTarget.value)}} />
+                    <input type='text' value={title} onChange={(e)=>{setTitle(e.currentTarget.value)}} />
                 </div>
                 
                 <div className='field'>
@@ -119,15 +92,9 @@ function Modifynews() {
                         <div className='blackbar'>&nbsp;</div>
                         이미지
                     </div>
-                    <div className='beforetitle'>Before</div>
-                    <div className='beforeimage'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image1}`} alt='' />
-                    </div>
-                    <div className='beforetitle'>After</div>
                     <div className='afterimage'>
-                        <img src={imgsrc1} alt='' />
+                        <img src={imgsrc1} alt='첫번째 이미지' />
                     </div>
-
                     
                     <input type='file' value={image1} onChange={(e)=>{imgup(e, 1)}} />
                 </div>
@@ -137,7 +104,7 @@ function Modifynews() {
                         <div className='blackbar'>&nbsp;</div>
                         내용
                     </div>
-                    <textarea className='inputbox' placeholder={onenews.content1} value={content1} style={{height:"300px", width:"80%"}} onChange={(e)=>{setContent1(e.currentTarget.value)}} />
+                    <textarea className='inputbox' value={content1} style={{height:"300px", width:"80%"}} onChange={(e)=>{setContent1(e.currentTarget.value)}} />
                 </div>
 
                 <div className='field' id='img2'>
@@ -146,13 +113,9 @@ function Modifynews() {
                         <div className='blackbar'>&nbsp;</div>
                         이미지
                     </div>
-                    <div className='beforetitle'>Before</div>
-                    <div className='beforeimage'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image2}`} alt='' />
-                    </div>
-                    <div className='beforetitle'>After</div>
+                    
                     <div className='afterimage'>
-                        <img src={imgsrc2} alt='' />
+                        <img src={imgsrc2} alt='두번째 이미지' />
                     </div>
                     <input type='file' className='inputbox' value={image2} onChange={(e)=>{imgup(e, 2)}} />
                 </div>
@@ -162,7 +125,7 @@ function Modifynews() {
                         <div className='blackbar'>&nbsp;</div>
                         내용
                     </div>
-                    <textarea className='inputbox' placeholder={onenews.content2} value={content2} style={{height:"200px", width:"80%"}} onChange={(e)=>{setContent2(e.currentTarget.value)}} />
+                    <textarea className='inputbox' value={content2} style={{height:"200px", width:"80%"}} onChange={(e)=>{setContent2(e.currentTarget.value)}} />
                 </div>
 
                 <div className='field' id='img3'>
@@ -170,26 +133,22 @@ function Modifynews() {
                         <div className='blackbar'>&nbsp;</div>
                         이미지
                     </div>
-                    <div className='beforetitle'>Before</div>
-                    <div className='beforeimage'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image3}`} alt='' />
-                    </div>
-                    <div className='beforetitle'>After</div>
+                    
                     <div className='afterimage'>
-                        <img src={imgsrc3} alt='' />
+                        <img src={imgsrc3} alt='세번째 이미지' />
                     </div>
                     <input type='file' className='inputbox' value={image3} onChange={(e)=>{imgup(e, 3)}} />
                 </div>
 
                 <div className='field'>
                     <div className='subject'>내용</div>
-                    <textarea className='inputbox' placeholder={onenews.content3} value={content3} style={{height:"200px", width:"80%"}} onChange={(e)=>{setContent3(e.currentTarget.value)}} />
+                    <textarea className='inputbox' value={content3} style={{height:"200px", width:"80%"}} onChange={(e)=>{setContent3(e.currentTarget.value)}} />
                 </div>
 
             </div>
 
             <div className='modifyBtns'>
-                <button onClick={()=>{navigate('/adminproductlist')}}>목록으로</button>
+                <button onClick={()=>{navigate('/adminnewslist')}}>목록으로</button>
                 <button onClick={()=>{onsubmit()}}>저장하기</button>
             </div>
 
@@ -199,4 +158,4 @@ function Modifynews() {
     )
 }
 
-export default Modifynews
+export default Insertnews

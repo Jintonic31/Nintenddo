@@ -46,10 +46,19 @@ public class AdminController {
 			result.put("msg", "패스워드가 틀립니다.");
 		}else {
 			HttpSession session = request.getSession(); 
-			session.setAttribute("loginUser", mem);
+			session.setAttribute("adminUser", mem);
 			// System.out.println("/loginpage의 loginUser : " + mem);
 			result.put("msg", "ok");
 		}
+		return result;
+	}
+	
+	
+	@PostMapping("/getAdminUser")
+	public HashMap<String, Object> getAdminUser(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		result.put("adminUser", session.getAttribute("adminUser"));
 		return result;
 	}
 	
@@ -210,6 +219,14 @@ public class AdminController {
 		as.insertproduct(product);
 		return null;
 	}
+	
+	
+	@PostMapping("/insertnews")
+	public HashMap<String, Object> insertnews(@RequestBody News news){
+		as.insertnews(news);
+		return null;
+	}
+	
 	
 	
 	@GetMapping("/newsList/{page}")

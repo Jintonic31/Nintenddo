@@ -139,3 +139,24 @@
     border:none;
     margin-right:50px;
 }
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+/* 랩탑 */
+@media (min-width:1050px) and (max-width:1920px){
+    
+    .onemodifyfield .inputboxdiv input{
+        max-width:125px;
+    }
+    .onemodifyfield .inputboxdiv input:last-child{
+        margin-left:25px;
+    }
+    .onemodifyfield .inputboxdiv select{
+        margin-left:50px;
+    }
+    .onemodifyfield .inputboxdiv select:last-child{
+        margin-left:110px;
+    }
+     
+  }

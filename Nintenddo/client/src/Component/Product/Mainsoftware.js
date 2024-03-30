@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import '../../Style/mainsoftware.css'
+import '../../Style/Product/mainsoftware.css'
 
 function Mainsoftware() {
 
@@ -26,8 +26,8 @@ function Mainsoftware() {
     }
 
     return (
-        <div className='mainnewsCnt'>
-           <div className='mainnewsTitle'>
+        <div className='mainsoftCnt'>
+           <div className='mainsoftTitle'>
                 <div className='titleKr'>주요 소프트웨어</div>
                 <div className='titleEn'>PickUp</div>
             </div>

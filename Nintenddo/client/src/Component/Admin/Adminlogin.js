@@ -4,12 +4,16 @@ import Heading from '../../Component/Heading'
 import Footing from '../../Component/Footing'
 import axios from 'axios'
 import '../../Style/admin/Adminlogin.css'
+import { adminAction } from '../../store/adminsSlice';
+import { useDispatch } from 'react-redux';
+
 
 function Adminlogin() {
 
     const navigate = useNavigate();
     const [adminid,setAdminid] = useState();
     const [pwd,setPwd] = useState();
+    const dispatch = useDispatch();
 
 
     async function onLogin(){
@@ -20,7 +24,12 @@ function Adminlogin() {
         let result = await axios.post("/api/admins/loginpage", { adminid, pwd });
           if(result.data.msg == 'ok'){
             alert("관리자님 환영합니다!")
+
+            result = await axios.post('/api/admins/getAdminUser');
+            dispatch(adminAction(result.data.adminUser))
+
             navigate('/adminproductlist')
+
           }else if(result.data.msg=='해당 메일이 없습니다'){
             alert('해당 관리자 계정이 없습니다.')
           }else if(result.data.msg=='패스워드가 틀립니다.'){

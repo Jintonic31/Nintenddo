@@ -317,7 +317,10 @@
 }
 .ableJoyconImg img{
     flex:1;
-    margin-top:50px;
+    width:100%;
+    max-width:387px;
+    height:100%;
+    margin-top:30px;
     margin-right:10px;
 }
 
@@ -426,3 +429,16 @@
   }
   
   
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+/* 랩탑 */
+@media (min-width:1050px) and (max-width:1920px){
+
+    .gomainlogo {
+      padding-right:130px;
+      overflow: hidden;
+    }
+     
+  }

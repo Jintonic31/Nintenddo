@@ -201,7 +201,7 @@ function Controller() {
                                 (controlList)?(
                                     controlList.map((list, idx)=>{
                                         return(
-                                            <div onClick={()=>{openModal(list.pseq)}} key={idx}>
+                                            <div className='versmall' onClick={()=>{openModal(list.pseq)}} key={idx}>
                                                 <img src={`http://localhost:8070/images/product/productdetail/${list.image}`} alt='' />
                                             </div>
                                         )
@@ -264,7 +264,7 @@ function Controller() {
                                 (joyList)?(
                                     joyList.map((list, idx)=>{
                                         return(
-                                            <div onClick={()=>{openModal(list.pseq)}} key={idx}>
+                                            <div className='versmall' onClick={()=>{openModal(list.pseq)}} key={idx}>
                                                 <img src={`http://localhost:8070/images/product/productdetail/${list.image}`} alt='' />
                                             </div>
                                         )
@@ -327,7 +327,7 @@ function Controller() {
                                 (chargeLIst)?(
                                     chargeLIst.map((list, idx)=>{
                                         return(
-                                            <div onClick={()=>{openModal(list.pseq)}} key={idx}>
+                                            <div className='versmall' onClick={()=>{openModal(list.pseq)}} key={idx}>
                                                 <img src={`http://localhost:8070/images/product/productdetail/${list.image}`} alt='' />
                                             </div>
                                         )
