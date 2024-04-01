@@ -41,13 +41,15 @@ const Adminnewslist = lazy( ()=>import('../Component/Admin/Adminnewslist') )
 const Modifynews = lazy( ()=>import('../Component/Admin/Modifynews') )
 const Insertnews = lazy( ()=>import('../Component/Admin/Insertnews') )
 const Adminorderlist = lazy( ()=>import('../Component/Admin/Adminorderlist') )
-const Modifyorder = lazy( ()=>import('../Component/Admin/Modifyorder') )
 
 
 
 
 //Customer
-
+const Chatbot = lazy( ()=>import('../Component/Customer/Chatbot') )
+const Customers = lazy( ()=>import('../Component/Customer/Customers') )
+const Qnaview = lazy( ()=>import('../Component/Customer/Qnaview') )
+const Writeqna = lazy( ()=>import('../Component/Customer/Writeqna') )
 
 
 
@@ -163,12 +165,24 @@ const root = createBrowserRouter([
         path:'adminorderlist',
         element:<Suspense fallback={Loading}><Adminorderlist /></Suspense>
     },
+    
+    
     {
-        path:'modifyorder',
-        element:<Suspense fallback={Loading}><Modifyorder /></Suspense>
+        path:'chatbot',
+        element:<Suspense fallback={Loading}><Chatbot /></Suspense>
     },
-    
-    
+    {
+        path:'customers',
+        element:<Suspense fallback={Loading}><Customers /></Suspense>
+    },
+    {
+        path:'qnaview',
+        element:<Suspense fallback={Loading}><Qnaview /></Suspense>
+    },
+    {
+        path:'writeqna',
+        element:<Suspense fallback={Loading}><Writeqna /></Suspense>
+    },
 
 
 

@@ -9,8 +9,8 @@ public interface IQnaDao {
 
 
 	List<Qna> getqnalist(String email, Paging paging);
-//	void insertQna(Qna qna);
-//	Qna getQna(int qseq);
+	void insertQna(Qna qna);
+	Qna getQna(int qseq);
 
 
 

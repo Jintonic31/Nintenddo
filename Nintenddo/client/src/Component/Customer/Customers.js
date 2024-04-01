@@ -9,7 +9,7 @@ function Customers() {
   const loginUser = useSelector((state) => state.user);
   const [paging, setPaging] = useState({});
   const navigate = useNavigate();
-  const [contentStates, setContentStates] = useState([]); // 각 행의 content 상태를 배열로 관리
+  const [contentStates, setContentStates] = useState([]); 
 
   useEffect(() => {
     axios.post('/api/customer/qnalist/1', { email: loginUser.email })
@@ -36,7 +36,6 @@ function Customers() {
       .then((result) => {
         setQnaList([...qnaList, ...result.data.qnalist]);
         setPaging(result.data.paging);
-        // 추가된 각 행의 content 상태를 false로 설정
         setContentStates(prevStates => [
           ...prevStates,
           ...new Array(result.data.qnalist.length).fill(false)
@@ -55,7 +54,6 @@ function Customers() {
   }
 
   function handleTitleClick(index) {
-    // 클릭한 행의 content 상태를 토글
     setContentStates(prevStates => {
       const newStates = [...prevStates];
       newStates[index] = !newStates[index];

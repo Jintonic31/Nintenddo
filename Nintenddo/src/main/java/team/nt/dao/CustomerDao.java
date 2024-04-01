@@ -30,6 +30,19 @@ public class CustomerDao implements IQnaDao{
 	}
 
 
+	@Override
+	public void insertQna(Qna qna) {
+		em.persist(qna);
+		
+	}
+
+
+	@Override
+	public Qna getQna(int qseq) {
+		return em.find(Qna.class, qseq);
+	}
+
+
 	
 //	@Override
 //	public List<Qna> getQnalist(Paging paging) {

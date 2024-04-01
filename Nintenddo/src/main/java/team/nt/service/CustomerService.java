@@ -28,6 +28,16 @@ public class CustomerService {
 		return list;
 	}
 
+	public void insertQna(Qna qna) {
+		iqdao.insertQna(qna);
+		
+	}
+
+	public Qna getQna(int qseq) {
+		return iqdao.getQna(qseq);
+
+	}
+
 
 //	public List<Qna> getQnalist(Paging paging) {
 //		return iqdao.getqnalist(paging);
