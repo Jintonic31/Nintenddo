@@ -5,7 +5,7 @@ import Footing from '../Footing'
 import axios from 'axios'
 import { useSelector } from 'react-redux';
 
-import '../../Style/admin/Adminorderlist.css'
+import '../../Style/admin/Adminproductlist.css'
 
 function Adminorderlist() {
 
@@ -83,8 +83,8 @@ function Adminorderlist() {
         }
     }
 
-    function onOrderView(oseq){
-        axios.post('/api/admins/saveoseq', null, {params:{oseq}})
+    async function onOrderView(oseq){
+        await axios.post('/api/admins/saveoseq', null, {params:{oseq}})
         .then(()=>{ navigate('/modifyorder') })
         .catch((err)=>{console.error(err)})
     }
@@ -124,22 +124,22 @@ function Adminorderlist() {
                         <div className='apdtTitle'>
                             <div className='apdtcol'>번호</div>
                             <div className='apdtcol'>상품명</div>
-                            <div className='apdtcol'>원가</div>
                             <div className='apdtcol'>판매가</div>
+                            <div className='apdtcol'>주문자</div>
                             <div className='apdtcol'>등록일</div>
-                            <div className='apdtcol'>사용유무</div>
+                            <div className='apdtcol'>처리상태</div>
                         </div>
                         {
-                            (orderList)?(
+                            (orderList && orderList.length > 0)?(
                                 orderList.map((item, idx) => {
                                     return(
                                         <div className='inapdtTitle'>
-                                            <div className='inapdtcol'>{item.pseq}</div>
+                                            <div className='inapdtcol'>{item.oseq}</div>
                                             <div className='inapdtcol' onClick={()=>{onOrderView(item.oseq)}}>{item.pname}</div>
-                                            <div className='inapdtcol'>{new Intl.NumberFormat('ko-KR').format(item.price2)}</div>
                                             <div className='inapdtcol'>{new Intl.NumberFormat('ko-KR').format(item.price1)}</div>
+                                            <div className='inapdtcol'>{item.email}</div>
                                             <div className='inapdtcol'>{item.indate.substring(0,10)}</div>
-                                            <div className='inapdtcol'>{item.useyn}</div>
+                                            <div className='inapdtcol'>{item.result}</div>
                                         </div>
                                     )
                                 })

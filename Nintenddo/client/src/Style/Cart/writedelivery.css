@@ -188,7 +188,7 @@
     border-bottom:1px solid lightgray;
 }
 
-.onechk{
+.onenolist .onechk{
     flex:1;
     display:flex;
     justify-content:center;
@@ -204,24 +204,20 @@
     width:100%; height:100%;
 }
 
-.onepname{
+.onenolist .onepname{
     flex:5;
     font-size:120%;
     font-weight:bold;
     color:rgb(53, 52, 52);
 }
 
-.onequantity{
+.onenolist .onequantity{
     flex:2;
     display:flex;
     justify-content:center;
 }
-.onequantity button{
-    border:none;
-    background-color:white;
-}
 
-.oneprice{
+.onenolist .oneprice{
     flex:2;
     text-align:center;
 }
@@ -241,11 +237,6 @@
     color:rgb(53, 52, 52);
 }
 
-.clistEndrow div:last-child img{
-    width:20px;
-    height:20px;
-    margin-right:5px;
-}
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 

@@ -80,10 +80,17 @@ function Modifynews() {
         }catch(err){
             console.error(err);
         }
-            
+    }
 
-        
-        
+
+    async function ondelete(){
+        await axios.delete('/api/admins/deletenews')
+        try{
+            alert('삭제 완료. 목록으로 돌아갑니다.')
+            navigate('/adminnewslist')
+        }catch(err){
+            console.error(err);
+        }
     }
 
     return (
@@ -191,6 +198,7 @@ function Modifynews() {
             <div className='modifyBtns'>
                 <button onClick={()=>{navigate('/adminnewslist')}}>목록으로</button>
                 <button onClick={()=>{onsubmit()}}>저장하기</button>
+                <button onClick={()=>{ondelete()}}>삭제하기</button>
             </div>
 
             <Footing />

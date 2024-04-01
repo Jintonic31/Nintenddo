@@ -2,10 +2,12 @@ package team.nt.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,6 +77,20 @@ public class AdminController {
 		return result;
 	}
 	
+	@GetMapping("/orderList/{page}")
+	public HashMap<String, Object> orderList(@PathVariable("page") int page){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		Paging paging = new Paging();
+		paging.setPage(page);
+		paging.cal();
+	
+		result.put("orderlist", as.getOrderList(paging));
+		result.put("paging", paging);
+		return result;
+	}
+	
 	@PostMapping("/savepseq")
 	public HashMap<String, Object> savepseq(@RequestParam("pseq") String pseq, HttpServletRequest request){
 		HashMap<String, Object> result = new HashMap<String, Object>();
@@ -94,7 +110,16 @@ public class AdminController {
 		HttpSession session = request.getSession();
 		session.setAttribute("nseq", nseq);
 		
-		// System.out.println("savepseq의 pseq : " + pseq);
+		return result;
+	}
+	
+	
+	@PostMapping("/saveoseq")
+	public HashMap<String, Object> saveoseq(@RequestParam("oseq") String oseq, HttpServletRequest request){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("oseq", oseq);
 		
 		return result;
 	}
@@ -266,6 +291,24 @@ public class AdminController {
 		
 		News ns = as.updateNewsImages(news, nseq);
 		
+		return null;
+	}
+	
+	
+	@DeleteMapping("/deletenews")
+	public HashMap<String, Object> deletenews(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		int nseq = Integer.parseInt((String)session.getAttribute("nseq"));
+		as.deletenews(nseq);
+		return null;
+	}
+	
+	
+	@DeleteMapping("/deleteproduct")
+	public HashMap<String, Object> deleteproduct(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		int pseq = Integer.parseInt((String)session.getAttribute("pseq"));
+		as.deleteproduct(pseq);
 		return null;
 	}
 

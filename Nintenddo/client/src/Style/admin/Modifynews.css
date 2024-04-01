@@ -129,10 +129,13 @@
 .modifyBtns button{
     width:300px;
     height:40px;
-    background-color:rgb(230, 0, 18);
+    background-color:rgb(53, 52, 52);
     color:white;
     font-size:1rem;
     font-weight:bold;
     border:none;
     margin-right:50px;
+}
+.modifyBtns button:last-child{
+    background-color:rgb(230, 0, 18);
 }

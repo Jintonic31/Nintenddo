@@ -31,7 +31,7 @@ function Productdetail(props) {
     }
 
     async function goOrder(pseq){
-        if(loginUser.email == ''){
+        if(loginUser.email === ''){
         // loginUser만 쓸 경우 빈 객체도 비어있지 않은것으로 인식되어 email 존재 여부를 확인하는 것
             alert('로그인이 필요한 서비스입니다.')
             navigate('/loginpage')
@@ -57,7 +57,7 @@ function Productdetail(props) {
     }
 
     async function goCart(pseq){
-        if(loginUser.email == ''){
+        if(loginUser.email === ''){
         // loginUser만 쓸 경우 빈 객체도 비어있지 않은것으로 인식되어 email 존재 여부를 확인하는 것
             alert('로그인이 필요한 서비스입니다.')
             navigate('/loginpage')
@@ -93,7 +93,7 @@ function Productdetail(props) {
                 <div className='detailtext'>
                     <div className='name'>{oneproduct.pname}</div>
 
-                    <div className='subandinfo'>
+                    <div className='dsubandinfo'>
 
                         <div className='onetextsub'>
                             <div>희망소비자가격</div>

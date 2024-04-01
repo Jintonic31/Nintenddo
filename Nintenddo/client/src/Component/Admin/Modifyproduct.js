@@ -81,6 +81,16 @@ function Modifyproduct() {
         .catch((err)=>{console.error(err)})
     }
 
+    function ondelete(){
+        axios.delete('/api/admins/deleteproduct')
+        try{
+            alert('삭제 완료. 목록으로 돌아갑니다.')
+            navigate('/adminproductlist')
+        }catch(err){
+            console.error(err);
+        }
+    }
+
 
     return (
         <div className='Cnt'>
@@ -172,6 +182,7 @@ function Modifyproduct() {
             <div className='modifyBtns'>
                 <button onClick={()=>{navigate('/adminproductlist')}}>목록으로</button>
                 <button onClick={()=>{onsubmit()}}>저장하기</button>
+                <button onClick={()=>{ondelete()}}>삭제하기</button>
             </div>
                 
 

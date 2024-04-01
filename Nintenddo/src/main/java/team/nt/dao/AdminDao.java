@@ -1,5 +1,6 @@
 package team.nt.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import team.nt.Entity.News;
+import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
+import team.nt.dto.OrderViewDto;
 import team.nt.dto.Paging;
 
 @Repository
@@ -20,7 +23,7 @@ public class AdminDao implements IAdminDao{
 
 	@Override
 	public List<Product> getProductList(Paging paging) {
-		String sql = "select p from Product p order by pseq desc";
+		String sql = "select p from Product p order by p.pseq desc";
 		List<Product> list = em.createQuery(sql, Product.class)
 				.setFirstResult(paging.getStartNum()-1)
 				.setMaxResults(paging.getDisplayRow())
@@ -30,13 +33,27 @@ public class AdminDao implements IAdminDao{
 	
 	@Override
 	public List<News> getNewstList(Paging paging) {
-		String sql = "select n from News n order by nseq desc";
+		String sql = "select n from News n order by n.nseq desc";
 		List<News> list = em.createQuery(sql, News.class)
 				.setFirstResult(paging.getStartNum()-1)
 				.setMaxResults(paging.getDisplayRow())
 				.getResultList();
 		return list;
 	}
+	
+	
+
+	@Override
+	public List<Oview> getOrderList(Paging paging) {
+        String sql = "select ov from Oview ov order by ov.oseq desc";
+        List<Oview> list = em.createQuery(sql, Oview.class)
+                .setFirstResult(paging.getStartNum()-1)
+                .setMaxResults(paging.getDisplayRow())
+                .getResultList();
+        
+		return list;
+	}
+	
 
 	
 	@Override

@@ -116,7 +116,7 @@ function Cartlist() {
 
             <Heading />
 
-            <div className='cartlistWrap'>
+            <div className='wirtedeliveryWrap'>
                 
                 <div className='buyProcess2'>
                     <div className='process2'>장바구니</div>
@@ -174,8 +174,8 @@ function Cartlist() {
 
 
 
-                <div className='clist'>
-                    <div className='oneclistsub'>
+                <div className='noworderlist'>
+                    <div className='onenolistsub'>
                         <div className='subchk'>&nbsp;</div>
                         <div className='subimg'>&nbsp;</div>
                         <div className='subpname'>상품명</div>
@@ -188,7 +188,7 @@ function Cartlist() {
                             
                             cartlist.map((cart, idx)=>{
                                 return(
-                                    <div className='oneclist'>
+                                    <div className='onenolist'>
 
                                         <div className='onechk'>
                                            &nbsp;
@@ -202,7 +202,7 @@ function Cartlist() {
                                             {cart.pname}
                                         </div>
 
-                                        <div className='onequantity'>                       {cart.quantity}
+                                        <div className='onequantity'>              {cart.quantity}
                                         </div>
 
                                         <div className='oneprice'>

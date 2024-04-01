@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import team.nt.Entity.Admins;
 import team.nt.Entity.News;
+import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
 import team.nt.dao.AdminRepository;
 import team.nt.dao.IAdminDao;
 import team.nt.dao.NewsRepository;
 import team.nt.dao.ProductRepository;
+import team.nt.dto.OrderViewDto;
 import team.nt.dto.Paging;
 
 @Service
@@ -72,6 +74,11 @@ public class AdminService {
 	public List<News> getnewsList(Paging paging) {
 		return iadao.getNewstList(paging);
 	}
+	
+	public List<Oview> getOrderList(Paging paging) {
+		return iadao.getOrderList(paging);
+	}
+	
 
 	public News updateNews(News news, String nseq) {
 		return iadao.updateNews(news, nseq);
@@ -81,8 +88,17 @@ public class AdminService {
 		return iadao.updateNewsImages(news, nseq);
 	}
 
-	
+	public void deletenews(int nseq) {
+		nr.deleteById(nseq);
+	}
 
+	public void deleteproduct(int pseq) {
+		pr.deleteById(pseq);		
+	}
+
+	
+	
+	
 	
 
 }
