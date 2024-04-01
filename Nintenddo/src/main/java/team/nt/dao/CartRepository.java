@@ -15,6 +15,8 @@ public interface CartRepository extends JpaRepository<Cart, Integer>{
 
 	void deleteByCseq(int cseq);
 
+	void deleteByEmail(String loginUser);
+
 	
 
 

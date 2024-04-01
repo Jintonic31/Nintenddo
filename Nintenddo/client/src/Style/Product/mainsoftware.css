@@ -11,7 +11,7 @@
     flex-direction:row;
     width:94%;
     height:70px;
-    margin-top:50px;
+    margin:50px 0 0 -20px;
 }
 .mainsoftTitle .titleKr{
     margin-right:10px;
@@ -26,6 +26,7 @@
 
 
 .mainsoftContent{
+    width:95%;
     margin-top:20px;
     display:grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
@@ -38,11 +39,11 @@
     width:230px;
     height:300px;
     border-bottom:1px solid lightgray;
-    margin-bottom:20px;
 }
 .slistImage{
     flex:9;
     height:125px;
+    margin-bottom:10px;
 }
 .slistImage img{
     width:100%;

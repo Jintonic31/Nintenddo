@@ -163,7 +163,7 @@
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 /* 랩탑 */
-@media (min-width:1050px) and (max-width:1920px){
+@media (min-width:1050px) and (max-width:1800px){
 
   .gomainlogo {
     padding-right:130px;

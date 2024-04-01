@@ -68,6 +68,14 @@ public class CartController {
 		return null;
 	}
 	
+	@DeleteMapping("/deleteallcart")
+	public HashMap<String, Object> deleteallcart(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		cs.deleteallcart((String)loginUser.getEmail());
+		return null;
+	}
+	
 	
 	@PostMapping("/updateqty")
 	public HashMap<String, Object> updateqty(@RequestBody Cart cart){

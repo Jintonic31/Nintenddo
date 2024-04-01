@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
 .pdetailcnt{
     display:flex;
     flex-direction:column;
@@ -18,7 +21,6 @@
     margin-right:20px;
 }
 
-/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 .detailWrap{
     flex:9;
@@ -30,13 +32,11 @@
 
 .detailimg{
     flex:1;
-    height:100%;
+    max-height:400px;
     margin:20px 20px 0 20px;
 
 }
 .detailimg img{ width:100%; height:100%; }
-
-/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 .detailtext{
     flex:1;
@@ -48,9 +48,7 @@
     margin-right:40px;
 }
 
-.detailtext .name{
-    flex:1;
-}
+.detailtext .name{flex:1;}
 .detailtext .subandinfo{
     flex:2;
     display:flex;
@@ -70,26 +68,16 @@
     margin:10px 5px;
 }
 
-.detailtext .goOrderBtn{
-    margin-top:20px;
+.detailtext .goOrderBtn, .detailtext .goCartBtn{
+    width:100%;
+    min-height:40px;
     height:40px;
-    color:white;
-    font-weight:bold;
-    font-size:110%;
-    background-color:rgb(230, 0, 18);
-    border:none;
-    cursor:pointer;
-
-}
-.detailtext .goCartBtn{
-    margin-top:10px;
-    height:40px;
-    color:white;
-    font-weight:bold;
-    font-size:110%;
-    background-color:rgb(230, 0, 18);
-    border:none;
+    margin-right:30px;
     cursor:pointer;
 }
 
 
+`
+
+
+export default GlobalStyles;

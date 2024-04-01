@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import team.nt.Entity.Cart;
 import team.nt.Entity.Cview;
+import team.nt.Entity.Member;
 import team.nt.dao.CartRepository;
 import team.nt.dao.ICartDao;
 
@@ -34,10 +35,16 @@ public class CartService {
 	public void deletecart(int cseq) {
 		cr.deleteByCseq(cseq);
 	}
+	
+	public void deleteallcart(String loginUser) {
+		cr.deleteByEmail(loginUser);
+	}
 
 	public void updateqtyCart(Cart cart) {
 		cr.save(cart);		
 	}
+
+	
 
 
 

@@ -189,7 +189,7 @@ function Modifynews() {
             </div>
 
             <div className='modifyBtns'>
-                <button onClick={()=>{navigate('/adminproductlist')}}>목록으로</button>
+                <button onClick={()=>{navigate('/adminnewslist')}}>목록으로</button>
                 <button onClick={()=>{onsubmit()}}>저장하기</button>
             </div>
 

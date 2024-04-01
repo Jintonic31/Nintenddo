@@ -42,6 +42,7 @@ function Insertnews() {
 
         const result = await axios.post('/api/admins/newsimgup', formData)
 
+
         if(idx == 1){
             setImgsrc1(`http://localhost:8070/images/news/${result.data.filename}`)
         }else if( idx == 2 ){
@@ -50,14 +51,15 @@ function Insertnews() {
             setImgsrc3(`http://localhost:8070/images/news/${result.data.filename}`)
         }
 
-        let arr = [...imgList];
-        arr.push(result.data.filename);
-        setImgList( [...arr] );
-        // console.log(imgList);
+        setImgList(arr => [...arr, result.data.filename]);
+        console.log("imgList : " + [imgList]);
+        // arr.push(result.data.filename);
+        // setImgList( [...arr] );
+        // console.log(result.data.filename);
     }
 
     function onsubmit(){
-        axios.post('/api/admins/insertnews', {title, content1, content2, content3, image1:imgList[0], image1:imgList[1], image1:imgList[2]} )
+        axios.post('/api/admins/insertnews', {title, content1, content2, content3, image1:imgList[0], image2:imgList[1], image3:imgList[2]} )
         .then((result)=>{
             alert('작성 완료! 목록으로 돌아갑니다.')
             navigate('/adminnewslist')

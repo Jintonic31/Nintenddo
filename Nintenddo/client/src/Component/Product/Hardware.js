@@ -52,6 +52,32 @@ function Hardware() {
         return () => clearInterval(interval);
       }, [softwareBanners.length]);
 
+    async function goOrder(pseq){
+        if(loginUser.email == ''){
+        // loginUser만 쓸 경우 빈 객체도 비어있지 않은것으로 인식되어 email 존재 여부를 확인하는 것
+            alert('로그인이 필요한 서비스입니다.')
+            navigate('/loginpage')
+            return;
+            // alert 가 실행된 이후 else문이 실행되는것을 방지하기 위한 return
+        }else{
+            try{
+                
+                let ans = window.confirm('장바구니에 있는 상품도 함께 주문하시겠습니까?');
+                if(ans){
+                // ans가 true일 경우
+                    await axios.post('/api/carts/insertcart', {pseq:pseq, quantity:1, email:loginUser.email})
+                    navigate('/writedelivery');
+                }else{
+                    await axios.delete('/api/carts/deleteallcart');
+                    await axios.post('/api/carts/insertcart', {pseq:pseq, quantity:1, email:loginUser.email})
+                    navigate('/writedelivery')
+                }
+            }catch(err){
+                console.error(err);
+            }
+        }
+    }
+
 
     async function goCart(pseq){
         if(loginUser.email == ''){
@@ -117,7 +143,7 @@ function Hardware() {
                                         <span className='hardOneprice'><span>희망소비자가격 :</span>
                                         {new Intl.NumberFormat('ko-KR').format(hard.price1)}</span>
 
-                                        <button className='goOrderBtn'>바로 구매</button>
+                                        <button className='goOrderBtn' onClick={()=>{goOrder(hard.pseq)}}>바로 구매</button>
                                         <button className='goCartBtn' onClick={()=>{goCart(hard.pseq)}}>장바구니</button>
 
                                     </div>

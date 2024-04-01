@@ -144,7 +144,7 @@
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 /* 랩탑 */
-@media (min-width:1050px) and (max-width:1920px){
+@media (min-width:1050px) and (max-width:1900){
     
     .onemodifyfield .inputboxdiv input{
         max-width:125px;
