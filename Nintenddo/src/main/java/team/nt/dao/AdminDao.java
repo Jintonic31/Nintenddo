@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
+import team.nt.Entity.Banner;
 import team.nt.Entity.News;
+import team.nt.Entity.Odetail;
 import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
@@ -125,6 +128,27 @@ public class AdminDao implements IAdminDao{
 	    
 	    return news;
 	}
+	
+	
+	@Override
+	public Odetail updateorder(Odetail odetail, int oseq) {
+		String sql = "update Odetail od set od.oname= :oname, od.ophone= :ophone, od.oznum= :oznum, od.oadd1= :oadd1,"
+				+ " od.oadd2= :oadd2, od.result= :result where od.oseq= :oseq";
+		
+		Query query = em.createQuery(sql);
+		
+		query.setParameter("oname", odetail.getOname());
+	    query.setParameter("ophone", odetail.getOphone());
+	    query.setParameter("oznum", odetail.getOznum());
+	    query.setParameter("oadd1", odetail.getOadd1());
+	    query.setParameter("oadd2", odetail.getOadd2());
+	    query.setParameter("result", odetail.getResult());
+	    query.setParameter("oseq", oseq);
+	    
+	    query.executeUpdate(); // 업데이트 쿼리 실행
+		
+		return odetail;
+	}
 
 
 	@Override
@@ -132,6 +156,21 @@ public class AdminDao implements IAdminDao{
 		String sql = "select pc from Pcategory pc";
 		return em.createQuery(sql, Pcategory.class).getResultList();
 	}
+
+	
+	@Override
+	public List<Oview> getOseqList(int oseq) {
+		String sql = "select ov from Oview ov where ov.oseq= :oseq";
+		
+		TypedQuery query = em.createQuery(sql, Oview.class);
+		query.setParameter("oseq", oseq);
+		
+		List<Oview> result = query.getResultList();
+		
+		return result;
+	}
+
+	
 
 	
 	

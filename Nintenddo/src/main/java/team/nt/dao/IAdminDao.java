@@ -3,6 +3,7 @@ package team.nt.dao;
 import java.util.List;
 
 import team.nt.Entity.News;
+import team.nt.Entity.Odetail;
 import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
@@ -26,6 +27,10 @@ public interface IAdminDao {
 	News updateNewsImages(News news, String nseq);
 	
 	List<Oview> getOrderList(Paging paging);
+
+	List<Oview> getOseqList(int oseq);
+
+	Odetail updateorder(Odetail odetail, int oseq);
 
 
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import team.nt.Entity.Admins;
 import team.nt.Entity.News;
+import team.nt.Entity.Odetail;
 import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
@@ -95,6 +96,16 @@ public class AdminService {
 	public void deleteproduct(int pseq) {
 		pr.deleteById(pseq);		
 	}
+
+	public List<Oview> getOseqList(int oseq) {
+		return iadao.getOseqList(oseq);
+	}
+
+	public Odetail updateorder(Odetail odetail, int oseq) {
+		return iadao.updateorder(odetail, oseq);
+	}
+
+	
 
 	
 	

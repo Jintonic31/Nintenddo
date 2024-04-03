@@ -83,8 +83,8 @@ function Adminorderlist() {
         }
     }
 
-    async function onOrderView(oseq){
-        await axios.post('/api/admins/saveoseq', null, {params:{oseq}})
+    function onOrderView(oseq){
+        axios.post('/api/admins/saveoseq', null, {params:{oseq}})
         .then(()=>{ navigate('/modifyorder') })
         .catch((err)=>{console.error(err)})
     }

@@ -21,9 +21,13 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import team.nt.Entity.Admins;
+import team.nt.Entity.Member;
 import team.nt.Entity.News;
+import team.nt.Entity.Odetail;
+import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
+import team.nt.dto.OrderViewDto;
 import team.nt.dto.Paging;
 import team.nt.service.AdminService;
 
@@ -309,6 +313,32 @@ public class AdminController {
 		HttpSession session = request.getSession();
 		int pseq = Integer.parseInt((String)session.getAttribute("pseq"));
 		as.deleteproduct(pseq);
+		return null;
+	}
+	
+	
+	@GetMapping("/getOrderone")
+	public List<Oview> getOrderone(HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		int oseq = Integer.parseInt((String) session.getAttribute("oseq"));		
+		
+		List<Oview> list = as.getOseqList(oseq);
+		// System.out.println("해당 oseq의 모든 oseq : " + list);
+		
+		return list;
+	}
+	
+	
+	@PostMapping("/updateorder")
+	public HashMap<String, Object> updateorder(@RequestBody Odetail odetail, HttpServletRequest request){
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		HttpSession session = request.getSession();
+		int oseq = Integer.parseInt((String) session.getAttribute("oseq"));
+		
+		Odetail od = as.updateorder(odetail, oseq);
+		
 		return null;
 	}
 
