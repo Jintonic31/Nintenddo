@@ -53,11 +53,11 @@ function Modifynews() {
         const result = await axios.post('/api/admins/newsimgup', formData)
 
         if(idx == 1){
-            setImgsrc1(`http://localhost:8070/images/news/${result.data.filename}`)
+            setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 2 ){
-            setImgsrc2(`http://localhost:8070/images/news/${result.data.filename}`)
+            setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 3 ){
-            setImgsrc3(`http://localhost:8070/images/news/${result.data.filename}`)
+            setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }
 
         let arr = [...imgList];
@@ -128,7 +128,7 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image1}`} alt='' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image1} alt='' />
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
@@ -155,7 +155,7 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image2}`} alt='' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image2} alt='' />
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
@@ -179,7 +179,7 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image3}`} alt='' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image3} alt='' />
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>

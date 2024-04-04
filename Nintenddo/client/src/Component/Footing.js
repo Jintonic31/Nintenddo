@@ -10,14 +10,14 @@ function Footing() {
 
     const navigate = useNavigate();
 
-    const [imgSrc, setImgSrc] = useState('http://localhost:8070/images/includes/gotop.png');
+    const [imgSrc, setImgSrc] = useState(process.env.REACT_APP_IMG_SRC +'/includes/gotop.png');
 
     const handleMouseOver = () =>{
-        setImgSrc('http://localhost:8070/images/includes/gotopMouseOver.png');
+        setImgSrc(process.env.REACT_APP_IMG_SRC +'/includes/gotopMouseOver.png');
     }
 
     const handleMouseOut = () =>{
-        setImgSrc('http://localhost:8070/images/includes/gotop.png');
+        setImgSrc(process.env.REACT_APP_IMG_SRC +'/includes/gotop.png');
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +63,7 @@ function Footing() {
         <div className='footingCnt'>
             <div className='footingredline'>
                 <div className='infootingredline'>
-                    <div className='flogo'><img src='http://localhost:8070/images/includes/flogo.png' alt=''/></div>
+                    <div className='flogo'><img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'flogo.png'} alt=''/></div>
                     <div className='fgoTop' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
                         <img src={imgSrc}/>
                     </div>
@@ -72,22 +72,22 @@ function Footing() {
 
             <div className='fnews'>
                 <div className='snsNews'>
-                    <img src='http://localhost:8070/images/includes/youtube.png' alt=''/>
-                    <img src='http://localhost:8070/images/includes/kakao.png' alt=''/>
-                    <img src='http://localhost:8070/images/includes/facebook.png' alt='' />
-                    <img src='http://localhost:8070/images/includes/twitter.png' alt=''/>
-                    <img src='http://localhost:8070/images/includes/kakaoch.png' alt=''/>
+                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'youtube.png'} alt=''/>
+                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'kakao.png'} alt=''/>
+                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'facebook.png'} alt='' />
+                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'twitter.png'} alt=''/>
+                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'kakaoch.png'} alt=''/>
                 </div>
                 <div className='myNintendo'>
                     <div>
                         <Link to='/login'> 
-                        <img src='http://localhost:8070/images/includes/mynintendo.png' alt=''/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'mynintendo.png'} alt=''/>
                         </Link>
                     </div>
                    
                 </div>
                 <div className='famiibo'>
-                    <img src='http://localhost:8070/images/includes/famiibo.png' alt=''/>
+                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'famiibo.png'} alt=''/>
                 </div>
 
                 
@@ -127,7 +127,7 @@ function Footing() {
                         <Modal isOpen={isOpen} ariaHideApp={false} style={ToSStyle}>
                             <div className='ToSCnt'>
                                 <div className='ToSLogo'>
-                                    <img src='http://localhost:8070/images/includes/toslogo.png' alt=''/>
+                                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'toslogo.png'} alt=''/>
                                 </div>
                                 <div className='ToSTitle'>
                                     <div>&nbsp;&nbsp;</div>
@@ -177,7 +177,7 @@ function Footing() {
                         <Modal isOpen={isOpen2} ariaHideApp={false} style={userInfoStyle}>
                             <div className='ToSCnt'>
                                 <div className='ToSLogo'>
-                                    <img src='http://localhost:8070/images/includes/toslogo.png' alt=''/>
+                                    <img src= {process.env.REACT_APP_IMG_SRC +'includes/'+'toslogo.png'} alt=''/>
                                 </div>
                                 <div className='ToSTitle'>
                                     <div>&nbsp;&nbsp;</div>

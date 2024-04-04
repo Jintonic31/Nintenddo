@@ -70,7 +70,7 @@ function Newslist() {
                                 return(
                                     <div className='nList'>
                                         <div className='nListImage' onClick={()=>{goNewsDetail(news.nseq)}}>
-                                            <img src={`http://localhost:8070/images/news/${news.image1}`} />
+                                            <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+news.image1} />
                                         </div>
 
                                         <div className='nListtitle' onClick={()=>{goNewsDetail(news.nseq)}}>{news.title}</div>
@@ -90,7 +90,7 @@ function Newslist() {
                 // newsList의 수가 표시할 수보다 많을 때만(= 더 보여줄 뉴스가 남아있다면) 더보기 버튼 생성
                     <div className='showMoreBtn'>
                         <button onClick={handleShowMore}>
-                            <img src='http://localhost:8070/images/news/showmorebtn.png' />
+                            <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+'showmorebtn.png'} />
                             더보기
                         </button>
                     </div>

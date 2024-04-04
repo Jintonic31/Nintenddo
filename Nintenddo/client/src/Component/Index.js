@@ -29,6 +29,7 @@ function Index() {
   const [customerInfo, setCustomerInfo] = useState({}); // 초기화된 사용자 정보
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_IMG_SRC)
     axios.get('/api/banners/mainbanner')
       .then((result) => {
         setBannerList(result.data);
@@ -48,31 +49,31 @@ function Index() {
         <div className='mainBannerList'>
           <Slider {...settings}>
             {bannerList.map((banner, idx) => (
-              <img key={idx} src={`http://localhost:8070/images/banner/main/${banner.image}`} alt={`banner-${idx}`} />
+              <img key={idx} src={`${process.env.REACT_APP_IMG_SRC}banner/main/${banner.image}`} alt={`banner-${idx}`} />
             ))}
           </Slider>
           <div className='mainBannerremote'>
 
             <div className='remote'>
-                <img src='http://localhost:8070/images/banner/remoteicon/icon1.png' />
+                <img src= {`${process.env.REACT_APP_IMG_SRC}/banner/remoteicon/icon2.png`} />
                 <div className='remotetitle1'>
                     마리오 VS. 동킹콩
                 </div>
             </div>
             <div className='remote'>
-                <img src='http://localhost:8070/images/banner/remoteicon/icon2.png' />
+                <img src= {process.env.REACT_APP_IMG_SRC +'/banner/remoteicon/'+'icon2.png'} />
                 <div className='remotetitle2'>
                     스플래툰 3
                 </div>
             </div>
             <div className='remote'>
-                <img src='http://localhost:8070/images/banner/remoteicon/icon3.png' />
+                <img src= {process.env.REACT_APP_IMG_SRC +'/banner/remoteicon/'+'icon3.png'} />
                 <div className='remotetitle3'>
                     슈퍼 마리오 RPG
                 </div>
             </div>
             <div className='remote'>
-                <img src='http://localhost:8070/images/banner/remoteicon/icon4.png' />
+                <img src= {process.env.REACT_APP_IMG_SRC +'/banner/remoteicon/'+'icon4.png'} />
                 <div className='remotetitle4'>
                     동물의 숲
                 </div>
@@ -87,7 +88,7 @@ function Index() {
           <span>Nintendo Switch</span>
           <span>
             닌텐도 선불 번호 구입
-            <img src='http://localhost:8070/images/banner/main/rightarrowicon.png' alt='rightarrow' />
+            <img src= {process.env.REACT_APP_IMG_SRC +'/banner/main/'+'rightarrowicon.png'} alt='rightarrow' />
           </span>
         </div>
         <Mainsoftware />

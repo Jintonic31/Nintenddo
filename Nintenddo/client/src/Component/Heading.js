@@ -6,13 +6,13 @@ import Megadrop from './Megadrop';
 function Heading() {
   const navigate = useNavigate();
   const [imgSrc, setImgSrc] = useState({
-    1: "http://localhost:8070/images/includes/image1.png",
-    3: "http://localhost:8070/images/includes/image3.png",
-    5: "http://localhost:8070/images/includes/image5.png",
-    7: "http://localhost:8070/images/includes/image7.png",
-    9: "http://localhost:8070/images/includes/image9.png",
-    11: "http://localhost:8070/images/includes/image11.png",
-    13: "http://localhost:8070/images/includes/image13.png"
+    1: `${process.env.REACT_APP_IMG_SRC}/includes/image1.png`,
+    3: `${process.env.REACT_APP_IMG_SRC}/includes/image3.png`,
+    5: `${process.env.REACT_APP_IMG_SRC}/includes/image5.png`,
+    7: `${process.env.REACT_APP_IMG_SRC}/includes/image7.png`,
+    9: `${process.env.REACT_APP_IMG_SRC}/includes/image9.png`,
+    11: `${process.env.REACT_APP_IMG_SRC}/includes/image11.png`,
+    13: `${process.env.REACT_APP_IMG_SRC}/includes/image13.png`
   });
   const [dropStyle, setDropStyle] = useState({ display: "none" });
   const [activeCategoryId, setActiveCategoryId] = useState(null);
@@ -23,7 +23,7 @@ function Heading() {
     setActiveCategoryId(id);
     setImgSrc(prevImgSrc => ({
       ...prevImgSrc,
-      [id]: `http://localhost:8070/images/includes/image${id + 1}.png`
+      [id]: `${process.env.REACT_APP_IMG_SRC}/includes/image${id + 1}.png`
     }));
     if(isMouseOnMenu){
       setDropStyle({ display: "flex" });
@@ -32,7 +32,7 @@ function Heading() {
 
 
   const handleMouseOut = (id) => {
-    setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/includes/image${id}.png` });
+    setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/includes/image${id}.png` });
     console.log(1, isMouseOnMenu);
     if (isMouseOnMenu === false) { 
       setDropStyle({ display: "none" });
@@ -60,7 +60,7 @@ function Heading() {
   return (
     <div className="category">
       <div className='gomainlogo' onClick={() => navigate('/')}>
-        <img src="http://localhost:8070/images/includes/nintendo.png" alt="" />
+        <img src={`${process.env.REACT_APP_IMG_SRC}/includes/nintendo.png`} alt="" />
       </div>
       <div className='gocategoryWrap'>
       {menuItems.map(({ id, text, linkto }) => (

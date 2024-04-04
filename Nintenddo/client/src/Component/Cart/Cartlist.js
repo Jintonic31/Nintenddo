@@ -174,7 +174,7 @@ function Cartlist() {
                                         </div>
 
                                         <div className='oneimg'>
-                                            <img src={`http://localhost:8070/images/product/productdetail/${cart.image}`} alt='' />
+                                            <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+cart.image} alt='' />
                                         </div>
 
                                         <div className='onepname'>
@@ -202,7 +202,7 @@ function Cartlist() {
                     <div className='clistEndrow'>
                         <div>총 &nbsp;{new Intl.NumberFormat('ko-KR').format(totalPrice)}&nbsp;원</div>
                         <div onClick={()=>{onDeleteCart()}}>
-                            <img src='http://localhost:8070/images/cart/trash.png' alt='' />
+                            <img src= {process.env.REACT_APP_IMG_SRC +'cart/'+'trash.png'} alt='' />
                             삭제
                         </div>
                     </div>

@@ -210,7 +210,7 @@ function Modifyorder() {
 
                                                 <div className='mooneimg'>
 
-                                                    <img src={`http://localhost:8070/images/product/productdetail/${odone.image}`} alt='' />
+                                                    <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+odone.image} alt='' />
 
                                                 </div>
 

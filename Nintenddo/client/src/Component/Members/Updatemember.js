@@ -27,8 +27,8 @@ function Updatemember() {
     const dispatch = useDispatch();
 
     const [imgSrc, setImgSrc] = useState({
-        1: "http://localhost:8070/images/members/remote1.png",
-        3: "http://localhost:8070/images/members/remote3.png"
+        1: `${process.env.REACT_APP_IMG_SRC}/members/remote1.png`,
+        3: `${process.env.REACT_APP_IMG_SRC}/members/remote3.png`
     })
 
     const navItems = [
@@ -37,11 +37,11 @@ function Updatemember() {
     ];
 
     const handleMouseOver = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/members/remote${id + 1}.png` });
+        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/members/remote${id + 1}.png` });
     }
 
     const handleMouseOut = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/members/remote${id}.png` });
+        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/members/remote${id}.png` });
     }
 
     // 스크롤 이동

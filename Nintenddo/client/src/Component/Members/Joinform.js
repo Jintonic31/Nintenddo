@@ -112,12 +112,12 @@ function Joinform() {
       <div className='jsubPage'>
           <article>
               <div className="sns-btns">
-              <button className="ovalButton googleButton"><img src={`http://localhost:8070/images/members/google.png`} />Google</button>
+              <button className="ovalButton googleButton"><img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'google.png'} />Google</button>
                   <button className="ovalButton kakaoButton" onClick={
                       ()=>{
                       window.location.href='http://localhost:8070/api/members/kakaostart';
                           }
-                  }><img src={`http://localhost:8070/images/members/kakao.png`} />Kakao</button>
+                  }><img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'kakao.png'} />Kakao</button>
               </div>
               
 

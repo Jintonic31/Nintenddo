@@ -69,10 +69,10 @@ function Adminproductlist() {
     }
 
     const [imgSrc, setImgSrc] = useState({
-        1: "http://localhost:8070/images/admin/controllernav1.png",
-        3: "http://localhost:8070/images/admin/controllernav3.png",
-        5: "http://localhost:8070/images/admin/controllernav5.png",
-        7: "http://localhost:8070/images/admin/controllernav7.png"        
+        1: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav1.png`,
+        3: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav3.png`,
+        5: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav5.png`,
+        7: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav7.png`        
     })
 
     const navItems = [
@@ -83,11 +83,11 @@ function Adminproductlist() {
     ];
 
     const handleMouseOver = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/admin/controllernav${id + 1}.png` });
+        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav${id + 1}.png` });
     }
 
     const handleMouseOut = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/admin/controllernav${id}.png` });
+        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav${id}.png` });
     }
 
     

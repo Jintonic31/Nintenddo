@@ -41,7 +41,7 @@ function Mainsoftware() {
                             return(
                                 <div className='softList'>
                                     <div className='slistImage'>
-                                        <img src={`http://localhost:8070/images/product/productdetail/${soft.image}`} />
+                                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+soft.image} />
                                     </div>
                                     
                                     <div className='slisthardware'>
@@ -65,7 +65,7 @@ function Mainsoftware() {
                 <div className='showmoreBtn'>
                     <button onClick={handleShowMore}>
                     {/* handleShowMore() (함수)로 호출시 랜더링되면 바로 실행되기 때문에 변수로 만든다 */}
-                        <img src='http://localhost:8070/images/news/showmorebtn.png' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+'showmorebtn.png'} alt='' />
                         더보기
                     </button>
                 </div>

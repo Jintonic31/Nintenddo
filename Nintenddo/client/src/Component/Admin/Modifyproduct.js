@@ -56,7 +56,7 @@ function Modifyproduct() {
         axios.post('/api/admins/imgup', formData)
         .then((result)=>{
             setFilename(result.data.filename);
-            setImgsrc(`http://localhost:8070/images/product/productdetail/${result.data.filename}`)
+            setImgsrc(`${process.env.REACT_APP_IMG_SRC}/product/productdetail/${result.data.filename}`)
         })
         .catch((err)=>{console.error(err)})
     }
@@ -106,7 +106,7 @@ function Modifyproduct() {
 
                 <div className='modifypdtimg'>
                     <div>Before</div>
-                    <img src={`http://localhost:8070/images/product/productdetail/${oneproduct.image}`} alt='' />
+                    <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+oneproduct.image} alt='' />
                     <div>After</div>
                     <img src={imgsrc} alt='수정 후 이미지' />
                 </div>

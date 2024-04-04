@@ -8,6 +8,7 @@ function Mainnews() {
     const navigate = useNavigate();
     const [newsList, setNewsList] = useState([]);
     const [displayNum, setDisplayNum] = useState(8);
+    const img = process.env.REACT_APP_IMG_SRC
 
     useEffect(()=>{
         axios.get('/api/news/getnewslist')
@@ -42,7 +43,8 @@ function Mainnews() {
                             return(
                                 <div className='newsList'>
                                     <div className='nlistImage' onClick={()=>{goNewsDetail(news.nseq)}}>
-                                        <img src={`http://localhost:8070/images/news/${news.image1}`} />
+                                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+${news.image1}`} /> */}
+                                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+news.image1} />
                                     </div>
 
                                     <div className='nlisttitle' onClick={()=>{goNewsDetail(news.nseq)}}>{news.title}</div>
@@ -61,7 +63,7 @@ function Mainnews() {
             {newsList.length > displayNum && (
                 <div className='showmoreBtn'>
                     <button onClick={handleShowMore}>
-                        <img src='http://localhost:8070/images/news/showmorebtn.png' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/showmorebtn.png'} />
                         더보기
                     </button>
                 </div>

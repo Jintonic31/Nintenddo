@@ -96,7 +96,7 @@ function Chatbot() {
                 </div>
               ))}
             </div>
-            <img src="http://localhost:8070/images/includes/mario.gif" alt="Mario GIF" />
+            <img src={`${process.env.REACT_APP_IMG_SRC}/includes/mario.gif`} alt="Mario GIF" />
           </div>
         </div>
       )}

@@ -86,7 +86,7 @@ const findUserEmailByPhone = () => {
 
         <div class="colored-div">
             <div className='incoloredWrap'>
-                <img src={`http://localhost:8070/images/members/mynintendo.png`} />
+                <img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'mynintendo.png'} />
                 
                 <div className='incoloredTitle'>
                     <div class="content-div">
@@ -115,7 +115,7 @@ const findUserEmailByPhone = () => {
                                     <button className="gologinbtn" onClick={()=>{navigate("/loginpage")}}>
                                         로그인
                                     </button>
-                                    <img className="gologinbtn" src='http://localhost:8070/images/members/kakaologin.png' alt='' onClick={
+                                    <img className="gologinbtn" src={process.env.REACT_APP_IMG_SRC +'/members/kakaologin.png'} alt='' onClick={
                                         ()=>{
                                         window.location.href='http://localhost:8070/api/members/kakaostart';
                                             }
@@ -148,7 +148,7 @@ const findUserEmailByPhone = () => {
 
                 <button onClick={findUserEmailByPhone}>찾기</button>
                 <div className='kurby'>
-                <img src={`http://localhost:8070/images/members/kurby.png`} />
+                <img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'kurby.png'} />
                 </div>
                 <div className='faMessage'>
                     {email && <p>사용자 이메일: [ {email} ]</p>}
@@ -166,9 +166,9 @@ const findUserEmailByPhone = () => {
             <div id="myModal" class="joinmodal">
                 <div class="jmodal-content">
                     <div class="jmodal-body">
-                        <img src={`http://localhost:8070/images/members/13down.png`} />&nbsp;&nbsp;&nbsp;
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'13down.png'} />&nbsp;&nbsp;&nbsp;
                 
-                        <img src={`http://localhost:8070/images/members/14up.png`} onClick={()=>{
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'14up.png'} onClick={()=>{
                             navigate("/joinform");
                         }} />
                     </div>

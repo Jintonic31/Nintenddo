@@ -41,19 +41,19 @@ function Newsdetail() {
 
                 <div className='newsBody'>
                     <div className='innewsImg'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image1}`} alt='' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image1} alt='' />
                     </div>
                     <div className='innewsText'>
                         {onenews.content1}
                     </div>
                     <div className='innewsImg'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image2}`} alt='' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image2} alt='' />
                     </div>
                     <div className='innewsText'>
                         {onenews.content2}
                     </div>
                     <div className='innewsImg'>
-                        <img src={`http://localhost:8070/images/news/${onenews.image3}`} alt='' />
+                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image3} alt='' />
                     </div>
                     <div className='innewsText'>
                         {onenews.content3}

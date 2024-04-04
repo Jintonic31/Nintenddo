@@ -44,11 +44,11 @@ function Insertnews() {
 
 
         if(idx == 1){
-            setImgsrc1(`http://localhost:8070/images/news/${result.data.filename}`)
+            setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 2 ){
-            setImgsrc2(`http://localhost:8070/images/news/${result.data.filename}`)
+            setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 3 ){
-            setImgsrc3(`http://localhost:8070/images/news/${result.data.filename}`)
+            setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }
 
         setImgList(arr => [...arr, result.data.filename]);
