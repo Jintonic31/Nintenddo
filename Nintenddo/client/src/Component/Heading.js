@@ -63,6 +63,7 @@ function Heading() {
       <div className='gomainlogo' onClick={() => navigate('/')}>
         <img src="http://localhost:8070/images/includes/nintendo.png" alt="" />
       </div>
+      <div className='gocategoryWrap'>
       {menuItems.map(({ id, text, linkto }) => (
         <div
           className='gocategory'
@@ -80,6 +81,7 @@ function Heading() {
           </div>
         </div>
       ))}
+      </div>
       <Megadrop
         navigate={navigate}
         categoryId={activeCategoryId}

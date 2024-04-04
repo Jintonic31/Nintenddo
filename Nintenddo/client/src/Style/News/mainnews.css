@@ -93,3 +93,90 @@
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
+
+/* 테블릿 */
+@media (min-width:500px) and (max-width:1024px){
+
+    .mainnewsTitle{
+        height:60px;
+        margin:40px 0 0 50px;
+    }
+    
+    .mainnewsContent{
+        grid-template-columns:1fr 1fr 1fr;
+        grid-column-gap:40px;
+        grid-row-gap:20px;
+    }
+    
+}
+
+/* 모바일 */
+@media (max-width:499px){
+
+    .mainnewsCnt{
+        margin:0;
+    }
+
+    .mainnewsTitle{
+        height:40px;
+        margin:40px 0 0 20px;
+    }
+    .titleKr{
+        font-size:1rem;
+        font-weight:bold;
+        line-height:40px;
+        color:rgb(41, 40, 40);
+    }
+    .titleEn{
+        font-size:0.7rem;
+        line-height:45px;
+    }
+
+    .mainnewsContent{
+        grid-template-columns:1fr 1fr;
+        grid-column-gap:30px;
+        grid-row-gap:10px;
+    
+    }
+    .newsList{
+        width:150px;
+        height:100%;
+    }
+    .nlistImage{
+        flex:2;
+        height:120px;
+        margin-bottom:10px;
+    }
+    .nlistImage img{
+        width:100%;
+        height:100%;
+        cursor:pointer;
+    }
+    .nlisttitle{
+        font-size:0.7rem;
+    }
+    .nlistIndate{
+        display:flex;
+        align-items:flex-end;
+        font-size:0.6rem;
+        margin:10px 0 0 0;
+    }
+
+    .showmoreBtn button{
+        width:120px;
+        height:30px;
+        border:none;
+        border-radius:2px;
+        background-color:rgb(230, 0, 18);
+        color:white;
+        font-size:0.7rem;
+        font-weight:bold;
+        margin:40px 0;
+    }
+    .showmoreBtn button img{
+        width:13px;
+        height:13px;
+        margin-right:5px;
+    }
+  }
+

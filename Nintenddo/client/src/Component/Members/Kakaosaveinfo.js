@@ -11,10 +11,10 @@ function Kakaosaveinfo() {
     useEffect(()=>{
         async function fetchData(){
             try{
-                const result = await axios.get( '/api/members/getLoginUser' );
+                const result = await axios.post('/api/members/getLoginUser' );
                 console.log( 'loginUser : ', result.data.loginUser )
                 dispatch( loginAction( result.data.loginUser ) );
-                alert('정상 로그인 되었습니다');
+                alert('환영합니다!');
                 navigate('/');
             }catch(err){
                 console.error(err)

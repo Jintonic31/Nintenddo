@@ -115,6 +115,11 @@ const findUserEmailByPhone = () => {
                                     <button className="gologinbtn" onClick={()=>{navigate("/loginpage")}}>
                                         로그인
                                     </button>
+                                    <img className="gologinbtn" src='http://localhost:8070/images/members/kakaologin.png' alt='' onClick={
+                                        ()=>{
+                                        window.location.href='http://localhost:8070/api/members/kakaostart';
+                                            }
+                                    }/>
                                 </div>
                             )
                         }

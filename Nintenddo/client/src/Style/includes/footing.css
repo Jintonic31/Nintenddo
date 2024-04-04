@@ -133,7 +133,7 @@
     cursor:pointer;
 }
 
-
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 
 .copyRight{
@@ -171,7 +171,7 @@
     padding-bottom:10px;
 }
 
-
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 .TosCnt{
     display:flex;
@@ -242,5 +242,142 @@
 
 
 
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
+
+
+/* 테블릿 */
+@media (min-width:500px) and (max-width:1024px){
+
+    .infootingredline{
+        height:70px;
+        align-items:center;
+    }
+
+    .fnews{
+        width:100%;
+        height:100%;
+        margin:0;
+        display:flex;
+        flex-direction:column;
+    }
+    .fnews .snsNews{
+        width:100%;
+        flex:1;
+        justify-content:center;
+        margin:0 0 30px 0;
+    }
+    
+    .fnews .myNintendo{
+        flex:1;
+        border-radius:5px;
+        margin:0;
+    }
+    .fnews .famiibo{
+        flex:1;
+        margin-top:20px;
+    }
+    .fnews .myNintendo img{
+        width:365px; height:54px;
+        border:none;
+        border-radius:5px;
+        padding-top:2px;
+    }
+    .fnews .famiibo img{
+        width:365px; height:50px;
+        border:2px solid lightgray;
+        border-radius:5px;
+        padding-top:2px;
+        margin-bottom:20px;
+    }
+
+    .copyRight .seller{
+        flex:1;
+        color:gray;
+        font-size:0.9em;
+        padding:20px 0;
+        margin-right:30px;
+    }
+    
+}
+
+/* 모바일 */
+@media (max-width:499px){
+
+    .infootingredline{
+        height:40px;
+        align-items:center;
+    }
+    .flogo img{
+        width:80px;
+        height:20px;
+    }
+    .fgoTop img{
+        width:20px;
+        height:20px;
+        cursor:pointer;
+    }
+
+    .fnews{
+        width:100%;
+        height:100%;
+        margin:0;
+        display:flex;
+        flex-direction:column;
+    }
+    .fnews .snsNews{
+        width:100%;
+        flex:1;
+        justify-content:center;
+        margin:0 0 30px 0;
+    }
+    
+    .fnews .myNintendo{
+        flex:1;
+        border-radius:5px;
+        margin:0;
+    }
+    .fnews .famiibo{
+        flex:1;
+        margin-top:20px;
+    }
+    .fnews .myNintendo img{
+        width:365px; height:54px;
+        border:none;
+        border-radius:5px;
+        padding-top:2px;
+    }
+    .fnews .famiibo img{
+        width:365px; height:50px;
+        border:2px solid lightgray;
+        border-radius:5px;
+        padding-top:2px;
+        margin-bottom:20px;
+    }
+
+
+    .fcategory .title{
+        font-size:0.8rem;
+    }
+    .fcategory .sub{
+        font-size:0.6rem;
+    }
+
+
+    .copyContainer{
+        flex-direction:column;
+    }
+
+    .copyRight .seller{
+        flex:1;
+        color:gray;
+        font-size:0.9em;
+        padding:20px 0;
+        margin-right:30px;
+        border-bottom:1px solid gray;
+    }
+
+    
+    
+  }
 

@@ -9,6 +9,7 @@ const Joinform = lazy( ()=>import('../Component/Members/Joinform') )
 const Loginpage = lazy( ()=>import('../Component/Members/Loginpage') )
 const Updatemember = lazy( ()=>import('../Component/Members/Updatemember') )
 const Deletemember = lazy( ()=>import('../Component/Members/Deletemember') )
+const Kakaosaveinfo = lazy( ()=>import('../Component/Members/Kakaosaveinfo') )
 
 //자리침범금지
 
@@ -81,6 +82,10 @@ const root = createBrowserRouter([
     {
         path:'deletemember',
         element:<Suspense fallback={Loading}><Deletemember /></Suspense>
+    },
+    {
+        path:'kakaosaveinfo',
+        element:<Suspense fallback={Loading}><Kakaosaveinfo /></Suspense>
     },
 
 
