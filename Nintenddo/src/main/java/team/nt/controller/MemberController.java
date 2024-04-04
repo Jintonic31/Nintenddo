@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-import com.google.gson.Gson;
+
 import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import team.nt.Entity.Member;
 import team.nt.dto.KakaoProfile;
 import team.nt.dto.KakaoProfile.KakaoAccount;
@@ -38,6 +42,7 @@ public class MemberController {
 
 	@Autowired
 	MemberService ms;
+	
 	
 	@PostMapping("/join")
 	public HashMap<String, Object> join( @RequestBody Member member ){

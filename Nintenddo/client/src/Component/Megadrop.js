@@ -25,7 +25,6 @@ function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
 
   const handleMouseOut = () => {
      setActiveCategoryId(null);
-
   };
 
   const handleDropItemClick = (linkto) => {
@@ -102,8 +101,8 @@ function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
   };
 
   return (
-    <div className='Megadrop' style={dropStyles}>
-      <div className='drophard' onClick={() => navigate('/hardware')} onMouseOut={()=>{handleMouseOut();}}>
+    <div className='Megadrop' style={dropStyles} onMouseOut={()=>{handleMouseOut();}}>
+      <div className='drophard' onClick={() => navigate('/hardware')} >
         <img src={dropMenuItems[categoryId]?.[0]?.image} alt={dropMenuItems[categoryId]?.[0]?.text} />
 
       </div>

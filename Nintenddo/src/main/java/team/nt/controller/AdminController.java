@@ -2,11 +2,11 @@ package team.nt.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,26 +17,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.servlet.ServletContext;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.SdkClientException;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import team.nt.Entity.Admins;
-import team.nt.Entity.Member;
 import team.nt.Entity.News;
 import team.nt.Entity.Odetail;
 import team.nt.Entity.Oview;
 import team.nt.Entity.Pcategory;
 import team.nt.Entity.Product;
-import team.nt.dto.OrderViewDto;
 import team.nt.dto.Paging;
 import team.nt.service.AdminService;
 
 @RestController
 @RequestMapping("/api/admins")
+@RequiredArgsConstructor
 public class AdminController {
 	
 	@Autowired
 	AdminService as;
+	
+	private final AmazonS3 s3;
+
+	   @Value("${cloud.aws.s3.bucket}")
+	   private String bucket;
 	
 	
 	@PostMapping("/loginpage")
@@ -147,81 +156,103 @@ public class AdminController {
 	}
 	
 	
-	@Autowired
-	ServletContext context;
+//	@Autowired
+//	ServletContext context;
 	
+	   
 	@PostMapping("/imgup")
-	public HashMap<String, Object> imgup(@RequestParam("image") MultipartFile file){
+	public HashMap<String, Object> imgup(@RequestParam("image") MultipartFile file) throws AmazonServiceException, SdkClientException, IOException{
 	// client에서 formData.append('image', e.target.files[0]);라는 코드를 통해 "image"라는 이름으로 file을 보냈으므로
 	// RequestParam을 image로 받을수 있음..?
 		
+//		HashMap<String, Object> result = new HashMap<String, Object>();
+//		
+//		String path = context.getRealPath("/images");
+//		String path2 = "product/productdetail/";
+//		// ㄴ getRealPath() :  웹 애플리케이션 컨텍스트 내에서 특정 경로에 해당하는 실제 파일 시스템 경로를 반환하는 데 사용
+//		// ㄴ webbapp 바로 아래 급의 폴더에 한정해 괄호 안의 폴더 경로를 자동으로 찾아주는 듯?
+//		
+//		// System.out.println(path);
+//		
+//		String filename = file.getOriginalFilename();
+//		// System.out.println("filename : " + filename);
+//		
+//		String fn1 = filename.substring(0, filename.indexOf("."));	// . 기준 왼쪽 파일 이름 추출
+//		// System.out.println("fn1 : " + fn1);
+//		
+//		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
+//		// System.out.println("fn2 : " + fn2);
+//		
+//		String uploadPath = path + "/" + path2 + fn1 + fn2;
+//		// System.out.println(uploadPath);
+//		
+//		try {
+//			file.transferTo(new File(uploadPath));
+//			result.put("filename", fn1 + fn2);
+//			// ㄴ filename을 파일이름 + 확장자 와 함께 보냄
+//		}catch(IllegalStateException | IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return result;
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		
-		String path = context.getRealPath("/images");
-		String path2 = "product/productdetail/";
-		// ㄴ getRealPath() :  웹 애플리케이션 컨텍스트 내에서 특정 경로에 해당하는 실제 파일 시스템 경로를 반환하는 데 사용
-		// ㄴ webbapp 바로 아래 급의 폴더에 한정해 괄호 안의 폴더 경로를 자동으로 찾아주는 듯?
-		
-		// System.out.println(path);
-		
-		String filename = file.getOriginalFilename();
-		// System.out.println("filename : " + filename);
-		
-		String fn1 = filename.substring(0, filename.indexOf("."));	// . 기준 왼쪽 파일 이름 추출
-		// System.out.println("fn1 : " + fn1);
-		
-		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
-		// System.out.println("fn2 : " + fn2);
-		
-		String uploadPath = path + "/" + path2 + fn1 + fn2;
-		// System.out.println(uploadPath);
-		
-		try {
-			file.transferTo(new File(uploadPath));
-			result.put("filename", fn1 + fn2);
-			// ㄴ filename을 파일이름 + 확장자 와 함께 보냄
-		}catch(IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+
+	      String originalFilename = file.getOriginalFilename();
+	      ObjectMetadata metadata = new ObjectMetadata();
+	      metadata.setContentLength(file.getSize());
+	      metadata.setContentType(file.getContentType());
+	      s3.putObject(bucket, originalFilename, file.getInputStream(), metadata);
+	      result.put("filename", s3.getUrl(bucket, originalFilename).toString());
+	      
+	      return result;
+	   
 	}
 	
 	
 	@PostMapping("/newsimgup")
-	public HashMap<String, Object> newsimgup(@RequestParam("image") MultipartFile file){
+	public HashMap<String, Object> newsimgup(@RequestParam("image") MultipartFile file) throws AmazonServiceException, SdkClientException, IOException{
 	// client에서 formData.append('image', e.target.files[0]);라는 코드를 통해 "image"라는 이름으로 file을 보냈으므로
 	// RequestParam을 image로 받을수 있음..?
 		
+//		HashMap<String, Object> result = new HashMap<String, Object>();
+//		
+//		String path = context.getRealPath("/images");
+//		// ㄴ getRealPath() :  웹 애플리케이션 컨텍스트 내에서 특정 경로에 해당하는 실제 파일 시스템 경로를 반환하는 데 사용
+//		// ㄴ webbapp 바로 아래 급의 폴더에 한정해 괄호 안의 폴더 경로를 자동으로 찾아주는 듯?
+//		
+//		// System.out.println("path : " + path);
+//		
+//		String filename = file.getOriginalFilename();
+//		// System.out.println("filename : " + filename);
+//		
+//		String fn1 = filename.substring(0, filename.indexOf("."));	// . 기준 왼쪽 파일 이름 추출
+//		// System.out.println("fn1 : " + fn1);
+//		
+//		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
+//		// System.out.println("fn2 : " + fn2);
+//		
+//		String uploadPath = path + "/news/" + fn1 + fn2;
+//		// System.out.println(uploadPath);
+//		
+//		try {
+//			file.transferTo(new File(uploadPath));
+//			result.put("filename", fn1 + fn2);
+//			// ㄴ filename을 파일이름 + 확장자 와 함께 보냄
+//		}catch(IllegalStateException | IOException e) {
+//			e.printStackTrace();
+//		}
+		
 		HashMap<String, Object> result = new HashMap<String, Object>();
+
+	      String originalFilename = file.getOriginalFilename();
+	      ObjectMetadata metadata = new ObjectMetadata();
+	      metadata.setContentLength(file.getSize());
+	      metadata.setContentType(file.getContentType());
+	      s3.putObject(bucket, originalFilename, file.getInputStream(), metadata);
+	      result.put("filename", s3.getUrl(bucket, originalFilename).toString());
+	      
+	      return result;
 		
-		String path = context.getRealPath("/images");
-		// ㄴ getRealPath() :  웹 애플리케이션 컨텍스트 내에서 특정 경로에 해당하는 실제 파일 시스템 경로를 반환하는 데 사용
-		// ㄴ webbapp 바로 아래 급의 폴더에 한정해 괄호 안의 폴더 경로를 자동으로 찾아주는 듯?
-		
-		// System.out.println("path : " + path);
-		
-		String filename = file.getOriginalFilename();
-		// System.out.println("filename : " + filename);
-		
-		String fn1 = filename.substring(0, filename.indexOf("."));	// . 기준 왼쪽 파일 이름 추출
-		// System.out.println("fn1 : " + fn1);
-		
-		String fn2 = filename.substring(filename.indexOf("."));		// . 기준 오른쪽의 확장자 추출
-		// System.out.println("fn2 : " + fn2);
-		
-		String uploadPath = path + "/news/" + fn1 + fn2;
-		// System.out.println(uploadPath);
-		
-		try {
-			file.transferTo(new File(uploadPath));
-			result.put("filename", fn1 + fn2);
-			// ㄴ filename을 파일이름 + 확장자 와 함께 보냄
-		}catch(IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
-		
-		return result;
 	}
 	
 	

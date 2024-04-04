@@ -30,9 +30,8 @@ function Heading() {
     }
   };
 
+
   const handleMouseOut = (id) => {
-    // handleMenuMouseLeave();
-    // setActiveCategoryId(null);
     setImgSrc({ ...imgSrc, [id]: `http://localhost:8070/images/includes/image${id}.png` });
     console.log(1, isMouseOnMenu);
     if (isMouseOnMenu === false) { 
@@ -72,7 +71,7 @@ function Heading() {
           onMouseOut={() => handleMouseOut(id)}
           onClick={() => navigate(linkto)}
         >
-          <div className='incategory'>
+          <div className='incategory' >
             <img
               src={imgSrc[id]}
               alt=''
