@@ -32,6 +32,10 @@ public interface IAdminDao {
 
 	Odetail updateorder(Odetail odetail, int oseq);
 
+	List<Odetail> getOriginalList(int oseq);
+
+	
+
 
 
 

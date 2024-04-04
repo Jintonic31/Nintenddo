@@ -170,6 +170,20 @@ public class AdminDao implements IAdminDao{
 		return result;
 	}
 
+	@Override
+	public List<Odetail> getOriginalList(int oseq) {
+		String sql = "select od from Odetail od where od.oseq= :oseq";
+		
+		TypedQuery query = em.createQuery(sql, Odetail.class);
+		query.setParameter("oseq", oseq);
+		
+		List<Odetail> list = query.getResultList();
+		
+		return list;
+	}
+
+
+
 	
 
 	

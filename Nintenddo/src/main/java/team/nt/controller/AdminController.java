@@ -334,8 +334,32 @@ public class AdminController {
 	public HashMap<String, Object> updateorder(@RequestBody Odetail odetail, HttpServletRequest request){
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
+		// System.out.println(odetail.getOname());
 		HttpSession session = request.getSession();
 		int oseq = Integer.parseInt((String) session.getAttribute("oseq"));
+		
+		List<Odetail> originalList = as.getOriginalList(oseq);
+        Odetail originalDetail = originalList.get(0);
+		
+		if (odetail.getOname() == null || odetail.getOname().trim().isEmpty()) {
+	        odetail.setOname(originalDetail.getOname());
+		}
+		if(odetail.getOphone() == null || odetail.getOphone().trim().isEmpty()) {
+	        odetail.setOphone(originalDetail.getOphone());
+		}
+		if(odetail.getOznum() == null || odetail.getOznum().trim().isEmpty()) {
+			odetail.setOznum(originalDetail.getOznum());
+		}
+		if(odetail.getOadd1() == null || odetail.getOadd1().trim().isEmpty()) {
+			odetail.setOadd1(originalDetail.getOadd1());
+		}
+		if(odetail.getOadd2() == null || odetail.getOadd2().trim().isEmpty()) {
+			odetail.setOadd2(originalDetail.getOadd2());
+		}
+		if(odetail.getResult() == null || odetail.getResult().trim().isEmpty()) {
+			odetail.setResult(originalDetail.getResult());
+		}
+		
 		
 		Odetail od = as.updateorder(odetail, oseq);
 		

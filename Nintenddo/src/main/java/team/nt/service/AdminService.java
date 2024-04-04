@@ -105,6 +105,10 @@ public class AdminService {
 		return iadao.updateorder(odetail, oseq);
 	}
 
+	public List<Odetail> getOriginalList(int oseq) {
+		return iadao.getOriginalList(oseq);
+	}
+
 	
 
 	

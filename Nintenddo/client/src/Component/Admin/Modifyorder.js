@@ -81,10 +81,25 @@ function Modifyorder() {
     }
 
     function onsubmit(){
-        if(result === '' || result === 'undefined'){
+        
+        if(result === '' || result === undefined){
             alert('처리 상태를 선택하세요')
             return;
         }
+
+        // console.log("첫번째 : " + oneorder[0].oname)
+
+        // const updatedOname = oname !== '' && oname !== null ? oname : oneorder[0].oname;
+        // const updatedOphone = ophone !== '' && ophone !== null ? ophone : oneorder[0].ophone;
+        // const updatedOznum = oznum !== '' && oznum !== null ? oznum : oneorder[0].oznum;
+        // const updatedOadd1 = oadd1 !== '' && oadd1 !== null ? oadd1 : oneorder[0].oadd1;
+        // const updatedOadd2 = oadd2 !== '' && oadd2 !== null ? oadd2 : oneorder[0].oadd2;
+
+        // if(oname === '' || oname === 'undefined'){
+        //     setOname(oneorder[0].oname)
+        // }
+        // console.log("두번째 : " + oneorder[0].oname)
+        
 
         axios.post('/api/admins/updateorder', {oname, ophone, oznum, oadd1, oadd2, result})
         .then((result)=>{
@@ -124,17 +139,17 @@ function Modifyorder() {
                                     
                                     <div className='moonename'>
                                         <div>{oneorder[0].oname}</div>
-                                        <input type='text' value={oname} onChange={(e)=>{setOname(e.currentTarget.value)}} />
+                                        <input type='text' value={oname} placeholder='수정' onChange={(e)=>{setOname(e.currentTarget.value)}} />
                                     </div>
 
                                     <div className='moonetel'>
                                         <div>{oneorder[0].ophone}</div>
-                                        <input type='text' value={ophone} onChange={(e)=>{setOphone(e.currentTarget.value)}} />
+                                        <input type='text' value={ophone} placeholder='수정' onChange={(e)=>{setOphone(e.currentTarget.value)}} />
                                     </div>
 
                                     <div className='mooneznum'>
                                         <div>{oneorder[0].oznum}</div>
-                                        <div>
+                                        <div className='moonenew'>
                                             <input type='text' value={oznum} />
                                             <button onClick={()=>{ toggle() }}>찾기</button>
                                         </div>
@@ -153,7 +168,7 @@ function Modifyorder() {
 
                                     <div className='mooneadd'>
                                         <div>{oneorder[0].oadd2}</div>
-                                        <input type='text' value={oadd2} onChange={(e)=>{setOadd2(e.currentTarget.value)}}/>
+                                        <input type='text' value={oadd2} placeholder='수정' onChange={(e)=>{setOadd2(e.currentTarget.value)}}/>
                                     </div>
 
                                 </div>
