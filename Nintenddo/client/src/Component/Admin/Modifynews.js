@@ -28,6 +28,9 @@ function Modifynews() {
     const [image1, setImage1] = useState();
     const [image2, setImage2] = useState();
     const [image3, setImage3] = useState();
+    // const [filename1, setFilename1] = useState();
+    // const [filename2, setFilename2] = useState();
+    // const [filename3, setFilename3] = useState();
 
     const [imgList, setImgList] = useState([]);
     const [imgsrc1, setImgsrc1] = useState('');
@@ -42,6 +45,12 @@ function Modifynews() {
         .catch((err)=>{console.error(err)})
     },[])
 
+    // useEffect(() => {
+    //     console.log(filename1);
+    //     console.log(filename2);
+    //     console.log(filename3);
+    // }, [filename1, filename2, filename3]); // filename1이 업데이트될 때마다 실행됨
+
     async function imgup(e, idx){
         let formData = new FormData();
         // ㄴ FormData : JavaScript를 통해 파일 업로드 및 기타 (HTML)폼 데이터를 서버로 전송하는 것이 가능 
@@ -53,11 +62,17 @@ function Modifynews() {
         const result = await axios.post('/api/admins/newsimgup', formData)
 
         if(idx == 1){
-            setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setImgsrc1(result.data.filename)
+            // setFilename1(result.data.filename.substring(59))
+            // setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 2 ){
-            setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setImgsrc2(result.data.filename)
+            // setFilename2(result.data.filename.substring(59))
+            // setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 3 ){
-            setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setImgsrc3(result.data.filename)
+            // setFilename3(result.data.filename.substring(59))
+            // setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }
 
         let arr = [...imgList];
@@ -73,7 +88,6 @@ function Modifynews() {
         try{
             for(let i=0; i<imgList.length; i++){
                 await axios.post('/api/admins/updatenewsimages', {image1:imgList[0], image2:imgList[1], image3:imgList[2]})
-                console.log(imgList[i])
             }
             alert('수정 완료. 목록으로 돌아갑니다.')
             navigate('/adminnewslist')
@@ -128,7 +142,8 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image1} alt='' />
+                        <img src={onenews.image1} alt='' />
+                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image1} alt='' /> */}
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
@@ -155,7 +170,8 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image2} alt='' />
+                        <img src={onenews.image2} alt='' />
+                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image2} alt='' /> */}
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
@@ -179,7 +195,8 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image3} alt='' />
+                        <img src={onenews.image3} alt='' />
+                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image3} alt='' /> */}
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>

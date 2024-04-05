@@ -26,11 +26,20 @@ function Insertnews() {
     const [image1, setImage1] = useState();
     const [image2, setImage2] = useState();
     const [image3, setImage3] = useState();
+    // const [filename1, setFilename1] = useState();
+    // const [filename2, setFilename2] = useState();
+    // const [filename3, setFilename3] = useState();
 
     const [imgList, setImgList] = useState([]);
     const [imgsrc1, setImgsrc1] = useState('');
     const [imgsrc2, setImgsrc2] = useState('');
     const [imgsrc3, setImgsrc3] = useState('');
+
+    // useEffect(() => {
+    //     console.log(filename1);
+    //     console.log(filename2);
+    //     console.log(filename3);
+    // }, [filename1, filename2, filename3]); // filename1이 업데이트될 때마다 실행됨
 
     async function imgup(e, idx){
         let formData = new FormData();
@@ -44,11 +53,17 @@ function Insertnews() {
 
 
         if(idx == 1){
-            setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setImgsrc1(result.data.filename)
+            // setFilename1(result.data.filename.substring(59))
+            // setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 2 ){
-            setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setImgsrc2(result.data.filename)
+            // setFilename2(result.data.filename.substring(59))
+            // setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 3 ){
-            setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setImgsrc3(result.data.filename)
+            // setFilename3(result.data.filename.substring(59))
+            // setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }
 
         setImgList(arr => [...arr, result.data.filename]);

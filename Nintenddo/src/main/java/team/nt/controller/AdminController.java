@@ -1,6 +1,5 @@
 package team.nt.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -198,11 +197,13 @@ public class AdminController {
 		HashMap<String, Object> result = new HashMap<String, Object>();
 
 	      String originalFilename = file.getOriginalFilename();
+	      String filePath = "product/productdetail/" + originalFilename;
 	      ObjectMetadata metadata = new ObjectMetadata();
 	      metadata.setContentLength(file.getSize());
 	      metadata.setContentType(file.getContentType());
-	      s3.putObject(bucket, originalFilename, file.getInputStream(), metadata);
-	      result.put("filename", s3.getUrl(bucket, originalFilename).toString());
+	      s3.putObject(bucket, filePath, file.getInputStream(), metadata);
+	      result.put("filename", s3.getUrl(bucket, filePath).toString());
+	      // System.out.println(s3.getUrl(bucket, filePath).toString());
 	      
 	      return result;
 	   
@@ -244,14 +245,16 @@ public class AdminController {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 
-	      String originalFilename = file.getOriginalFilename();
-	      ObjectMetadata metadata = new ObjectMetadata();
-	      metadata.setContentLength(file.getSize());
-	      metadata.setContentType(file.getContentType());
-	      s3.putObject(bucket, originalFilename, file.getInputStream(), metadata);
-	      result.put("filename", s3.getUrl(bucket, originalFilename).toString());
-	      
-	      return result;
+		String originalFilename = file.getOriginalFilename();
+		String filePath = "news/" + originalFilename;
+		ObjectMetadata metadata = new ObjectMetadata();
+		metadata.setContentLength(file.getSize());
+		metadata.setContentType(file.getContentType());
+		s3.putObject(bucket, filePath, file.getInputStream(), metadata);
+		result.put("filename", s3.getUrl(bucket, filePath).toString());
+		// System.out.println(s3.getUrl(bucket, filePath).toString());
+
+		return result;
 		
 	}
 	

@@ -52,7 +52,8 @@ function Insertproduct() {
         axios.post('/api/admins/imgup', formData)
         .then((result)=>{
             setFilename(result.data.filename);
-            setImgsrc(`${process.env.REACT_APP_IMG_SRC}/product/productdetail/${result.data.filename}`)
+            setImgsrc(result.data.filename)
+            // setImgsrc(`${process.env.REACT_APP_IMG_SRC}/product/productdetail/${result.data.filename}`)
         })
         .catch((err)=>{console.error(err)})
     }
