@@ -115,7 +115,7 @@ function Joinform() {
               <button className="ovalButton googleButton"><img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'google.png'} />Google</button>
                   <button className="ovalButton kakaoButton" onClick={
                       ()=>{
-                      window.location.href='http://localhost:8070/api/members/kakaostart';
+                      window.location.href=`${process.env.REACT_APP_KAKAO_REDIRECT}api/members/kakaostart`;
                           }
                   }><img src= {process.env.REACT_APP_IMG_SRC +'/members/'+'kakao.png'} />Kakao</button>
               </div>

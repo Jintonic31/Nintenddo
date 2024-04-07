@@ -117,7 +117,7 @@ const findUserEmailByPhone = () => {
                                     </button>
                                     <img className="gologinbtn" src={process.env.REACT_APP_IMG_SRC +'/members/kakaologin.png'} alt='' onClick={
                                         ()=>{
-                                        window.location.href='http://localhost:8070/api/members/kakaostart';
+                                        window.location.href=`${process.env.REACT_APP_KAKAO_REDIRECT}api/members/kakaostart`;
                                             }
                                     }/>
                                 </div>
