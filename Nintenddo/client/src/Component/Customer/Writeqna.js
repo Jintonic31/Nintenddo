@@ -9,7 +9,7 @@ function Writeqna() {
   const [content, setContent] = useState('');
   const loginUser = useSelector(state => state.user);
   const navigate = useNavigate();
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   function onSubmit() {
     axios.post('/api/customer/writeqna', { title, content, email: loginUser.email, reply: 'N' })
@@ -39,7 +39,6 @@ function Writeqna() {
             </div>
             <div className="btns">
               <button onClick={onSubmit}>글쓰기</button>
-              <button>리스트로</button>
             </div>
           </div>
         </article>
