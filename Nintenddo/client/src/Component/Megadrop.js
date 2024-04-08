@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-
+import '../Style/includes/heading.css'; 
 
 function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
-
-
   const [newsList, setNewsList] = useState([])
 
   useEffect(()=>{
@@ -101,7 +99,7 @@ function Megadrop({ navigate, categoryId, setActiveCategoryId }) {
   };
 
   return (
-    <div className='Megadrop' style={dropStyles} onMouseOut={()=>{handleMouseOut();}}>
+    <div className='Megadrop' style={dropStyles} onMouseLeave={handleMouseOut}>
       <div className='drophard' onClick={() => navigate('/hardware')} >
         <img src={dropMenuItems[categoryId]?.[0]?.image} alt={dropMenuItems[categoryId]?.[0]?.text} />
 

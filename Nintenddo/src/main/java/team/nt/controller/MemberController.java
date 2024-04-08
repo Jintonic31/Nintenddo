@@ -139,13 +139,13 @@ public class MemberController {
 		String a = "<script type='text/javascript'>" 
 				+ "location.href='https://kauth.kakao.com/oauth/authorize?"
 				+ "client_id=6e91b24177969a60174c9f6cf610b8f6&"
-				+ "redirect_uri=http://15.164.200.111/api/members/kakaoLogin/&"
+				+ "redirect_uri=http://15.164.200.111:8070/api/members/kakaoLogin&"
 				/* + "redirect_uri=http://localhost:8070/api/members/kakaoLogin&" */
 				+ "response_type=code';" + "</script>";
 		return a;
 	}
 	
-	@RequestMapping("/kakaoLogin")
+	@PostMapping("/kakaoLogin")
 	public void loginKakao(
 			HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 		
@@ -154,7 +154,7 @@ public class MemberController {
 	      URL url = new URL(endpoint); // import java.net.URL;
 	      String bodyData = "grant_type=authorization_code&";
 	      bodyData += "client_id=6e91b24177969a60174c9f6cf610b8f6&";
-	      bodyData += "redirect_uri=http://15.164.200.111/api/members/kakaoLogin/&";
+	      bodyData += "redirect_uri=http://15.164.200.111:8070/api/members/kakaoLogin&";
 	      /* bodyData += "redirect_uri=http://localhost:8070/api/members/kakaoLogin&"; */
 	      bodyData += "code=" + code;
 	      
