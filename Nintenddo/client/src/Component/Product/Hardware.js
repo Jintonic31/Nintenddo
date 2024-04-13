@@ -17,13 +17,13 @@ function Hardware() {
     const [hardList, setHardList] = useState();
     const [modeList, setModeList] = useState();
     const softwareBanners = [
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (1).png',
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (2).png',
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (3).png',
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (4).png',
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (5).png',
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (6).png',
-        process.env.REACT_APP_IMG_SRC +'/banner/software/movebanner (7).png'
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (1).png',
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (2).png',
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (3).png',
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (4).png',
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (5).png',
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (6).png',
+        process.env.REACT_APP_IMG_SRC +'banner/software/movebanner (7).png'
     ]
     const [currentIdx, setCurrentIdx] = useState(0);
 
@@ -138,7 +138,7 @@ function Hardware() {
                             hardList.map((hard, idx)=>{
                                 return(
                                     <div className='hardwareImgone'>
-                                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+hard.image} alt=""/>
+                                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+hard.image} alt=""/>
                                         <span className='hardOnename'>{hard.pname}</span>
                                         <span className='hardOneprice'><span>희망소비자가격 :</span>
                                         {new Intl.NumberFormat('ko-KR').format(hard.price1)}</span>
@@ -165,17 +165,17 @@ function Hardware() {
                                     return(
                                         <div className='ableModeKind'>
                                             <div className='tvmode'>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+mode.tvmode} alt=""/>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'tvmodetext.png'} alt=""/>
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+mode.tvmode} alt=""/>
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'tvmodetext.png'} alt=""/>
 
                                             </div>
                                             <div className='tabletmode'>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+mode.tabletmode} alt=""/>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'tabletmodetext.png'} alt=""/>
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+mode.tabletmode} alt=""/>
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'tabletmodetext.png'} alt=""/>
                                             </div>
                                             <div className='handmode'>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+mode.handmode} alt=""/>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'handmodetext.png'} alt=""/>
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+mode.handmode} alt=""/>
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'handmodetext.png'} alt=""/>
                                             </div>
                                         </div>
                                         
@@ -194,9 +194,9 @@ function Hardware() {
                     </div>
 
                     <div className='ableSoftImg'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'yessoft.png'} alt=""/>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'yessoft.png'} alt=""/>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'nosoft.png'} alt=""/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'yessoft.png'} alt=""/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'yessoft.png'} alt=""/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'nosoft.png'} alt=""/>
                     </div>
 
                 </div>
@@ -207,14 +207,14 @@ function Hardware() {
                         <div>&nbsp;</div>
                         <Link to={'/controller'}>
                             Joy-Con (컨트롤러)&nbsp;&nbsp;
-                            <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'golinkicon.png'} alt=""/>
+                            <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'golinkicon.png'} alt=""/>
                         </Link>
                     </div>
 
                     <div className='ableJoyconImg'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'yesjoycon.png'} alt=""/>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'yesjoycon.png'} alt=""/>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'nojoycon.png'} alt=""/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'yesjoycon.png'} alt=""/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'yesjoycon.png'} alt=""/>
+                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'nojoycon.png'} alt=""/>
                     </div>
 
                 </div>

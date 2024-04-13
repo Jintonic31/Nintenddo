@@ -21,7 +21,7 @@ function Insertproduct() {
     },[]) 
 
     const [pcategory, setPcategory] = useState([]);
-    const [pcseq, setPcseq] = useState();
+    const [pcseq, setPcseq] = useState(1);
     const [pname, setPname] = useState();
     const [content, setContent] = useState();
     const [imgsrc, setImgsrc] = useState();
@@ -40,6 +40,10 @@ function Insertproduct() {
         .catch((err)=>{console.error(err)})
     },[])
 
+    useEffect(()=>{
+            console.log(filename)
+    },[filename])
+
 
     function imgup(e){
         const formData = new FormData();
@@ -51,7 +55,7 @@ function Insertproduct() {
 
         axios.post('/api/admins/imgup', formData)
         .then((result)=>{
-            setFilename(result.data.filename);
+            setFilename(result.data.filename.substring(76));
             setImgsrc(result.data.filename)
             // setImgsrc(`${process.env.REACT_APP_IMG_SRC}/product/productdetail/${result.data.filename}`)
         })
@@ -157,7 +161,7 @@ function Insertproduct() {
                     </div>
 
                 </div>
-                
+
             </div>
 
             <div className='modifyBtns'>

@@ -10,17 +10,17 @@ function Newsdetail() {
     const navigate = useNavigate();
     const [onenews, setOnenews] = useState({});
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('/api/news/getonenews')
-        .then((result)=>{setOnenews(result.data.news)})
-        .catch((err)=>{console.error(err)})
-    },[])
+            .then((result) => { setOnenews(result.data.news) })
+            .catch((err) => { console.error(err) })
+    }, [])
 
-    function formatDate(utc){
+    function formatDate(utc) {
         const date = new Date(utc);
         const year = date.getFullYear();
-        const month = String(date.getMonth()+1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2,'0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
 
@@ -41,19 +41,19 @@ function Newsdetail() {
 
                 <div className='newsBody'>
                     <div className='innewsImg'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image1} alt='' />
+                        <img src={process.env.REACT_APP_IMG_SRC + 'news/' + onenews.image1} alt='' />
                     </div>
                     <div className='innewsText'>
                         {onenews.content1}
                     </div>
                     <div className='innewsImg'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image2} alt='' />
+                        <img src={process.env.REACT_APP_IMG_SRC + 'news/' + onenews.image2} alt='' />
                     </div>
                     <div className='innewsText'>
                         {onenews.content2}
                     </div>
                     <div className='innewsImg'>
-                        <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image3} alt='' />
+                        <img src={process.env.REACT_APP_IMG_SRC + 'news/' + onenews.image3} alt='' />
                     </div>
                     <div className='innewsText'>
                         {onenews.content3}
@@ -61,11 +61,11 @@ function Newsdetail() {
                 </div>
 
                 <div className='backtolist'>
-                    <button onClick={()=>{navigate('/newslist')}}>목록으로</button>
+                    <button onClick={() => { navigate('/newslist') }}>목록으로</button>
                 </div>
 
             </div>
-        
+
             <Footing />
 
         </div>

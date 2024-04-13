@@ -26,24 +26,24 @@ function Insertnews() {
     const [image1, setImage1] = useState();
     const [image2, setImage2] = useState();
     const [image3, setImage3] = useState();
-    // const [filename1, setFilename1] = useState();
-    // const [filename2, setFilename2] = useState();
-    // const [filename3, setFilename3] = useState();
+    const [filename1, setFilename1] = useState();
+    const [filename2, setFilename2] = useState();
+    const [filename3, setFilename3] = useState();
 
     const [imgList, setImgList] = useState([]);
     const [imgsrc1, setImgsrc1] = useState('');
     const [imgsrc2, setImgsrc2] = useState('');
     const [imgsrc3, setImgsrc3] = useState('');
 
-    // useEffect(() => {
-    //     console.log(filename1);
-    //     console.log(filename2);
-    //     console.log(filename3);
-    // }, [filename1, filename2, filename3]); // filename1이 업데이트될 때마다 실행됨
+    useEffect(() => {
+        console.log(filename1);
+        console.log(filename2);
+        console.log(filename3);
+    }, [filename1, filename2, filename3]); // filename1이 업데이트될 때마다 실행됨
 
     async function imgup(e, idx){
         let formData = new FormData();
-        // ㄴ FormData : JavaScript를 통해 파일 업로드 및 기타 (HTML)폼 데이터를 서버로 전송하는 것이 가능 
+        // ㄴ FormData : JavaScript를 통해 파일 업로드 및 기타 (HTML)폼 데이터를 서버로 전송하는것이 가능 
         // ㄴ (HTML)폼 데이터 : 사용자가 form태그 안에서 입력 필드(text, checkbox, radio 등)를 통해 정보를 제출할 수 있는 모든 데이터
 
         formData.append('image', e.target.files[0]);
@@ -54,15 +54,15 @@ function Insertnews() {
 
         if(idx == 1){
             setImgsrc1(result.data.filename)
-            // setFilename1(result.data.filename.substring(59))
+            setFilename1(result.data.filename.substring(59))
             // setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 2 ){
             setImgsrc2(result.data.filename)
-            // setFilename2(result.data.filename.substring(59))
+            setFilename2(result.data.filename.substring(59))
             // setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }else if( idx == 3 ){
             setImgsrc3(result.data.filename)
-            // setFilename3(result.data.filename.substring(59))
+            setFilename3(result.data.filename.substring(59))
             // setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
         }
 
@@ -74,7 +74,7 @@ function Insertnews() {
     }
 
     function onsubmit(){
-        axios.post('/api/admins/insertnews', {title, content1, content2, content3, image1:imgList[0], image2:imgList[1], image3:imgList[2]} )
+        axios.post('/api/admins/insertnews', {title, content1, content2, content3, image1:filename1, image2:filename2, image3:filename3} )
         .then((result)=>{
             alert('작성 완료! 목록으로 돌아갑니다.')
             navigate('/adminnewslist')
@@ -103,7 +103,7 @@ function Insertnews() {
                     </div>
                     <input type='text' value={title} onChange={(e)=>{setTitle(e.currentTarget.value)}} />
                 </div>
-                
+
                 <div className='field'>
                     <div className='subject'>
                         <div className='blackbar'>&nbsp;</div>
@@ -125,12 +125,12 @@ function Insertnews() {
                 </div>
 
                 <div className='field' id='img2'>
-                    <div 
+                    <div
                     className='subject'>
                         <div className='blackbar'>&nbsp;</div>
                         이미지
                     </div>
-                    
+
                     <div className='afterimage'>
                         <img src={imgsrc2} alt='두번째 이미지' />
                     </div>
@@ -150,7 +150,7 @@ function Insertnews() {
                         <div className='blackbar'>&nbsp;</div>
                         이미지
                     </div>
-                    
+
                     <div className='afterimage'>
                         <img src={imgsrc3} alt='세번째 이미지' />
                     </div>
@@ -170,7 +170,7 @@ function Insertnews() {
             </div>
 
             <Footing />
-            
+
         </div>
     )
 }

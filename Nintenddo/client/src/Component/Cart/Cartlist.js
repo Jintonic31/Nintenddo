@@ -73,19 +73,19 @@ function Cartlist() {
                 document.getElementById('ch'+i).checked = false;
             }
         }
-            
+
     }
 
     async function updateQty(cseq, qty, pseq, indate, idx) {
         try {
-            
+
             const updatedQty = cartlist[idx].quantity + qty;
             // cartlist의 idx번째 상품의 기존 수량에서 추가할 수량을 더한 값을 변수 updatedQty에 저장
             if (updatedQty < 1) {
-                return; 
+                return;
                 // 최소 수량이 1로 그 이하일 경우 수량 업데이트를 취소
             }
-    
+
             const result = await axios.post('/api/carts/updateqty', { cseq, pseq, quantity:updatedQty, indate, email:loginUser.email })
             // 서버에 수량 업데이트를 위한 값을 보냄
 
@@ -110,9 +110,9 @@ function Cartlist() {
             }, 0);
 
             setTotalPrice(updatedTotalPrice);
-            
-    
-            
+
+
+
         } catch (err) {
             console.error(err);
         }
@@ -130,7 +130,7 @@ function Cartlist() {
                 return navigate('/writedelivery')
             }
 
-            
+
         }catch(err){
             console.error(err);
         }
@@ -144,7 +144,7 @@ function Cartlist() {
             <Heading />
 
             <div className='cartlistWrap'>
-                
+
                 <div className='buyProcess'>
                     <div className='process'>장바구니</div>
                     <div className='process'>배송정보</div>
@@ -159,10 +159,10 @@ function Cartlist() {
                         <div className='subquantity'>수량</div>
                         <div className='subprice'>가격</div>
                     </div>
-                    
+
                     {
                         (!cartlist || cartlist.length === 0)?(<h3>장바구니가 비어있습니다.</h3>):(
-                            
+
                             cartlist.map((cart, idx)=>{
                                 return(
                                     <div className='oneclist'>
@@ -174,7 +174,7 @@ function Cartlist() {
                                         </div>
 
                                         <div className='oneimg'>
-                                            <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+cart.image} alt='' />
+                                            <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+cart.image} alt='' />
                                         </div>
 
                                         <div className='onepname'>
@@ -185,7 +185,7 @@ function Cartlist() {
                                             <button onClick={()=>{updateQty(cart.cseq, -1, cart.pseq, cart.indate, idx)}}>-</button>
 
                                             {cart.quantity}
-                                            
+
 
                                             <button onClick={()=>{updateQty(cart.cseq, 1, cart.pseq, cart.indate, idx)}}>+</button>
                                         </div>
@@ -219,7 +219,7 @@ function Cartlist() {
 
                 </div>
 
-                
+
 
             </div>
 

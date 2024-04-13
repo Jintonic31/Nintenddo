@@ -195,7 +195,7 @@ function Cartlist() {
                                         </div>
 
                                         <div className='oneimg'>
-                                            <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+cart.image} alt='' />
+                                            <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+cart.image} alt='' />
                                         </div>
 
                                         <div className='onepname'>

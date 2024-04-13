@@ -68,10 +68,10 @@ function Adminnewslist() {
     }
 
     const [imgSrc, setImgSrc] = useState({
-        1: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav1.png`,
-        3: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav3.png`,
-        5: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav5.png`,
-        7: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav7.png`        
+        1: `${process.env.REACT_APP_IMG_SRC}admin/controllernav1.png`,
+        3: `${process.env.REACT_APP_IMG_SRC}admin/controllernav3.png`,
+        5: `${process.env.REACT_APP_IMG_SRC}admin/controllernav5.png`,
+        7: `${process.env.REACT_APP_IMG_SRC}admin/controllernav7.png`        
     })
 
     const navItems = [
@@ -82,11 +82,11 @@ function Adminnewslist() {
     ];
 
     const handleMouseOver = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav${id + 1}.png` });
+        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}admin/controllernav${id + 1}.png` });
     }
 
     const handleMouseOut = (id) => {
-        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}/admin/controllernav${id}.png` });
+        setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}admin/controllernav${id}.png` });
     }
   return (
     <div className='Cnt'>

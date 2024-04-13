@@ -24,7 +24,7 @@ function Modifyproduct() {
     const [pcseq, setPcseq] = useState();
     const [pname, setPname] = useState();
     const [content, setContent] = useState();
-    const [imgsrc, setImgsrc] = useState();
+    const [imgsrc, setImgsrc] = useState('');
     const [filename, setFilename] = useState();
     const [price1, setPrice1] = useState();
     const [price2, setPrice2] = useState();
@@ -55,10 +55,10 @@ function Modifyproduct() {
 
         axios.post('/api/admins/imgup', formData)
         .then((result)=>{
-            setFilename(result.data.filename);
-            // console.log(result.data.filename);
-            setImgsrc(result.data.filename)
-            // setImgsrc(`${process.env.REACT_APP_IMG_SRC}/product/productdetail/${result.data.filename}`)
+            setFilename(result.data.filename.substring(76));
+            //  console.log(result.data.filename);
+            //  setImgsrc(result.data.filename)
+            setImgsrc(result.data.filename);
         })
         .catch((err)=>{console.error(err)})
     }
@@ -108,8 +108,7 @@ function Modifyproduct() {
 
                 <div className='modifypdtimg'>
                     <div>Before</div>
-                    <img src={oneproduct.image} alt='' />
-                    {/* <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+oneproduct.image} alt='' /> */}
+                    <img src={`${process.env.REACT_APP_IMG_SRC}product/productdetail/${oneproduct.image}`}  alt='' />
                     <div>After</div>
                     <img src={imgsrc} alt='수정 후 이미지' />
                 </div>
@@ -158,7 +157,7 @@ function Modifyproduct() {
                         <div className='subject'>
                             <div className='yesorno'>사용 여부</div>
                             <div className='yesorno'>인기 여부</div>
-                        </div>
+                            </div>
                         <div className='inputboxdiv'>
                             <select onChange={(e) => { setUseyn(e.target.value); }}>
                                 <option value='' selected>필수선택</option>
@@ -179,7 +178,7 @@ function Modifyproduct() {
                     </div>
 
                 </div>
-                
+
             </div>
 
             <div className='modifyBtns'>

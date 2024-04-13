@@ -83,7 +83,7 @@ function Software() {
                             softList.slice(0,8).map((soft, idx)=>{
                                 return(
                                     <div className='softBannerImg'>
-                                        <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+soft.image} alt='' />
+                                        <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+soft.image} alt='' />
                                     </div>
                                 )
                             })
@@ -93,7 +93,7 @@ function Software() {
 
                 <div className='searchSoft'>
                     <input type='text' placeholder='키워드를 입력해주세요' value={keyword} onChange={handleKeywordChange} />
-                    <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'gosearch.png'} alt='' />
+                    <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'gosearch.png'} alt='' />
                 </div>
 
 
@@ -115,7 +115,7 @@ function Software() {
                                 return(
                                     <div className='softwareList' onClick={()=>{openModal(soft.pseq)}}>
                                         <div className='softlistImage'>
-                                            <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+soft.image} alt='' />
+                                            <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+soft.image} alt='' />
                                         </div>
                                         
                                         <div className='softlisthardware'>
@@ -137,7 +137,7 @@ function Software() {
                 {softList.length > displayNum && (
                     <div className='showmoreBtn'>
                         <button onClick={handleShowMore}>
-                            <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+'showmorebtn.png'} alt='' />
+                            <img src= {process.env.REACT_APP_IMG_SRC +'news/'+'showmorebtn.png'} alt='' />
                             더보기
                         </button>
                     </div>
@@ -160,7 +160,7 @@ function Software() {
                                 return(
                                     <div className='softwareList'>
                                         <div className='softlistImage'>
-                                            <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+soft.image} alt='' />
+                                            <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+soft.image} alt='' />
                                         </div>
                                         
                                         <div className='softlisthardware'>
@@ -182,7 +182,7 @@ function Software() {
                 {unreleaseList.length > displayNum2 && (
                     <div className='showmoreBtn'>
                         <button onClick={handleShowMore2}>
-                            <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+'showmorebtn.png'} alt='' />
+                            <img src= {process.env.REACT_APP_IMG_SRC +'news/'+'showmorebtn.png'} alt='' />
                             더보기
                         </button>
                     </div>

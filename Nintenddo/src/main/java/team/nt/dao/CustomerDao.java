@@ -20,7 +20,7 @@ public class CustomerDao implements IQnaDao{
 	@Override
 	public List<Qna> getqnalist(String email, Paging paging) {
 		List<Qna> list
-			= em.createQuery("select q from Qna q where q.email= :email", Qna.class)
+			= em.createQuery("select q from Qna q where q.email= :email order by q.qseq desc", Qna.class)
 			.setParameter("email", email)
 			.setFirstResult(paging.getStartNum()-1)
 			.setMaxResults(paging.getDisplayRow())

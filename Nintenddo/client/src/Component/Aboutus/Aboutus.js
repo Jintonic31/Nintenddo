@@ -17,7 +17,7 @@ function Aboutus() {
 
         // 표시 지역 마킹
         const markerPosition = new kakao.maps.LatLng(37.560769, 126.971219);
-        const markerImageSrc = process.env.REACT_APP_IMG_SRC +'/aboutus/mapmarker.png';    // 마커 이미지 경로
+        const markerImageSrc = process.env.REACT_APP_IMG_SRC +'aboutus/mapmarker.png';    // 마커 이미지 경로
         const markerImageSize = new kakao.maps.Size(50,50); // 마커 사이즈
         const markerImageOptions = {offset: new kakao.maps.Point(25, 50)};  // 마커 오프셋
         const markerImage = new kakao.maps.MarkerImage(markerImageSrc, markerImageSize, markerImageOptions);
@@ -46,7 +46,7 @@ function Aboutus() {
 
                     <div className='aboutTitle'>
                         <div>
-                            <img src= {process.env.REACT_APP_IMG_SRC +'/aboutus/'+'aboutuslogo.png'} alt='' />
+                            <img src= {process.env.REACT_APP_IMG_SRC +'aboutus/'+'aboutuslogo.png'} alt='' />
                         </div>
                         <span>
                             한국닌텐도&nbsp;

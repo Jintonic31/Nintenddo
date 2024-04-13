@@ -94,7 +94,7 @@ function Orderall() {
                                             </div>
 
                                             <div className='oneimg'>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+order.image} alt='' />
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+order.image} alt='' />
                                             </div>
 
                                             <div className='onepname'>
@@ -148,7 +148,7 @@ function Orderall() {
                                             </div>
 
                                             <div className='oneimg'>
-                                                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+odone.image} alt='' />
+                                                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+odone.image} alt='' />
                                             </div>
 
                                             <div className='onepname'>

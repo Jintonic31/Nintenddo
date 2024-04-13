@@ -82,12 +82,12 @@ function Productdetail(props) {
 
         <div className='pdetailcnt'>
             <div className='pdetailcloseBtn'>
-                <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+'closebtn.png'} onClick={closeModal}/>
+                <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+'closebtn.png'} onClick={closeModal}/>
             </div>
 
             <div className='detailWrap'>
                 <div className='detailimg'>
-                    <img src= {process.env.REACT_APP_IMG_SRC +'/product/productdetail/'+oneproduct.image} alt='' />
+                    <img src= {process.env.REACT_APP_IMG_SRC +'product/productdetail/'+oneproduct.image} alt='' />
                 </div>
 
                 <div className='detailtext'>

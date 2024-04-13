@@ -28,9 +28,9 @@ function Modifynews() {
     const [image1, setImage1] = useState();
     const [image2, setImage2] = useState();
     const [image3, setImage3] = useState();
-    // const [filename1, setFilename1] = useState();
-    // const [filename2, setFilename2] = useState();
-    // const [filename3, setFilename3] = useState();
+    const [filename1, setFilename1] = useState();
+    const [filename2, setFilename2] = useState();
+    const [filename3, setFilename3] = useState();
 
     const [imgList, setImgList] = useState([]);
     const [imgsrc1, setImgsrc1] = useState('');
@@ -45,11 +45,11 @@ function Modifynews() {
         .catch((err)=>{console.error(err)})
     },[])
 
-    // useEffect(() => {
-    //     console.log(filename1);
-    //     console.log(filename2);
-    //     console.log(filename3);
-    // }, [filename1, filename2, filename3]); // filename1이 업데이트될 때마다 실행됨
+    useEffect(() => {
+        console.log(filename1);
+        console.log(filename2);
+        console.log(filename3);
+    }, [filename1, filename2, filename3]); // filename1이 업데이트될 때마다 실행됨
 
     async function imgup(e, idx){
         let formData = new FormData();
@@ -63,16 +63,16 @@ function Modifynews() {
 
         if(idx == 1){
             setImgsrc1(result.data.filename)
-            // setFilename1(result.data.filename.substring(59))
-            // setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setFilename1(result.data.filename.substring(59))
+            //  setImgsrc1(`${process.env.REACT_APP_IMG_SRC}news/${result.data.filename}`)
         }else if( idx == 2 ){
             setImgsrc2(result.data.filename)
-            // setFilename2(result.data.filename.substring(59))
-            // setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setFilename2(result.data.filename.substring(59))
+            // setImgsrc2(`${process.env.REACT_APP_IMG_SRC}news/${result.data.filename}`)
         }else if( idx == 3 ){
             setImgsrc3(result.data.filename)
-            // setFilename3(result.data.filename.substring(59))
-            // setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            setFilename3(result.data.filename.substring(59))
+            // setImgsrc3(`${process.env.REACT_APP_IMG_SRC}news/${result.data.filename}`)
         }
 
         let arr = [...imgList];
@@ -87,7 +87,7 @@ function Modifynews() {
 
         try{
             for(let i=0; i<imgList.length; i++){
-                await axios.post('/api/admins/updatenewsimages', {image1:imgList[0], image2:imgList[1], image3:imgList[2]})
+                await axios.post('/api/admins/updatenewsimages', {image1:filename1, image2:filename2, image3:filename3})
             }
             alert('수정 완료. 목록으로 돌아갑니다.')
             navigate('/adminnewslist')
@@ -118,7 +118,7 @@ function Modifynews() {
             </div>
 
             <div className='modifynWrap'>
-                
+
                 <div className='rowfield'>
                     <div className='subject'>
                         <div className='blackbar'>&nbsp;</div>
@@ -134,7 +134,7 @@ function Modifynews() {
                     </div>
                     <input type='text' placeholder={onenews.title} value={title} onChange={(e)=>{setTitle(e.currentTarget.value)}} />
                 </div>
-                
+
                 <div className='field'>
                     <div className='subject'>
                         <div className='blackbar'>&nbsp;</div>
@@ -142,16 +142,16 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src={onenews.image1} alt='' />
-                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image1} alt='' /> */}
+                        <img src= {process.env.REACT_APP_IMG_SRC +'news/'+onenews.image1} alt=''/>
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
                         <img src={imgsrc1} alt='' />
                     </div>
 
-                    
+
                     <input type='file' value={image1} onChange={(e)=>{imgup(e, 1)}} />
+
                 </div>
 
                 <div className='field'>
@@ -163,15 +163,14 @@ function Modifynews() {
                 </div>
 
                 <div className='field' id='img2'>
-                    <div 
+                    <div
                     className='subject'>
                         <div className='blackbar'>&nbsp;</div>
                         이미지
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src={onenews.image2} alt='' />
-                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image2} alt='' /> */}
+                        <img src= {process.env.REACT_APP_IMG_SRC +'news/'+onenews.image2} alt=''/>
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
@@ -195,13 +194,12 @@ function Modifynews() {
                     </div>
                     <div className='beforetitle'>Before</div>
                     <div className='beforeimage'>
-                        <img src={onenews.image3} alt='' />
-                        {/* <img src= {process.env.REACT_APP_IMG_SRC +'/news/'+onenews.image3} alt='' /> */}
+                         <img src= {process.env.REACT_APP_IMG_SRC +'news/'+onenews.image3} alt='' />
                     </div>
                     <div className='beforetitle'>After</div>
                     <div className='afterimage'>
                         <img src={imgsrc3} alt='' />
-                    </div>
+                        </div>
                     <input type='file' className='inputbox' value={image3} onChange={(e)=>{imgup(e, 3)}} />
                 </div>
 
@@ -219,7 +217,7 @@ function Modifynews() {
             </div>
 
             <Footing />
-            
+
         </div>
     )
 }

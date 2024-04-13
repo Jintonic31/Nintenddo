@@ -10,14 +10,14 @@ function Footing() {
 
     const navigate = useNavigate();
 
-    const [imgSrc, setImgSrc] = useState(process.env.REACT_APP_IMG_SRC +'/includes/gotop.png');
+    const [imgSrc, setImgSrc] = useState(process.env.REACT_APP_IMG_SRC +'includes/gotop.png');
 
     const handleMouseOver = () =>{
-        setImgSrc(process.env.REACT_APP_IMG_SRC +'/includes/gotopMouseOver.png');
+        setImgSrc(process.env.REACT_APP_IMG_SRC +'includes/gotopMouseOver.png');
     }
 
     const handleMouseOut = () =>{
-        setImgSrc(process.env.REACT_APP_IMG_SRC +'/includes/gotop.png');
+        setImgSrc(process.env.REACT_APP_IMG_SRC +'includes/gotop.png');
     }
 
     const [isOpen, setIsOpen] = useState(false);
