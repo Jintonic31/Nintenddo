@@ -57,7 +57,6 @@ function Modifyproduct() {
         .then((result)=>{
             setFilename(result.data.filename.substring(76));
             //  console.log(result.data.filename);
-            //  setImgsrc(result.data.filename)
             setImgsrc(result.data.filename);
         })
         .catch((err)=>{console.error(err)})
