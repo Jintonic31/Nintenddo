@@ -8,7 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Value;
+=======
+// import org.springframework.beans.factory.annotation.Value;
+// import org.springframework.core.io.Resource;
+// import org.springframework.core.io.ResourceLoader;
+>>>>>>> branch 'main' of https://github.com/Jintonic31/Nintenddo.git
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.SdkClientException;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.ObjectMetadata;
+//import com.amazonaws.AmazonServiceException;
+//import com.amazonaws.SdkClientException;
+//import com.amazonaws.services.s3.AmazonS3;
+//import com.amazonaws.services.s3.model.ObjectMetadata;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -44,10 +50,10 @@ public class AdminController {
 	@Autowired
 	AdminService as;
 	
-	private final AmazonS3 s3;
+//	private final AmazonS3 s3;
 
-	   @Value("${cloud.aws.s3.bucket}")
-	   private String bucket;
+//	   @Value("${cloud.aws.s3.bucket}")
+//	   private String bucket;
 	
 	
 	@PostMapping("/loginpage")
@@ -161,24 +167,25 @@ public class AdminController {
 	
 	   
 	@PostMapping("/imgup")
-	public HashMap<String, Object> imgup(@RequestParam("image") MultipartFile file) throws AmazonServiceException, SdkClientException, IOException{
+	public HashMap<String, Object> imgup(@RequestParam("image") MultipartFile file) throws /* AmazonServiceException, SdkClientException,*/ IOException{
 
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
 		String originalFilename = file.getOriginalFilename();
 		String filePath = "product/productdetail/" + originalFilename;
-		ObjectMetadata metadata = new ObjectMetadata();
-		metadata.setContentLength(file.getSize());
-		metadata.setContentType(file.getContentType());
+		// ObjectMetadata metadata = new ObjectMetadata();
+		// metadata.setContentLength(file.getSize());
+		// metadata.setContentType(file.getContentType());
 		
 		// AWS 버킷에 이미지 업로드
-		s3.putObject(bucket, filePath, file.getInputStream(), metadata);
-		result.put("filename", s3.getUrl(bucket, filePath).toString());
+		// s3.putObject(bucket, filePath, file.getInputStream(), metadata);
+		// result.put("filename", s3.getUrl(bucket, filePath).toString());
 		// System.out.println(s3.getUrl(bucket, filePath).toString());
 		
 		
 		// Local 폴더에 이미지 업로드
-		String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		// String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
 	    Path localFilePath = Paths.get(localDirectory, originalFilename);
 	    Files.write(localFilePath, file.getBytes());
   
@@ -188,7 +195,7 @@ public class AdminController {
 	
 	
 	@PostMapping("/newsimgup")
-	public HashMap<String, Object> newsimgup(@RequestParam("image") MultipartFile file) throws AmazonServiceException, SdkClientException, IOException{
+	public HashMap<String, Object> newsimgup(@RequestParam("image") MultipartFile file) throws /* AmazonServiceException, SdkClientException,*/ IOException{
 	// client에서 formData.append('image', e.target.files[0]);라는 코드를 통해 "image"라는 이름으로 file을 보냈으므로
 	// RequestParam을 image로 받을수 있음..?
 		
@@ -224,17 +231,18 @@ public class AdminController {
 
 		String originalFilename = file.getOriginalFilename();
 		String filePath = "news/" + originalFilename;
-		ObjectMetadata metadata = new ObjectMetadata();
-		metadata.setContentLength(file.getSize());
-		metadata.setContentType(file.getContentType());
+		// ObjectMetadata metadata = new ObjectMetadata();
+		// metadata.setContentLength(file.getSize());
+		// metadata.setContentType(file.getContentType());
 		
 		// AWS 버킷에 이미지 업로드
-		s3.putObject(bucket, filePath, file.getInputStream(), metadata);
-		result.put("filename", s3.getUrl(bucket, filePath).toString());
+		// s3.putObject(bucket, filePath, file.getInputStream(), metadata);
+		// result.put("filename", s3.getUrl(bucket, filePath).toString());
 		// System.out.println(s3.getUrl(bucket, filePath).toString());
 		
 		// Local 폴더에 이미지 업로드
-		String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/news/";
+		String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		// String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/news/";
 	    Path localFilePath = Paths.get(localDirectory, originalFilename);
 	    Files.write(localFilePath, file.getBytes());
 
