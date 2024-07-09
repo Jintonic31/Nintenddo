@@ -8,13 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Value;
-=======
+
 // import org.springframework.beans.factory.annotation.Value;
 // import org.springframework.core.io.Resource;
 // import org.springframework.core.io.ResourceLoader;
->>>>>>> branch 'main' of https://github.com/Jintonic31/Nintenddo.git
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
