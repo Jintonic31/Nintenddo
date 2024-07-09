@@ -19,55 +19,6 @@ function Adminproductlist() {
         }
     },[])
 
-    const [productList, setProductList] = useState();
-    const [paging, setPaging] = useState({});
-    const navigate = useNavigate();
-
-    useEffect(()=>{
-        axios.get('/api/admins/productList/1')
-        // ㄴ 1 : 최초 호출시 현재페이지(page)는 1부터 시작
-        .then((result)=>{
-            setProductList(result.data.productlist);
-            setPaging(result.data.paging);
-        })
-        .catch((err)=>{console.error(err)})
-    }, [])
-
-
-    // 무한 스크롤을 위한 useEffect
-    useEffect(
-        ()=>{
-           window.addEventListener("scroll", handleScroll);
-            // scroll이라는 이벤트가 일어나면 handlerScroll을 호출하라
-           return ()=>{   window.removeEventListener("scroll", handleScroll);   }
-        }
-    )
-
-    function onPageMove(nextPage) {
-        axios.get(`/api/admins/productList/${nextPage}`)
-        .then((result) => {
-            setProductList([...productList, ...result.data.productlist]); // 기존 데이터와 새로운 데이터를 합쳐서 업데이트
-            setPaging(result.data.paging);
-        }) 
-        .catch((err) => { console.error(err) })
-    }
-
-
-    const handleScroll = () => {
-        const scrollHeight = document.documentElement.scrollHeight;
-        const scrollTop = document.documentElement.scrollTop;
-        const clientHeight = document.documentElement.clientHeight; 
-        if (scrollTop + clientHeight >= scrollHeight) {
-            onPageMove(paging.page + 1); // 다음 페이지의 번호 전달
-        }
-    }
-
-    function onProductView(pseq){
-        axios.post('/api/admins/savepseq', null, {params:{pseq}})
-        .then(()=>{ navigate('/modifyproduct') })
-        .catch((err)=>{console.error(err)})
-    }
-
     const [imgSrc, setImgSrc] = useState({
         1: `${process.env.REACT_APP_IMG_SRC}admin/controllernav1.png`,
         3: `${process.env.REACT_APP_IMG_SRC}admin/controllernav3.png`,
@@ -88,6 +39,52 @@ function Adminproductlist() {
 
     const handleMouseOut = (id) => {
         setImgSrc({ ...imgSrc, [id]: `${process.env.REACT_APP_IMG_SRC}admin/controllernav${id}.png` });
+    }
+
+    const [productList, setProductList] = useState();
+    const [paging, setPaging] = useState({});
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        axios.get('/api/admins/productList/1')
+        // ㄴ 1 : 최초 호출시 현재페이지(page)는 1부터 시작
+        .then((result)=>{
+            setProductList(result.data.productlist);
+            setPaging(result.data.paging);
+        })
+        .catch((err)=>{console.error(err)})
+    }, [])
+
+    // 무한 스크롤을 위한 useEffect
+    useEffect(
+        ()=>{
+           window.addEventListener("scroll", handleScroll);
+            // scroll이라는 이벤트가 일어나면 handlerScroll을 호출하라
+           return ()=>{   window.removeEventListener("scroll", handleScroll);   }
+        }
+    )
+    
+    function onPageMove(nextPage) {
+        axios.get(`/api/admins/productList/${nextPage}`)
+        .then((result) => {
+            setProductList([...productList, ...result.data.productlist]); // 기존 데이터와 새로운 데이터를 합쳐서 업데이트
+            setPaging(result.data.paging);
+        }) 
+        .catch((err) => { console.error(err) })
+    }
+    const handleScroll = () => {
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollTop = document.documentElement.scrollTop;
+        const clientHeight = document.documentElement.clientHeight; 
+        if (scrollTop + clientHeight >= scrollHeight) {
+            onPageMove(paging.page + 1); // 다음 페이지의 번호 전달
+        }
+    }
+
+    function onProductView(pseq){
+        axios.post('/api/admins/savepseq', null, {params:{pseq}})
+        .then(()=>{ navigate('/modifyproduct') })
+        .catch((err)=>{console.error(err)})
     }
 
     
