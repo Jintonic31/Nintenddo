@@ -178,6 +178,7 @@ public class AdminController {
 		
 		// AWS 버킷에 이미지 업로드
 		// s3.putObject(bucket, filePath, file.getInputStream(), metadata);
+		
 		// result.put("filename", s3.getUrl(bucket, filePath).toString());
 		// System.out.println(s3.getUrl(bucket, filePath).toString());
 		
@@ -186,7 +187,10 @@ public class AdminController {
 		String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
 		// String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
 	    Path localFilePath = Paths.get(localDirectory, originalFilename);
+	    System.out.println("로컬 파일 패스 : " + localFilePath.toString());
+	    
 	    Files.write(localFilePath, file.getBytes());
+	    result.put("filename", "http://localhost:8070/images/" + filePath);
   
 		return result;
 	   
