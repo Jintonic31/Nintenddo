@@ -190,7 +190,9 @@ public class AdminController {
 	    System.out.println("로컬 파일 패스 : " + localFilePath.toString());
 	    
 	    Files.write(localFilePath, file.getBytes());
-	    result.put("filename", "http://localhost:8070/images/" + filePath);
+	    
+	    result.put("filename", originalFilename);
+	    result.put("filesrc", "http://localhost:8070/images/" + filePath);
   
 		return result;
 	   
@@ -248,6 +250,9 @@ public class AdminController {
 		// String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/news/";
 	    Path localFilePath = Paths.get(localDirectory, originalFilename);
 	    Files.write(localFilePath, file.getBytes());
+	    
+	    result.put("filename", originalFilename);
+	    result.put("filesrc", "http://localhost:8070/images/" + filePath);
 
 		return result;
 		

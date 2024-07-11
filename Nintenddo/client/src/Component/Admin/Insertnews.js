@@ -53,20 +53,23 @@ function Insertnews() {
 
 
         if(idx == 1){
-            setImgsrc1(result.data.filename)
-            setFilename1(result.data.filename.substring(59))
-            // setImgsrc1(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            // setImgsrc1(result.data.filesrc)
+            setFilename1(result.data.filename)
+            setImgsrc1(`${process.env.REACT_APP_IMG_SRC}news/${result.data.filename}`)
+            console.log(imgsrc1);
         }else if( idx == 2 ){
-            setImgsrc2(result.data.filename)
-            setFilename2(result.data.filename.substring(59))
-            // setImgsrc2(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            // setImgsrc2(result.data.filesrc)
+            setFilename2(result.data.filename)
+            setImgsrc2(`${process.env.REACT_APP_IMG_SRC}news/${result.data.filename}`)
+            console.log(imgsrc2);
         }else if( idx == 3 ){
-            setImgsrc3(result.data.filename)
-            setFilename3(result.data.filename.substring(59))
-            // setImgsrc3(`${process.env.REACT_APP_IMG_SRC}/news/${result.data.filename}`)
+            // setImgsrc3(result.data.filesrc)
+            setFilename3(result.data.filename)
+            setImgsrc3(`${process.env.REACT_APP_IMG_SRC}news/${result.data.filename}`)
+            console.log(imgsrc2);
         }
 
-        setImgList(arr => [...arr, result.data.filename]);
+        setImgList(arr => [...arr, result.data.filesrc]);
         console.log("imgList : " + [imgList]);
         // arr.push(result.data.filename);
         // setImgList( [...arr] );
