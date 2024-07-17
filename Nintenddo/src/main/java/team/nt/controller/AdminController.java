@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 // import org.springframework.beans.factory.annotation.Value;
 // import org.springframework.core.io.Resource;
@@ -198,6 +200,10 @@ public class AdminController {
 	    System.out.println("로컬 파일 패스 : " + localFilePath.toString());
 	    
 	    Files.write(localFilePath, file.getBytes());
+	    
+	    // Set permissions to 777
+        Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwxrwxrwx");
+        Files.setPosixFilePermissions(localFilePath, perms);
 	    
 	    result.put("filename", originalFilename);
 	    // result.put("filesrc", "http://localhost:8070/images/" + filePath);
