@@ -184,15 +184,24 @@ public class AdminController {
 		
 		
 		// Local 폴더에 이미지 업로드
-		String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		// String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		//	ㄴ 회사 로컬용
+		
+		String localDirectory = "/home/Nintenddo/src/main/resources/static/images/product/productdetail";
+		//	ㄴ 회사 배포용
+		
 		// String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		//	ㄴ 노트북 로컬용
+		
+		
 	    Path localFilePath = Paths.get(localDirectory, originalFilename);
 	    System.out.println("로컬 파일 패스 : " + localFilePath.toString());
 	    
 	    Files.write(localFilePath, file.getBytes());
 	    
 	    result.put("filename", originalFilename);
-	    result.put("filesrc", "http://localhost:8070/images/" + filePath);
+	    // result.put("filesrc", "http://localhost:8070/images/" + filePath);
+	    result.put("filesrc", "http://10.0.0.139:8070/images/" + filePath);
   
 		return result;
 	   
@@ -246,12 +255,20 @@ public class AdminController {
 		// System.out.println(s3.getUrl(bucket, filePath).toString());
 		
 		// Local 폴더에 이미지 업로드
-		String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		// String localDirectory = "C:/Users/nilink/git/Nintenddo/Nintenddo/src/main/resources/static/images/product/productdetail/";
+		//	ㄴ 회사 로컬용
+		
+		String localDirectory = "/home/Nintenddo/src/main/resources/static/images/news";
+		//	ㄴ 회사 배포용
+		
 		// String localDirectory = "C:/Users/as/git/Nintenddo/Nintenddo/src/main/resources/static/images/news/";
+		//	ㄴ 노트북 로컬용
+		
 	    Path localFilePath = Paths.get(localDirectory, originalFilename);
 	    Files.write(localFilePath, file.getBytes());
 	    
 	    result.put("filename", originalFilename);
+	    // result.put("filesrc", "http://localhost:8070/images/" + filePath);
 	    result.put("filesrc", "http://localhost:8070/images/" + filePath);
 
 		return result;
