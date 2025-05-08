@@ -1,0 +1,198 @@
+.mainsoftCnt{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:80%;
+    height:100%;
+}
+
+.mainsoftTitle{
+    display:flex;
+    flex-direction:row;
+    width:94%;
+    height:70px;
+    margin:50px 0 0 -20px;
+}
+.mainsoftTitle .titleKr{
+    margin-right:10px;
+    font-size:130%;
+    font-weight:bold;
+    line-height:70px;
+    color:rgb(41, 40, 40);
+}
+.mainsoftTitle .titleEn{
+    line-height:75px;
+}
+
+
+.mainsoftContent{
+    width:95%;
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-column-gap:70px;
+    grid-row-gap:20px;
+}
+.softList{
+    display:flex;
+    flex-direction:column;
+    width:230px;
+    height:300px;
+    border-bottom:1px solid lightgray;
+}
+.slistImage{
+    flex:9;
+    height:125px;
+    margin-bottom:10px;
+}
+.slistImage img{
+    width:100%;
+    height:100%;
+}
+.slisthardware{
+    flex:1;
+    width:100%;
+    color:gray;
+    font-size:90%;
+}
+.slisttitle{
+    flex:1;
+    width:100%;
+    font-size:90%;
+    font-weight:bold;
+}
+.sindate{
+    flex:1;
+    width:100%;
+    font-size:75%;
+    color:gray;
+    margin:10px 0;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.showmoreBtn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.showmoreBtn button{
+    width:200px;
+    height:40px;
+    border:none;
+    border-radius:2px;
+    background-color:rgb(230, 0, 18);
+    color:white;
+    font-size:95%;
+    font-weight:bold;
+    margin:70px 0;
+}
+.showmoreBtn button img{
+    width:13px;
+    height:13px;
+    margin-right:5px;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+
+/* 테블릿 */
+@media (min-width:500px) and (max-width:1024px){
+
+    .mainsoftTitle{
+        height:60px;
+        margin:40px 0 0 50px;
+    }
+
+    .mainsoftContent{
+        grid-template-columns:1fr 1fr 1fr;
+        grid-column-gap:40px;
+        grid-row-gap:20px;
+    }
+    
+}
+
+/* 모바일 */
+@media (max-width:499px){
+
+    .mainsoftCnt{
+        margin:0;
+    }
+
+    .mainsoftTitle{
+        height:40px;
+        margin:40px 0 0 0;
+    }
+    .titleKr{
+        font-size:1rem;
+        font-weight:bold;
+        line-height:40px;
+        color:rgb(41, 40, 40);
+    }
+    .titleEn{
+        font-size:0.7rem;
+        line-height:45px;
+    }
+
+    .mainsoftContent{
+        grid-template-columns:1fr 1fr;
+        grid-column-gap:30px;
+        grid-row-gap:10px;
+    
+    }
+    
+    .softList{
+        width:100%;
+        height:100%;
+    }
+    .slistImage{
+        flex:2;
+        height:120px;
+        margin-bottom:10px;
+    }
+    .slistImage img{
+        width:100%;
+        height:120px;
+        cursor:pointer;
+    }
+
+    .slisthardware{
+        flex:1;
+        width:100%;
+        color:gray;
+        font-size:90%;
+    }
+    .slisttitle{
+        flex:1;
+        width:100%;
+        font-size:90%;
+        font-weight:bold;
+    }
+    .sindate{
+        flex:1;
+        width:100%;
+        font-size:75%;
+        color:gray;
+        margin:10px 0;
+    }
+    
+
+    .showmoreBtn button{
+        width:120px;
+        height:30px;
+        border:none;
+        border-radius:2px;
+        background-color:rgb(230, 0, 18);
+        color:white;
+        font-size:0.7rem;
+        font-weight:bold;
+        margin:40px 0;
+    }
+    .showmoreBtn button img{
+        width:13px;
+        height:13px;
+        margin-right:5px;
+    }
+  }

@@ -1,0 +1,177 @@
+.Cnt{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+  height:100%;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.joinbody{
+  width:100%;
+  height:100%;
+  background-color: lightgray;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.centerText {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.account{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.jsubPage{
+  width:80%;
+  height:100%;
+}
+.jsubPage article{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.sns-btns{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.ovalButton {
+  padding: 10px 200px; 
+  border-radius: 30px; 
+  border: none; 
+  cursor: pointer; 
+  font-size: 20px; 
+  margin-top: 20px;
+  
+}
+
+.kakaoButton {
+  background-color: #FEE500; 
+}
+
+.googleButton {
+  background-color: white; 
+  border:2px solid lightgray;
+}
+
+.ovalButton:hover {
+  opacity: 0.8; 
+}
+
+.ovalButton img {
+  height: 1em; 
+  width: auto; 
+  vertical-align: middle; 
+  margin-right: 5px; 
+}
+
+.jinsertinfoWrap{
+  width:70%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.jTitle{
+  display:flex;
+  flex-direction:flow;
+  justify-content:flex-start;
+  align-items:center;
+  width:100%;
+  height:70px;
+  margin:0 20px;
+  margin-left: 300px;
+}
+
+.jTitle div:nth-child(1){
+background-color:black;
+width:10px;
+height:22px;
+border-radius:3px;
+padding-top:1px;
+}
+.jTitle div:nth-child(2){
+margin-left:10px;
+font-weight:bold;
+font-size:1.1em;
+}
+.jTitle button{
+  width:80px;
+  height:30px;
+  border:none;
+  background-color:gray;
+  color:white;
+  margin-left:10px;
+}
+
+
+.infotitle{
+width:150px;
+height:60px;
+line-height:60px;
+}
+.select-box{
+  width:150px;
+  height:60px;
+  line-height:60px;
+}
+
+#timezoneSelect {
+width: 100%;
+padding: 8px;
+margin-top: 10px;
+border-radius: 4px;
+width: 500px;
+}
+
+.jsubPage input[type="text"] {
+height: 60px; /* 수정: 입력 필드의 높이를 명시적으로 설정 */
+width: 500px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+/* 추가: 입력 필드와 선택 박스 간의 간격 조정 */
+margin-bottom: 10px;
+}
+
+.select-style {
+padding: 8px;
+background-color: #f1f1f1;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 16px;
+color: #333;
+}
+
+.select-style:hover {
+background-color: #e9e9e9;
+}
+
+
+.jcontinue {
+  width:300px;
+  height:50px;
+  margin:50px 0;
+  color:white;
+  background-color:gray;
+  border:none;
+  font-size:16px;
+}
+
+
+

@@ -1,0 +1,116 @@
+.Cnt{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+    
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.nlistWrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:70%;
+    height:100%;
+    margin:90px 0;
+}
+
+.nlistTitle{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.nlistTitle .titleKr{
+    width:100%;
+    height:100%;
+    flex:1;
+    text-align:center;
+    font-size:1.7rem;
+    font-weight:bold;
+    line-height:70px;
+    color:rgb(41, 40, 40);
+}
+.nlistTitle .searchNews{
+    width:100%;
+    height:100%;
+    flex:1;
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+}
+.nlistTitle .searchNews input{
+    width:500px;
+    height:40px;
+    border:1px solid lightgrey;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+.nlistContent{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-column-gap:70px;
+    grid-row-gap:20px;
+}
+.nlistContent .nList{
+    display:flex;
+    flex-direction:column;
+    width:230px;
+    height:300px;
+    border-bottom:1px solid lightgray;
+}
+.nlistContent .nListImage{
+    flex:2;
+    height:125px;
+    margin-bottom:10px;
+}
+.nlistContent .nListImage img{
+    width:100%;
+    height:100%;
+    cursor:pointer;
+}
+.nlistContent .nListtitle{
+    flex:1;
+    width:100%;
+    font-weight:bold;
+    cursor:pointer;
+}
+.nlistContent .nListIndate{
+    margin-top:40px;
+    flex:1;
+    width:100%;
+    font-size:80%;
+    color:gray;
+    margin-bottom:-20px;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.nlistWrap .showMoreBtn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.nlistWrap .showMoreBtn button{
+    width:200px;
+    height:40px;
+    border:none;
+    border-radius:2px;
+    background-color:rgb(230, 0, 18);
+    color:white;
+    font-size:95%;
+    font-weight:bold;
+    margin:70px 0;
+}
+.nlistWrap .showMoreBtn button img{
+    width:13px;
+    height:13px;
+    margin-right:5px;
+}

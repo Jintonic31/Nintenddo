@@ -1,0 +1,146 @@
+.Cnt{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    height:100%;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.softwareCnt{
+    display:flex;
+    flex-direction:column;
+    width:70%;
+    height:100%;
+}
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.softBanner{
+    width:100%;
+    display:grid;
+    justify-content:flex-start;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-column-gap: 5px; /* 열 간격 지정 */
+    grid-row-gap: 5px; /* 행 간격 지정 */
+    background-color:rgb(230, 0, 18);
+}
+
+.softBannerImg img{
+    width:100%;
+    height:100%;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.searchSoft{
+    display:flex;
+    justify-content:center;
+    width:100%;
+    height:50px;
+    padding:70px 0;
+    background-color:rgb(230, 0, 18);
+}
+
+.searchSoft input{
+    border:1px solid lightgrey;
+    width:500px;
+    height:100%;
+    margin-right:10px;
+}
+.searchSfot img{
+    flex:1;
+    width:50px;
+    height:100%;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.softwareTitle{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    height:70px;
+    margin-top:30px;
+}
+
+
+
+.softwareTitle .titleKr{
+    margin-right:10px;
+    font-size:130%;
+    font-weight:bold;
+    line-height:70px;
+    color:rgb(41, 40, 40);
+}
+.softwareTitle .titleEn{
+    line-height:75px;
+}
+
+
+.softwareContent{
+    height:100%;
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    
+}
+.softwareList{
+    display:flex;
+    flex-direction:column;
+    width:230px;
+    height:300px;
+    border-bottom:1px solid lightgray;
+    margin-bottom:20px;
+}
+.softlistImage{
+    flex:9;
+    height:125px;
+}
+.softlistImage img{
+    width:100%;
+    height:100%;
+}
+.softlisthardware{
+    flex:1;
+    width:100%;
+    color:gray;
+    font-size:90%;
+}
+.softlisttitle{
+    flex:1;
+    width:100%;
+    font-size:90%;
+    font-weight:bold;
+}
+.softindate{
+    flex:1;
+    width:100%;
+    font-size:75%;
+    color:gray;
+    margin:10px 0;
+}
+
+.showmoreBtn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.showmoreBtn button{
+    width:200px;
+    height:40px;
+    border:none;
+    border-radius:2px;
+    background-color:rgb(230, 0, 18);
+    color:white;
+    font-size:95%;
+    font-weight:bold;
+    margin:70px 0;
+}
+.showmoreBtn button img{
+    width:13px;
+    height:13px;
+    margin-right:5px;
+}

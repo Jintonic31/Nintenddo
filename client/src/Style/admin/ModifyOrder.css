@@ -1,0 +1,274 @@
+.Cnt{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+    
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifyoWrap{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:70%;
+    height:100%;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifyoWrap .modifylabel{
+    flex:1;
+    display:flex;
+    align-items:center;
+    width:100%;
+    font-size:1.5rem;
+    font-weight:bold;
+    color:rgb(53, 52, 52);
+    padding:20px 0;
+    background-color:lightgray;
+    margin:50px 0 50px 0;
+}
+.modifylabel .redbar{
+    width:8px;
+    height:25px;
+    background-color:rgb(230, 0, 18);
+    margin:0 20px;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.onemolist{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    margin-bottom:90px;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.onemolistsub{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:40px;
+    background-color:rgb(53, 52, 52);
+    color:white;
+    font-weight:bold;
+    font-size:1rem;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.mosubname{
+    flex:2;
+    text-align:center;
+}
+.mosubtel{
+    flex:2;
+    text-align:center;
+}
+.mosubznum{
+    flex:2;
+    text-align:center;
+}
+.mosubadd{
+    flex:3;
+    text-align:center;
+}
+
+.moonename{
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.moonename input{
+    margin-top:20px;
+    border:none;
+    border-bottom:1px solid lightgray;
+    width:50%;
+    text-align:center;
+}
+.moonetel{
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.moonetel input{
+    margin-top:20px;
+    border:none;
+    border-bottom:1px solid lightgray;
+    width:50%;
+    text-align:center;
+}
+.mooneznum{
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.mooneznum .moonenew{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+}
+.mooneznum .moonenew input{
+    border:none;
+    border-bottom:1px solid lightgray;
+    width:30%;
+    margin-right:10px;
+}
+.mooneznum .moonenew button{
+    border:1px solid gray;
+    background-color:white;
+    color:rgb(53, 52, 52);
+}
+.mooneadd{
+    flex:3;
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.mooneadd input{
+    margin-top:20px;
+    border:none;
+    border-bottom:1px solid lightgray;
+    width:50%;
+    text-align:center;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.mosubno{
+    flex:1;
+    max-width:100px;
+    text-align:center;
+}
+.mosubuser{
+    flex:1;
+    text-align:center;
+    max-width:100px;
+}
+.mosubimg{
+    flex:3;
+    max-width:305px;
+    text-align:center;
+}
+.mosubpname{
+    flex:3;
+    max-width:305px;
+    text-align:center;
+}
+.mosubprice{
+    flex:2;
+    max-width:200px;
+    text-align:center;
+}
+.mosubindate{
+    flex:2;
+    text-align:center;
+    max-width:200px;
+}
+.mosubresult{
+    flex:1;
+    text-align:center;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.onemolistinfo{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:100%;
+}
+
+.inonemolist{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:120px;
+    border-bottom:1px solid lightgray;
+}
+
+.mooneno{
+    flex:1;
+    max-width:100px;
+    text-align:center;
+}
+.mooneuser{
+    flex:1;
+    max-width:100px;
+    text-align:center;
+}
+.mooneimg{
+    flex:3;
+    width:305px;
+    height:115px;
+    text-align:center;
+}
+.mooneimg img{ width:100%; height:100%; }
+.moonepname{
+    flex:3;
+    max-width:305px;
+    text-align:center;
+}
+.mooneindate{
+    flex:2;
+    max-width:200px;
+    text-align:center;
+}
+.mooneprice{
+    flex:2;
+    max-width:200px;
+    text-align:center;
+}
+.mooneresult{
+    flex:1;
+    text-align:center;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.moBtns{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:70%;
+    height:100%;
+    margin:70px 0;
+}
+.moBtns button{
+    width:300px;
+    height:40px;
+    background-color:rgb(53, 52, 52);
+    color:white;
+    font-size:1rem;
+    font-weight:bold;
+    border:none;
+    margin-right:50px;
+}
+.moBtns button:last-child{
+    background-color:rgb(230, 0, 18);
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+/* 랩탑 */
+@media (min-width:1050px) and (max-width:1900){
+     
+}

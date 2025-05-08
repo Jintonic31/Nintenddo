@@ -1,0 +1,166 @@
+.Cnt{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+    
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifypdtWrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:70%;
+    height:100%;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifylabel{
+    flex:1;
+    display:flex;
+    align-items:center;
+    width:70%;
+    font-size:1.5rem;
+    font-weight:bold;
+    color:rgb(53, 52, 52);
+    padding:20px 0;
+    background-color:lightgray;
+    margin:50px 0 50px 0;
+}
+.modifylabel .redbar{
+    width:8px;
+    height:25px;
+    background-color:rgb(230, 0, 18);
+    margin:0 20px;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifypdtimg{
+    width:100%;
+    height:100%;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    font-weight:bold;
+    font-size:1rem;
+    margin-right:30px;
+}
+.modifypdtimg div{
+    width:100%;
+    height:40px
+}
+.modifypdtimg img{
+    width:100%;
+    height:300px;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifypdttext{
+    flex:1;
+}
+
+.onemodifyfield{
+    width:100%;
+    height:100%;
+}
+.onemodifyfield .subject{
+    display:flex;
+    width:100%;
+    height:100%;
+    margin:10px 0;
+    font-weight:bold;
+    font-size:1rem;
+    letter-spacing:1px;
+}
+.onemodifyfield .subject .price{
+    flex:1;
+    text-align:center;
+}
+.onemodifyfield .subject .yesorno{
+    flex:1;
+    text-align:center;
+}
+
+
+.onemodifyfield .inputbox{
+    width:98%;
+    border:none;
+    border-bottom:1px solid lightgray;
+}
+.onemodifyfield .inputboxdiv{
+    width:98%;
+}
+
+.onemodifyfield .inputboxdiv input{
+    flex:1;
+    margin:0 20px;
+    text-align:center;
+    border:none;
+    border-bottom:1px solid lightgray;
+}
+.onemodifyfield .inputboxdiv input:last-child{
+    margin-right:0;
+}
+.onemodifyfield .inputboxdiv select{
+    width:30%;
+    border:none;
+    border-bottom:1px solid lightgray;
+    margin-left:70px;
+    text-align:center;
+}
+.onemodifyfield .inputboxdiv select:last-child{
+    margin-left:135px;
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+.modifyBtns{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:70%;
+    height:100%;
+    margin:70px 0;
+}
+.modifyBtns button{
+    width:300px;
+    height:40px;
+    background-color:rgb(53, 52, 52);
+    color:white;
+    font-size:1rem;
+    font-weight:bold;
+    border:none;
+    margin-right:50px;
+}
+.modifyBtns button:last-child{
+    background-color:rgb(230, 0, 18);
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+/* 랩탑 */
+@media (min-width:1050px) and (max-width:1900){
+    
+    .onemodifyfield .inputboxdiv input{
+        max-width:125px;
+    }
+    .onemodifyfield .inputboxdiv input:last-child{
+        margin-left:25px;
+    }
+    .onemodifyfield .inputboxdiv select{
+        margin-left:50px;
+    }
+    .onemodifyfield .inputboxdiv select:last-child{
+        margin-left:110px;
+    }
+     
+  }
